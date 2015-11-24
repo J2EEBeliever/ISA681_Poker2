@@ -1,0 +1,9 @@
+127.0.0.1 - - [23/Nov/2015:12:23:53 -0500] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [23/Nov/2015:12:24:30 -0500] "GET /ajax/GetHandJSON HTTP/1.1" 404 1026
+0:0:0:0:0:0:0:1 - - [23/Nov/2015:12:24:30 -0500] "GET /favicon.ico HTTP/1.1" 404 1016
+0:0:0:0:0:0:0:1 - - [23/Nov/2015:12:26:00 -0500] "GET /FiveCardStudPokerWithBetting/index.jsp HTTP/1.1" 200 415
+0:0:0:0:0:0:0:1 - - [23/Nov/2015:12:26:00 -0500] "GET /favicon.ico HTTP/1.1" 404 1016
+0:0:0:0:0:0:0:1 - - [23/Nov/2015:12:26:15 -0500] "GET /FiveCardStudPokerWithBetting/hello?name=Stuts2008 HTTP/1.1" 200 108
+0:0:0:0:0:0:0:1 - - [23/Nov/2015:12:27:31 -0500] "GET /FiveCardStudPokerWithBetting/GetHandJSON HTTP/1.1" 200 3355
+0:0:0:0:0:0:0:1 - - [23/Nov/2015:12:29:17 -0500] "GET /ajax/GetHandJSON HTTP/1.1" 404 1026
+0:0:0:0:0:0:0:1 - - [23/Nov/2015:12:29:32 -0500] "GET /FiveCardStudPokerWithBetting/hello?name=Stuts2008 HTTP/1.1" 200 108

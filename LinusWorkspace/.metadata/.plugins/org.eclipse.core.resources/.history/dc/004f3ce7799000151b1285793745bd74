@@ -1,0 +1,9 @@
+package deck.cards;
+
+public class Card {
+	
+	private int cardNumber = -1;
+	private String cardsuit = "";
+	
+
+}

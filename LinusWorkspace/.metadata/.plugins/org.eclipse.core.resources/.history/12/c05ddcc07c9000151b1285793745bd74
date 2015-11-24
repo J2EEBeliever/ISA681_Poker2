@@ -1,0 +1,67 @@
+package deck.cards;
+
+public class DeckOfCards {
+	
+	private int NUMBER_OF_CARDS = 52;
+	
+	private PlayingCard[]  deckOfCards = new PlayingCard[NUMBER_OF_CARDS];
+
+	public DeckOfCards(PlayingCard[] deckOfCards) {
+		super();
+		this.deckOfCards = deckOfCards;
+		for(int i = 0; i < NUMBER_OF_CARDS; ++i) {
+			
+			deckOfCards[i].setCardNumber(i+1);
+			
+			if(i <= 0) {
+				deckOfCards[i].setCardString("Ace");
+			}
+			else if(i <= 10) {
+				deckOfCards[i].setCardString(i+"");
+			}
+			else if(i == 11) {
+				deckOfCards[i].setCardString("Jack");
+			}
+			else if(i == 12) {
+				deckOfCards[i].setCardString("Queen");
+			}
+			else if(i == 13) {
+				deckOfCards[i].setCardString("King");
+			}
+		}
+		
+	}
+
+	private void processCardSuite(DeckOfCards[] deckOfCards ) {
+
+		for(int i = 0; i < NUMBER_OF_CARDS; ++i) {
+			
+			deckOfCards[i].setCardNumber(i+1);
+			
+			if(i <= 0) {
+				deckOfCards[i].setCardString("Ace");
+			}
+			else if(i <= 10) {
+				deckOfCards[i].setCardString(i+"");
+			}
+			else if(i == 11) {
+				deckOfCards[i].setCardString("Jack");
+			}
+			else if(i == 12) {
+				deckOfCards[i].setCardString("Queen");
+			}
+			else if(i == 13) {
+				deckOfCards[i].setCardString("King");
+			}
+		}
+		
+		
+	}
+				
+				
+		
+		
+	
+	
+
+}

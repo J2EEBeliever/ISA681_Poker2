@@ -1,0 +1,32 @@
+package deck.cards;
+
+public class PlayingCard {
+	
+	private int cardNumber = -1;
+	private String cardString = "";
+	private String cardsuit = "";
+
+	
+	public int getCardNumber() {
+		return cardNumber;
+	}
+	public void setCardNumber(int cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+	public String getCardString() {
+		return cardString;
+	}
+	public void setCardString(String cardString) {
+		this.cardString = cardString;
+	}
+	public String getCardsuit() {
+		return cardsuit;
+	}
+	public void setCardsuit(String cardsuit) {
+		this.cardsuit = cardsuit;
+	}
+	
+	
+	
+
+}

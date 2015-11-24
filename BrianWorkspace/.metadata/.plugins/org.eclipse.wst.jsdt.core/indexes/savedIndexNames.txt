@@ -1,0 +1,9 @@
+INDEX VERSION 1.3+C:\ISA-681_GitHub\GitHub\ISA-681PokerRespository\EclipseWorkspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+4075169010.index
+3861587588.index
+3450611277.index
+2667391172.index
+2081366228.index
+3678789809.index
+2062559989.index
+206591592.index

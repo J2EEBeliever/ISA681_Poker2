@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Servers/Tomcat v8.0 Server at localhost-config/FiveCardStudPokerWithBettingWARF.war&apos;" deleteContents="false" description="Delete resource &apos;Servers/Tomcat v8.0 Server at localhost-config/FiveCardStudPokerWithBettingWARF.war&apos;" element1="/Servers/Tomcat v8.0 Server at localhost-config/FiveCardStudPokerWithBettingWARF.war" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1447784072966"/>
+</session>

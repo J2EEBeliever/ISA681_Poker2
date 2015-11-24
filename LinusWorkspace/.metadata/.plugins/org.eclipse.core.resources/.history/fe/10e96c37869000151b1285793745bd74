@@ -1,0 +1,135 @@
+package deck.cards;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+import org.apache.log4j.Logger;
+
+
+
+public class DeckOfCards {
+	
+	final static Logger log = Logger.getLogger(DeckOfCards.class);
+
+
+	private int NUMBER_OF_CARDS = 52;
+	
+	private int NUMBER_OF_CARDS_PER_SUIT = 13;
+
+	
+	private int NUMBER_OF_SUITS = 52;
+	
+	private ArrayList<PlayingCard>  deckOfCards = new ArrayList<PlayingCard>();
+
+	public DeckOfCards() {
+		
+		super();
+		
+		//this.deckOfCards = deckOfCards;
+			
+		processCardSuite(deckOfCards, "Spades" );
+		processCardSuite(deckOfCards, "Clubs" );
+		processCardSuite(deckOfCards, "Diamonds" );
+		processCardSuite(deckOfCards, "Hearts" );
+		
+	}
+
+	public static void main(String[] args) {
+		
+		DeckOfCards deckOfCards = new DeckOfCards();
+		
+		log.debug("\nDebug: display deck of cards un-shuffled\n");
+		
+		log.debug(deckOfCards.displayDeckCards());
+		
+		deckOfCards.shuffleDeckCards();
+
+		log.debug("\nDebug: display deck of cards shuffled\n");
+	
+		log.debug(deckOfCards.displayDeckCards());
+		
+
+	}
+	
+	public String toString() {
+		
+		StringBuffer stringBuffer = new StringBuffer("\n\n");
+		
+		for(int i = 0; i < NUMBER_OF_CARDS; ++i) {
+			
+			PlayingCard playingCard = deckOfCards.get(i);
+			
+			stringBuffer.append(playingCard.getCardNumber() + " " + playingCard.getCardString() + " " + playingCard.getCardSuit() + "\n");
+			
+		}
+		
+		return stringBuffer.toString();
+	}
+	
+	public String displayDeckCards() {
+		
+		return this.toString();
+	
+		
+	}
+
+	
+	public void shuffleDeckCards() {
+		
+		//Collections.shuffle(Arrays.asList(deckOfCards));
+		
+		Collections.shuffle(deckOfCards);
+		
+	}
+	
+	private void processCardSuite(ArrayList<PlayingCard> deckOfCards, String suit ) {
+
+		for(int i = 0; i < NUMBER_OF_CARDS_PER_SUIT; ++i) {
+			
+			
+			PlayingCard playingCard = new PlayingCard();
+			
+			deckOfCards.add(playingCard);
+
+			
+			//playingCard = new PlayingCard();
+			
+			
+			playingCard.setCardNumber(i);
+			
+			playingCard.setCardSuit(suit);
+			
+			
+//			if(i == 0) {
+//				playingCard.setCardString("Zero Card Not Used");
+//				playingCard.setCardSuit("Zero Card Not Used");
+//				playingCard.setCardNumber(-1);
+//			}
+			if(i == 0) {
+				playingCard.setCardString("Ace");
+			}
+			else if(i < 10) {
+				playingCard.setCardString(i+"");
+			}
+			else if(i == 10) {
+				playingCard.setCardString("Jack");
+			}
+			else if(i == 11) {
+				playingCard.setCardString("Queen");
+			}
+			else if(i == 12) {
+				playingCard.setCardString("King");
+			}
+		}
+		
+		
+	}
+				
+				
+		
+		
+	
+	
+
+}
