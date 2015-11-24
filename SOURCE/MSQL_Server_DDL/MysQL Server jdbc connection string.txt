@@ -1,0 +1,10 @@
+Driver: org.gjt.mm.mysql.Driver
+
+URL jdbc:mysql://localhost:3306/ISA681Poker
+
+User: root
+
+Password:
+
+
+
