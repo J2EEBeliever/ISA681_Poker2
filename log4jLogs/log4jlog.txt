@@ -1,0 +1,1385 @@
+2015-11-21 14:02:26 DEBUG DeckOfCards:38 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:02:37 DEBUG DeckOfCards:40 - 
+
+2 Ace Hearts
+3 2 Hearts
+4 3 Hearts
+5 4 Hearts
+6 5 Hearts
+7 6 Hearts
+8 7 Hearts
+9 8 Hearts
+10 9 Hearts
+11 10 Hearts
+12 Jack Hearts
+13 Queen Hearts
+14 King Hearts
+15 Card Instance Not Used Hearts
+16 Card Instance Not Used Hearts
+17 Card Instance Not Used Hearts
+18 Card Instance Not Used Hearts
+19 Card Instance Not Used Hearts
+20 Card Instance Not Used Hearts
+21 Card Instance Not Used Hearts
+22 Card Instance Not Used Hearts
+23 Card Instance Not Used Hearts
+24 Card Instance Not Used Hearts
+25 Card Instance Not Used Hearts
+26 Card Instance Not Used Hearts
+27 Card Instance Not Used Hearts
+28 Card Instance Not Used Hearts
+29 Card Instance Not Used Hearts
+30 Card Instance Not Used Hearts
+31 Card Instance Not Used Hearts
+32 Card Instance Not Used Hearts
+33 Card Instance Not Used Hearts
+34 Card Instance Not Used Hearts
+35 Card Instance Not Used Hearts
+36 Card Instance Not Used Hearts
+37 Card Instance Not Used Hearts
+38 Card Instance Not Used Hearts
+39 Card Instance Not Used Hearts
+40 Card Instance Not Used Hearts
+41 Card Instance Not Used Hearts
+42 Card Instance Not Used Hearts
+43 Card Instance Not Used Hearts
+44 Card Instance Not Used Hearts
+45 Card Instance Not Used Hearts
+46 Card Instance Not Used Hearts
+47 Card Instance Not Used Hearts
+48 Card Instance Not Used Hearts
+49 Card Instance Not Used Hearts
+50 Card Instance Not Used Hearts
+51 Card Instance Not Used Hearts
+52 Card Instance Not Used Hearts
+53 Card Instance Not Used Hearts
+
+2015-11-21 14:04:39 DEBUG DeckOfCards:41 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:04:46 DEBUG DeckOfCards:43 - 
+
+2 Ace Hearts
+3 2 Hearts
+4 3 Hearts
+5 4 Hearts
+6 5 Hearts
+7 6 Hearts
+8 7 Hearts
+9 8 Hearts
+10 9 Hearts
+11 10 Hearts
+12 Jack Hearts
+13 Queen Hearts
+14 King Hearts
+15 Card Instance Not Used Hearts
+16 Card Instance Not Used Hearts
+17 Card Instance Not Used Hearts
+18 Card Instance Not Used Hearts
+19 Card Instance Not Used Hearts
+20 Card Instance Not Used Hearts
+21 Card Instance Not Used Hearts
+22 Card Instance Not Used Hearts
+23 Card Instance Not Used Hearts
+24 Card Instance Not Used Hearts
+25 Card Instance Not Used Hearts
+26 Card Instance Not Used Hearts
+27 Card Instance Not Used Hearts
+28 Card Instance Not Used Hearts
+29 Card Instance Not Used Hearts
+30 Card Instance Not Used Hearts
+31 Card Instance Not Used Hearts
+32 Card Instance Not Used Hearts
+33 Card Instance Not Used Hearts
+34 Card Instance Not Used Hearts
+35 Card Instance Not Used Hearts
+36 Card Instance Not Used Hearts
+37 Card Instance Not Used Hearts
+38 Card Instance Not Used Hearts
+39 Card Instance Not Used Hearts
+40 Card Instance Not Used Hearts
+41 Card Instance Not Used Hearts
+42 Card Instance Not Used Hearts
+43 Card Instance Not Used Hearts
+44 Card Instance Not Used Hearts
+45 Card Instance Not Used Hearts
+46 Card Instance Not Used Hearts
+47 Card Instance Not Used Hearts
+48 Card Instance Not Used Hearts
+49 Card Instance Not Used Hearts
+50 Card Instance Not Used Hearts
+51 Card Instance Not Used Hearts
+52 Card Instance Not Used Hearts
+53 Card Instance Not Used Hearts
+
+2015-11-21 14:14:40 DEBUG DeckOfCards:42 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:14:41 DEBUG DeckOfCards:44 - 
+
+2 2 Spades
+3 3 Spades
+4 4 Spades
+5 5 Spades
+6 6 Spades
+7 7 Spades
+8 8 Spades
+9 9 Spades
+10 10 Spades
+11 Jack Spades
+12 Queen Spades
+13 King Spades
+14 Card Instance Not Used Spades
+15 Card Instance Not Used Spades
+16 Card Instance Not Used Spades
+17 Card Instance Not Used Spades
+18 Card Instance Not Used Spades
+19 Card Instance Not Used Spades
+20 Card Instance Not Used Spades
+21 Card Instance Not Used Spades
+22 Card Instance Not Used Spades
+23 Card Instance Not Used Spades
+24 Card Instance Not Used Spades
+25 Card Instance Not Used Spades
+26 Card Instance Not Used Spades
+27 Card Instance Not Used Spades
+28 Card Instance Not Used Spades
+29 Card Instance Not Used Spades
+30 Card Instance Not Used Spades
+31 Card Instance Not Used Spades
+32 Card Instance Not Used Spades
+33 Card Instance Not Used Spades
+34 Card Instance Not Used Spades
+35 Card Instance Not Used Spades
+36 Card Instance Not Used Spades
+37 Card Instance Not Used Spades
+38 Card Instance Not Used Spades
+39 Card Instance Not Used Spades
+40 Card Instance Not Used Spades
+41 Card Instance Not Used Spades
+42 Card Instance Not Used Spades
+43 Card Instance Not Used Spades
+44 Card Instance Not Used Spades
+45 Card Instance Not Used Spades
+46 Card Instance Not Used Spades
+47 Card Instance Not Used Spades
+48 Card Instance Not Used Spades
+49 Card Instance Not Used Spades
+50 Card Instance Not Used Spades
+51 Card Instance Not Used Spades
+52 Card Instance Not Used Spades
+1 Ace Clubs
+
+2015-11-21 14:16:44 DEBUG DeckOfCards:42 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:16:45 DEBUG DeckOfCards:44 - 
+
+2 2 Spades
+3 3 Spades
+4 4 Spades
+5 5 Spades
+6 6 Spades
+7 7 Spades
+8 8 Spades
+9 9 Spades
+10 10 Spades
+11 Jack Spades
+12 Queen Spades
+13 King Spades
+14 Card Instance Not Used Spades
+1 Ace Clubs
+2 2 Clubs
+3 3 Clubs
+4 4 Clubs
+5 5 Clubs
+6 6 Clubs
+7 7 Clubs
+8 8 Clubs
+9 9 Clubs
+10 10 Clubs
+11 Jack Clubs
+12 Queen Clubs
+13 King Clubs
+14 Card Instance Not Used Clubs
+1 Ace Diamonds
+2 2 Diamonds
+3 3 Diamonds
+4 4 Diamonds
+5 5 Diamonds
+6 6 Diamonds
+7 7 Diamonds
+8 8 Diamonds
+9 9 Diamonds
+10 10 Diamonds
+11 Jack Diamonds
+12 Queen Diamonds
+13 King Diamonds
+14 Card Instance Not Used Diamonds
+1 Ace Hearts
+2 2 Hearts
+3 3 Hearts
+4 4 Hearts
+5 5 Hearts
+6 6 Hearts
+7 7 Hearts
+8 8 Hearts
+9 9 Hearts
+10 10 Hearts
+11 Jack Hearts
+
+2015-11-21 14:16:52 DEBUG DeckOfCards:48 - 
+Debug: display deck of cards shuffled
+
+2015-11-21 14:16:52 DEBUG DeckOfCards:50 - 
+
+2 2 Spades
+3 3 Spades
+4 4 Spades
+5 5 Spades
+6 6 Spades
+7 7 Spades
+8 8 Spades
+9 9 Spades
+10 10 Spades
+11 Jack Spades
+12 Queen Spades
+13 King Spades
+14 Card Instance Not Used Spades
+1 Ace Clubs
+2 2 Clubs
+3 3 Clubs
+4 4 Clubs
+5 5 Clubs
+6 6 Clubs
+7 7 Clubs
+8 8 Clubs
+9 9 Clubs
+10 10 Clubs
+11 Jack Clubs
+12 Queen Clubs
+13 King Clubs
+14 Card Instance Not Used Clubs
+1 Ace Diamonds
+2 2 Diamonds
+3 3 Diamonds
+4 4 Diamonds
+5 5 Diamonds
+6 6 Diamonds
+7 7 Diamonds
+8 8 Diamonds
+9 9 Diamonds
+10 10 Diamonds
+11 Jack Diamonds
+12 Queen Diamonds
+13 King Diamonds
+14 Card Instance Not Used Diamonds
+1 Ace Hearts
+2 2 Hearts
+3 3 Hearts
+4 4 Hearts
+5 5 Hearts
+6 6 Hearts
+7 7 Hearts
+8 8 Hearts
+9 9 Hearts
+10 10 Hearts
+11 Jack Hearts
+
+2015-11-21 14:17:15 DEBUG DeckOfCards:42 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:17:15 DEBUG DeckOfCards:44 - 
+
+2 2 Spades
+3 3 Spades
+4 4 Spades
+5 5 Spades
+6 6 Spades
+7 7 Spades
+8 8 Spades
+9 9 Spades
+10 10 Spades
+11 Jack Spades
+12 Queen Spades
+13 King Spades
+14 Card Instance Not Used Spades
+1 Ace Clubs
+2 2 Clubs
+3 3 Clubs
+4 4 Clubs
+5 5 Clubs
+6 6 Clubs
+7 7 Clubs
+8 8 Clubs
+9 9 Clubs
+10 10 Clubs
+11 Jack Clubs
+12 Queen Clubs
+13 King Clubs
+14 Card Instance Not Used Clubs
+1 Ace Diamonds
+2 2 Diamonds
+3 3 Diamonds
+4 4 Diamonds
+5 5 Diamonds
+6 6 Diamonds
+7 7 Diamonds
+8 8 Diamonds
+9 9 Diamonds
+10 10 Diamonds
+11 Jack Diamonds
+12 Queen Diamonds
+13 King Diamonds
+14 Card Instance Not Used Diamonds
+1 Ace Hearts
+2 2 Hearts
+3 3 Hearts
+4 4 Hearts
+5 5 Hearts
+6 6 Hearts
+7 7 Hearts
+8 8 Hearts
+9 9 Hearts
+10 10 Hearts
+11 Jack Hearts
+
+2015-11-21 14:17:15 DEBUG DeckOfCards:48 - 
+Debug: display deck of cards shuffled
+
+2015-11-21 14:17:15 DEBUG DeckOfCards:50 - 
+
+2 2 Spades
+3 3 Spades
+4 4 Spades
+5 5 Spades
+6 6 Spades
+7 7 Spades
+8 8 Spades
+9 9 Spades
+10 10 Spades
+11 Jack Spades
+12 Queen Spades
+13 King Spades
+14 Card Instance Not Used Spades
+1 Ace Clubs
+2 2 Clubs
+3 3 Clubs
+4 4 Clubs
+5 5 Clubs
+6 6 Clubs
+7 7 Clubs
+8 8 Clubs
+9 9 Clubs
+10 10 Clubs
+11 Jack Clubs
+12 Queen Clubs
+13 King Clubs
+14 Card Instance Not Used Clubs
+1 Ace Diamonds
+2 2 Diamonds
+3 3 Diamonds
+4 4 Diamonds
+5 5 Diamonds
+6 6 Diamonds
+7 7 Diamonds
+8 8 Diamonds
+9 9 Diamonds
+10 10 Diamonds
+11 Jack Diamonds
+12 Queen Diamonds
+13 King Diamonds
+14 Card Instance Not Used Diamonds
+1 Ace Hearts
+2 2 Hearts
+3 3 Hearts
+4 4 Hearts
+5 5 Hearts
+6 6 Hearts
+7 7 Hearts
+8 8 Hearts
+9 9 Hearts
+10 10 Hearts
+11 Jack Hearts
+
+2015-11-21 14:19:06 DEBUG DeckOfCards:42 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:19:47 DEBUG DeckOfCards:42 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:22:26 DEBUG DeckOfCards:42 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:22:26 DEBUG DeckOfCards:44 - 
+
+1 Ace Spades
+2 2 Spades
+3 3 Spades
+4 4 Spades
+5 5 Spades
+6 6 Spades
+7 7 Spades
+8 8 Spades
+9 9 Spades
+10 10 Spades
+11 Jack Spades
+12 Queen Spades
+13 King Spades
+-1 Zero Card Not Used Zero Card Not Used
+1 Ace Clubs
+2 2 Clubs
+3 3 Clubs
+4 4 Clubs
+5 5 Clubs
+6 6 Clubs
+7 7 Clubs
+8 8 Clubs
+9 9 Clubs
+10 10 Clubs
+11 Jack Clubs
+12 Queen Clubs
+13 King Clubs
+-1 Zero Card Not Used Zero Card Not Used
+1 Ace Diamonds
+2 2 Diamonds
+3 3 Diamonds
+4 4 Diamonds
+5 5 Diamonds
+6 6 Diamonds
+7 7 Diamonds
+8 8 Diamonds
+9 9 Diamonds
+10 10 Diamonds
+11 Jack Diamonds
+12 Queen Diamonds
+13 King Diamonds
+-1 Zero Card Not Used Zero Card Not Used
+1 Ace Hearts
+2 2 Hearts
+3 3 Hearts
+4 4 Hearts
+5 5 Hearts
+6 6 Hearts
+7 7 Hearts
+8 8 Hearts
+9 9 Hearts
+10 10 Hearts
+
+2015-11-21 14:22:26 DEBUG DeckOfCards:48 - 
+Debug: display deck of cards shuffled
+
+2015-11-21 14:22:26 DEBUG DeckOfCards:50 - 
+
+1 Ace Spades
+2 2 Spades
+3 3 Spades
+4 4 Spades
+5 5 Spades
+6 6 Spades
+7 7 Spades
+8 8 Spades
+9 9 Spades
+10 10 Spades
+11 Jack Spades
+12 Queen Spades
+13 King Spades
+-1 Zero Card Not Used Zero Card Not Used
+1 Ace Clubs
+2 2 Clubs
+3 3 Clubs
+4 4 Clubs
+5 5 Clubs
+6 6 Clubs
+7 7 Clubs
+8 8 Clubs
+9 9 Clubs
+10 10 Clubs
+11 Jack Clubs
+12 Queen Clubs
+13 King Clubs
+-1 Zero Card Not Used Zero Card Not Used
+1 Ace Diamonds
+2 2 Diamonds
+3 3 Diamonds
+4 4 Diamonds
+5 5 Diamonds
+6 6 Diamonds
+7 7 Diamonds
+8 8 Diamonds
+9 9 Diamonds
+10 10 Diamonds
+11 Jack Diamonds
+12 Queen Diamonds
+13 King Diamonds
+-1 Zero Card Not Used Zero Card Not Used
+1 Ace Hearts
+2 2 Hearts
+3 3 Hearts
+4 4 Hearts
+5 5 Hearts
+6 6 Hearts
+7 7 Hearts
+8 8 Hearts
+9 9 Hearts
+10 10 Hearts
+
+2015-11-21 14:27:45 DEBUG DeckOfCards:42 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:28:24 DEBUG DeckOfCards:42 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:28:24 DEBUG DeckOfCards:44 - 
+
+0 Ace Spades
+1 1 Spades
+2 2 Spades
+3 3 Spades
+4 4 Spades
+5 5 Spades
+6 6 Spades
+7 7 Spades
+8 8 Spades
+9 9 Spades
+10 Jack Spades
+11 Queen Spades
+12 King Spades
+0 Ace Clubs
+1 1 Clubs
+2 2 Clubs
+3 3 Clubs
+4 4 Clubs
+5 5 Clubs
+6 6 Clubs
+7 7 Clubs
+8 8 Clubs
+9 9 Clubs
+10 Jack Clubs
+11 Queen Clubs
+12 King Clubs
+0 Ace Diamonds
+1 1 Diamonds
+2 2 Diamonds
+3 3 Diamonds
+4 4 Diamonds
+5 5 Diamonds
+6 6 Diamonds
+7 7 Diamonds
+8 8 Diamonds
+9 9 Diamonds
+10 Jack Diamonds
+11 Queen Diamonds
+12 King Diamonds
+0 Ace Hearts
+1 1 Hearts
+2 2 Hearts
+3 3 Hearts
+4 4 Hearts
+5 5 Hearts
+6 6 Hearts
+7 7 Hearts
+8 8 Hearts
+9 9 Hearts
+10 Jack Hearts
+11 Queen Hearts
+12 King Hearts
+
+2015-11-21 14:28:24 DEBUG DeckOfCards:48 - 
+Debug: display deck of cards shuffled
+
+2015-11-21 14:28:24 DEBUG DeckOfCards:50 - 
+
+11 Queen Hearts
+10 Jack Clubs
+6 6 Spades
+5 5 Clubs
+0 Ace Hearts
+2 2 Diamonds
+5 5 Diamonds
+1 1 Spades
+4 4 Spades
+8 8 Clubs
+4 4 Diamonds
+3 3 Spades
+10 Jack Hearts
+7 7 Diamonds
+1 1 Clubs
+11 Queen Spades
+12 King Diamonds
+2 2 Spades
+4 4 Hearts
+0 Ace Spades
+3 3 Hearts
+12 King Clubs
+9 9 Spades
+6 6 Diamonds
+7 7 Hearts
+3 3 Clubs
+9 9 Diamonds
+11 Queen Clubs
+11 Queen Diamonds
+4 4 Clubs
+1 1 Diamonds
+12 King Hearts
+1 1 Hearts
+2 2 Clubs
+8 8 Hearts
+0 Ace Diamonds
+9 9 Clubs
+6 6 Clubs
+8 8 Spades
+10 Jack Diamonds
+7 7 Spades
+0 Ace Clubs
+5 5 Hearts
+3 3 Diamonds
+10 Jack Spades
+2 2 Hearts
+7 7 Clubs
+9 9 Hearts
+8 8 Diamonds
+12 King Spades
+6 6 Hearts
+5 5 Spades
+
+2015-11-21 14:30:03 DEBUG DeckOfCards:42 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:30:04 DEBUG DeckOfCards:44 - 
+
+1 Ace Spades
+2 1 Spades
+3 2 Spades
+4 3 Spades
+5 4 Spades
+6 5 Spades
+7 6 Spades
+8 7 Spades
+9 8 Spades
+10 9 Spades
+11 Jack Spades
+12 Queen Spades
+13 King Spades
+1 Ace Clubs
+2 1 Clubs
+3 2 Clubs
+4 3 Clubs
+5 4 Clubs
+6 5 Clubs
+7 6 Clubs
+8 7 Clubs
+9 8 Clubs
+10 9 Clubs
+11 Jack Clubs
+12 Queen Clubs
+13 King Clubs
+1 Ace Diamonds
+2 1 Diamonds
+3 2 Diamonds
+4 3 Diamonds
+5 4 Diamonds
+6 5 Diamonds
+7 6 Diamonds
+8 7 Diamonds
+9 8 Diamonds
+10 9 Diamonds
+11 Jack Diamonds
+12 Queen Diamonds
+13 King Diamonds
+1 Ace Hearts
+2 1 Hearts
+3 2 Hearts
+4 3 Hearts
+5 4 Hearts
+6 5 Hearts
+7 6 Hearts
+8 7 Hearts
+9 8 Hearts
+10 9 Hearts
+11 Jack Hearts
+12 Queen Hearts
+13 King Hearts
+
+2015-11-21 14:30:04 DEBUG DeckOfCards:48 - 
+Debug: display deck of cards shuffled
+
+2015-11-21 14:30:07 DEBUG DeckOfCards:50 - 
+
+1 Ace Clubs
+4 3 Clubs
+7 6 Diamonds
+1 Ace Diamonds
+7 6 Spades
+12 Queen Diamonds
+10 9 Diamonds
+5 4 Diamonds
+6 5 Hearts
+2 1 Hearts
+9 8 Hearts
+5 4 Spades
+13 King Clubs
+8 7 Diamonds
+8 7 Clubs
+11 Jack Clubs
+2 1 Clubs
+4 3 Spades
+7 6 Clubs
+6 5 Clubs
+12 Queen Clubs
+10 9 Hearts
+3 2 Spades
+2 1 Spades
+10 9 Spades
+9 8 Spades
+13 King Hearts
+12 Queen Hearts
+13 King Diamonds
+1 Ace Hearts
+2 1 Diamonds
+11 Jack Hearts
+4 3 Diamonds
+1 Ace Spades
+6 5 Spades
+3 2 Clubs
+5 4 Clubs
+8 7 Spades
+3 2 Hearts
+8 7 Hearts
+12 Queen Spades
+5 4 Hearts
+4 3 Hearts
+7 6 Hearts
+13 King Spades
+11 Jack Diamonds
+10 9 Clubs
+9 8 Diamonds
+9 8 Clubs
+3 2 Diamonds
+11 Jack Spades
+6 5 Diamonds
+
+2015-11-21 14:31:10 DEBUG DeckOfCards:42 - 
+Debug: display deck of cards un-shuffled
+
+2015-11-21 14:31:10 DEBUG DeckOfCards:44 - 
+
+1 Ace Spades
+2 2 Spades
+3 3 Spades
+4 4 Spades
+5 5 Spades
+6 6 Spades
+7 7 Spades
+8 8 Spades
+9 9 Spades
+10 10 Spades
+11 Jack Spades
+12 Queen Spades
+13 King Spades
+1 Ace Clubs
+2 2 Clubs
+3 3 Clubs
+4 4 Clubs
+5 5 Clubs
+6 6 Clubs
+7 7 Clubs
+8 8 Clubs
+9 9 Clubs
+10 10 Clubs
+11 Jack Clubs
+12 Queen Clubs
+13 King Clubs
+1 Ace Diamonds
+2 2 Diamonds
+3 3 Diamonds
+4 4 Diamonds
+5 5 Diamonds
+6 6 Diamonds
+7 7 Diamonds
+8 8 Diamonds
+9 9 Diamonds
+10 10 Diamonds
+11 Jack Diamonds
+12 Queen Diamonds
+13 King Diamonds
+1 Ace Hearts
+2 2 Hearts
+3 3 Hearts
+4 4 Hearts
+5 5 Hearts
+6 6 Hearts
+7 7 Hearts
+8 8 Hearts
+9 9 Hearts
+10 10 Hearts
+11 Jack Hearts
+12 Queen Hearts
+13 King Hearts
+
+2015-11-21 14:31:10 DEBUG DeckOfCards:48 - 
+Debug: display deck of cards shuffled
+
+2015-11-21 14:31:10 DEBUG DeckOfCards:50 - 
+
+10 10 Clubs
+4 4 Hearts
+13 King Spades
+9 9 Hearts
+2 2 Spades
+12 Queen Diamonds
+13 King Clubs
+11 Jack Hearts
+2 2 Diamonds
+11 Jack Diamonds
+4 4 Clubs
+6 6 Spades
+8 8 Diamonds
+10 10 Spades
+2 2 Hearts
+5 5 Clubs
+6 6 Hearts
+12 Queen Spades
+9 9 Spades
+12 Queen Hearts
+13 King Hearts
+13 King Diamonds
+7 7 Diamonds
+6 6 Clubs
+7 7 Spades
+9 9 Diamonds
+3 3 Clubs
+11 Jack Clubs
+1 Ace Diamonds
+7 7 Hearts
+9 9 Clubs
+12 Queen Clubs
+1 Ace Hearts
+1 Ace Spades
+4 4 Diamonds
+8 8 Hearts
+2 2 Clubs
+8 8 Clubs
+10 10 Hearts
+5 5 Hearts
+8 8 Spades
+10 10 Diamonds
+1 Ace Clubs
+11 Jack Spades
+6 6 Diamonds
+3 3 Spades
+3 3 Diamonds
+7 7 Clubs
+3 3 Hearts
+5 5 Spades
+5 5 Diamonds
+4 4 Spades
+
+2015-11-23 12:23:50 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:50 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:50 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:50 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:50 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:50 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:50 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:50 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:50 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:50 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:50 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:50 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:50 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:50 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:50 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:50 DEBUG XmlConfigurationProvider:76 - Loading action configurations from: struts-default.xml
+2015-11-23 12:23:50 DEBUG DefaultFileManager:76 - Creating revision for URL: jar:file:/C:/ISA-681_GitHub/GitHub/ISA-681PokerRespository/EclipseWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FiveCardStudPokerWithBetting/WEB-INF/lib/struts2-core-2.3.24.1.jar!/struts-default.xml
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded action configuration from: struts-default.xml
+2015-11-23 12:23:51 INFO  XmlConfigurationProvider:46 - Parsing configuration file [struts-default.xml]
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type: name:struts impl:com.opensymphony.xwork2.ObjectFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.factory.ResultFactory name:struts impl:org.apache.struts2.factory.StrutsResultFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.factory.ActionFactory name:struts impl:com.opensymphony.xwork2.factory.DefaultActionFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.factory.ConverterFactory name:struts impl:com.opensymphony.xwork2.factory.DefaultConverterFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.factory.InterceptorFactory name:struts impl:com.opensymphony.xwork2.factory.DefaultInterceptorFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.factory.ValidatorFactory name:struts impl:com.opensymphony.xwork2.factory.DefaultValidatorFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.factory.UnknownHandlerFactory name:struts impl:com.opensymphony.xwork2.factory.DefaultUnknownHandlerFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.FileManager name:system impl:com.opensymphony.xwork2.util.fs.DefaultFileManager
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.FileManagerFactory name:struts impl:com.opensymphony.xwork2.util.fs.DefaultFileManagerFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.ActionProxyFactory name:struts impl:org.apache.struts2.impl.StrutsActionProxyFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.ActionProxyFactory name:prefix impl:org.apache.struts2.impl.PrefixBasedActionProxyFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.ObjectTypeDeterminer name:struts impl:com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.util.PatternMatcher name:struts impl:com.opensymphony.xwork2.util.WildcardHelper
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.util.PatternMatcher name:namedVariable impl:com.opensymphony.xwork2.util.NamedVariablePatternMatcher
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.util.PatternMatcher name:regex impl:org.apache.struts2.util.RegexPatternMatcher
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.util.ContentTypeMatcher name:struts impl:org.apache.struts2.util.DefaultContentTypeMatcher
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.dispatcher.mapper.ActionMapper name:struts impl:org.apache.struts2.dispatcher.mapper.DefaultActionMapper
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.dispatcher.mapper.ActionMapper name:composite impl:org.apache.struts2.dispatcher.mapper.CompositeActionMapper
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.dispatcher.mapper.ActionMapper name:restful impl:org.apache.struts2.dispatcher.mapper.RestfulActionMapper
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.dispatcher.mapper.ActionMapper name:restful2 impl:org.apache.struts2.dispatcher.mapper.Restful2ActionMapper
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.dispatcher.multipart.MultiPartRequest name:jakarta impl:org.apache.struts2.dispatcher.multipart.JakartaMultiPartRequest
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.dispatcher.multipart.MultiPartRequest name:jakarta-stream impl:org.apache.struts2.dispatcher.multipart.JakartaStreamMultiPartRequest
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.views.TagLibraryDirectiveProvider name:s impl:org.apache.struts2.views.DefaultTagLibrary
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.views.TagLibraryModelProvider name:s impl:org.apache.struts2.views.DefaultTagLibrary
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type: name:default impl:org.apache.struts2.views.freemarker.FreemarkerThemeTemplateLoader
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type: name:struts impl:org.apache.struts2.views.freemarker.FreemarkerManager
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Unable to load optional class: org.apache.struts2.views.velocity.VelocityManager
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type: name:default impl:org.apache.struts2.components.template.TemplateEngineManager
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.components.template.TemplateEngine name:ftl impl:org.apache.struts2.components.template.FreemarkerTemplateEngine
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.components.template.TemplateEngine name:vm impl:org.apache.struts2.components.template.VelocityTemplateEngine
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.components.template.TemplateEngine name:jsp impl:org.apache.struts2.components.template.JspTemplateEngine
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.impl.XWorkConverter name:struts impl:com.opensymphony.xwork2.conversion.impl.XWorkConverter
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.ConversionPropertiesProcessor name:struts impl:com.opensymphony.xwork2.conversion.impl.DefaultConversionPropertiesProcessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.ConversionFileProcessor name:struts impl:com.opensymphony.xwork2.conversion.impl.DefaultConversionFileProcessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.ConversionAnnotationProcessor name:struts impl:com.opensymphony.xwork2.conversion.impl.DefaultConversionAnnotationProcessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.TypeConverterCreator name:struts impl:com.opensymphony.xwork2.conversion.impl.DefaultTypeConverterCreator
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.TypeConverterHolder name:struts impl:com.opensymphony.xwork2.conversion.impl.DefaultTypeConverterHolder
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type: name:default impl:com.opensymphony.xwork2.conversion.impl.XWorkBasicConverter
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.impl.CollectionConverter name:struts impl:com.opensymphony.xwork2.conversion.impl.CollectionConverter
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.impl.ArrayConverter name:struts impl:com.opensymphony.xwork2.conversion.impl.ArrayConverter
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.impl.DateConverter name:struts impl:com.opensymphony.xwork2.conversion.impl.DateConverter
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.impl.NumberConverter name:struts impl:com.opensymphony.xwork2.conversion.impl.NumberConverter
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.impl.StringConverter name:struts impl:com.opensymphony.xwork2.conversion.impl.StringConverter
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.TextProvider name:struts impl:com.opensymphony.xwork2.TextProviderSupport
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.LocaleProvider name:struts impl:com.opensymphony.xwork2.DefaultLocaleProvider
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.components.UrlRenderer name:struts impl:org.apache.struts2.components.ServletUrlRenderer
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.views.util.UrlHelper name:struts impl:org.apache.struts2.views.util.DefaultUrlHelper
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.util.ValueStackFactory name:struts impl:com.opensymphony.xwork2.ognl.OgnlValueStackFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.util.reflection.ReflectionProvider name:struts impl:com.opensymphony.xwork2.ognl.OgnlReflectionProvider
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.util.reflection.ReflectionContextFactory name:struts impl:com.opensymphony.xwork2.ognl.OgnlReflectionContextFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.TextProvider name:system impl:com.opensymphony.xwork2.DefaultTextProvider
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.conversion.NullHandler name:java.lang.Object impl:com.opensymphony.xwork2.conversion.impl.InstantiatingNullHandler
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.validator.ActionValidatorManager name:struts impl:com.opensymphony.xwork2.validator.AnnotationActionValidatorManager
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.validator.ActionValidatorManager name:no-annotations impl:com.opensymphony.xwork2.validator.DefaultActionValidatorManager
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.validator.ValidatorFactory name:default impl:com.opensymphony.xwork2.validator.DefaultValidatorFactory
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.validator.ValidatorFileParser name:default impl:com.opensymphony.xwork2.validator.DefaultValidatorFileParser
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type: name:default impl:com.opensymphony.xwork2.ognl.OgnlUtil
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.util.TextParser name:struts impl:com.opensymphony.xwork2.util.OgnlTextParser
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:com.opensymphony.xwork2.util.CompoundRoot impl:com.opensymphony.xwork2.ognl.accessor.CompoundRootAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:java.lang.Object impl:com.opensymphony.xwork2.ognl.accessor.ObjectAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:java.util.Iterator impl:com.opensymphony.xwork2.ognl.accessor.XWorkIteratorPropertyAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:java.util.Enumeration impl:com.opensymphony.xwork2.ognl.accessor.XWorkEnumerationAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:java.util.List impl:com.opensymphony.xwork2.ognl.accessor.XWorkListPropertyAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:java.util.Set impl:com.opensymphony.xwork2.ognl.accessor.XWorkCollectionPropertyAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:java.util.Map impl:com.opensymphony.xwork2.ognl.accessor.XWorkMapPropertyAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:java.util.Collection impl:com.opensymphony.xwork2.ognl.accessor.XWorkCollectionPropertyAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:com.opensymphony.xwork2.ognl.ObjectProxy impl:com.opensymphony.xwork2.ognl.accessor.ObjectProxyPropertyAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.MethodAccessor name:java.lang.Object impl:com.opensymphony.xwork2.ognl.accessor.XWorkMethodAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.MethodAccessor name:com.opensymphony.xwork2.util.CompoundRoot impl:com.opensymphony.xwork2.ognl.accessor.CompoundRootAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type: name:default impl:org.apache.struts2.views.jsp.ui.OgnlTool
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.dispatcher.StaticContentLoader name:struts impl:org.apache.struts2.dispatcher.DefaultStaticContentLoader
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.UnknownHandlerManager name:struts impl:com.opensymphony.xwork2.DefaultUnknownHandlerManager
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.dispatcher.DispatcherErrorHandler name:struts impl:org.apache.struts2.dispatcher.DefaultDispatcherErrorHandler
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:java.util.ArrayList impl:com.opensymphony.xwork2.ognl.accessor.XWorkListPropertyAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:java.util.HashSet impl:com.opensymphony.xwork2.ognl.accessor.XWorkCollectionPropertyAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:ognl.PropertyAccessor name:java.util.HashMap impl:com.opensymphony.xwork2.ognl.accessor.XWorkMapPropertyAccessor
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.security.ExcludedPatternsChecker name:struts impl:com.opensymphony.xwork2.security.DefaultExcludedPatternsChecker
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.security.AcceptedPatternsChecker name:struts impl:com.opensymphony.xwork2.security.DefaultAcceptedPatternsChecker
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loading action configurations from: struts-plugin.xml
+2015-11-23 12:23:51 DEBUG DefaultFileManager:76 - Creating revision for URL: jar:file:/C:/ISA-681_GitHub/GitHub/ISA-681PokerRespository/EclipseWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FiveCardStudPokerWithBetting/WEB-INF/lib/struts2-convention-plugin-2.3.24.1.jar!/struts-plugin.xml
+2015-11-23 12:23:51 DEBUG DefaultFileManager:76 - Creating revision for URL: jar:file:/C:/ISA-681_GitHub/GitHub/ISA-681PokerRespository/EclipseWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FiveCardStudPokerWithBetting/WEB-INF/lib/struts2-json-plugin-2.3.24.1.jar!/struts-plugin.xml
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded action configuration from: struts-plugin.xml
+2015-11-23 12:23:51 INFO  XmlConfigurationProvider:46 - Parsing configuration file [struts-plugin.xml]
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.UnknownHandler name:convention impl:org.apache.struts2.convention.ConventionUnknownHandler
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.convention.ActionConfigBuilder name:convention impl:org.apache.struts2.convention.PackageBasedActionConfigBuilder
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.convention.ActionNameBuilder name:convention impl:org.apache.struts2.convention.SEOActionNameBuilder
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.convention.ResultMapBuilder name:convention impl:org.apache.struts2.convention.DefaultResultMapBuilder
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.convention.InterceptorMapBuilder name:convention impl:org.apache.struts2.convention.DefaultInterceptorMapBuilder
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:org.apache.struts2.convention.ConventionsService name:convention impl:org.apache.struts2.convention.ConventionsServiceImpl
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.config.PackageProvider name:convention.packageProvider impl:org.apache.struts2.convention.ClasspathPackageProvider
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded type:com.opensymphony.xwork2.config.PackageProvider name:convention.containerProvider impl:org.apache.struts2.convention.ClasspathConfigurationProvider
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loading action configurations from: struts.xml
+2015-11-23 12:23:51 DEBUG DefaultFileManager:76 - Creating revision for URL: file:/C:/ISA-681_GitHub/GitHub/ISA-681PokerRespository/EclipseWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FiveCardStudPokerWithBetting/WEB-INF/classes/struts.xml
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded action configuration from: struts.xml
+2015-11-23 12:23:51 INFO  XmlConfigurationProvider:46 - Parsing configuration file [struts.xml]
+2015-11-23 12:23:51 DEBUG PropertiesSettings:76 - struts.properties missing
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.ObjectFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ActionFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ResultFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ConverterFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.InterceptorFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.ValidatorFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.factory.UnknownHandlerFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.FileManagerFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.XWorkConverter)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.CollectionConverter)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.ArrayConverter)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.DateConverter)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.NumberConverter)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.StringConverter)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionPropertiesProcessor)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionFileProcessor)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionAnnotationProcessor)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterCreator)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterHolder)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.TextProvider)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.LocaleProvider)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.ActionProxyFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ObjectTypeDeterminer)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.dispatcher.mapper.ActionMapper)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (jakarta) for (org.apache.struts2.dispatcher.multipart.MultiPartRequest)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.views.freemarker.FreemarkerManager)
+2015-11-23 12:23:51 DEBUG AbstractBeanSelectionProvider:76 - Choosing bean (struts) for (org.apache.struts2.views.velocity.VelocityManager) to be loaded from the ObjectFactory
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.components.UrlRenderer)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.validator.ActionValidatorManager)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.ValueStackFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionProvider)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionContextFactory)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.PatternMatcher)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.util.ContentTypeMatcher)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.dispatcher.StaticContentLoader)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.UnknownHandlerManager)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.views.util.UrlHelper)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.util.TextParser)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (org.apache.struts2.dispatcher.DispatcherErrorHandler)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.security.ExcludedPatternsChecker)
+2015-11-23 12:23:51 INFO  AbstractBeanSelectionProvider:46 - Choosing bean (struts) for (com.opensymphony.xwork2.security.AcceptedPatternsChecker)
+2015-11-23 12:23:51 DEBUG LocalizedTextUtil:76 - Added default resource bundle '{}' to default resource bundles for the following classloader '{}'
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:51 DEBUG XmlConfigurationProvider:76 - Loaded [BUILDER] PackageConfig: [struts-default] for namespace [] with parents [[]]
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:51 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:51 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:51 DEBUG DefaultValidatorFactory:76 - Loading validator definitions.
+2015-11-23 12:23:51 DEBUG I18nInterceptor:76 - new I18nInterceptor()
+2015-11-23 12:23:51 DEBUG I18nInterceptor:76 - new I18nInterceptor()
+2015-11-23 12:23:52 DEBUG I18nInterceptor:76 - new I18nInterceptor()
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:52 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:52 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:52 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:52 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:52 DEBUG XmlConfigurationProvider:76 - Loaded [BUILDER] PackageConfig: [convention-default] for namespace [] with parents [[PackageConfig: [struts-default] for namespace [] with parents [[]]]]
+2015-11-23 12:23:52 DEBUG XmlConfigurationProvider:76 - Loaded [BUILDER] PackageConfig: [json-default] for namespace [] with parents [[PackageConfig: [struts-default] for namespace [] with parents [[]]]]
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:52 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:52 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:52 DEBUG XmlConfigurationProvider:76 - Loaded [BUILDER] PackageConfig: [helloworld] for namespace [] with parents [[PackageConfig: [struts-default] for namespace [] with parents [[]]]]
+2015-11-23 12:23:52 DEBUG XmlConfigurationProvider:76 - Loaded hello in 'helloworld' package:{ActionConfig hello (com.tutorialspoint.struts2.HelloWorldAction.execute()) - action - file:/C:/ISA-681_GitHub/GitHub/ISA-681PokerRespository/EclipseWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FiveCardStudPokerWithBetting/WEB-INF/classes/struts.xml:11:30}
+2015-11-23 12:23:52 DEBUG XmlConfigurationProvider:76 - Loaded [BUILDER] PackageConfig: [ajax-package] for namespace [/ajax] with parents [[PackageConfig: [json-default] for namespace [] with parents [[PackageConfig: [struts-default] for namespace [] with parents [[]]]], PackageConfig: [struts-default] for namespace [] with parents [[]]]]
+2015-11-23 12:23:52 WARN  XmlConfigurationProvider:60 - No default parameter defined for result [json] of type [org.apache.struts2.json.JSONResult] 
+2015-11-23 12:23:52 DEBUG XmlConfigurationProvider:76 - Loaded /ajax/GetHandJSON in 'ajax-package' package:{ActionConfig GetHandJSON (ISA681Poker.jsonGetHand.execute()) - action - file:/C:/ISA-681_GitHub/GitHub/ISA-681PokerRespository/EclipseWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FiveCardStudPokerWithBetting/WEB-INF/classes/struts.xml:22:77}
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:52 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:52 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - Found following implementations of FileManager interface: [system, jboss]
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - No user defined FileManager, looking up for internal implementations!
+2015-11-23 12:23:52 DEBUG JBossFileManager:76 - Cannot load [org.jboss.vfs.VirtualFile] class, not a JBoss 7!
+2015-11-23 12:23:52 DEBUG JBossFileManager:76 - Cannot load [org.jboss.virtual.VirtualFile] class, not a JBoss 5!
+2015-11-23 12:23:52 DEBUG DefaultFileManagerFactory:76 - Using default implementation of FileManager provided under name [system]: DefaultFileManager
+2015-11-23 12:23:52 DEBUG PackageBasedActionConfigBuilder:76 - Processing class [com.tutorialspoint.struts2.HelloWorldAction] in package [com.tutorialspoint.struts2]
+2015-11-23 12:23:52 DEBUG PackageBasedActionConfigBuilder:76 - Creating action config for class [class com.tutorialspoint.struts2.HelloWorldAction], name [hello-world] and package name [com.tutorialspoint.struts2#convention-default#] in namespace []
+2015-11-23 12:23:52 DEBUG FreemarkerManager:76 - Using object wrapper of class org.apache.struts2.views.freemarker.StrutsBeanWrapper
+2015-11-23 12:23:52 DEBUG cache:45 - Couldn't find template in cache for "org/apache/struts2/dispatcher/error.ftl"("en_US", UTF-8, parsed); will try to load it.
+2015-11-23 12:23:52 DEBUG cache:45 - TemplateLoader.findTemplateSource("org/apache/struts2/dispatcher/error.ftl"): Found
+2015-11-23 12:23:52 DEBUG cache:45 - Loading template for "org/apache/struts2/dispatcher/error.ftl"("en_US", UTF-8, parsed) from "jar:file:/C:/ISA-681_GitHub/GitHub/ISA-681PokerRespository/EclipseWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/FiveCardStudPokerWithBetting/WEB-INF/lib/struts2-core-2.3.24.1.jar!/org/apache/struts2/dispatcher/error.ftl"
+2015-11-23 12:26:00 DEBUG ConfigurationManager:76 - Checking ConfigurationProviders for reload.
+2015-11-23 12:26:00 DEBUG ConfigurationManager:76 - Updating [reloadXmlConfiguration], current value is [true], new value [true]
+2015-11-23 12:26:00 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=org]
+2015-11-23 12:26:15 DEBUG ConfigurationManager:76 - Checking ConfigurationProviders for reload.
+2015-11-23 12:26:15 DEBUG ConfigurationManager:76 - Updating [reloadXmlConfiguration], current value is [true], new value [true]
+2015-11-23 12:26:15 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=struts]
+2015-11-23 12:26:15 DEBUG DefaultActionProxy:76 - Creating an DefaultActionProxy for namespace [/] and action name [hello]
+2015-11-23 12:26:15 DEBUG I18nInterceptor:76 - intercept '//hello' {
+2015-11-23 12:26:15 DEBUG I18nInterceptor:80 - applied invocation context locale=en_US
+2015-11-23 12:26:15 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.tutorialspoint.struts2.HelloWorldAction@65d3a479, com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=locale]
+2015-11-23 12:26:15 DEBUG I18nInterceptor:80 - before Locale=(null)
+2015-11-23 12:26:15 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.tutorialspoint.struts2.HelloWorldAction@65d3a479, com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=struts]
+2015-11-23 12:26:15 DEBUG LocalizedTextUtil:84 - Base class org.apache.catalina.loader.WebappClassLoader doesn't contain 'resourceEntries' field, trying with parent!
+java.lang.NoSuchFieldException: resourceEntries
+	at java.lang.Class.getDeclaredField(Class.java:2070)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.clearMap(LocalizedTextUtil.java:874)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.clearTomcatCache(LocalizedTextUtil.java:844)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.reloadBundles(LocalizedTextUtil.java:823)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.reloadBundles(LocalizedTextUtil.java:799)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.findDefaultText(LocalizedTextUtil.java:216)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.getDefaultMessage(LocalizedTextUtil.java:668)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.findText(LocalizedTextUtil.java:544)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.findText(LocalizedTextUtil.java:372)
+	at com.opensymphony.xwork2.TextProviderSupport.getText(TextProviderSupport.java:229)
+	at com.opensymphony.xwork2.TextProviderSupport.getText(TextProviderSupport.java:189)
+	at org.apache.struts2.interceptor.FileUploadInterceptor.getTextMessage(FileUploadInterceptor.java:446)
+	at org.apache.struts2.interceptor.FileUploadInterceptor.getTextMessage(FileUploadInterceptor.java:439)
+	at org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:250)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:145)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:171)
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:139)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:193)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:189)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:54)
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)
+	at org.apache.struts2.dispatcher.FilterDispatcher.doFilter(FilterDispatcher.java:434)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:217)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1500)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1456)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+2015-11-23 12:26:15 DEBUG LocalizedTextUtil:76 - Resource bundles reloaded
+2015-11-23 12:26:15 DEBUG FileUploadInterceptor:76 - Bypassing //hello
+2015-11-23 12:26:15 DEBUG StaticParametersInterceptor:76 - Setting static parameters {}
+2015-11-23 12:26:15 DEBUG ParametersInterceptor:76 - Setting params NONE
+2015-11-23 12:26:15 DEBUG ParametersInterceptor:76 - Setting params name => [ Stuts2008 ] 
+2015-11-23 12:26:15 DEBUG ParametersInterceptor:76 - Parameter [name] was accepted and will be appended to action!
+2015-11-23 12:26:15 DEBUG XWorkConverter:80 - Retrieving convert for class [class com.tutorialspoint.struts2.HelloWorldAction] and property [name]
+2015-11-23 12:26:15 DEBUG XWorkConverter:80 - Converter is null for property [name]. Mapping size [0]:
+2015-11-23 12:26:15 DEBUG XWorkConverter:76 - field-level type converter for property [name] = none found
+2015-11-23 12:26:15 DEBUG XWorkConverter:76 - global-level type converter for property [name] = none found
+2015-11-23 12:26:15 DEBUG XWorkConverter:76 - falling back to default type converter [com.opensymphony.xwork2.conversion.impl.XWorkBasicConverter@10693e91]
+2015-11-23 12:26:15 DEBUG HelloWorldAction:52 - Debug: HelloWorldAction: setName(name)
+2015-11-23 12:26:15 INFO  HelloWorldAction:53 - Info: HelloWorldAction: setName(name)
+2015-11-23 12:26:15 DEBUG AnnotationValidationInterceptor:76 - Validating //hello with method execute.
+2015-11-23 12:26:15 DEBUG DeprecationInterceptor:76 - 
+*******************************************************************************
+**                                                                           **
+**                               WARNING                                     **
+**                YOU USE DEPRECATED / UNKNOWN CONSTANTS                     **
+**                                                                           **
+**  -> struts.convention.action.fileProtocols                                **
+**  -> struts.convention.action.name.lowercase                               **
+**  -> struts.convention.classes.reload                                      **
+**  -> struts.convention.exclude.parentClassLoader                           **
+**  -> struts.convention.default.parent.package                              **
+**  -> struts.convention.package.locators.disable                            **
+**  -> struts.convention.exclude.packages                                    **
+**  -> struts.convention.result.flatLayout                                   **
+**  -> struts.convention.actionConfigBuilder                                 **
+**  -> struts.convention.relative.result.types                               **
+**  -> struts.convention.action.disableScanning                              **
+**  -> struts.convention.result.path                                         **
+**  -> struts.convention.package.locators                                    **
+**  -> struts.convention.action.alwaysMapExecute                             **
+**  -> struts.convention.conventionsService                                  **
+**  -> struts.convention.action.mapAllMatches                                **
+**  -> struts.convention.package.locators.basePackage                        **
+**  -> struts.convention.actionNameBuilder                                   **
+**  -> struts.convention.action.checkImplementsAction                        **
+**  -> struts.convention.redirect.to.slash                                   **
+**  -> struts.convention.action.suffix                                       **
+**  -> struts.convention.interceptorMapBuilder                               **
+**  -> struts.convention.resultMapBuilder                                    **
+**  -> struts.convention.action.name.separator                               **
+*******************************************************************************
+
+2015-11-23 12:26:15 DEBUG DefaultActionInvocation:76 - Executing action method = execute
+2015-11-23 12:26:15 DEBUG HelloWorldAction:35 - Debug: HelloWorldAction:  execute()
+2015-11-23 12:26:15 INFO  HelloWorldAction:36 - Info: HelloWorldAction: execute()
+2015-11-23 12:26:15 DEBUG ServletDispatcherResult:76 - Forwarding to location /HelloWorld.jsp
+2015-11-23 12:26:15 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.tutorialspoint.struts2.HelloWorldAction@65d3a479, com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=struts]
+2015-11-23 12:26:15 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.tutorialspoint.struts2.HelloWorldAction@65d3a479, com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=org]
+2015-11-23 12:26:15 DEBUG HelloWorldAction:44 - Debug: HelloWorldAction: getName()
+2015-11-23 12:26:15 INFO  HelloWorldAction:45 - Info: HelloWorldAction: getName()
+2015-11-23 12:26:15 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.tutorialspoint.struts2.HelloWorldAction@65d3a479, com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=locale]
+2015-11-23 12:26:15 DEBUG I18nInterceptor:80 - after Locale=(null)
+2015-11-23 12:26:15 DEBUG I18nInterceptor:76 - intercept } 
+2015-11-23 12:27:31 DEBUG ConfigurationManager:76 - Checking ConfigurationProviders for reload.
+2015-11-23 12:27:31 DEBUG ConfigurationManager:76 - Updating [reloadXmlConfiguration], current value is [true], new value [true]
+2015-11-23 12:27:31 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=struts]
+2015-11-23 12:27:31 DEBUG DefaultActionProxy:76 - Creating an DefaultActionProxy for namespace [/] and action name [GetHandJSON]
+2015-11-23 12:27:31 DEBUG DefaultDispatcherErrorHandler:84 - Exception occurred during processing request: null
+java.lang.NullPointerException
+	at org.apache.struts2.impl.StrutsActionProxy.getErrorMessage(StrutsActionProxy.java:69)
+	at com.opensymphony.xwork2.DefaultActionProxy.prepare(DefaultActionProxy.java:185)
+	at org.apache.struts2.impl.StrutsActionProxy.prepare(StrutsActionProxy.java:63)
+	at org.apache.struts2.impl.StrutsActionProxyFactory.createActionProxy(StrutsActionProxyFactory.java:37)
+	at com.opensymphony.xwork2.DefaultActionProxyFactory.createActionProxy(DefaultActionProxyFactory.java:58)
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:554)
+	at org.apache.struts2.dispatcher.FilterDispatcher.doFilter(FilterDispatcher.java:434)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:217)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1500)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1456)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+2015-11-23 12:27:31 DEBUG beans:45 - Key "location" was not found on instance of java.lang.NullPointerException. Introspection information for the class is: {getClass=public final native java.lang.Class java.lang.Object.getClass(), localizedMessage=java.beans.PropertyDescriptor[name=localizedMessage; propertyType=class java.lang.String; readMethod=public java.lang.String java.lang.Throwable.getLocalizedMessage()], printStackTrace=freemarker.ext.beans.OverloadedMethods@38491ab6, getLocalizedMessage=public java.lang.String java.lang.Throwable.getLocalizedMessage(), initCause=public synchronized java.lang.Throwable java.lang.Throwable.initCause(java.lang.Throwable), cause=java.beans.PropertyDescriptor[name=cause; propertyType=class java.lang.Throwable; readMethod=public synchronized java.lang.Throwable java.lang.Throwable.getCause()], getMessage=public java.lang.String java.lang.Throwable.getMessage(), message=java.beans.PropertyDescriptor[name=message; propertyType=class java.lang.String; readMethod=public java.lang.String java.lang.Throwable.getMessage()], java.lang.Object@1507dd8a={public java.lang.String java.lang.Throwable.getLocalizedMessage()=[Ljava.lang.Class;@714d684b, public synchronized java.lang.Throwable java.lang.Throwable.initCause(java.lang.Throwable)=[Ljava.lang.Class;@4ff6d1ff, public java.lang.String java.lang.Throwable.getMessage()=[Ljava.lang.Class;@3ebfc3ee, public native int java.lang.Object.hashCode()=[Ljava.lang.Class;@4ed3f225, public boolean java.lang.Object.equals(java.lang.Object)=[Ljava.lang.Class;@5446d484, public synchronized java.lang.Throwable java.lang.Throwable.getCause()=[Ljava.lang.Class;@2dc68eda, public void java.lang.Throwable.setStackTrace(java.lang.StackTraceElement[])=[Ljava.lang.Class;@6da6883f, public java.lang.StackTraceElement[] java.lang.Throwable.getStackTrace()=[Ljava.lang.Class;@3cb51d74, public final synchronized void java.lang.Throwable.addSuppressed(java.lang.Throwable)=[Ljava.lang.Class;@5e350c92, public java.lang.String java.lang.Throwable.toString()=[Ljava.lang.Class;@471ce9d0, public final synchronized java.lang.Throwable[] java.lang.Throwable.getSuppressed()=[Ljava.lang.Class;@1ea2667c, public final native java.lang.Class java.lang.Object.getClass()=[Ljava.lang.Class;@a689661, public synchronized java.lang.Throwable java.lang.Throwable.fillInStackTrace()=[Ljava.lang.Class;@7ccf5a22}, getCause=public synchronized java.lang.Throwable java.lang.Throwable.getCause(), setStackTrace=public void java.lang.Throwable.setStackTrace(java.lang.StackTraceElement[]), getStackTrace=public java.lang.StackTraceElement[] java.lang.Throwable.getStackTrace(), addSuppressed=public final synchronized void java.lang.Throwable.addSuppressed(java.lang.Throwable), hashCode=public native int java.lang.Object.hashCode(), equals=public boolean java.lang.Object.equals(java.lang.Object), java.lang.Object@6838840f=freemarker.ext.beans.OverloadedMethods@5cbd7e02, toString=public java.lang.String java.lang.Throwable.toString(), getSuppressed=public final synchronized java.lang.Throwable[] java.lang.Throwable.getSuppressed(), suppressed=java.beans.PropertyDescriptor[name=suppressed; propertyType=class [Ljava.lang.Throwable;; readMethod=public final synchronized java.lang.Throwable[] java.lang.Throwable.getSuppressed()], stackTrace=java.beans.PropertyDescriptor[name=stackTrace; propertyType=class [Ljava.lang.StackTraceElement;; readMethod=public java.lang.StackTraceElement[] java.lang.Throwable.getStackTrace()], class=java.beans.PropertyDescriptor[name=class; propertyType=class java.lang.Class; readMethod=public final native java.lang.Class java.lang.Object.getClass()], fillInStackTrace=public synchronized java.lang.Throwable java.lang.Throwable.fillInStackTrace()}
+2015-11-23 12:29:32 DEBUG ConfigurationManager:76 - Checking ConfigurationProviders for reload.
+2015-11-23 12:29:32 DEBUG ConfigurationManager:76 - Updating [reloadXmlConfiguration], current value is [true], new value [true]
+2015-11-23 12:29:32 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=struts]
+2015-11-23 12:29:32 DEBUG DefaultActionProxy:76 - Creating an DefaultActionProxy for namespace [/] and action name [hello]
+2015-11-23 12:29:32 DEBUG I18nInterceptor:76 - intercept '//hello' {
+2015-11-23 12:29:32 DEBUG I18nInterceptor:80 - applied invocation context locale=en_US
+2015-11-23 12:29:32 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.tutorialspoint.struts2.HelloWorldAction@78079116, com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=locale]
+2015-11-23 12:29:32 DEBUG I18nInterceptor:80 - before Locale=(null)
+2015-11-23 12:29:32 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.tutorialspoint.struts2.HelloWorldAction@78079116, com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=struts]
+2015-11-23 12:29:32 DEBUG LocalizedTextUtil:84 - Base class org.apache.catalina.loader.WebappClassLoader doesn't contain 'resourceEntries' field, trying with parent!
+java.lang.NoSuchFieldException: resourceEntries
+	at java.lang.Class.getDeclaredField(Class.java:2070)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.clearMap(LocalizedTextUtil.java:874)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.clearTomcatCache(LocalizedTextUtil.java:844)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.reloadBundles(LocalizedTextUtil.java:823)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.reloadBundles(LocalizedTextUtil.java:799)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.findDefaultText(LocalizedTextUtil.java:216)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.getDefaultMessage(LocalizedTextUtil.java:668)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.findText(LocalizedTextUtil.java:544)
+	at com.opensymphony.xwork2.util.LocalizedTextUtil.findText(LocalizedTextUtil.java:372)
+	at com.opensymphony.xwork2.TextProviderSupport.getText(TextProviderSupport.java:229)
+	at com.opensymphony.xwork2.TextProviderSupport.getText(TextProviderSupport.java:189)
+	at org.apache.struts2.interceptor.FileUploadInterceptor.getTextMessage(FileUploadInterceptor.java:446)
+	at org.apache.struts2.interceptor.FileUploadInterceptor.getTextMessage(FileUploadInterceptor.java:439)
+	at org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:250)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:145)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:171)
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:139)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:193)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:189)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:244)
+	at org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:54)
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:564)
+	at org.apache.struts2.dispatcher.FilterDispatcher.doFilter(FilterDispatcher.java:434)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:217)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:616)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:673)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1500)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1456)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+2015-11-23 12:29:32 DEBUG LocalizedTextUtil:76 - Resource bundles reloaded
+2015-11-23 12:29:32 DEBUG FileUploadInterceptor:76 - Bypassing //hello
+2015-11-23 12:29:32 DEBUG StaticParametersInterceptor:76 - Setting static parameters {}
+2015-11-23 12:29:32 DEBUG ParametersInterceptor:76 - Setting params NONE
+2015-11-23 12:29:32 DEBUG ParametersInterceptor:76 - Setting params name => [ Stuts2008 ] 
+2015-11-23 12:29:32 DEBUG ParametersInterceptor:76 - Parameter [name] was accepted and will be appended to action!
+2015-11-23 12:29:32 DEBUG XWorkConverter:80 - Retrieving convert for class [class com.tutorialspoint.struts2.HelloWorldAction] and property [name]
+2015-11-23 12:29:32 DEBUG XWorkConverter:76 - field-level type converter for property [name] = none found
+2015-11-23 12:29:32 DEBUG XWorkConverter:76 - global-level type converter for property [name] = none found
+2015-11-23 12:29:32 DEBUG XWorkConverter:76 - falling back to default type converter [com.opensymphony.xwork2.conversion.impl.XWorkBasicConverter@10693e91]
+2015-11-23 12:29:32 DEBUG HelloWorldAction:52 - Debug: HelloWorldAction: setName(name)
+2015-11-23 12:29:32 INFO  HelloWorldAction:53 - Info: HelloWorldAction: setName(name)
+2015-11-23 12:29:32 DEBUG AnnotationValidationInterceptor:76 - Validating //hello with method execute.
+2015-11-23 12:29:32 DEBUG DeprecationInterceptor:76 - 
+*******************************************************************************
+**                                                                           **
+**                               WARNING                                     **
+**                YOU USE DEPRECATED / UNKNOWN CONSTANTS                     **
+**                                                                           **
+**  -> struts.convention.action.fileProtocols                                **
+**  -> struts.convention.action.name.lowercase                               **
+**  -> struts.convention.classes.reload                                      **
+**  -> struts.convention.exclude.parentClassLoader                           **
+**  -> struts.convention.default.parent.package                              **
+**  -> struts.convention.package.locators.disable                            **
+**  -> struts.convention.exclude.packages                                    **
+**  -> struts.convention.result.flatLayout                                   **
+**  -> struts.convention.actionConfigBuilder                                 **
+**  -> struts.convention.relative.result.types                               **
+**  -> struts.convention.action.disableScanning                              **
+**  -> struts.convention.result.path                                         **
+**  -> struts.convention.package.locators                                    **
+**  -> struts.convention.action.alwaysMapExecute                             **
+**  -> struts.convention.conventionsService                                  **
+**  -> struts.convention.action.mapAllMatches                                **
+**  -> struts.convention.package.locators.basePackage                        **
+**  -> struts.convention.actionNameBuilder                                   **
+**  -> struts.convention.action.checkImplementsAction                        **
+**  -> struts.convention.redirect.to.slash                                   **
+**  -> struts.convention.action.suffix                                       **
+**  -> struts.convention.interceptorMapBuilder                               **
+**  -> struts.convention.resultMapBuilder                                    **
+**  -> struts.convention.action.name.separator                               **
+*******************************************************************************
+
+2015-11-23 12:29:32 DEBUG DefaultActionInvocation:76 - Executing action method = execute
+2015-11-23 12:29:32 DEBUG HelloWorldAction:35 - Debug: HelloWorldAction:  execute()
+2015-11-23 12:29:32 INFO  HelloWorldAction:36 - Info: HelloWorldAction: execute()
+2015-11-23 12:29:32 DEBUG ServletDispatcherResult:76 - Forwarding to location /HelloWorld.jsp
+2015-11-23 12:29:32 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.tutorialspoint.struts2.HelloWorldAction@78079116, com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=struts]
+2015-11-23 12:29:32 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.tutorialspoint.struts2.HelloWorldAction@78079116, com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=org]
+2015-11-23 12:29:32 DEBUG HelloWorldAction:44 - Debug: HelloWorldAction: getName()
+2015-11-23 12:29:32 INFO  HelloWorldAction:45 - Info: HelloWorldAction: getName()
+2015-11-23 12:29:32 DEBUG InstantiatingNullHandler:76 - Entering nullPropertyValue [target=[com.tutorialspoint.struts2.HelloWorldAction@78079116, com.opensymphony.xwork2.DefaultTextProvider@64bc73a], property=locale]
+2015-11-23 12:29:32 DEBUG I18nInterceptor:80 - after Locale=(null)
+2015-11-23 12:29:32 DEBUG I18nInterceptor:76 - intercept } 
