@@ -1,0 +1,22 @@
+<struts-config>
+
+	<form-beans>
+	   <form-bean name="ajaxLogicForm" 
+		type="ISA681Poker.AjaxLogicForm"/>
+	</form-beans>
+
+	   
+	   
+	<action-mappings>
+	   <action path="/ajaxLogicAction"
+		type="ISA681Poker.AjaxLogicAction"
+		name="ajaxLogicForm">
+		<forward name="success" path="/HelloWorld.jsp"/>
+			
+	   </action>
+	</action-mappings>
+	   
+	   
+	</action-mappings>
+
+</struts-config>

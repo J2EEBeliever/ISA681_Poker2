@@ -3,7 +3,16 @@
    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+
+
+<constant name="struts.action.excludePattern" value="/AjaxLogicServlet"/>
+
+<!--  constant name="struts.action.excludePattern" value="/ajaxLogicServlet,ajaxLogicServlet,/AjaxLogicServlet,AjaxLogicServlet"/ -->
+
+<!--  constant name="struts.action.excludePattern" value="/ajaxLogicServlet/?.*"/ -->
+
 <constant name="struts.devMode" value="true" />
+
    <package name="helloworld" extends="struts-default">
      
       <action name="hello" 
@@ -11,20 +20,34 @@
             method="execute">
             <result name="success">/HelloWorld.jsp</result>
       </action>
+
    </package>
-   
+
+
+	
+
+   <!-- package name="ajaxLogicActionPkg" extends="struts-default">
+     
+      <action name="ajaxLogicAction" 
+            class="ISA681Poker.AjaxLogicAction" 
+            method="execute">
+            <result name="success">/HelloWorld.jsp</result>
+      </action>
+
+   </package -->
+
     
     <package extends="struts-default,json-default" name="ajax-package" namespace="/ajax">
- <result-types>
+    
+ 	<result-types>
         <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
     </result-types>
     
 <action class="ISA681Poker.jsonGetHand" method="execute" name="GetHandJSON">
 <result type="json">
-</result></action>
-
-
-
+</result>
+</action>
 
 </package>
+<!--  include file="struts-config.xml"/ -->
 </struts>

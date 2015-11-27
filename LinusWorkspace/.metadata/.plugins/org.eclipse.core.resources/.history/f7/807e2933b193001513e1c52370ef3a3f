@@ -1,0 +1,11 @@
+package ISA681Poker;
+
+import org.apache.struts.action.ActionForm;
+
+public class AjaxLogicForm extends ActionForm {
+	
+	private String playerContent;
+	
+	
+
+}
