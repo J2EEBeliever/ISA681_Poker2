@@ -22,7 +22,7 @@
     </result-types>
 
 <action class="ISA681Poker.AjaxLogicAction" method="execute" name="ajaxLogicAction">
-<result type="json">
+<result type="text/HTML">
 </result></action>
 
     

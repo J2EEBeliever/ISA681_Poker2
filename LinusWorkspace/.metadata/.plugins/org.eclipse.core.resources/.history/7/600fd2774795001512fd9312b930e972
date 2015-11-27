@@ -2,7 +2,6 @@ package ISA681Poker;
 
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +44,7 @@ public class AjaxLogicAction extends ActionSupport{
 //			
 //		}
 
-	   public String execute() {
+	   public String execute() throws Exception {
 		
 		/* public ActionForward execute(ActionMapping mapping, ActionForm actionForm,
 		        HttpServletRequest request, HttpServletResponse response)
@@ -84,17 +83,11 @@ public class AjaxLogicAction extends ActionSupport{
 	    	  String playerContent = "<BR><BR>Player1 cards (Ace Spaces, 2 Clubs, 2 Diamonds)<BR><BR>" +
 	    	  "<BR><BR>Player2 cards (King Diamonds, 3 Hearts, King Spades)<BR><BR>";
 	    	  
-	    	  PrintWriter printWriter;
-			try {
-				  printWriter = ServletActionContext.getResponse().getWriter();
-		    	  printWriter.print(playerContent);
-		    	  
-		    	  printWriter.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	    	  PrintWriter printWriter = ServletActionContext.getResponse().getWriter();
 	    	  
+	    	  printWriter.print(playerContent);
+	    	  
+	    	  printWriter.flush();
 
 //	    	  ServletActionContext.getServletContext().setAttribute(playerContent, playerContent);
 

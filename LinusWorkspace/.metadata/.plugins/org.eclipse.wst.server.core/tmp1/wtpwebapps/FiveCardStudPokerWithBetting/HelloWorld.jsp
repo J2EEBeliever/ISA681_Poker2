@@ -54,7 +54,7 @@ function ajaxFunction(){
 
 
 var queryString = '?playerContent=yes';
-	ajaxRequest.open("GET", 'AjaxLogicServlet' + queryString, true);
+	ajaxRequest.open("GET", 'ajaxLogicAction' + queryString, true);
 	ajaxRequest.send(null);
 	
 	alert('executing ajaxFunction() #50');

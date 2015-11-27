@@ -13,18 +13,11 @@
       </action>
    </package>
    
-
-
     
     <package extends="struts-default,json-default" name="ajax-package" namespace="/ajax">
  <result-types>
         <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
     </result-types>
-
-<action class="ISA681Poker.AjaxLogicAction" method="execute" name="ajaxLogicAction">
-<result type="json">
-</result></action>
-
     
 <action class="ISA681Poker.jsonGetHand" method="execute" name="GetHandJSON">
 <result type="json">
