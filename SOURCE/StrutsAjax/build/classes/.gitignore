@@ -1,3 +1,6 @@
 /controller/
 /entities/
 /struts.xml
+/deck/
+/cipher/
+/encryption/
