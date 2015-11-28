@@ -41,6 +41,8 @@ public class AjaxAction extends ActionSupport {
 	public void setB(int b) {
 		this.b = b;
 	}
+	
+	//getPlayerTurn
 
 	public void hello() {
 		try {
