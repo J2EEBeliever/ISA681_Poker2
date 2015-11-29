@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<constant name="struts.devMode" value="true" />
+   <package name="helloworld" extends="struts-default">
+         <interceptors>
+    <interceptor name="login" class="ISA681Poker.hangleSession"/>
+
+    <!-- sb: you need to configure all of your interceptors here. i'm only
+         listing the one we created for this example. -->
+    <interceptor-stack name="yourStack">
+        <interceptor-ref name="login"/>
+        <interceptor-ref name="defaultStack"/>  
+     
+ 
+    </interceptor-stack>
+</interceptors>
+
+<default-interceptor-ref name="yourStack"></default-interceptor-ref>
+<global-results>
+    <!--sb: make this the path to your login action.
+         this could also be a redirectAction type. -->
+    <result name="loginRedirect" type="redirect">/doLogin</result>
+    <result name="SessionExpiredRedirect" type="redirect">/showLogin</result>
+    <result name="mainRedirect" type="redirect">/showMain</result>
+</global-results>
+       <action name="showLogin">
+        <result>index.jsp</result>
+        </action>
+      
+       <action name="doLogin" class="ISA681Poker.Login">
+        <result name="input">index.jsp</result>
+        <result name="error">index.jsp</result>
+        <result>/WEB-INF/main.jsp</result>
+        </action>
+        <action name="showLogin">
+        <result>index.jsp</result>
+        </action>
+        
+         <action name="showMain" class="ISA681Poker.showMain">
+        <result>/WEB-INF/main.jsp</result>
+        </action>
+        <action name="showLogin">
+        <result>index.jsp</result>
+        </action>
+   
+   
+   </package>
+   
+    <package extends="struts-default,json-default" name="ajax-package" namespace="/ajax">
+ <result-types>
+        <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+    </result-types>
+      <interceptors>
+    <interceptor name="login" class="ISA681Poker.hangleSession"/>
+
+    <!-- sb: you need to configure all of your interceptors here. i'm only
+         listing the one we created for this example. -->
+    <interceptor-stack name="yourStack">
+        <interceptor-ref name="login"/>
+        <interceptor-ref name="defaultStack"/>  
+     
+ 
+    </interceptor-stack>
+</interceptors>
+
+<default-interceptor-ref name="yourStack"></default-interceptor-ref>
+<global-results>
+    <!--sb: make this the path to your login action.
+         this could also be a redirectAction type. -->
+    <result name="loginRedirect" type="redirect">/doLogin</result>
+    <result name="SessionExpiredRedirect" type="redirect">/showLogin</result>
+    <result name="mainRedirect" type="redirect">/showMain</result>
+</global-results>
+<action class="ISA681Poker.jsonGetHand" method="execute" name="GetHandJSON">
+<result type="json">
+</result></action>
+
+
+
+
+</package>
+  
+</struts>
