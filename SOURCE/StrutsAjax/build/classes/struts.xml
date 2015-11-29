@@ -17,8 +17,17 @@
             method="logon">
             <result name="success">/index.jsp</result>
       </action>
+
+      <action name="RegisterForFiveCardStudPoker" 
+            class="controller.FiveCardStudPokerAjaxAction" 
+            method="Register">
+            <result name="success">/index.jsp</result>
+      </action>
+
       
    </package>
+   
+   
 	
 	
 	
