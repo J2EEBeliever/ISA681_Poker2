@@ -12,6 +12,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\ISA681_Poker2\BrianWorkspace\FiveCardStudPokerWithBetting"/>
 			<item value="C:\ISA681_Poker2\SOURCE\StrutsAjax"/>
 			<item value="C:\ISA681_Poker2\SOURCE\FiveCardStudPokerWithBetting"/>
 		</list>

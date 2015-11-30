@@ -56,12 +56,9 @@ if (Array.indexOf === undefined) {
         var hand = [];
    $.ajax({
 
-    url : 'http://localhost:8080/ajax/GetHandJSON',
+    url : 'http://localhost:8080/ISA-681Poker/ajax/GetHandJSON',
     type : 'GET',
     async: false,
-    data : {
-        'numberOfWords' : 10
-    },
     dataType:'json',
     success : function(data) {              
         hand = data;
@@ -97,10 +94,16 @@ if (Array.indexOf === undefined) {
     };
     
     playingCards.prototype.pickCard = function(CardNum) {
+        
         var card = this.cards[CardNum];
-        this.cards.splice(CardNum, 1);
+        if (typeof card != 'undefined')
+            this.cards.splice(CardNum, 1);
         return card;
     };
+    
+      
+    
+    
     
     /**
      * add a card to the top of the deck
@@ -142,7 +145,7 @@ if (Array.indexOf === undefined) {
     }
 
     playingCards.prototype.orderBySuit = function() {
-        this.init();
+        this.cards.sort(compareSuite);
     }
 
     /*
@@ -259,6 +262,7 @@ if (Array.indexOf === undefined) {
      * Compare functions
      */
     function compareRank(a, b) {
+        
         var intRegex = /^\d+$/;
 
         if (a.rank == b.rank)                       return 0;
@@ -279,6 +283,40 @@ if (Array.indexOf === undefined) {
         if (intRegex.test(a.rank) && b.rank == "K") return -1;
         if (intRegex.test(a.rank) && b.rank == "Q") return -1;
         if (intRegex.test(a.rank) && b.rank == "J") return -1;
+    }
+ 
+    function compareSuite(a, b) {
+        var aVal = 0;
+        var bVal = 0;
+       
+        switch (a.suit)
+        {
+            case "S": aVal = 1;
+                break;
+            case "D": aVal = 2;
+                break;
+            case "C": aVal = 3;
+                break;
+            case "H": aVal = 4;  
+                break;
+            
+        }
+        
+               switch (b.suit)
+        {
+            case "S": bVal = 1;
+                break;
+            case "D": bVal = 2;
+                break;
+            case "C": bVal = 3;
+                break;
+            case "H": bVal = 4;  
+                break;
+            
+        }
+        
+       return aVal-bVal;
+      
     }
 
 })(this,this.document);
