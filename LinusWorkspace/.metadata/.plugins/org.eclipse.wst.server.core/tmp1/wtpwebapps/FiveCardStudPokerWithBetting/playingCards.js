@@ -56,7 +56,8 @@ if (Array.indexOf === undefined) {
         var hand = [];
    $.ajax({
 
-    url : 'http://localhost:8080/ISA-681Poker/ajax/GetHandJSON',
+    //url : 'http://localhost:8080/ISA-681Poker/ajax/GetHandJSON',
+	url : '${pageContext.request.contextPath}/ajax/GetHandJSON',
     type : 'GET',
     async: false,
     dataType:'json',

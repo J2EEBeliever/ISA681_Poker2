@@ -1,0 +1,9 @@
+127.0.0.1 - - [01/Dec/2015:10:50:29 -0500] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [01/Dec/2015:10:53:43 -0500] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [01/Dec/2015:10:54:30 -0500] "GET /FiveCardStudPokerWithBetting/index.jsp HTTP/1.1" 200 1520
+0:0:0:0:0:0:0:1 - - [01/Dec/2015:10:54:30 -0500] "GET /FiveCardStudPokerWithBetting/CSS/oneColFixCtrHdr.css HTTP/1.1" 200 3399
+0:0:0:0:0:0:0:1 - - [01/Dec/2015:10:54:30 -0500] "GET /favicon.ico HTTP/1.1" 404 1016
+0:0:0:0:0:0:0:1 - - [01/Dec/2015:10:54:47 -0500] "POST /FiveCardStudPokerWithBetting/doLogin.action;jsessionid=E4B26D1C4AF1923BCD9D5D2256F838C8 HTTP/1.1" 200 10011
+0:0:0:0:0:0:0:1 - - [01/Dec/2015:10:54:47 -0500] "GET /FiveCardStudPokerWithBetting/playingCards.js HTTP/1.1" 200 9928
+0:0:0:0:0:0:0:1 - - [01/Dec/2015:10:54:47 -0500] "GET /FiveCardStudPokerWithBetting/playingCards.ui.css HTTP/1.1" 200 2348
+0:0:0:0:0:0:0:1 - - [01/Dec/2015:10:54:47 -0500] "GET /FiveCardStudPokerWithBetting/playingCards.ui.js HTTP/1.1" 200 5863
