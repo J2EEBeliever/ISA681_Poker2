@@ -86,15 +86,17 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport {
 		String myDriver = "org.gjt.mm.mysql.Driver";
 		String myUrl = "jdbc:mysql://localhost/isa681poker";
 		Class.forName(myDriver);
-		Connection conn = DriverManager.getConnection(myUrl, "isa681PokerUser", "");
+		Connection conn = DriverManager.getConnection(myUrl, "isa681PokerUser", "Password1");
 
 		return conn;
 
 	}
 
-	public User getUserByUserName(Connection conn, String userName, String password) throws Exception {
+	public User getUserByUserNameAndPassword(String userName, String password) throws Exception {
 
-		log.debug("\n\nDebug: inside getUserByUserName\n");
+		log.debug("\n\nDebug: inside getUserByUserNameAndPassword\n");
+		
+		Connection conn = this.getDatabaseConnection(); 
 		
 		User user = null;
 
@@ -104,7 +106,7 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport {
 			// our SQL SELECT query.
 			// if you only need a few columns, specify them by name instead of
 			// using "*"
-			String query = "SELECT * FROM users where UserName = ?1 and Password = ?2";
+			String query = "SELECT * FROM users where UserName = ? and Password = ?";
 
 			// create the java statement
 			PreparedStatement pstmnt = conn.prepareStatement(query);
@@ -113,7 +115,7 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport {
 			pstmnt.setString(2, password);
 
 			// execute the query, and get a java resultset
-			ResultSet rs = pstmnt.executeQuery(query);
+			ResultSet rs = pstmnt.executeQuery();
 
 			/*
 			 * -- -- Table structure for table `users` --
@@ -156,6 +158,86 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport {
 
 			rs.close();
 			pstmnt.close();
+			conn.close();
+		} catch (Throwable t) {
+			t.printStackTrace();
+			throw t;
+		}
+
+		log.debug("\n\nDebug: exiting getUserByUserNameAndPassword\n");
+
+		return user;
+	}
+
+	public User getUserByUserName(String userName) throws Exception {
+
+		log.debug("\n\nDebug: inside getUserByUserName\n");
+		
+		Connection conn = this.getDatabaseConnection(); 
+
+		
+		User user = null;
+
+
+		try {
+
+			// our SQL SELECT query.
+			// if you only need a few columns, specify them by name instead of
+			// using "*"
+			String query = "SELECT * FROM users where UserName = ? ";
+
+			// create the java statement
+			PreparedStatement pstmnt = conn.prepareStatement(query);
+
+			pstmnt.setString(1, userName);
+			
+			
+
+			// execute the query, and get a java resultset
+			ResultSet rs = pstmnt.executeQuery();
+
+			/*
+			 * -- -- Table structure for table `users` --
+			 * 
+			 * CREATE TABLE IF NOT EXISTS `users` ( `UserID` int(11) NOT NULL
+			 * AUTO_INCREMENT, `UserName` varchar(20) NOT NULL, `Password`
+			 * char(60) NOT NULL, `Timestamp` timestamp NOT NULL DEFAULT
+			 * CURRENT_TIMESTAMP, PRIMARY KEY (`UserID`), UNIQUE KEY `UserName`
+			 * (`UserName`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+			 * AUTO_INCREMENT=3 ;
+			 * 
+			 */
+
+
+			// iterate through the java resultset
+			if (rs != null && rs.next()) {
+				int userId1 = rs.getInt("UserId");
+				String userName1 = rs.getString("UserName");
+				String password1 = rs.getString("Password");
+
+				user = new User();
+				
+				user.setUserID(userId1);
+				user.setUserName(userName1);
+				user.setPassword(password1);
+
+				// Date dateCreated = rs.getDate("date_created");
+				// boolean isAdmin = rs.getBoolean("is_admin");
+				// int numPoints = rs.getInt("num_points");
+
+				// print the results
+				// System.out.format("%s, %s, %s, %s, %s, %s\n", id, firstName,
+				// lastName, dateCreated, isAdmin, numPoints);
+			}
+			if (rs.next()) { // more than one record
+				
+				throw new Exception("FiveCardStudPokerAjaxAction::getUser(...) incorrectly returned more than one user from table users");
+
+			}
+
+			rs.close();
+			pstmnt.close();
+			conn.close();
 		} catch (Throwable t) {
 			t.printStackTrace();
 			throw t;
@@ -165,38 +247,132 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport {
 
 		return user;
 	}
+
 	
-	public String register() {
+	public String register() throws Exception {
 		
 		log.debug("\n\nDebug: In Method register()\n\n");
 		
-		String originalPassword;
+		//String originalPassword;
 
 		HttpServletRequest request = ServletActionContext.getRequest();
 
+		String userName = request.getParameter("userName"); // "password1";
+		
 		String password1 = request.getParameter("password1"); // "password1";
 
 		String password2 = request.getParameter("password2"); // "password1";
 		
-		if(password1 != null && password2 != null && password1.length() >= 8 && password1.equals(password2)) {
+		if(password1 != null && password2 != null && password1.length() >= 8 && userName != null && userName.length() >= 3 && !password1.equals(password2)) {
+
+ 			String errors = "Passwords do not match.";
+			 
+			 request.setAttribute("errors", errors);
 			
-//			Connection conn = this.getDatabaseConnection();
+			 log.debug("\n\nDebug: Exiting Method register() reutrning 'registrationError'\n\n");
+			
+			return "registrationError";
+
 			
 		}
+		else if(password1 != null && password2 != null && password1.length() >= 8 && userName != null && userName.length() >= 3 && password1.equals(password2)) {
+			
+			String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt());
 
+			
+			User user = this.getUserByUserName(userName);
+			
+			if(user != null) {
+				
+				String errors = "Incorrect Username and/or Password";
+				 
+				 request.setAttribute("errors", errors);
+				
+				 log.debug("\n\nDebug: Exiting Method register() reutrning 'logonError'\n\n");
+				
+				return "registrationError";
+
+				
+			}
+			
+			//this.getUserByUserName(userName);
+			
+			Connection conn = this.getDatabaseConnection();
+			
+			
+			  String query = " insert into users (UserName, Password, Timestamp) values (?, ?, ?)";
+			
+			/*
+			 * -- -- Table structure for table `users` --
+			 * 
+			 * CREATE TABLE IF NOT EXISTS `users` ( `UserID` int(11) NOT NULL
+			 * AUTO_INCREMENT, `UserName` varchar(20) NOT NULL, `Password`
+			 * char(60) NOT NULL, `Timestamp` timestamp NOT NULL DEFAULT
+			 * CURRENT_TIMESTAMP, PRIMARY KEY (`UserID`), UNIQUE KEY `UserName`
+			 * (`UserName`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+			 * AUTO_INCREMENT=3 ;
+			 * 
+			 */
+			      
+			      Calendar calendar = Calendar.getInstance();
+			      java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
+			 
+
+					//String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+
+			      
+			      // create the mysql insert preparedstatement
+			      PreparedStatement preparedStmt = conn.prepareStatement(query);
+			      preparedStmt.setString (1, userName);
+			      preparedStmt.setString (2, generatedSecuredPasswordHash);
+			      preparedStmt.setDate   (3, startDate);
+			 
+			      // execute the preparedstatement
+			      preparedStmt.execute();
+			      
+			      try {
+			    	  preparedStmt.close();
+				      conn.close();
+			      }
+			      catch(Exception e) {
+			    	  
+			  		String errors = "Incorrect Username and/or Password";
+					 
+					 request.setAttribute("errors", errors);
+
+					 log.debug("\n\nDebug: Exiting Method register() reutrning 'logonError'\n\n");
+
+					
+					return "registrationError";
+					
+			      }
+			      
+					 
+				  		String errors = "New User Registration Successful.  Please Logon.";
+						 
+						 request.setAttribute("errors", errors);
+
+						 log.debug("\n\nDebug: Exiting Method register() reutrning 'success'\n\n");
+
+			      
+					return "success";
+					
+		}
+
+		 //ttpServletResponse  responce = ServletActionContext.getResponse();
 		
-		// String originalPassword = "password1";
-//		String generatedSecuredPasswordHash = BCrypt.hashpw(originalPassword, BCrypt.gensalt(12));
-//		log.debug(generatedSecuredPasswordHash);
+		String errors = "Incorrect Username and/or Password";
+		 
+		 request.setAttribute("errors", errors);
 
-//		boolean matched = BCrypt.checkpw(originalPassword, generatedSecuredPasswordHash);
-//		log.debug(matched);
-
-		return "success";
-
+		 log.debug("\n\nDebug: Exiting Method register() reutrning 'logonError'\n\n");
+		 
+		
+		return "registrationError";
+		
 	}
 
-	public String logon() {
+	public String logon_DeleteMe() {
 
 		// this.h
 
@@ -221,13 +397,111 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport {
 		String originalPassword = request.getParameter("password"); // "password1";
 
 		// String originalPassword = "password1";
-		String generatedSecuredPasswordHash = BCrypt.hashpw(originalPassword, BCrypt.gensalt(12));
+	//
+		
+		String generatedSecuredPasswordHash = BCrypt.hashpw(originalPassword, BCrypt.gensalt());
 		log.debug(generatedSecuredPasswordHash);
 
 		boolean matched = BCrypt.checkpw(originalPassword, generatedSecuredPasswordHash);
 		log.debug(matched);
 
+		
+		log.debug("\n\nDebug: Exiting Method Logon()\n\n");
+
+		
 		return "success";
+	}
+	
+	public String logon() {
+		
+		log.debug("\n\nDebug: In Method Logon()\n\n");
+
+		HttpServletRequest request = ServletActionContext.getRequest();
+
+		String userName = request.getParameter("userName"); // "password1";
+		String password = request.getParameter("password"); // "password1";
+
+		// String originalPassword = "password1";
+//		String generatedSecuredPasswordHash = BCrypt.hashpw(originalPassword, BCrypt.gensalt(12));
+		//log.debug(generatedSecuredPasswordHash);
+		
+		User user = null;
+		
+     // String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+
+		
+		try {
+			
+			
+			user = this.getUserByUserName(userName);
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+	  		String errors = "Incorrect Username and/or Password";
+			 
+			 request.setAttribute("errors", errors);
+
+			 log.debug("\n\nDebug: Exiting Method logon() reutrning 'logonError'\n\n");
+
+			return "logonError";
+
+		
+		}
+		
+//		boolean matched = false;
+		
+		if(user == null) {
+			
+	  		String errors = "Incorrect Username and/or Password";
+			 
+			 request.setAttribute("errors", errors);
+
+			 log.debug("\n\nDebug: Exiting Method logon() reutrning 'logonError'\n\n");
+
+			return "logonError";
+			
+
+		}
+//		else {
+//			matched = true;
+//		}
+
+		
+		boolean matched = BCrypt.checkpw(password, user.getPassword());
+		
+		if(matched) {
+
+			log.debug("\n\nPasswords matched\n\n");
+			
+			 
+			 request.setAttribute("errors", "");
+
+			 log.debug("\n\nDebug: Exiting Method logon() reutrning 'success'\n\n");
+
+			return "success";
+			
+
+			
+		}
+		else {
+
+	  		String errors = "Incorrect Username and/or Password";
+			 
+			 request.setAttribute("errors", errors);
+
+			 log.debug("\n\nDebug: Exiting Method logon() reutrning 'logonError'\n\n");
+
+			return "logonError";
+			
+			
+		}
+		
+		
+		
+		
 	}
 
 	public void getPlayerTurn() {
