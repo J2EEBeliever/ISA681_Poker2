@@ -43,21 +43,19 @@ if (Array.indexOf === undefined) {
             return new playingCards(c);
         }
         this.conf = c;
-        this.init();
-        if (this.conf.startShuffled) {
-            this.shuffle(5);
-        }
+        this.init(this.conf.url);
+      if (this.conf.startShuffled) {
+          this.shuffle(5);
+       }
         return this;
     };
     /**
      * initializer - builds the deck
      */
-    playingCards.prototype.init = function() {
+    playingCards.prototype.init = function(url) {
         var hand = [];
    $.ajax({
-
-    //url : 'http://localhost:8080/ISA-681Poker/ajax/GetHandJSON',
-	url : '${pageContext.request.contextPath}/ajax/GetHandJSON',
+    url : url,
     type : 'GET',
     async: false,
     dataType:'json',
@@ -175,7 +173,8 @@ if (Array.indexOf === undefined) {
         "renderMode": 'css',
         // For a coustom " of "-String
         "ofString": " of ",
-        "startShuffled": true,
+        "startShuffled": false,
+        "url": "Test",
         "jokers": 2,
         "jokerText": "Joker",
         "ranks": {
