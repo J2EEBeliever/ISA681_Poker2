@@ -1,0 +1,19 @@
+Use Case: Five Card Stud Poker
+Use Case ID: FP
+ACtors: Player1, Player2
+Preconditions: Both  Player1 and Player2 are logged on.
+Flow of Events:
+	1. Player 1 selects option to play a game of five card stud poker.
+     	2. System creates a deck of cards, shuffles, and deals one card down to both players and  one card up to both players and prompts the first player to do one of the folowing: raise (and how much), hold, or fold.
+	3, The first player raises -- up to a dollar amount --, holds (no money), or folds.
+	4. The sysem stores the first players bet and makes promtps the second player to bet.
+	5, The second player: calls or folds. If calls then enters same amount as the first player.
+	6. The system deals keeps dealing two more cards and repeats steps 3 through 5 for each player.
+	7. The system deals the fifth card down and prompts the first player to raise or hold.
+	8. The first player raises with an amount entered.
+	9. The system prompts the second player to either call (and enter same money as the first player) or fold.
+	10. The system determines a winner based on the cards that both players hold and displays the result.
+
+Post Conditions:  A game winner is displayed to both players and the database is updated with the results.
+	 
+	
