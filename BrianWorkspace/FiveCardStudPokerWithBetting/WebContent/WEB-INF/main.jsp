@@ -89,9 +89,9 @@
          * example throwing cards on the table
          */
         $(document).ready(function(){
-            var cardDeck = $("#cardDeck").playingCards();
+            var cardDeck = $("#cardDeck").playingCards({url: "${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.localPort}${pageContext.request.contextPath}/ajax/GetHandJSON"});
             cardDeck.spread(); // show it
-
+        
             var hand = [];
             var showError = function(msg){
                 $('#error').html(msg).show();
