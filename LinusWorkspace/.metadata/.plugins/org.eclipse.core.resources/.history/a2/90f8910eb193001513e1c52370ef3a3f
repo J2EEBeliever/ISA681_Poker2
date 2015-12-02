@@ -1,5 +1,0 @@
-package ISA681Poker;
-
-public class AjaxLogicForm extends ActionForm {
-
-}

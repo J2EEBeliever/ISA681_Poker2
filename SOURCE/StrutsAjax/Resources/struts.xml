@@ -16,12 +16,16 @@
             class="controller.FiveCardStudPokerAjaxAction" 
             method="logon">
             <result name="success">/index.jsp</result>
+            <result name="logonError">/Logon.jsp</result>
       </action>
 
       <action name="RegisterForFiveCardStudPoker" 
             class="controller.FiveCardStudPokerAjaxAction" 
-            method="Register">
-            <result name="success">/index.jsp</result>
+            method="register">
+            <result name="success">/Logon.jsp</result>
+            <result name="logonError">/UserRegistration.jsp</result>
+            <result name="registrationError">/UserRegistration.jsp</result>
+            
       </action>
 
       

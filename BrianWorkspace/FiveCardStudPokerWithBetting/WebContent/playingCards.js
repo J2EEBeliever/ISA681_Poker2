@@ -55,7 +55,6 @@ if (Array.indexOf === undefined) {
     playingCards.prototype.init = function(url) {
         var hand = [];
    $.ajax({
-
     url : url,
     type : 'GET',
     async: false,

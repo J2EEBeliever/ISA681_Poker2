@@ -1,0 +1,1 @@
+CREATE USER 'fcs_user'@'localhost' IDENTIFIED BY '7yXw8dDaNMBNBbW5';

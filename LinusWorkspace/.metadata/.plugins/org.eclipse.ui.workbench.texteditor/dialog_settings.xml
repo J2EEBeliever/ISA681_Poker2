@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="logonToFiveCardStudPoker" key="selection"/>
+		<item value=".execute" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value=".execute"/>
 			<item value="logonToFiveCardStudPoker"/>
 			<item value="Logon"/>
 			<item value="log"/>
@@ -15,7 +16,6 @@
 			<item value="AjaxLogicServlet"/>
 			<item value="8080"/>
 			<item value="deckOfCards[i]"/>
-			<item value="&#x09;&#x09;&#x09;deckOfCards[i].setCardNumber(i);"/>
 		</list>
 		<list key="replacehistory">
 			<item value="playingCard"/>
