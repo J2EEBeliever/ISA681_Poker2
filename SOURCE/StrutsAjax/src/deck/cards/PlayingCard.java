@@ -1,5 +1,10 @@
 package deck.cards;
 
+/*
+ * Author: Linus Freeman
+ * 
+ */
+
 public class PlayingCard {
 	
 	private int cardNumber = -1;
@@ -16,6 +21,19 @@ public class PlayingCard {
 		this.cardSuit = "Card Instance Not Used";
 		
 	}
+	
+	public String toString() {
+		
+		StringBuffer stringBuffer = new StringBuffer("");
+		
+			
+		stringBuffer.append(getCardString() + " " + getCardSuit() + "");
+			
+		
+		return stringBuffer.toString();
+	}
+
+	
 	
 	public int getCardNumber() {
 		return cardNumber;

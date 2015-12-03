@@ -6,6 +6,12 @@
 
 <script language="javascript" type="text/javascript">
 
+/*
+ * Author: Linus Freeman
+ * 
+ */
+
+
 //Browser Support Code
 function ajaxFunctionbk(){
 	
@@ -68,6 +74,22 @@ var queryString = '?playerContent=yes';
 <script src="js/jquery-1.6.2.js" type="text/javascript"></script>
 <script type="text/javascript">
 
+function joinGameNow(gamePlayer1UserName) {
+	
+	
+	alert('#30 exuting javaScript Function joinGameNow(gamePlayer1UserName)');
+
+	
+	$.ajax({
+		type : "POST",
+		url : '${pageContext.request.contextPath}/joinGameNow.html?gamePlayer1UserName=' + gamePlayer1UserName ,
+		success : function(response) {
+			$('.result').html(response);
+		}
+	});
+	
+}
+
 function playerContent() {
 	
 	alert('#10');
@@ -85,18 +107,64 @@ function playerContent() {
 
 $(document).ready(function() {
 
-
-		
-		$('#buttonHello').click(function() {
+	
+	/*)
+		$('#joinGameNow1').click(function() {
 			$.ajax({
 				type : "POST",
-				url : '${pageContext.request.contextPath}/hello.html',
+				url : '${pageContext.request.contextPath}/joinGameNow1.html',
+				success : function(response) {
+					$('.result').html(response);
+				}
+			});
+		});
+	*/
+
+		$('#joinGameNow1').click(function() {
+			$.ajax({
+				type : "POST",
+				url : '${pageContext.request.contextPath}/joinGameNow1.html',
 				success : function(response) {
 					$('.result').html(response);
 				}
 			});
 		});
 		
+		
+	
+		$('#buttonJoinGame2').click(function() {
+			$.ajax({
+				type : "POST",
+				url : '${pageContext.request.contextPath}/joinGame2.html',
+				success : function(response) {
+					$('.result').html(response);
+				}
+			});
+		});
+
+		
+		$('#buttonNewGame').click(function() {
+			$.ajax({
+				type : "POST",
+				url : '${pageContext.request.contextPath}/newGame.html',
+				success : function(response) {
+					$('.result').html(response);
+				}
+			});
+		});
+
+		
+/*		
+		$('#buttonJoinGame').click(function() {
+			$.ajax({
+				type : "POST",
+				url : '${pageContext.request.contextPath}/joinGame.html',
+				success : function(response) {
+					$('.result').html(response);
+				}
+			});
+		});
+*/
 		
 		$('#buttonHello').click(function() {
 			$.ajax({
@@ -137,6 +205,28 @@ $(document).ready(function() {
 			});
 		});
 
+		//buttonJoinGame
+		$('#buttonJoinGame').click(function() {
+			$.ajax({
+				type : "GET",
+				headers : {
+					Accept : "application/json; charset=utf-8",
+					"Content-Type" : "application/json; charset=utf-8"
+				},
+				url : '${pageContext.request.contextPath}/joinGame.html',
+				success : function(response) {
+					var n = response.lu.length;
+					var result = '';
+					for(var i=0; i<n; i++)
+						//result += '<br><a href = "${pageContext.request.contextPath}/joinGameNow.html?gameUserName="' + response.lu[i].userName + '" value = "' + response.lu[i].userName + '">';
+						result += '<br>' + response.lu[i].userName + '<br>';
+					$('.result').html(result);
+				}
+			});
+		});
+		
+		
+		
 		$('#buttonFindAll').click(function() {
 			$.ajax({
 				type : "GET",
@@ -159,7 +249,13 @@ $(document).ready(function() {
 </script>
 </head>
 
-<body onload = "setTimeout(playerContent,5000)">
+
+<body onload_bk "setTimeout(playerContent,5000)">
+
+	<input type="button" value="Start a new Game" id="buttonNewGame">
+	<!-- input type="button" value="Join an existing Game" id="buttonJoinGame" -->
+	<input type="button" value="Join an existing Game" id="buttonJoinGame2">
+
 
 	<input type="button" value="Hello" id="buttonHello">
 	<input type="button" value="Sum" id="buttonSum">

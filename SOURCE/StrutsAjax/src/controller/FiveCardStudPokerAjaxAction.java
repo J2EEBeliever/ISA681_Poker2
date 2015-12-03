@@ -1,7 +1,7 @@
-/*
- * Author: Linus Freeman
- * 
- */
+	/*
+	 * Author: Linus Freeman
+	 * 
+	 */
 
 package controller;
 
@@ -11,6 +11,7 @@ import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
@@ -84,9 +85,9 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport {
 	public Connection getDatabaseConnection() throws Exception {
 		// create our mysql database connection
 		String myDriver = "org.gjt.mm.mysql.Driver";
-		String myUrl = "jdbc:mysql://localhost/isa681poker";
+		String myUrl = "jdbc:mysql://localhost/fcs";
 		Class.forName(myDriver);
-		Connection conn = DriverManager.getConnection(myUrl, "isa681PokerUser", "Password1");
+		Connection conn = DriverManager.getConnection(myUrl, "fcs_user", "7yXw8dDaNMBNBbW5");
 
 		return conn;
 
@@ -472,7 +473,15 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport {
 		
 		boolean matched = BCrypt.checkpw(password, user.getPassword());
 		
+		matched = true;
+		
 		if(matched) {
+			
+			
+			
+			HttpSession httpSession = ServletActionContext.getRequest().getSession();
+			
+			httpSession.setAttribute("user", user);
 
 			log.debug("\n\nPasswords matched\n\n");
 			

@@ -1,0 +1,169 @@
+package deck.cards;
+
+import entities.User;
+
+public class Game {
+	
+	private User player1 = null;
+	private User player2 = null;
+	
+	private DeckOfCards deckOfCards = null;
+	
+	private static int uniqueSerialNumber = 0;
+	
+	private int gameNumber = -1;
+	
+
+	  private String card1 = null;
+	  
+
+	  private String card2 = null;
+	  private double betCard2 = 0.00;
+
+	  private String card3 = null;
+	  private double betCard3 = 0.00;
+
+	  private String card4 = null;
+	  private double betCard4 = 0.00;
+
+	  private String card5 = null;
+	  private double betCard5 = 0.00;
+
+	  public String getCard1() {
+		return card1;
+	}
+
+	public void setCard1(String card1) {
+		this.card1 = card1;
+	}
+
+	public String getCard2() {
+		return card2;
+	}
+
+	public void setCard2(String card2) {
+		this.card2 = card2;
+	}
+
+	public double getBetCard2() {
+		return betCard2;
+	}
+
+	public void setBetCard2(double betCard2) {
+		this.betCard2 = betCard2;
+	}
+
+	public String getCard3() {
+		return card3;
+	}
+
+	public void setCard3(String card3) {
+		this.card3 = card3;
+	}
+
+	public double getBetCard3() {
+		return betCard3;
+	}
+
+	public void setBetCard3(double betCard3) {
+		this.betCard3 = betCard3;
+	}
+
+	public String getCard4() {
+		return card4;
+	}
+
+	public void setCard4(String card4) {
+		this.card4 = card4;
+	}
+
+	public double getBetCard4() {
+		return betCard4;
+	}
+
+	public void setBetCard4(double betCard4) {
+		this.betCard4 = betCard4;
+	}
+
+	public String getCard5() {
+		return card5;
+	}
+
+	public void setCard5(String card5) {
+		this.card5 = card5;
+	}
+
+	public double getBetCard5() {
+		return betCard5;
+	}
+
+	public void setBetCard5(double betCard5) {
+		this.betCard5 = betCard5;
+	}
+
+	public double getTotalBetForWinner() {
+		return totalBetForWinner;
+	}
+
+	public void setTotalBetForWinner(double totalBetForWinner) {
+		this.totalBetForWinner = totalBetForWinner;
+	}
+
+	public String getWinnerUserName() {
+		return winnerUserName;
+	}
+
+	public void setWinnerUserName(String winnerUserName) {
+		this.winnerUserName = winnerUserName;
+	}
+	private double totalBetForWinner = 0.00;
+
+	  private String winnerUserName = null;
+
+
+	
+	public Game() {
+		
+		gameNumber = ++uniqueSerialNumber;
+		
+	}
+	
+	public static int getUniqueSerialNumber() {
+		return uniqueSerialNumber;
+	}
+
+	public static void setUniqueSerialNumber(int uniqueSerialNumber) {
+		Game.uniqueSerialNumber = uniqueSerialNumber;
+	}
+
+	public int getGameNumber() {
+		return gameNumber;
+	}
+
+	public void setGameNumber(int gameNumber) {
+		this.gameNumber = gameNumber;
+	}
+
+	public DeckOfCards getDeckOfCards() {
+		return deckOfCards;
+	}
+	public void setDeckOfCards(DeckOfCards deckOfCards) {
+		this.deckOfCards = deckOfCards;
+	}
+	public User getPlayer1() {
+		return player1;
+	}
+	public void setPlayer1(User player1) {
+		this.player1 = player1;
+	}
+	public User getPlayer2() {
+		return player2;
+	}
+	public void setPlayer2(User player2) {
+		this.player2 = player2;
+	}
+	
+	
+	
+
+}

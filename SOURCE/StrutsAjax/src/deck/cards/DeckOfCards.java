@@ -6,6 +6,10 @@ import java.util.Collections;
 
 import org.apache.log4j.Logger;
 
+/*
+ * Author: Linus Freeman
+ * 
+ */
 
 
 public class DeckOfCards {
@@ -21,6 +25,8 @@ public class DeckOfCards {
 	private int NUMBER_OF_SUITS = 52;
 	
 	private ArrayList<PlayingCard>  deckOfCards = new ArrayList<PlayingCard>();
+	
+	private int nextCardToDealIndex =0;
 
 	public DeckOfCards() {
 		
@@ -50,6 +56,19 @@ public class DeckOfCards {
 		log.debug(deckOfCards.displayDeckCards());
 		
 
+	}
+	
+	
+	
+	public PlayingCard dealCard() {
+
+		
+		
+		PlayingCard playingCard = deckOfCards.get(this.nextCardToDealIndex);
+		++(this.nextCardToDealIndex);
+		
+		return playingCard;
+		
 	}
 	
 	public String toString() {
