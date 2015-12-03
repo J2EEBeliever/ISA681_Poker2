@@ -1,1 +1,1 @@
-{}
+[[{"location":"C:\\apache-tomcat-8.0.27\\lib\\servlet-api - Copy.zip","type":"JAR","hints":{}},"ABSENT"],[{"location":"C:\\apache-tomcat-8.0.27\\lib\\jsp-api.jar","type":"JAR","hints":{}},"ABSENT"],[{"location":"C:\\ISA681_Poker2\\SOURCE\\StrutsAjax\\WebContent\\WEB-INF\\lib\\struts2-core-2.3.1.2.jar","type":"JAR","hints":{}},"org.apache.struts:struts2-core:2.3.1"],[{"location":"C:\\ISA681_Poker2\\SOURCE\\StrutsAjax\\WebContent\\WEB-INF\\lib\\log4j-1.2.17.jar","type":"JAR","hints":{}},"log4j:log4j:1.2.17"]]

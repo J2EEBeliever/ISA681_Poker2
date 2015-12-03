@@ -50,6 +50,13 @@
 			</result>
 		</action>
 		
+		<action name="joinGame" class="controller.AjaxAction" method="joinGame">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		
 	</package>
 
 	<package name="default" extends="struts-default" namespace="/">
@@ -59,6 +66,14 @@
 		
 		<action name="hello" class="controller.AjaxAction" method="hello">
 		</action>
+
+		<action name="newGame" class="controller.AjaxAction" method="newGame">
+		</action>
+
+
+
+
+
 		
 		<action name="sum" class="controller.AjaxAction" method="sum">
 		</action>

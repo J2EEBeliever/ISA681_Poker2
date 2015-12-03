@@ -6,6 +6,10 @@ import java.util.Collections;
 
 import org.apache.log4j.Logger;
 
+/*
+ * Author: Linus Freeman
+ * 
+ */
 
 
 public class DeckOfCards {

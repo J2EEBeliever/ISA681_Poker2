@@ -1,5 +1,10 @@
 package deck.cards;
 
+/*
+ * Author: Linus Freeman
+ * 
+ */
+
 public class PlayingCard {
 	
 	private int cardNumber = -1;

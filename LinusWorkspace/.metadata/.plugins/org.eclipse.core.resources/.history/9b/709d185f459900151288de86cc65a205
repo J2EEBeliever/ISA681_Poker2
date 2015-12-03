@@ -1,0 +1,13 @@
+package deck.cards;
+
+import entities.User;
+
+public class Game {
+	
+	private User player1 = null;
+	private User player2 = null;
+	
+	
+	
+
+}

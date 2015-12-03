@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value=".execute" key="selection"/>
+		<item value="Context" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Context"/>
+			<item value="context"/>
+			<item value="getSession"/>
 			<item value=".execute"/>
 			<item value="logonToFiveCardStudPoker"/>
 			<item value="Logon"/>
 			<item value="log"/>
 			<item value="FiveCardStudPokerAjaxActio"/>
-			<item value="AjaxLogicServlet"/>
-			<item value="8080"/>
-			<item value="deckOfCards[i]"/>
 		</list>
 		<list key="replacehistory">
 			<item value="playingCard"/>
