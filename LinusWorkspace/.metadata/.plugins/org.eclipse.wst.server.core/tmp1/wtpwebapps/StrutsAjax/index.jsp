@@ -74,6 +74,22 @@ var queryString = '?playerContent=yes';
 <script src="js/jquery-1.6.2.js" type="text/javascript"></script>
 <script type="text/javascript">
 
+function joinGameNow(gamePlayer1UserName) {
+	
+	
+	alert('#30 exuting javaScript Function joinGameNow(gamePlayer1UserName)');
+
+	
+	$.ajax({
+		type : "POST",
+		url : '${pageContext.request.contextPath}/joinGameNow.html?gamePlayer1UserName=' + gamePlayer1UserName ,
+		success : function(response) {
+			$('.result').html(response);
+		}
+	});
+	
+}
+
 function playerContent() {
 	
 	alert('#10');
@@ -91,6 +107,40 @@ function playerContent() {
 
 $(document).ready(function() {
 
+	
+	/*)
+		$('#joinGameNow1').click(function() {
+			$.ajax({
+				type : "POST",
+				url : '${pageContext.request.contextPath}/joinGameNow1.html',
+				success : function(response) {
+					$('.result').html(response);
+				}
+			});
+		});
+	*/
+
+		$('#joinGameNow1').click(function() {
+			$.ajax({
+				type : "POST",
+				url : '${pageContext.request.contextPath}/joinGameNow1.html',
+				success : function(response) {
+					$('.result').html(response);
+				}
+			});
+		});
+		
+		
+	
+		$('#buttonJoinGame2').click(function() {
+			$.ajax({
+				type : "POST",
+				url : '${pageContext.request.contextPath}/joinGame2.html',
+				success : function(response) {
+					$('.result').html(response);
+				}
+			});
+		});
 
 		
 		$('#buttonNewGame').click(function() {
@@ -203,7 +253,8 @@ $(document).ready(function() {
 <body onload_bk "setTimeout(playerContent,5000)">
 
 	<input type="button" value="Start a new Game" id="buttonNewGame">
-	<input type="button" value="Join an existing Game" id="buttonJoinGame">
+	<!-- input type="button" value="Join an existing Game" id="buttonJoinGame" -->
+	<input type="button" value="Join an existing Game" id="buttonJoinGame2">
 
 
 	<input type="button" value="Hello" id="buttonHello">

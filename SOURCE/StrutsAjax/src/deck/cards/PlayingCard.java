@@ -22,6 +22,19 @@ public class PlayingCard {
 		
 	}
 	
+	public String toString() {
+		
+		StringBuffer stringBuffer = new StringBuffer("");
+		
+			
+		stringBuffer.append(getCardString() + " " + getCardSuit() + "");
+			
+		
+		return stringBuffer.toString();
+	}
+
+	
+	
 	public int getCardNumber() {
 		return cardNumber;
 	}

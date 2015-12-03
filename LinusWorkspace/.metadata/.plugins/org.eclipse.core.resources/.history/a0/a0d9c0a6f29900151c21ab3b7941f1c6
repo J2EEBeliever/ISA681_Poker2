@@ -1,0 +1,573 @@
+package controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+import deck.cards.DeckOfCards;
+import deck.cards.Game;
+import deck.cards.PlayingCard;
+import entities.*;
+
+import java.util.*;
+
+public class AjaxAction extends ActionSupport {
+
+	/*
+	 * Author: Linus Freeman
+	 * 
+	 */
+
+	final static Logger log = Logger.getLogger(FiveCardStudPokerAjaxAction.class);
+
+	private int a;
+	private int b;
+	private Map<String, Object> jsonData = new HashMap<String, Object>();
+
+	public Map<String, Object> getJsonData() {
+		return jsonData;
+	}
+
+	public void setJsonData(Map<String, Object> jsonData) {
+		this.jsonData = jsonData;
+	}
+
+	public int getA() {
+		return a;
+	}
+
+	public void setA(int a) {
+		this.a = a;
+	}
+
+	public int getB() {
+		return b;
+	}
+
+	public void setB(int b) {
+		this.b = b;
+	}
+
+	public void joinGameNow() {
+
+		log.debug("\n\nDebug: In method joinGameNow()\n\n");
+
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		String gamePlayer1UserName = request.getParameter("gamePlayer1UserName");
+		
+		if(gamePlayer1UserName == null || gamePlayer1UserName.trim().equals("")) {
+
+			log.debug(
+					"\n\nDebug: In method joinGameNow() and requsst scope parameter: gamePlayer1UserName == null .\n\n");
+
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
+			out.println(
+					
+					"\n\nDebug: In method joinGameNow() and requsst scope parameter: gamePlayer1UserName == null .\n\n");
+
+			out.flush();
+
+			return;
+
+			
+		}
+
+
+		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+
+		User user = (User) httpSession.getAttribute("user");
+
+		if (user == null) {
+
+			log.debug(
+					"\n\nDebug: In method joinGameNow() and user does not exist in [session] scope and exiting method.\n\n");
+
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
+			out.println("There is a problem with your logon.");
+			out.flush();
+
+			return;
+
+		}
+
+		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+
+		List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
+		
+
+
+		if (games == null) {
+
+			log.debug(
+					"\n\nDebug: In method joinGameNow() and [Games] does not exist in application scope and exiting method.\n\n");
+
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
+			out.println("No curent existing Games available to Join.");
+			out.flush();
+
+			return;
+
+			// ArrayList<User> users = new ArrayList<User>();
+
+			// List<Game> games = new ArrayList<Game>();
+			//
+			// games.add(new Product("p1", "Name 1", 1000));
+			// games.add(new Product("p2", "Name 2", 2000));
+			// games.add(new Product("p3", "Name 3", 3000));
+			// jsonData.put("lu", users);
+
+			// log.debug("\n\nDebug: Exiting method joinGame() and returning
+			// success but no glabal Games exists.\n\n");
+
+			// return;
+
+		} else {
+
+			log.debug("\n\nDebug: in method joinGameNow() and Glabal [Games] exists.\n\n");
+
+			ArrayList<User> users = new ArrayList<User>();
+
+			Iterator iterGames = games.iterator();
+
+			StringBuffer stringBuffer = new StringBuffer();
+
+			int x = 0;
+			
+
+			while (iterGames.hasNext()) {
+
+				Game game = (Game) iterGames.next();
+
+				User user1 = game.getPlayer1();
+
+				users.add(user1);
+
+				User user2 = game.getPlayer2();
+
+				++x;
+				
+				if (user1 == null && user2 == null) {
+
+					// Incorrect game state. User1 (player1) must exist.
+					
+				}
+				else if (user1 == null && user2 != null) {
+					
+					// Incorrect game state. User1 (player1) must exist.
+
+				}
+
+				else if (user1 != null && user2 == null && game.getDeckOfCards() == null) {
+					
+					DeckOfCards deckOfCards = new DeckOfCards();
+					
+					game.setDeckOfCards(deckOfCards);
+					
+					deckOfCards.shuffleDeckCards();
+					
+					Map<String,Game> currentGamesBeingPlayed = new HashMap<String,Game>();
+					
+					currentGamesBeingPlayed.put("" + game.getGameNumber(), game);
+					
+					PlayingCard playingCard = deckOfCards.dealCard();
+					
+					game.setPlayer1card1(playingCard);
+					
+					
+					
+					servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed);
+					
+					
+					
+					
+
+					stringBuffer.append("");
+
+				} else if (user.getUserName().equals(user2.getUserName())) {
+
+					stringBuffer.append("<BR>Join already started game with player 1 as: " + user1.getUserName()
+							+ "and player 2 as: (" + user2.getUserName()
+							+ ") <input type=\"button\"  onclick=\"joinGameNow('" + user1.getUserName()
+							+ "' )\"  id =\"joinGameNow" + x
+							+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
+
+				
+				} 
+				else if (user.getUserName().equals(user1.getUserName())) {
+
+				stringBuffer.append("<BR>Join already started game with player 1 as you: " + user1.getUserName()
+						+ "and player 2 as : (" + user2.getUserName()
+						+ ") <input type=\"button\"  onclick=\"joinGameNow('" + user1.getUserName()
+						+ "' )\"  id =\"joinGameNow" + x
+						+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
+
+				}
+
+			}
+
+		}
+	}
+
+	public void joinGame2() {
+
+		log.debug("\n\nDebug: In method joinGame2()\n\n");
+
+		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+
+		User user = (User) httpSession.getAttribute("user");
+
+		if (user == null) {
+
+			log.debug(
+					"\n\nDebug: In method joinGame2() and user does not exist in [session] scope and exiting method.\n\n");
+
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
+			out.println("There is a problem with your logon.");
+			out.flush();
+
+			return;
+
+		}
+
+		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+
+		List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
+
+		if (games == null) {
+
+			log.debug(
+					"\n\nDebug: In method joinGame2() and [Games] does not exist in application scope and exiting method.\n\n");
+
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
+			out.println("No curent existing Games available to Join.");
+			out.flush();
+
+			return;
+
+			// ArrayList<User> users = new ArrayList<User>();
+
+			// List<Game> games = new ArrayList<Game>();
+			//
+			// games.add(new Product("p1", "Name 1", 1000));
+			// games.add(new Product("p2", "Name 2", 2000));
+			// games.add(new Product("p3", "Name 3", 3000));
+			// jsonData.put("lu", users);
+
+			// log.debug("\n\nDebug: Exiting method joinGame() and returning
+			// success but no glabal Games exists.\n\n");
+
+			// return;
+
+		} else {
+
+			log.debug("\n\nDebug: in method joinGame() and Glabal [Games] exists.\n\n");
+
+			ArrayList<User> users = new ArrayList<User>();
+
+			Iterator iterGames = games.iterator();
+
+			StringBuffer stringBuffer = new StringBuffer();
+
+			int x = 0;
+
+			while (iterGames.hasNext()) {
+
+				Game game = (Game) iterGames.next();
+
+				User user1 = game.getPlayer1();
+
+				users.add(user1);
+
+				User user2 = game.getPlayer2();
+
+				++x;
+
+				if (user1 == null && user2 == null) {
+
+					// Incorrect game state. User1 (player1) must exist.
+					
+				}
+				else if (user1 == null && user2 != null) {
+					
+					// Incorrect game state. User1 (player1) must exist.
+
+				}
+
+				else if (user1 != null && user2 == null) {
+
+					stringBuffer.append("Join New Game with player 1 as: " + user1.getUserName()
+							+ "and no player 2 yet. <input type=\"button\" onclick=\"joinGameNow('"
+							+ user1.getUserName() + "' )\" id =\"joinGameNow" + x
+							+ "1\" value = \"Join New Game Now\" name = \"joinGameNow" + x + "1\">");
+
+				} else if (user.getUserName().equals(user2.getUserName())) {
+
+					stringBuffer.append("<BR>Join already started game with player 1 as: " + user1.getUserName()
+							+ "and player 2 as: (" + user2.getUserName()
+							+ ") <input type=\"button\"  onclick=\"joinGameNow('" + user1.getUserName()
+							+ "' )\"  id =\"joinGameNow" + x
+							+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
+
+				
+				} 
+				else if (user.getUserName().equals(user1.getUserName())) {
+
+				stringBuffer.append("<BR>Join already started game with player 1 as you: " + user1.getUserName()
+						+ "and player 2 as : (" + user2.getUserName()
+						+ ") <input type=\"button\"  onclick=\"joinGameNow('" + user1.getUserName()
+						+ "' )\"  id =\"joinGameNow" + x
+						+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
+
+				}
+
+			}
+
+			// games = new ArrayList<Game>();
+
+			// List<Game> games = new ArrayList<Game>();
+
+			// games.add(new Product("p1", "Name 1", 1000));
+			// games.add(new Product("p2", "Name 2", 2000));
+			// games.add(new Product("p3", "Name 3", 3000));
+
+			// jsonData.put("lu", users);
+
+			log.debug("\n\nDebug: Exiting method joinGame2() and returning success.\n\n");
+
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
+			out.println(stringBuffer);
+			// out.println("Join Player 1 (" + user.g + "). Waiting for another
+			// player to join your game.");
+			out.flush();
+
+			return;
+
+		}
+	}
+	// getPlayerTurn
+
+	public String joinGame_DeleteMe() {
+
+		log.debug("\n\nDebug: In method joinGame()\n\n");
+
+		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+
+		List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
+
+		if (games == null) {
+
+			ArrayList<User> users = new ArrayList<User>();
+
+			// List<Game> games = new ArrayList<Game>();
+			//
+			// games.add(new Product("p1", "Name 1", 1000));
+			// games.add(new Product("p2", "Name 2", 2000));
+			// games.add(new Product("p3", "Name 3", 3000));
+			jsonData.put("lu", users);
+
+			log.debug("\n\nDebug: Exiting method joinGame() and returning success but no glabal Games exists.\n\n");
+
+			return SUCCESS;
+
+		} else {
+
+			log.debug("\n\nDebug: in method joinGame() and Glabal Games exists.\n\n");
+
+			ArrayList<User> users = new ArrayList<User>();
+
+			Iterator iterGames = games.iterator();
+
+			while (iterGames.hasNext()) {
+
+				Game game = (Game) iterGames.next();
+
+				User user = game.getPlayer1();
+
+				users.add(user);
+			}
+
+			// games = new ArrayList<Game>();
+
+			// List<Game> games = new ArrayList<Game>();
+
+			// games.add(new Product("p1", "Name 1", 1000));
+			// games.add(new Product("p2", "Name 2", 2000));
+			// games.add(new Product("p3", "Name 3", 3000));
+
+			jsonData.put("lu", users);
+
+			log.debug("\n\nDebug: Exiting method joinGame() and returning success.\n\n");
+
+			return SUCCESS;
+
+		}
+
+	}
+
+	public void newGame() {
+		try {
+
+			log.debug("\n\nDebug: In method newGame().\n\n");
+
+			HttpSession httpSession = ServletActionContext.getRequest().getSession();
+
+			User user = (User) httpSession.getAttribute("user");
+
+			if (user == null) {
+
+				log.debug(
+						"\n\nDebug: In method newGame() and user does not exist in session scope and exiting method.\n\n");
+
+				HttpServletResponse response = ServletActionContext.getResponse();
+				response.setContentType("text/plain;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.println("There is a problem with your logon.");
+				out.flush();
+
+				return;
+
+			} else {
+
+				log.debug("\n\nDebug: In method newGame() and user exists in session scope.\n\n");
+
+				ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+
+				List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
+
+				if (games == null) {
+
+					games = new ArrayList<Game>();
+
+				}
+
+				Game game = new Game();
+
+				game.setPlayer1(user);
+
+				games.add(game);
+
+				servletContext.setAttribute("Games", games);
+
+				HttpServletResponse response = ServletActionContext.getResponse();
+				response.setContentType("text/plain;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.println(
+						"Hello Player 1 (" + game.getPlayer1() + ").  Waiting for another player to join your game.");
+				out.flush();
+
+				return;
+
+			}
+
+			// HttpServletResponse response =
+			// ServletActionContext.getResponse();
+			// response.setContentType("text/plain;charset=utf-8");
+			// PrintWriter out = response.getWriter();
+			// out.println("Hello Player 1. Waiting for another player to join
+			// your game.");
+			// out.flush();
+		} catch (Exception e) {
+		}
+	}
+
+	public void hello() {
+		try {
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("Hello Ajax");
+			out.flush();
+		} catch (Exception e) {
+		}
+	}
+
+	public void sum() {
+		try {
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println(this.a + this.b);
+			out.flush();
+		} catch (Exception e) {
+		}
+	}
+
+	public String find() {
+		jsonData.put("sp", new Product("p1", "Name 1", 1000));
+		return SUCCESS;
+	}
+
+	public String findAll() {
+		List<Product> listProduct = new ArrayList<Product>();
+		listProduct.add(new Product("p1", "Name 1", 1000));
+		listProduct.add(new Product("p2", "Name 2", 2000));
+		listProduct.add(new Product("p3", "Name 3", 3000));
+		jsonData.put("lp", listProduct);
+		return SUCCESS;
+	}
+
+}

@@ -38,19 +38,19 @@ CREATE TABLE IF NOT EXISTS `game` (
 
   `Player1` int(11) NOT NULL,
 
-  `Card1` char(30) NOT NULL,
+  `Player1Card1` char(30) NOT NULL,
 
-  `Card2` char(30) NOT NULL,
-  `BetCard2` DECIMAL(4,2) NOT NULL,
+  `Player1Card2` char(30) NOT NULL,
+  `Player1BetCard2` DECIMAL(4,2) NOT NULL,
 
-  `Card3` char(30) NOT NULL,
-  `BetCard3` DECIMAL(4,2) NOT NULL,
+  `Player1Card3` char(30) NOT NULL,
+  `Player1BetCard3` DECIMAL(4,2) NOT NULL,
 
-  `Card4` char(30) NOT NULL,
-  `BetCard4` DECIMAL(4,2) NOT NULL,
+  `Player1Card4` char(30) NOT NULL,
+  `Player1BetCard4` DECIMAL(4,2) NOT NULL,
 
-  `Card5` char(30) NOT NULL,
-  `BetCard5` DECIMAL(4,2) NOT NULL,
+  `Player1Card5` char(30) NOT NULL,
+  `Player1BetCard5` DECIMAL(4,2) NOT NULL,
 
   `TotalBetForWinner` DECIMAL(6,2) NOT NULL,
 
@@ -60,6 +60,24 @@ CREATE TABLE IF NOT EXISTS `game` (
 	
 
   `Player2` int(11) NOT NULL,
+
+
+  `Player2Card1` char(30) NOT NULL,
+
+  `Player2Card2` char(30) NOT NULL,
+  `Player1BetCard2` DECIMAL(4,2) NOT NULL,
+
+  `Player2Card3` char(30) NOT NULL,
+  `Player1BetCard3` DECIMAL(4,2) NOT NULL,
+
+  `Player2Card4` char(30) NOT NULL,
+  `Player1BetCard4` DECIMAL(4,2) NOT NULL,
+
+  `Player2Card5` char(30) NOT NULL,
+  `Player1BetCard5` DECIMAL(4,2) NOT NULL,
+
+
+
   `GameStatus` int(11) NOT NULL,
   `SameState` blob NOT NULL,
   `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

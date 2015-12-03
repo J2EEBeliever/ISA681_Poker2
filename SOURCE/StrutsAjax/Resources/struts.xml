@@ -50,6 +50,22 @@
 			</result>
 		</action>
 		
+		
+		
+		<action name="joinGame2" class="controller.AjaxAction" method="joinGame2">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		
+		<action name="joinGameNow" class="controller.AjaxAction" method="joinGameNow">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		
 		<action name="joinGame" class="controller.AjaxAction" method="joinGame">
 			<result type="json">
 				<param name="root">jsonData</param>
