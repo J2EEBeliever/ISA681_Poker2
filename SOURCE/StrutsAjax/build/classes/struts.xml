@@ -64,13 +64,30 @@
 				<param name="root">jsonData</param>
 			</result>
 		</action>
-		
-		
-		<action name="joinGame" class="controller.AjaxAction" method="joinGame">
+
+
+		<action name="raise" class="controller.AjaxAction" method="raise">
 			<result type="json">
 				<param name="root">jsonData</param>
 			</result>
 		</action>
+		
+		
+
+		<action name="waitForTurnOrGameToStart" class="controller.AjaxAction" method="waitForTurnOrGameToStart">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		<!--   action name="joinGame" class="controller.AjaxAction" method="joinGame">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action -->
 		
 		
 	</package>
