@@ -5,6 +5,8 @@
  */
 package ISA681.data;
 
+import java.util.List;
+
 /**
  *
  * @author bwoltemate
@@ -16,4 +18,7 @@ public interface dataconnection {
     public Session getSession(String Token);
     public void revokeSession(int SessionID);
     public void revokeUserSession(int UserID);
+    public List<Game> getOpenGames();
+    public void addGame(int Player1ID, String GameName);
+    
 }

@@ -24,7 +24,8 @@
          this could also be a redirectAction type. -->
     <result name="loginRedirect" type="redirect">/doLogin</result>
     <result name="SessionExpiredRedirect" type="redirect">/showLogin</result>
-    <result name="mainRedirect" type="redirect">/showMain</result>
+   <result name="gameRedirect" type="redirect">/showGames</result>
+    <!--  <result name="mainRedirect" type="redirect">/showMain</result> -->
 </global-results>
        <action name="showLogin">
         <result>index.jsp</result>
@@ -33,14 +34,18 @@
        <action name="doLogin" class="ISA681Poker.Login">
         <result name="input">index.jsp</result>
         <result name="error">index.jsp</result>
-        <result>/WEB-INF/main.jsp</result>
         </action>
+        
         <action name="showLogin">
         <result>index.jsp</result>
         </action>
         
-         <action name="showMain" class="ISA681Poker.showMain">
+      <!--   <action name="showMain" class="ISA681Poker.showMain">
         <result>/WEB-INF/main.jsp</result>
+        </action>-->
+        
+            <action name="showGames" class="ISA681Poker.ListGames">
+        <result>/WEB-INF/gameselection.jsp</result>
         </action>
         <action name="showLogin">
         <result>index.jsp</result>

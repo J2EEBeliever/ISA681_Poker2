@@ -41,37 +41,50 @@ public class hangleSession extends AbstractInterceptor{
         Cookie HMACCookie = new Cookie("temp2","temp");
         dataconnection connection = new MySQLConnection();
         UUID token = null;
-         String HMAC = "";
-         Session userSession;
-         for(Cookie c : servletRequest.getCookies()) 
-         {
-            switch (c.getName()) {
-                case "PokerToken":
-                   token = UUID.fromString(c.getValue());
-                   tokenCookie = c;
-                    break;
-                case "TokenHMAC":
-                    HMAC = c.getValue();
-                    HMACCookie = c;
-                    break;
-            }
+        String HMAC = "";
+        Session userSession;
+        if (servletRequest.getCookies() != null)
+            for(Cookie c : servletRequest.getCookies()) 
+            {
+                switch (c.getName()) 
+                {
+                    case "PokerToken":
+                        token = UUID.fromString(c.getValue());
+                        tokenCookie = c;
+                        break;
+                    case "TokenHMAC":
+                        HMAC = c.getValue();
+                        HMACCookie = c;
+                        break;
+                }
         }
-         if(token != null)
+         //If the get cookies is null or if there is no Token cookie/HMAC cookie or if the
+         //User ID is not in  the session
+        if(token != null && HMAC != null && Servletsession.get("UserID") != null)
             userSession = connection.getSession(token.toString());
-         else
-             return "SessionExpiredRedirect";
-         
-         String recalculatedHMAC = CipherUtils.createHMACSHA256(userSession.getToken(),userSession.getTokenRand().toString());
-        if(Servletsession.get("UserID") != null)
-         if(HMAC.equals(recalculatedHMAC) && userSession.getUserID() == (int)Servletsession.get("UserID") && (userSession.getCurrentTime() - userSession.getTimestamp()) < RandomContainerEnum.sessionTimeout)
+        else
         {
-              tokenCookie.setMaxAge(0);
+            tokenCookie.setMaxAge(0);
+            HMACCookie.setMaxAge(0);
+            tokenCookie.setValue("");
+            HMACCookie.setValue("");
+            servletResponse.addCookie(tokenCookie);
+            servletResponse.addCookie(HMACCookie);
+            Servletsession.clear();
+            return "SessionExpiredRedirect";
+         }
+         
+        String recalculatedHMAC = CipherUtils.createHMACSHA256(userSession.getToken(),userSession.getTokenRand().toString());
+       
+        if(HMAC.equals(recalculatedHMAC) && userSession.getUserID() == (int)Servletsession.get("UserID") && (userSession.getCurrentTime() - userSession.getTimestamp()) < RandomContainerEnum.sessionTimeout)
+        {
+            tokenCookie.setMaxAge(0);
             HMACCookie.setMaxAge(0);
             servletResponse.addCookie(tokenCookie);
             servletResponse.addCookie(HMACCookie); 
             tokenCookie.setMaxAge(RandomContainerEnum.sessionTimeout);
-             tokenCookie.setHttpOnly(true);
-             HMACCookie.setMaxAge(RandomContainerEnum.sessionTimeout);
+            tokenCookie.setHttpOnly(true);
+            HMACCookie.setMaxAge(RandomContainerEnum.sessionTimeout);
             HMACCookie.setHttpOnly(true);
             servletResponse.addCookie(tokenCookie);
             servletResponse.addCookie(HMACCookie);
@@ -85,26 +98,11 @@ public class hangleSession extends AbstractInterceptor{
             HMACCookie.setValue("");
             servletResponse.addCookie(tokenCookie);
             servletResponse.addCookie(HMACCookie);
+            Servletsession.clear();
             connection.revokeSession(userSession.getSessionID());
              return "SessionExpiredRedirect";
         }
-        else
-        {
-             tokenCookie.setMaxAge(0);
-            HMACCookie.setMaxAge(0);
-            tokenCookie.setValue("");
-            HMACCookie.setValue("");
-            servletResponse.addCookie(tokenCookie);
-            servletResponse.addCookie(HMACCookie);
-            connection.revokeSession(userSession.getSessionID());
-             return "SessionExpiredRedirect";
-        }
-        
-         
-         
-        
-    }
 
-    
-    
+    }
+  
 }

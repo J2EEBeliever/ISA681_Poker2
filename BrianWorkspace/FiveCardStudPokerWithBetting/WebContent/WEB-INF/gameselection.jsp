@@ -17,21 +17,13 @@
   <div class="header"><a href="#"><img src="" alt="Insert Logo Here" name="Insert_logo" width="180" height="90" id="Insert_logo" style="background-color: #C6D580; display:block;" /></a> 
     <!-- end .header --></div>
     <div class="content" align="center">
-        <s:form action="doLogin" method="POST">
-
-
-  <tr>
-   <td colspan="2">
-   <s:actionerror />
-   </td>
-  </tr>
-
-   <s:textfield name="userName" label="Login name"/>
-   <s:password name="Password" label="Password"/>
-  
-<s:submit value="Login" align="center"/>
-
-</s:form>
+       <table>
+ <s:iterator value="openGames" id="row">
+        <tr>
+             <td><s:property value="gameName"/></td>
+        </tr>
+    </s:iterator>
+</table>
  
    <!-- end .content --></div>
   <div class="footer">

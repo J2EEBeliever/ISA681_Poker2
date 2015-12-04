@@ -6,11 +6,14 @@
 package ISA681.data;
 
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -141,6 +144,56 @@ public class MySQLConnection implements dataconnection
         }
      
     }
+
+     @Override
+    public List<Game> getOpenGames() {
+       
+           List<Game> openGames = new ArrayList<>();
+        try {
+            
+          
+       
+          Connection conn = createConnection();
+        
+        
+       
+           PreparedStatement stmt = conn.prepareStatement("SELECT GameID, GameName, GameStatus, GameState From game WHERE GameState =0");
+          
+        
+       
+        ResultSet rs = stmt.executeQuery();
+        
+        while (rs.next())
+        {
+        
+           
+           openGames.add(new Game(rs.getInt("GameID"), rs.getString("GameName"), rs.getInt("GameStatus"), ""));
+        }
+       
+    }
+      catch (ClassNotFoundException|SQLException ex) {
+            Logger.getLogger(MySQLConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return openGames;
+    }
+        
+     @Override
+    public void addGame(int Player1ID, String GameName) {
+           try
+            {
+            Connection conn = createConnection();        
+            PreparedStatement stmt;
+            stmt = conn.prepareStatement("INSERT INTO game (GameName, Player1, GameStatus) VALUES (?, ?, 0))");
+            stmt.setString(1, GameName);
+            stmt.setInt(2, Player1ID);
+            stmt.executeUpdate();
+            // TODO code application logic here
+        } catch (ClassNotFoundException| SQLException e) {
+            Logger.getLogger(MySQLConnection.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+        
     
     
 private Connection createConnection() throws ClassNotFoundException, SQLException
@@ -152,6 +205,9 @@ private Connection createConnection() throws ClassNotFoundException, SQLExceptio
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fcs", "fcs_user", "7yXw8dDaNMBNBbW5");
             return conn;
 }
+
+   
+   
 
 
     

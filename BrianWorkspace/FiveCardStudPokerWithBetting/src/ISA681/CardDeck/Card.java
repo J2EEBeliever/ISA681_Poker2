@@ -22,6 +22,9 @@ public class Card {
        // this.cardNum = cardNum;
         switch (cardNum)
                 {
+            case 0:  Suit = "3";
+                     Rank = "N";
+                break;
             case 1:  Suit = "S";
                      Rank = "2";    
                 break;
@@ -178,6 +181,12 @@ public class Card {
             case 52: Suit = "H";
                      Rank = "A";    
                 break;
+            case 53: Suit = "1";
+                     Rank = "N";
+                break;
+            case 54: Suit = "2";
+                     Rank = "N";    
+                break;    
             default: throw new OutOfRangeException(cardNum,1,52);
                 
         }
@@ -210,6 +219,8 @@ public class Card {
             case "C": returnVal = "Clubs";
                 break;
             case "H": returnVal = "Hearts";
+                break;
+            case "N": returnVal = "Non";
                 break;
         }
         return returnVal;
