@@ -81,13 +81,136 @@ public class Game {
 		this.player2card3 = player2card3;
 	}
 	
+	public String getPlayer1BetAmountsForDisplay(User user) {
+
+		StringBuffer stringBuffer = new StringBuffer();
+		
+		
+		if (this.getPlayer1card1() == null) {
+			
+			return "";
+			
+		}
+		if (this.getPlayer1card1() != null ) {
+
+			stringBuffer.append("No Bet Card 1");
+			
+		}
+		
+		
+		
+		if (this.getPlayer1card2() != null) {
+
+			stringBuffer.append(" | " + this.getPlayer1betCard2());
+			
+			
+			
+		}
+		if (this.getPlayer1card3() != null) {
+
+			stringBuffer.append(" | " + this.getPlayer1betCard3());
+			
+			
+			
+		}
+		if (this.getPlayer1card4() != null) {
+
+			stringBuffer.append(" | " + this.getPlayer1betCard4());
+			
+			
+			
+		}
+		
+		
+		if (this.getPlayer1card5() != null ) {
+
+			stringBuffer.append(" | " + this.getPlayer1betCard5());
+			
+			
+			
+		}
+		else if (this.getTotalBetForWinner() != 0.00) {
+
+			stringBuffer.append(" | Total Bet For Winner = " + this.getTotalBetForWinner());
+			
+			
+			
+		}
+
+		return stringBuffer.toString();
+
+		
+	}
+	
+	public String getPlayer2BetAmountsForDisplay(User user) {
+
+		StringBuffer stringBuffer = new StringBuffer();
+		
+		
+		if (this.getPlayer2card1() == null) {
+			
+			return "";
+			
+		}
+		if (this.getPlayer2card1() != null ) {
+
+			stringBuffer.append("No Bet Card 1");
+			
+		}
+		
+		
+		
+		if (this.getPlayer2card2() != null) {
+
+			stringBuffer.append(" | " + this.getPlayer2betCard2());
+			
+			
+			
+		}
+		if (this.getPlayer2card3() != null) {
+
+			stringBuffer.append(" | " + this.getPlayer2betCard3());
+			
+			
+			
+		}
+		if (this.getPlayer2card4() != null) {
+
+			stringBuffer.append(" | " + this.getPlayer2betCard4());
+			
+			
+			
+		}
+		
+		
+		if (this.getPlayer2card5() != null ) {
+
+			stringBuffer.append(" | " + this.getPlayer2betCard5());
+			
+			
+			
+		}
+		else if (this.getTotalBetForWinner() != 0.00) {
+
+			stringBuffer.append(" | Total Bet For Winner = " + this.getTotalBetForWinner());
+			
+			
+			
+		}
+
+		return stringBuffer.toString();
+
+		
+	}
+	
+	
 	public String getPlayers1HandsForDisplay(User user) {
 		
 		StringBuffer stringBuffer = new StringBuffer();
 
 		if (this.getPlayer1card1() == null) {
 			
-			return null;
+			return "";
 			
 		}
 		if (this.getPlayer1card1() != null && user.getUserName().equals(player1.getUserName())) {
@@ -99,7 +222,7 @@ public class Game {
 		}
 		else if (this.getPlayer1card1() != null && !user.getUserName().equals(player1.getUserName())) {
 
-			stringBuffer.append("Player Card Face Down");
+			stringBuffer.append("Card Face Down");
 			
 			
 			
@@ -139,7 +262,7 @@ public class Game {
 		}
 		else if (this.getPlayer1card5() != null && !user.getUserName().equals(player1.getUserName())) {
 
-			stringBuffer.append("Player Card Face Down");
+			stringBuffer.append("Card Face Down");
 			
 			
 			
@@ -210,7 +333,7 @@ public class Game {
 		}
 		else if (this.getPlayer2card5() != null && !user.getUserName().equals(player2.getUserName())) {
 
-			stringBuffer.append("Player Card Face Down");
+			stringBuffer.append("Card Face Down");
 			
 			
 			
@@ -270,14 +393,85 @@ public class Game {
 		
 		
 	}
+	
+	public static final String GAME_COMPLETE = "GAME_COMPLETE";
+	
+	public static final String FINAL_CARD_BET = "FINAL_CARD_BET";
+	
+	public static final String UNKNOWN_STATE = "UNKNOWN_STATE";
+	
+		
+	public static final String CURRENT_TURN_PLAYER1 = "CURRENT_TURN_PLAYER1";
 
-	public void  makeBet (double bet1, double bet2) {
+	public static final String CURRENT_TURN_PLAYER2 = "CURRENT_TURN_PLAYER2";
+
+	
+	
+	public String whoseTurnIsIt() {
+		
+		if(this.getPlayer1betCard2() <= 0) {
+			
+			return CURRENT_TURN_PLAYER1;
+			
+		}
+		else if(this.getPlayer2betCard2() <= 0) {
+			
+			return CURRENT_TURN_PLAYER2;
+			
+		}
+		else if(this.getPlayer1betCard3() <= 0) {
+			
+			return CURRENT_TURN_PLAYER1;
+			
+		}
+		else if(this.getPlayer2betCard3() <= 0) {
+			
+			return CURRENT_TURN_PLAYER2;
+			
+		}
+		else if(this.getPlayer1betCard4() <= 0) {
+			
+			return CURRENT_TURN_PLAYER1;
+			
+		}
+		else if(this.getPlayer2betCard4() <= 0) {
+			
+			return CURRENT_TURN_PLAYER2;
+			
+		}
+		else if(this.getPlayer1betCard5() <= 0) {
+			
+			return CURRENT_TURN_PLAYER1;
+			
+		}
+		else if(this.getPlayer2betCard5() <= 0) {
+			
+			return CURRENT_TURN_PLAYER2;
+			
+		}
+		else if(this.getTotalBetForWinner() <= 0) {
+			
+			return FINAL_CARD_BET;
+			
+		}
+		else if(this.getTotalBetForWinner() > 0) {
+			
+			return GAME_COMPLETE;
+			
+		}
+
+		
+		return "UNKNOWN_STATE";
+				
+		
+	}
+
+	public void  player1makeBet (double bet1) {
 		
 		if (this.getPlayer1card5() != null) {
 			
 			this.setPlayer1betCard5(bet1);
 			
-			this.setPlayer2betCard5(bet2);
 			
 			
 		}
@@ -286,7 +480,6 @@ public class Game {
 			
 			this.setPlayer1betCard4(bet1);
 			
-			this.setPlayer2betCard4(bet2);
 			
 			
 		}
@@ -294,13 +487,49 @@ public class Game {
 			
 			this.setPlayer1betCard3(bet1);
 			
-			this.setPlayer2betCard3(bet2);
 			
 			
 		}
 		else if (this.getPlayer1card2() != null) {
 			
 			this.setPlayer1betCard2(bet1);
+			
+			
+			
+		}
+		
+		
+		
+		
+	}
+
+
+	public void  player2makeBet (double bet2) {
+		
+		if (this.getPlayer2card5() != null) {
+			
+			
+			this.setPlayer2betCard5(bet2);
+			
+			
+		}
+
+		else if (this.getPlayer2card4() != null) {
+			
+			
+			this.setPlayer2betCard4(bet2);
+			
+			
+		}
+		else if (this.getPlayer2card3() != null) {
+			
+			
+			this.setPlayer2betCard3(bet2);
+			
+			
+		}
+		else if (this.getPlayer2card2() != null) {
+			
 			
 			this.setPlayer2betCard2(bet2);
 			
@@ -312,7 +541,7 @@ public class Game {
 		
 	}
 
-
+	
 	
 
 

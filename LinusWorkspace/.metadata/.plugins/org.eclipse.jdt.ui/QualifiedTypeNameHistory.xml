@@ -19,4 +19,5 @@
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="deck.cards.DeckOfCards"/>
 <fullyQualifiedTypeName name="deck.cards.PlayingCard"/>
+<fullyQualifiedTypeName name="javax.websocket.Session"/>
 </qualifiedTypeNameHistroy>

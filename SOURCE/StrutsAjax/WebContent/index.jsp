@@ -104,6 +104,60 @@ function playerContent() {
 	});
 }
 
+function raise() {
+
+	alert('In method raise()');
+	
+	var betAmount_ = document.getElementById('betAmount');
+	
+	alert('betAmount = ' + betAmount_.value);
+	
+	var betAmountFloat_ = parseFloat(betAmount.value);
+	
+	if(betAmountFloat_ <= 0 || betAmountFloat_ > 1.00  ) {
+		
+		alert('Bet Amount muset be greater than 0 and less than equal to 1.00 dollar.');
+		
+		
+		return;
+		
+	}
+
+	
+	$.ajax({
+		type : "POST",
+		url : '${pageContext.request.contextPath}/raise.html?betAmount=' + betAmountFloat_,
+		success : function(response) {
+			$('.result').html(response);
+		}
+	});
+	
+	setTimeout(waitForTurnOrGameToStart,5000)
+
+	
+}
+
+function waitForTurnOrGameToStart() {
+
+//	alert('In method waitForTurnOrGameToStart()');
+	
+//	alert('waitForTurnOrGameToStart JavaScript function');
+	
+	
+	
+	$.ajax({
+		type : "POST",
+		url : '${pageContext.request.contextPath}/waitForTurnOrGameToStart.html',
+		success : function(response) {
+			$('.result').html(response);
+		}
+	});
+	
+	setTimeout(waitForTurnOrGameToStart,5000)
+
+	
+}
+
 
 $(document).ready(function() {
 
@@ -250,19 +304,24 @@ $(document).ready(function() {
 </head>
 
 
-<body onload_bk "setTimeout(playerContent,5000)">
+<body onloadbk="setTimeout(playActiveGame,5000)">
 
 	<input type="button" value="Start a new Game" id="buttonNewGame">
 	<!-- input type="button" value="Join an existing Game" id="buttonJoinGame" -->
 	<input type="button" value="Join an existing Game" id="buttonJoinGame2">
+	
+	<BR><BR><input type="button" name = "raise" value = "Raise" id = "raise"  onclick="raise()">
+	Please only bet between 0 dollars and up to 1 dollar with cents: <input type = "text" name = "betAmount"  value = "0" id = "betAmount"><BR>
 
 
-	<input type="button" value="Hello" id="buttonHello">
+	<!--   input type="button" value="Hello" id="buttonHello">
 	<input type="button" value="Sum" id="buttonSum">
 	<input type="button" value="Find" id="buttonFind">
-	<input type="button" value="Find All" id="buttonFindAll">
+	<input type="button" value="Find All" id="buttonFindAll" -->
 	<br>
-	<div class="result"></div>
+	<div class="result"></div><BR><BR>
+	<div class="result2"></div>
+
 
 </body>
 </html>
