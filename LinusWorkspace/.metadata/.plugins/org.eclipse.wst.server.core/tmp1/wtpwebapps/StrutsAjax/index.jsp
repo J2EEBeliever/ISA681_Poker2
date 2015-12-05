@@ -139,9 +139,9 @@ function raise() {
 
 function waitForTurnOrGameToStart() {
 
-	alert('In method waitForTurnOrGameToStart()');
+//	alert('In method waitForTurnOrGameToStart()');
 	
-	alert('waitForTurnOrGameToStart JavaScript function');
+//	alert('waitForTurnOrGameToStart JavaScript function');
 	
 	
 	
@@ -304,7 +304,7 @@ $(document).ready(function() {
 </head>
 
 
-<body onload "setTimeout(playActiveGame,5000)">
+<body onloadbk="setTimeout(playActiveGame,5000)">
 
 	<input type="button" value="Start a new Game" id="buttonNewGame">
 	<!-- input type="button" value="Join an existing Game" id="buttonJoinGame" -->
