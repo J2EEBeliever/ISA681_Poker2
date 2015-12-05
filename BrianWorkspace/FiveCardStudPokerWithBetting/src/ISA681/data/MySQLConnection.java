@@ -157,7 +157,7 @@ public class MySQLConnection implements dataconnection
         
         
        
-           PreparedStatement stmt = conn.prepareStatement("SELECT GameID, GameName, GameStatus, GameState From game WHERE GameState =0");
+           PreparedStatement stmt = conn.prepareStatement("SELECT GameID, GameName, GameStatus, GameState From game WHERE GameStatus =0");
           
         
        
@@ -183,7 +183,7 @@ public class MySQLConnection implements dataconnection
             {
             Connection conn = createConnection();        
             PreparedStatement stmt;
-            stmt = conn.prepareStatement("INSERT INTO game (GameName, Player1, GameStatus) VALUES (?, ?, 0))");
+            stmt = conn.prepareStatement("INSERT INTO game (GameName, Player1, GameStatus) VALUES (?, ?, 0)");
             stmt.setString(1, GameName);
             stmt.setInt(2, Player1ID);
             stmt.executeUpdate();
@@ -193,7 +193,26 @@ public class MySQLConnection implements dataconnection
         }
     }
 
+   @Override
+    public void joinGame(int Player2ID, int gameID, String gameState) {
+        try
+    { 
+        Connection conn = createConnection();  
+        PreparedStatement stmt;
+        stmt = conn.prepareStatement("UPDATE game SET Player2 = ?, GameStatus=1, GameState=? WHERE gameID = ?");
+        stmt.setInt(1, Player2ID);
+        Blob blob = conn.createBlob();
+        blob.setBytes(1, gameState.getBytes());
+        stmt.setBlob(2, blob);
+        stmt.setInt(3, gameID);
+        stmt.executeUpdate();
+    }
+      catch (ClassNotFoundException|SQLException ex) {
+            Logger.getLogger(MySQLConnection.class.getName()).log(Level.SEVERE, null, ex);
+           
+        }
         
+    }     
     
     
 private Connection createConnection() throws ClassNotFoundException, SQLException
@@ -205,6 +224,8 @@ private Connection createConnection() throws ClassNotFoundException, SQLExceptio
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/fcs", "fcs_user", "7yXw8dDaNMBNBbW5");
             return conn;
 }
+
+    
 
    
    

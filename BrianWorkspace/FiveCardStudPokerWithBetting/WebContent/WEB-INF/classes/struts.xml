@@ -36,8 +36,17 @@
         <result name="error">index.jsp</result>
         </action>
         
-        <action name="showLogin">
-        <result>index.jsp</result>
+        
+        <action name="addGame" class="ISA681Poker.AddGame">
+        <result name="success">/WEB-INF/main.jsp</result>
+        <result name="input">gameselection.jsp</result>
+        <result name="error">gameselection.jsp</result>
+        </action>
+        
+        <action name="joinGame" class="ISA681Poker.JoinGame">
+        <result name="success">/WEB-INF/main.jsp</result>
+        <result name="input">gameselection.jsp</result>
+        <result name="error">gameselection.jsp</result>
         </action>
         
       <!--   <action name="showMain" class="ISA681Poker.showMain">
@@ -77,7 +86,7 @@
          this could also be a redirectAction type. -->
     <result name="loginRedirect" type="redirect">/doLogin</result>
     <result name="SessionExpiredRedirect" type="redirect">/showLogin</result>
-    <result name="mainRedirect" type="redirect">/showMain</result>
+  
 </global-results>
 <action class="ISA681Poker.jsonGetHand" method="execute" name="GetHandJSON">
 <result type="json">

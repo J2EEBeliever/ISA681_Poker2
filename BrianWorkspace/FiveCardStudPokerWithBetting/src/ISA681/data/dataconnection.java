@@ -20,5 +20,6 @@ public interface dataconnection {
     public void revokeUserSession(int UserID);
     public List<Game> getOpenGames();
     public void addGame(int Player1ID, String GameName);
+    public void joinGame(int Player2ID, int gameID, String gameState);
     
 }
