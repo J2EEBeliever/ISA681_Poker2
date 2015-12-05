@@ -1,7 +1,14 @@
 package cipher;
 
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.Mac;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.cli.CommandLine;
@@ -9,54 +16,53 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Hex;
 
 public class CipherUtils
 {
 
-    private static byte[] key = {
+    private static final byte[] key = {
             0x74, 0x68, 0x69, 0x73, 0x49, 0x73, 0x41, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x4b, 0x65, 0x79
     };//"thisIsASecretKey";
 
-    public static String encrypt(String strToEncrypt)
+    public static String encrypt(String strToEncrypt) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException
     {
-        try
-        {
+       
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
             final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             final String encryptedString = Base64.encodeBase64String(cipher.doFinal(strToEncrypt.getBytes()));
             return encryptedString;
-        }
-        catch (Exception e)
-        {
-           e.printStackTrace();
-        }
-        return null;
+     
 
     }
 
-    public static String decrypt(String strToDecrypt)
+    public static String decrypt(String strToDecrypt) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException
     {
-        try
-        {
+      
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
             final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
             final String decryptedString = new String(cipher.doFinal(Base64.decodeBase64(strToDecrypt)));
             return decryptedString;
-        }
-        catch (Exception e)
-        {
-          e.printStackTrace();
-
-        }
-        return null;
+        
+    
+    }
+    
+    public static String createHMACSHA256(String data, String key) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException
+    {
+       Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
+       SecretKeySpec secret_key = new SecretKeySpec(key.getBytes("UTF-8"), "HmacSHA256");
+       sha256_HMAC.init(secret_key);
+       return Hex.encodeHexString(sha256_HMAC.doFinal(data.getBytes("UTF-8")));
+ 
     }
 
 
-    public static void main(String args[])
+    public static void main(String args[]) throws ParseException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException
     {
 
         CommandLineParser parser = new PosixParser();
@@ -67,8 +73,7 @@ public class CipherUtils
         options.addOption(help);
         options.addOption(encrypt);
         options.addOption(decrypt);
-        try
-        {
+       
             CommandLine cmd = parser.parse(options, args);
             if (cmd.hasOption("encrypt"))
             {
@@ -89,11 +94,8 @@ public class CipherUtils
                 HelpFormatter formatter = new HelpFormatter();
                 formatter.printHelp("[-h] [-encrypt ]", options);
             }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        
+      
 
     }
 }

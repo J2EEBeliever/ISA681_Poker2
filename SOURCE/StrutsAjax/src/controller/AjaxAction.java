@@ -21,7 +21,7 @@ import entities.*;
 
 import java.util.*;
 
-public class AjaxAction extends ActionSupport {
+public class AjaxAction extends ActionSupport implements LoginRequired {
 
 	/*
 	 * Author: Linus Freeman
@@ -889,11 +889,13 @@ public class AjaxAction extends ActionSupport {
 
 					
 					
-					DeckOfCards deckOfCards = new DeckOfCards();
+					DeckOfCards deckOfCards = RandomContainerEnum.INSTANCE.continuousDeck.getDeck();
 					
 					game.setDeckOfCards(deckOfCards);
 					
 					deckOfCards.shuffleDeckCards();
+                                        
+                                        RandomContainerEnum.INSTANCE.continuousDeck.setDeck(deckOfCards);
 					
 					Map<String,Game> currentGamesBeingPlayed2 = new HashMap<String,Game>();
 					

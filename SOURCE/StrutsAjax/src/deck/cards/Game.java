@@ -286,7 +286,7 @@ public class Game {
 		}
 		if (this.getPlayer2card1() != null && user.getUserName().equals(player2.getUserName())) {
 
-			stringBuffer.append(this.getPlayer1card1().toString());
+			stringBuffer.append(this.getPlayer2card1().toString());
 			
 			
 			

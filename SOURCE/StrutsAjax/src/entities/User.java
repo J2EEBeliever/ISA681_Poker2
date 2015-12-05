@@ -14,6 +14,14 @@ public class User {
 	  private String userName;
 	  private String password;
 	  private Timestamp timestamp;
+          
+        public User (int userID, String userName, String password, Timestamp timestamp)
+        {
+        this.userID = userID;
+        this.userName = userName;
+        this.password = password;
+        this.timestamp = timestamp;
+        }
 	  
 	public int getUserID() {
 		return userID;

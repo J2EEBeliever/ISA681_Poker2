@@ -1,8 +1,10 @@
 package deck.cards;
 
+import entities.RandomContainerEnum;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Stack;
 
 import org.apache.log4j.Logger;
 
@@ -41,6 +43,20 @@ public class DeckOfCards {
 		
 	}
 
+        private DeckOfCards(ArrayList<PlayingCard> deck) 
+        {
+		
+		super();
+		
+		//this.deckOfCards = deckOfCards;
+			
+		processCardSuite(deckOfCards, "Spades" );
+		processCardSuite(deckOfCards, "Clubs" );
+		processCardSuite(deckOfCards, "Diamonds" );
+		processCardSuite(deckOfCards, "Hearts" );
+                this.deckOfCards = deck;
+        }
+		
 	public static void main(String[] args) {
 		
 		DeckOfCards deckOfCards = new DeckOfCards();
@@ -98,7 +114,7 @@ public class DeckOfCards {
 		
 		//Collections.shuffle(Arrays.asList(deckOfCards));
 		
-		Collections.shuffle(deckOfCards);
+		Collections.shuffle(deckOfCards,RandomContainerEnum.INSTANCE.RandomContainer.getRandom());
 		
 	}
 	
@@ -144,6 +160,11 @@ public class DeckOfCards {
 		
 		
 	}
+        
+        public DeckOfCards Copy()
+    {
+        return new DeckOfCards((ArrayList<PlayingCard>)deckOfCards.clone());
+    }
 				
 				
 		
