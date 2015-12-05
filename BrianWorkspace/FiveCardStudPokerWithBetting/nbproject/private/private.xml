@@ -3,21 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/jsonGetHand.java</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/WEB-INF/classes/logging.properties</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/hangleSession.java</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/WEB-INF/main.jsp</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681/data/Session.java</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/playingCards.ui.css</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/playingCards.js</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/Login.java</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/img/N3.gif</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/playingCards.ui.js</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/LoginRequired.java</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681/CardDeck/Card.java</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/WEB-INF/classes/log4j.properties</file>
-            <file>file:/C:/Users/bwoltemate/Documents/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681/CardDeck/DeckOfCards.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/Login.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/WEB-INF/gameselection.jsp</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/index.jsp</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681/data/Game.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/WEB-INF/classes/struts.xml</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681/data/Session.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/playingCards.ui.js</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/hangleSession.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/ListGames.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681/data/MySQLConnection.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/LoginRequired.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/JoinGame.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/WEB-INF/main.jsp</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681/data/dataconnection.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/AddGame.java</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/WebContent/playingCards.js</file>
+            <file>file:/Users/b1wolt/ISA681_Poker2/BrianWorkspace/FiveCardStudPokerWithBetting/src/ISA681Poker/jsonGetHand.java</file>
         </group>
     </open-files>
 </project-private>

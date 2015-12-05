@@ -81,7 +81,7 @@
     <br />
     <h2>Drawn Cards</h2>
     <div id="yourHand"></div>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="playingCards.js"></script>
     <script type="text/javascript" src="playingCards.ui.js"></script>
     <script type="text/javascript">
