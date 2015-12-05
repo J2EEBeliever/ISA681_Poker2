@@ -71,7 +71,7 @@ if (Array.indexOf === undefined) {
         this.cards = [];
         
         // populate draw pile
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < hand.hand.length; i++) {
           
                     l = this.cards.length;
                     

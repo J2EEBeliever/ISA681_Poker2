@@ -43,7 +43,7 @@ public class jsonGetHand extends ActionSupport implements LoginRequired
         Hand1.add(deck.draw());
         Hand2.add(deck.draw());
     }
-
+        Hand1.add(new Card(0));
     pokerHands.setDeckOfCards(deck);
     pokerHands.setPlayer1Hand1(Hand1);
     pokerHands.setPlayer2Hand2(Hand2);

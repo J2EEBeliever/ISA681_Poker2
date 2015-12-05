@@ -48,7 +48,7 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
           
           
       }
-      User inComingUser = connection.getUserData(UserName);
+      User inComingUser = connection.getUserData(UserName.toLowerCase());
       if (inComingUser.getUserID() == -1)
       {
           addActionError("Invalid user name or password! Please try again!");
@@ -88,8 +88,8 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
           addActionError("Invalid user name or password! Please try again!");
           return ERROR;
       }
-       
-      return SUCCESS;
+       return "gameRedirect";
+      //return "mainRedirect";
        
   }
      
