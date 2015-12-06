@@ -57,12 +57,25 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 	public void setB(int b) {
 		this.b = b;
 	}
-	
+
 	public void waitForTurnOrGameToStart() {
 		
-		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+/*
+ * Pre-conditions: 
+ * 
+ * 		User object is in session scope.  userGameId is in session scope.  Game is in hash map in global scope. Game has been already started.
+ * 
+ * Post-conditions:
+ * 
+ * 		Each user has each players cards redisplayed and next players turn is initiated.
+ * 		
+ */
 
-		User user = (User) httpSession.getAttribute("user");
+//		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+//
+//		User user = (User) httpSession.getAttribute("user");
+		
+		User user = Game.getUserObjectFromSessionScope();
 
 		if (user == null) {
 
@@ -86,16 +99,16 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		}
 
-		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
-
-		List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
+//		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+//
+//		List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
 		
-
-
-		if (games == null) {
+		String userGameId = Game.getGameIdFromSessionScope();
+		
+		if(userGameId == null) {
 
 			log.debug(
-					"\n\nDebug: In method waitForTurnOrGameToStart() and [Games] does not exist in application scope and exiting method.\n\n");
+					"\n\nDebug: In method waitForTurnOrGameToStart() and [userGameId] does not exist session scope.\n\n");
 
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/plain;charset=utf-8");
@@ -107,45 +120,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				e.printStackTrace();
 				return;
 			}
-			out.println("No curent existing Games available to Join.");
-			out.flush();
-
-			return;
-		}
-		
-		Game game = (Game)httpSession.getAttribute("Game");
-
-		
-		//ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
-		
-		int gameNumber = game.getGameNumber();
-		
-		Map<String,Game> currentGamesBeingPlayed1 = (Map<String,Game>)servletContext.getAttribute("currentGamesBeingPlayed");
-		
-		Game gameTemp = null;
-
-		
-		
-		
-		if (currentGamesBeingPlayed1 == null) {
-
-			log.debug(
-					"\n\nDebug: In method waitForTurnOrGameToStart() and [Application] scope [currentGamesBeingPlayed] does not  exist. \n\n");
-
-			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setContentType("text/plain;charset=utf-8");
-			PrintWriter out;
-			try {
-				out = response.getWriter();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return;
-			}
-			out.println(
-					
-					"<BR><BR>Debug: In method waitForTurnOrGameToStart() and [Application] scope [currentGamesBeingPlayed] does not  exist. Please start new game orjoin an existing game.<BR><BR>");
-
+			out.println("<BR>Debug: In method waitForTurnOrGameToStart() and [userGameId] does not exist session scope.<BR>");
 			out.flush();
 
 			return;
@@ -153,17 +128,12 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			
 		}
 		
-		
-		Game gameApplicationScope_ = currentGamesBeingPlayed1.get("" +gameNumber );
-		
-		
-		//Game appSoceGame = currentGamesBeingPlayed1.get("" + game.getGameNumber());
-		
-		if(gameApplicationScope_ == null) {
-			
-			
+		Game game = Game.getGameFromApplicationScopeGameHashMap(userGameId);
+
+		if (game == null) {
+
 			log.debug(
-					"\n\nDebug: In method waitForTurnOrGameToStart() and [Application] scope [currentGamesBeingPlayed] does not contain session  scope game number. \n\n");
+					"\n\nDebug: In method waitForTurnOrGameToStart() and [Games] does not exist in hash map in application scope. Exiting method.\n\n");
 
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/plain;charset=utf-8");
@@ -175,136 +145,201 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				e.printStackTrace();
 				return;
 			}
-			out.println(
-					
-					"<BR><BR>Debug: In method waitForTurnOrGameToStart() and [Application] scope [currentGamesBeingPlayed] does not contain session  scope game number. Please start new game orjoin an existing game.<BR><BR>");
-
+			out.println("Debug: In method waitForTurnOrGameToStart() and [Games] does not exist in hash map in application scope. Exiting method");
 			out.flush();
 
 			return;
-			
 		}
 
-//		if (game.getPlayer1().getUserName().equals(user.getUserName())  ) {
-			
-			
-			
-			servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
-			
-			httpSession.setAttribute("Game", game);
+//		Game game = (Game) httpSession.getAttribute("Game");
+//
+//		// ServletContext servletContext =
+//		// ServletActionContext.getRequest().getServletContext();
+//
+//		int gameNumber = game.getGameNumber();
+//
+//		Map<String, Game> currentGamesBeingPlayed1 = (Map<String, Game>) servletContext
+//				.getAttribute("currentGamesBeingPlayed");
+//
+//		Game gameTemp = null;
 
-			
-			log.debug(
-					"\n\nDebug: In method waitForTurnOrGameToStart() Player 1 has bet and now it is player 2's turn.\n\n");
+//		if (game == null) {
+//
+//			log.debug(
+//					"\n\nDebug: In method waitForTurnOrGameToStart() and [Application] scope [currentGamesBeingPlayed] does not  exist. \n\n");
+//
+//			HttpServletResponse response = ServletActionContext.getResponse();
+//			response.setContentType("text/plain;charset=utf-8");
+//			PrintWriter out;
+//			try {
+//				out = response.getWriter();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//				return;
+//			}
+//			out.println(
+//
+//					"<BR><BR>Debug: In method waitForTurnOrGameToStart() and [Application] scope [currentGamesBeingPlayed] does not  exist. Please start new game orjoin an existing game.<BR><BR>");
+//
+//			out.flush();
+//
+//			return;
+//
+//		}
+//
+//		Game gameApplicationScope_ = currentGamesBeingPlayed1.get("" + gameNumber);
 
-			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setContentType("text/plain;charset=utf-8");
-			PrintWriter out;
-			try {
-				out = response.getWriter();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return;
-			}
+		// Game appSoceGame = currentGamesBeingPlayed1.get("" +
+		// game.getGameNumber());
 
-			out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: " + game.getPlayers1HandsForDisplay(user));
-			out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: " + game.getPlayer1BetAmountsForDisplay(user));
+//		if (game == null) {
+//
+//			log.debug(
+//					"\n\nDebug: In method waitForTurnOrGameToStart() and [Application] scope [currentGamesBeingPlayed] does not contain session  scope game number. \n\n");
+//
+//			HttpServletResponse response = ServletActionContext.getResponse();
+//			response.setContentType("text/plain;charset=utf-8");
+//			PrintWriter out;
+//			try {
+//				out = response.getWriter();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//				return;
+//			}
+//			out.println(
+//
+//					"<BR><BR>Debug: In method waitForTurnOrGameToStart() and [Application] scope [currentGamesBeingPlayed] does not contain session  scope game number. Please start new game orjoin an existing game.<BR><BR>");
+//
+//			out.flush();
+//
+//			return;
+//
+//		}
 
-			out.println("<BR>");
-			
-			out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: " + game.getPlayers2HandsForDisplay(user));
-			out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: " + game.getPlayer2BetAmountsForDisplay(user));
-			out.println("<BR>");
-			
-			String whoseTurnIsIt = game.whoseTurnIsIt();
-			
-			if(whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
-				out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
-				
-			}
-			else if(whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
-				out.println("<BR>It is now Player 2 " + game.getPlayer1().getUserName() + " Turn!");
-				
-			}
-			else if(whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
-				out.println("<BR>It is now Final Card Bet " + game.getPlayer1().getUserName() + " Turn!");
-				
-			}
-			else if(whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
-				out.println("<BR>The game is now coplete. ");
-				
-			}
-			else if(whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
-				out.println("<BR>The game is in amn unknown state. ");
-				
-			}
-			
+		// if (game.getPlayer1().getUserName().equals(user.getUserName()) ) {
 
-			
-			out.flush();
-			
-			log.debug(
-					"\n\nDebug: Exiting method waitForTurnOrGameToStart()\n\n");
+//		servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
+//
+//		httpSession.setAttribute("Game", game);
 
+//		log.debug(
+//				"\n\nDebug: In method waitForTurnOrGameToStart() Player 1 has bet and now it is player 2's turn.\n\n");
 
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/plain;charset=utf-8");
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return;
-			
-	//	}
+		}
 
+		out.println(
+				"<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: " + game.getPlayers1HandsForDisplay(user));
+		out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: "
+				+ game.getPlayer1BetAmountsForDisplay(user));
 
-		
-		
-		
-		
-		
-		
+		out.println("<BR>");
+
+		out.println(
+				"<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: " + game.getPlayers2HandsForDisplay(user));
+		out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: "
+				+ game.getPlayer2BetAmountsForDisplay(user));
+		out.println("<BR>");
+
+		String whoseTurnIsIt = game.whoseTurnIsIt();
+
+		if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
+			out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
+
+		} else if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
+			out.println("<BR>It is now Player 2 " + game.getPlayer1().getUserName() + " Turn!");
+
+		} else if (whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
+			out.println("<BR>It is now Final Card Bet " + game.getPlayer1().getUserName() + " Turn!");
+
+		} else if (whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
+			out.println("<BR>The game is now coplete. ");
+
+		} else if (whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
+			out.println("<BR>The game is in amn unknown state. ");
+
+		}
+
+		out.flush();
+
+		log.debug("\n\nDebug: Exiting method waitForTurnOrGameToStart()\n\n");
+
+		return;
+
+		// }
+
 	}
-		
-	
+
 	public void raise() {
-		
+
+		/*
+		 * Pre-conditions:
+		 * 
+		 * User object exists in session scope. userGameId exists in session
+		 * scope. Game object with userGameId exists in application scope hash
+		 * map.
+		 * 
+		 * Post-conditions:
+		 * 
+		 * Either player 1 (game.getPlayer1) user has just raised the ante or
+		 * player 2 (game.getPlayer2) has just called for the same amount
+		 * raised. If player 1 raises then its player 2's turn. If player 2
+		 * calls then two new cards are delt and it player 1's turn again to
+		 * raise or fold.
+		 * 
+		 */
+
 		log.debug("\n\nDebug: In method raise()\n\n");
 
 		HttpServletRequest request = ServletActionContext.getRequest();
-		
+
 		HttpSession httpSession = request.getSession();
-		
-		User user = (User) httpSession.getAttribute("user");
-		
+
+		// User user = (User) httpSession.getAttribute("user");
+
+		User user = Game.getUserObjectFromSessionScope();
+
 		if (user == null) {
 
-			log.debug(
+			log.debug("\n\nDebug: In method raise() and Session scope hss null for user object.  Please logon.\n\n");
+
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
+			out.println(
+
 					"\n\nDebug: In method raise() and Session scope hss null for user object.  Please logon.\n\n");
 
-			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setContentType("text/plain;charset=utf-8");
-			PrintWriter out;
-			try {
-				out = response.getWriter();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return;
-			}
-			out.println(
-					
-					"\n\nDebug: In method raise() and Session scope hss null for user object.  Please logon.\n\n");
-
 			out.flush();
 
 			return;
-			
-			
+
 		}
 
+		//Game game = (Game)httpSession.getAttribute("Game");
 		
-		Game game = (Game)httpSession.getAttribute("Game");
+		String userGameId = Game.getGameIdFromSessionScope();
 		
-		if(game == null) {
+		if(userGameId == null) {
 
-			log.debug(
-					"\n\nDebug: In method raise() and Session scope has no Game object. \n\n");
+			log.debug("\n\nDebug: In method raise() and userGameId is not in session scope. \n\n");
 
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/plain;charset=utf-8");
@@ -317,39 +352,20 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				return;
 			}
 			out.println(
-					
-					"<BR><BR>Debug: In method raise() and Session scope has no Game object. Please join a game.<BR><BR>");
+
+					"<BR><BR>Debug: In method raise() and userGameId is not in session scope.<BR><BR>");
 
 			out.flush();
 
 			return;
 			
-			
 		}
 		
-//		int gameNumber = game.getGameNumber();
-		
-//		HttpServletRequest request = ServletActionContext.getRequest().getServletContext().getAttribute("Games")
+		Game game = Game.getGameFromApplicationScopeGameHashMap(userGameId);
 
-//		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
-		
-//		List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
-		
-		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
-		
-		int gameNumber = game.getGameNumber();
-		
-		Map<String,Game> currentGamesBeingPlayed1 = (Map<String,Game>)servletContext.getAttribute("currentGamesBeingPlayed");
-		
-		Game gameTemp = null;
+		if (game == null) {
 
-		
-		
-		
-		if (currentGamesBeingPlayed1 == null) {
-
-			log.debug(
-					"\n\nDebug: In method raise() and [Application] scope [currentGamesBeingPlayed] does not  exist. \n\n");
+			log.debug("\n\nDebug: In method raise() and game does not exist in hash map in application scope. \n\n");
 
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/plain;charset=utf-8");
@@ -362,66 +378,98 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				return;
 			}
 			out.println(
-					
-					"<BR><BR>Debug: In method raise() and [Application] scope [currentGamesBeingPlayed] does not  exist. Please start new game orjoin an existing game.<BR><BR>");
+
+					"<BR><BR>Debug: In method raise() and game does not exist in hash map in application scope.<BR><BR>");
 
 			out.flush();
 
 			return;
-			
-			
-		}
-		
-		
-		Game gameApplicationScope_ = currentGamesBeingPlayed1.get("" +gameNumber );
-		
-		
-		//Game appSoceGame = currentGamesBeingPlayed1.get("" + game.getGameNumber());
-		
-		if(gameApplicationScope_ == null) {
-			
-			
-			log.debug(
-					"\n\nDebug: In method raise() and [Application] scope [currentGamesBeingPlayed] does not contain session  scope game number. \n\n");
 
-			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setContentType("text/plain;charset=utf-8");
-			PrintWriter out;
-			try {
-				out = response.getWriter();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return;
-			}
-			out.println(
-					
-					"<BR><BR>Debug: In method raise() and [Application] scope [currentGamesBeingPlayed] does not contain session  scope game number. Please start new game orjoin an existing game.<BR><BR>");
-
-			out.flush();
-
-			return;
-			
 		}
 
-		
-		
+		// int gameNumber = game.getGameNumber();
+
+		// HttpServletRequest request =
+		// ServletActionContext.getRequest().getServletContext().getAttribute("Games")
+
+		// ServletContext servletContext =
+		// ServletActionContext.getRequest().getServletContext();
+
+		// List<Game> games = (ArrayList<Game>)
+		// servletContext.getAttribute("Games");
+
+
+//		if (currentGamesBeingPlayed1 == null) {
+//
+//			log.debug(
+//					"\n\nDebug: In method raise() and [Application] scope [currentGamesBeingPlayed] does not  exist. \n\n");
+//
+//			HttpServletResponse response = ServletActionContext.getResponse();
+//			response.setContentType("text/plain;charset=utf-8");
+//			PrintWriter out;
+//			try {
+//				out = response.getWriter();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//				return;
+//			}
+//			out.println(
+//
+//					"<BR><BR>Debug: In method raise() and [Application] scope [currentGamesBeingPlayed] does not  exist. Please start new game orjoin an existing game.<BR><BR>");
+//
+//			out.flush();
+//
+//			return;
+//
+//		}
+
+//		Game gameApplicationScope_ = currentGamesBeingPlayed1.get("" + gameNumber);
+
+		// Game appSoceGame = currentGamesBeingPlayed1.get("" +
+		// game.getGameNumber());
+
+//		if (gameApplicationScope_ == null) {
+//
+//			log.debug(
+//					"\n\nDebug: In method raise() and [Application] scope [currentGamesBeingPlayed] does not contain session  scope game number. \n\n");
+//
+//			HttpServletResponse response = ServletActionContext.getResponse();
+//			response.setContentType("text/plain;charset=utf-8");
+//			PrintWriter out;
+//			try {
+//				out = response.getWriter();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//				return;
+//			}
+//			out.println(
+//
+//					"<BR><BR>Debug: In method raise() and [Application] scope [currentGamesBeingPlayed] does not contain session  scope game number. Please start new game orjoin an existing game.<BR><BR>");
+//
+//			out.flush();
+//
+//			return;
+//
+//		}
+
 		String betAmount = request.getParameter("betAmount");
-		
+
 		double betAmountDouble = 0;
-		
+
 		try {
-		
-			if(betAmount == null || betAmount.equals("") || Double.parseDouble(betAmount) <= 0 || Double.parseDouble(betAmount) > 1) {
-				
-			}
-			else {
+
+			if (betAmount == null || betAmount.equals("") || Double.parseDouble(betAmount) <= 0
+					|| Double.parseDouble(betAmount) > 1) {
+
+			} else {
 				betAmountDouble = Double.parseDouble(betAmount);
 			}
-			
+
 		}
-		
-		catch(Exception e2) {
+
+		catch (Exception e2) {
 			e2.printStackTrace();
 
 			log.debug(
@@ -438,36 +486,26 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				return;
 			}
 			out.println(
-					
+
 					"<BR><BR>Debug: In method raise() processing [request] scope parameter 'betAmount'.  Try raising again.<BR><BR>");
 
 			out.flush();
 
 			return;
-		
+
 		}
-		
-		
 
-		//betAmountDouble
-		
-		
+		// betAmountDouble
 
-		if (game.getPlayer1().getUserName().equals(user.getUserName())  ) {
-			
-			
-			gameApplicationScope_.player1makeBet(betAmountDouble);
-			
-			
-			
-			
-			servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
-			
-			httpSession.setAttribute("Game", game);
+		if (game.getPlayer1().getUserName().equals(user.getUserName())) {
 
-			
-			log.debug(
-					"\n\nDebug: In method raise() Player 1 has bet and now it is player 2's turn.\n\n");
+			game.player1makeBet(betAmountDouble);
+
+//			servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
+//
+//			httpSession.setAttribute("Game", game);
+
+			log.debug("\n\nDebug: In method raise() Player 1 has bet and now it is player 2's turn.\n\n");
 
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/plain;charset=utf-8");
@@ -480,82 +518,73 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				return;
 			}
 
-			out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: " + game.getPlayers1HandsForDisplay(user));
-			out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: " + game.getPlayer1BetAmountsForDisplay(user));
+			out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: "
+					+ game.getPlayers1HandsForDisplay(user));
+			out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: "
+					+ game.getPlayer1BetAmountsForDisplay(user));
 
 			out.println("<BR>");
-			
-			out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: " + game.getPlayers2HandsForDisplay(user));
-			out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: " + game.getPlayer2BetAmountsForDisplay(user));
+
+			out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: "
+					+ game.getPlayers2HandsForDisplay(user));
+			out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: "
+					+ game.getPlayer2BetAmountsForDisplay(user));
 			out.println("<BR>");
-//			out.println("<BR>It is now Player 2 " + game.getPlayer2().getUserName() + " Turn!");
-			
+			// out.println("<BR>It is now Player 2 " +
+			// game.getPlayer2().getUserName() + " Turn!");
+
 			String whoseTurnIsIt = game.whoseTurnIsIt();
-			
-			if(whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
+
+			if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
 				out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
-				
-			}
-			else if(whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
+
+			} else if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
 				out.println("<BR>It is now Player 2 " + game.getPlayer1().getUserName() + " Turn!");
-				
-			}
-			else if(whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
+
+			} else if (whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
 				out.println("<BR>It is now Final Card Bet " + game.getPlayer1().getUserName() + " Turn!");
-				
-			}
-			else if(whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
+
+			} else if (whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
 				out.println("<BR>The game is now coplete. ");
-				
-			}
-			else if(whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
+
+			} else if (whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
 				out.println("<BR>The game is in amn unknown state. ");
-				
+
 			}
-			
 
-			
 			out.flush();
-			
-			log.debug(
-					"\n\nDebug: Exiting method raise()\n\n");
 
+			log.debug("\n\nDebug: Exiting method raise()\n\n");
 
 			return;
-			
+
 		}
+		else if (game.getPlayer2().getUserName().equals(user.getUserName())) {
 
-		
-		
-		
-//		Map<String,Game> currentGamesBeingPlayed = new HashMap<String,Game>();
-		
-//		Map<String,Game> currentGamesBeingPlayed1 = (Map<String,Game>)servletContext.getAttribute("currentGamesBeingPlayed");
-//		
-//		Game gameTemp = null;
-		
-		gameApplicationScope_.player2makeBet(betAmountDouble);
+		// Map<String,Game> currentGamesBeingPlayed = new
+		// HashMap<String,Game>();
 
-		
-		DeckOfCards deckOfCards = gameApplicationScope_.getDeckOfCards();
-		
-		
+		// Map<String,Game> currentGamesBeingPlayed1 =
+		// (Map<String,Game>)servletContext.getAttribute("currentGamesBeingPlayed");
+		//
+		// Game gameTemp = null;
+
+		game.player2makeBet(betAmountDouble);
+
+		DeckOfCards deckOfCards = game.getDeckOfCards();
+
 		PlayingCard player1card = deckOfCards.dealCard();
 		PlayingCard player2card = deckOfCards.dealCard();
-		
+
 		game.dealNextTwoCards(player1card, player2card);
+		
+		Game.addGameToApplicationScopeGameHashMap(game);
 
-
-
-		
-		currentGamesBeingPlayed1.put("" + game.getGameNumber(), gameApplicationScope_);
-
-		
-		servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
-		
-		httpSession.setAttribute("Game", currentGamesBeingPlayed1);
-		
-		
+//		currentGamesBeingPlayed1.put("" + game.getGameNumber(), gameApplicationScope_);
+//
+//		servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
+//
+//		httpSession.setAttribute("Game", currentGamesBeingPlayed1);
 
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/plain;charset=utf-8");
@@ -567,72 +596,55 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			e.printStackTrace();
 			return;
 		}
-		
-		
-		out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: " + game.getPlayers1HandsForDisplay(user));
-		out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: " + game.getPlayer1BetAmountsForDisplay(user));
+
+		out.println(
+				"<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: " + game.getPlayers1HandsForDisplay(user));
+		out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: "
+				+ game.getPlayer1BetAmountsForDisplay(user));
 
 		out.println("<BR>");
-		
-		out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: " + game.getPlayers2HandsForDisplay(user));
-		out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: " + game.getPlayer2BetAmountsForDisplay(user));
+
+		out.println(
+				"<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: " + game.getPlayers2HandsForDisplay(user));
+		out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: "
+				+ game.getPlayer2BetAmountsForDisplay(user));
 		out.println("<BR>");
-//		out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
-		
+		// out.println("<BR>It is now Player 1 " +
+		// game.getPlayer1().getUserName() + " Turn!");
+
 		String whoseTurnIsIt = game.whoseTurnIsIt();
-		
-		if(whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
+
+		if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
 			out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
-			
-		}
-		else if(whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
+
+		} else if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
 			out.println("<BR>It is now Player 2 " + game.getPlayer1().getUserName() + " Turn!");
-			
-		}
-		else if(whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
+
+		} else if (whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
 			out.println("<BR>It is now Final Card Bet " + game.getPlayer1().getUserName() + " Turn!");
-			
-		}
-		else if(whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
+
+		} else if (whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
 			out.println("<BR>The game is now coplete. ");
-			
-		}
-		else if(whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
+
+		} else if (whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
 			out.println("<BR>The game is in amn unknown state. ");
-			
+
 		}
-		
-		
-		
+
 		out.flush();
-		
-		log.debug(
-				"\n\nDebug: Exiting method raise()\n\n");
 
+		log.debug("\n\nDebug: Exiting method raise()\n\n");
 
-		
-		servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
-		
-		httpSession.setAttribute("Game", game);
-
-		
+//		servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
+//
+//		httpSession.setAttribute("Game", game);
 
 		return;
-		
-	}
-
-	public void joinGameNow() {
-
-		log.debug("\n\nDebug: In method joinGameNow()\n\n");
-
-		HttpServletRequest request = ServletActionContext.getRequest();
-		
-		String gamePlayer1UserName = request.getParameter("gamePlayer1UserName");
-		
-		if(gamePlayer1UserName == null || gamePlayer1UserName.trim().equals("")) {
-
+		}
+		else {
+			
 			log.debug(
-					"\n\nDebug: In method joinGameNow() and requsst scope parameter: gamePlayer1UserName == null .\n\n");
+					"\n\nDebug: In method raise() processing [request] and current user is neither  game.getPlayer1() or game.getPlayer2().\n\n");
 
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/plain;charset=utf-8");
@@ -645,20 +657,72 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				return;
 			}
 			out.println(
-					
-					"\n\nDebug: In method joinGameNow() and requsst scope parameter: gamePlayer1UserName == null .\n\n");
+
+					"<BR><BR>Debug: In method raise() processing [request] and current user is neither  game.getPlayer1() or game.getPlayer2().<BR><BR>");
+
+			out.flush();
+
+			return;
+			
+		}
+		
+
+	}
+
+	public void joinGameNow() {
+
+		/*
+		 * Pre-conditions:
+		 * 
+		 * The user is logged on and a user objecct is in session scope. The
+		 * user just clicked on a "joinGameNow" action button.
+		 * 
+		 * Post-conditions:
+		 * 
+		 * The user has a gameId in session scope and the game object in a hash
+		 * map in application scope has player2 equal to the user object.
+		 * 
+		 * 
+		 * 
+		 * 
+		 */
+
+		log.debug("\n\nDebug: In method joinGameNow()\n\n");
+
+		HttpServletRequest request = ServletActionContext.getRequest();
+
+		String gameNumber = request.getParameter("gameNumber");
+
+		if (gameNumber == null || gameNumber.trim().equals("")) {
+
+			log.debug(
+					"\n\nDebug: In method joinGameNow() and requsst scope parameter: gameNumber == null .\n\n");
+
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
+			out.println(
+
+					"\n\nDebug: In method joinGameNow() and requsst scope parameter: gameNumber == null .\n\n");
 
 			out.flush();
 
 			return;
 
-			
 		}
 
-
-		HttpSession httpSession = ServletActionContext.getRequest().getSession();
-
-		User user = (User) httpSession.getAttribute("user");
+//		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+//
+//		User user = (User) httpSession.getAttribute("user");
+		
+		User user = Game.getUserObjectFromSessionScope();
 
 		if (user == null) {
 
@@ -682,16 +746,17 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		}
 
-		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
-
-		List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
+//		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+//
+//		List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
 		
+		
+		Game game = Game.getGameFromApplicationScopeGameHashMap(gameNumber);
 
-
-		if (games == null) {
+		if (game == null) {
 
 			log.debug(
-					"\n\nDebug: In method joinGameNow() and [Games] does not exist in application scope and exiting method.\n\n");
+					"\n\nDebug: In method joinGameNow() and [Game] object does not exist in hash map in application scope. Exiting method.\n\n");
 
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/plain;charset=utf-8");
@@ -703,7 +768,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				e.printStackTrace();
 				return;
 			}
-			out.println("No curent existing Games available to Join.");
+			out.println("Debug: From method joinGameNow(). [Game] object does not exist in hash map in application scope.");
 			out.flush();
 
 			return;
@@ -723,34 +788,27 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			// return;
 
 		} else {
-
-			log.debug("\n\nDebug: in method joinGameNow() and Glabal [Games] exists.\n\n");
-
-			ArrayList<User> users = new ArrayList<User>();
-
-			Iterator iterGames = games.iterator();
-
-			StringBuffer stringBuffer = new StringBuffer();
-
-			int x = 0;
 			
-
-			while (iterGames.hasNext()) {
-
-				Game game = (Game) iterGames.next();
+			
+//				int x = 0;
 
 				User user1 = game.getPlayer1();
 
-				users.add(user1);
+//				users.add(user1);
 
 				User user2 = game.getPlayer2();
 
-				++x;
-				
+//				++x;
+
 				if (user1 == null && user2 == null) {
+					
+					log.debug(
+							"\n\nDebug: In method joinGameNow(). [Game] object getPlayer1 == null and getPlayer2 == null.\n\n");
+
+
 
 					// Incorrect game state. User1 (player1) must exist.
-					
+
 					HttpServletResponse response = ServletActionContext.getResponse();
 					response.setContentType("text/plain;charset=utf-8");
 					PrintWriter out;
@@ -761,16 +819,17 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 						e.printStackTrace();
 						return;
 					}
-					
-					
-					out.println("<BR>Incorrect game state. User1 (player1) must exist.");
 
-					
-				}
-				else if (user1 == null && user2 != null) {
-					
+					out.println("<BR>Debug: In method joinGameNow(). [Game] object getPlayer1 == null and getPlayer2 == null.");
+
+				} else if (user1 == null && user2 != null) {
+
 					// Incorrect game state. User1 (player1) must exist.
 					
+					log.debug(
+							"\n\nDebug: In method joinGameNow(). [Game] object getPlayer1 == null.\n\n");
+
+
 					HttpServletResponse response = ServletActionContext.getResponse();
 					response.setContentType("text/plain;charset=utf-8");
 					PrintWriter out;
@@ -781,35 +840,41 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 						e.printStackTrace();
 						return;
 					}
-					
-					
-					out.println("<BR>Incorrect game state. User1 (player1) must exist.");
 
+					out.println("<BR>Debug: In method joinGameNow(). [Game] object getPlayer1 == null");
 
 				}
 
-				else if ((user1 != null && user2 == null || user1 != null && user2 != null) ) {
+				else if ((user1 != null && user2 == null || user1 != null && user2 != null)) {
 					
-					//&& game.getDeckOfCards() == null) {
-					
-					int gameNumber = game.getGameNumber();
-					
+					if (game.getPlayer2() == null && game.getPlayer1() != null && !(game.getPlayer1().equals(user))) {
+
+						game.setPlayer2(user);
+
+					}
+
+
+					// && game.getDeckOfCards() == null) {
+
+//					String gameNumber = game.getGameNumber();
+
 					/* HERE #1 */
-					
-					Map<String,Game> currentGamesBeingPlayed1 = (Map<String,Game>)servletContext.getAttribute("currentGamesBeingPlayed");
-					
-					Game gameTemp = null;
-					
-					if(currentGamesBeingPlayed1 != null) {
-						
-					
-						gameTemp = currentGamesBeingPlayed1.get("" + game.getGameNumber());
-					
-					}
-					
-					if(gameTemp != null) {
 
+//					Map<String, Game> currentGamesBeingPlayed1 = (Map<String, Game>) servletContext
+//							.getAttribute("currentGamesBeingPlayed");
+//
+//					Game gameTemp = null;
+
+//					if (currentGamesBeingPlayed1 != null) {
+//
+//						gameTemp = currentGamesBeingPlayed1.get("" + game.getGameNumber());
+//
+//					}
+
+					if (game != null && game.getDeckOfCards() != null) {
 						
+						Game.setGameIdInSessionScope("" + game.getGameNumber());
+
 						log.debug(
 								"\n\nDebug: In method joinGameNow() and Game already exists in hash map global veriable. Therfore resumeing game.\n\n");
 
@@ -823,107 +888,107 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 							e.printStackTrace();
 							return;
 						}
-						
-						
-//						out.println("<BR>Player 1 " + gameTemp.getPlayer1().getUserName() + " Hand: " + gameTemp.getPlayers1HandsForDisplay(user));
-//						out.println("<BR>Player 1 " + gameTemp.getPlayer1().getUserName() + " Bets: " + gameTemp.getPlayer1BetAmountsForDisplay(user));
-//						
-//						out.print("<BR>");
-//						out.println("<BR>Player 2 " + gameTemp.getPlayer2().getUserName() + " Hand: " + gameTemp.getPlayers2HandsForDisplay(user));
-//						out.println("<BR>Player 2 " + gameTemp.getPlayer2().getUserName() + " Bets: " + gameTemp.getPlayer2BetAmountsForDisplay(user));
-//						out.println("<BR>");
-						
-						out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: " + game.getPlayers1HandsForDisplay(user));
-						out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: " + game.getPlayer1BetAmountsForDisplay(user));
+
+						// out.println("<BR>Player 1 " +
+						// gameTemp.getPlayer1().getUserName() + " Hand: " +
+						// gameTemp.getPlayers1HandsForDisplay(user));
+						// out.println("<BR>Player 1 " +
+						// gameTemp.getPlayer1().getUserName() + " Bets: " +
+						// gameTemp.getPlayer1BetAmountsForDisplay(user));
+						//
+						// out.print("<BR>");
+						// out.println("<BR>Player 2 " +
+						// gameTemp.getPlayer2().getUserName() + " Hand: " +
+						// gameTemp.getPlayers2HandsForDisplay(user));
+						// out.println("<BR>Player 2 " +
+						// gameTemp.getPlayer2().getUserName() + " Bets: " +
+						// gameTemp.getPlayer2BetAmountsForDisplay(user));
+						// out.println("<BR>");
+
+						out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: "
+								+ game.getPlayers1HandsForDisplay(user));
+						out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: "
+								+ game.getPlayer1BetAmountsForDisplay(user));
 
 						out.println("<BR>");
-						
-						out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: " + game.getPlayers2HandsForDisplay(user));
-						out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: " + game.getPlayer2BetAmountsForDisplay(user));
+
+						out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: "
+								+ game.getPlayers2HandsForDisplay(user));
+						out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: "
+								+ game.getPlayer2BetAmountsForDisplay(user));
 						out.println("<BR>");
-//						out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
-						
+						// out.println("<BR>It is now Player 1 " +
+						// game.getPlayer1().getUserName() + " Turn!");
+
 						String whoseTurnIsIt = game.whoseTurnIsIt();
-						
-						if(whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
-							out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
-							
-						}
-						else if(whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
-							out.println("<BR>It is now Player 2 " + game.getPlayer1().getUserName() + " Turn!");
-							
-						}
-						else if(whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
-							out.println("<BR>It is now Final Card Bet " + game.getPlayer1().getUserName() + " Turn!");
-							
-						}
-						else if(whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
-							out.println("<BR>The game is now coplete. ");
-							
-						}
-						else if(whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
-							out.println("<BR>The game is in amn unknown state. ");
-							
-						}
-						
-						
-						
-						out.flush();
-						
-						log.debug(
-								"\n\nDebug: Exiting method joinGameNow()\n\n");
 
+						if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
+							out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
+
+						} else if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
+							out.println("<BR>It is now Player 2 " + game.getPlayer1().getUserName() + " Turn!");
+
+						} else if (whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
+							out.println("<BR>It is now Final Card Bet " + game.getPlayer1().getUserName() + " Turn!");
+
+						} else if (whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
+							out.println("<BR>The game is now coplete. ");
+
+						} else if (whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
+							out.println("<BR>The game is in amn unknown state. ");
+
+						}
+
+						out.flush();
+
+						log.debug("\n\nDebug: Exiting method joinGameNow()\n\n");
 
 						return;
 
-						
-					}
-					
-//					if ((user2 == null || user1 != null && user2 != null && (user.getUserName().equals(user1) || user.getUserName().equals(user2.getUserName()))) ) {
-					
-					if (game.getPlayer2() == null  ) {
-						
-						game.setPlayer2(user);
-						
 					}
 
+					// if ((user2 == null || user1 != null && user2 != null &&
+					// (user.getUserName().equals(user1) ||
+					// user.getUserName().equals(user2.getUserName()))) ) {
+
+//					if (game.getPlayer2() == null) {
+//
+//						game.setPlayer2(user);
+//
+//					}
 					
 					
+					Game.setGameIdInSessionScope("" + game.getGameNumber()); // Added this statement 2015/12/06 4:30 PM LWF
+
 					DeckOfCards deckOfCards = RandomContainerEnum.INSTANCE.continuousDeck.getDeck();
-					
-					game.setDeckOfCards(deckOfCards);
-					
-					deckOfCards.shuffleDeckCards();
-                                        
-                                        RandomContainerEnum.INSTANCE.continuousDeck.setDeck(deckOfCards);
-					
-					Map<String,Game> currentGamesBeingPlayed2 = new HashMap<String,Game>();
-					
-					
 
-					
+					game.setDeckOfCards(deckOfCards);
+
+					deckOfCards.shuffleDeckCards();
+
+					RandomContainerEnum.INSTANCE.continuousDeck.setDeck(deckOfCards);
+
+//					Map<String, Game> currentGamesBeingPlayed2 = new HashMap<String, Game>();
+
 					PlayingCard player1card1 = deckOfCards.dealCard();
 					PlayingCard player2card1 = deckOfCards.dealCard();
-					
-					game.dealNextTwoCards(player1card1, player2card1);
 
+					game.dealNextTwoCards(player1card1, player2card1);
 
 					PlayingCard player1card2 = deckOfCards.dealCard();
 					PlayingCard player2card2 = deckOfCards.dealCard();
-					
-					game.dealNextTwoCards(player1card2, player1card2);
 
+					game.dealNextTwoCards(player1card2, player2card2);
 					
-					currentGamesBeingPlayed2.put("" + game.getGameNumber(), game);
+					Game.addGameToApplicationScopeGameHashMap(game);
 
-					
-					servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed2);
-					
-					httpSession.setAttribute("Game", game);
-					
-					
-					log.debug(
-							"\n\nDebug: In method joinGameNow() and starting new Game.\n\n");
+//					currentGamesBeingPlayed2.put("" + game.getGameNumber(), game);
+//
+//					servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed2);
+//
+//					httpSession.setAttribute("Game", game);
+
+					log.debug("\n\nDebug: In method joinGameNow() and starting new Game.\n\n");
 
 					HttpServletResponse response = ServletActionContext.getResponse();
 					response.setContentType("text/plain;charset=utf-8");
@@ -935,82 +1000,96 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 						e.printStackTrace();
 						return;
 					}
-					
-					
-					out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: " + game.getPlayers1HandsForDisplay(user));
-					out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: " + game.getPlayer1BetAmountsForDisplay(user));
+
+					out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: "
+							+ game.getPlayers1HandsForDisplay(user));
+					out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: "
+							+ game.getPlayer1BetAmountsForDisplay(user));
 
 					out.println("<BR>");
-					
-					out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: " + game.getPlayers2HandsForDisplay(user));
-					out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: " + game.getPlayer2BetAmountsForDisplay(user));
+
+					out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: "
+							+ game.getPlayers2HandsForDisplay(user));
+					out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: "
+							+ game.getPlayer2BetAmountsForDisplay(user));
 					out.println("<BR>");
 					String whoseTurnIsIt = game.whoseTurnIsIt();
-					
-					if(whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
-						out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
-						
-					}
-					else if(whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
-						out.println("<BR>It is now Player 2 " + game.getPlayer1().getUserName() + " Turn!");
-						
-					}
-					else if(whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
-						out.println("<BR>It is now Final Card Bet " + game.getPlayer1().getUserName() + " Turn!");
-						
-					}
-					else if(whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
-						out.println("<BR>The game is now coplete. ");
-						
-					}
-					else if(whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
-						out.println("<BR>The game is in amn unknown state. ");
-						
-					}
-					
-					
-					out.flush();
-					
-					log.debug(
-							"\n\nDebug: Exiting method joinGameNow()\n\n");
 
+					if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
+						out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
+
+					} else if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
+						out.println("<BR>It is now Player 2 " + game.getPlayer1().getUserName() + " Turn!");
+
+					} else if (whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
+						out.println("<BR>It is now Final Card Bet " + game.getPlayer1().getUserName() + " Turn!");
+
+					} else if (whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
+						out.println("<BR>The game is now coplete. ");
+
+					} else if (whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
+						out.println("<BR>The game is in an unknown state. ");
+
+					}
+
+					out.flush();
+
+					log.debug("\n\nDebug: Exiting method joinGameNow()\n\n");
 
 					return;
-					
 
 				}
-//				} else if (user.getUserName().equals(user2.getUserName())) {
-//
-//					stringBuffer.append("<BR>Join already started game with player 1 as: " + user1.getUserName()
-//							+ "and player 2 as: (" + user2.getUserName()
-//							+ ") <input type=\"button\"  onclick=\"joinGameNow('" + user1.getUserName()
-//							+ "' )\"  id =\"joinGameNow" + x
-//							+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
-//
-//				
-//				} 
-//				else if (user.getUserName().equals(user1.getUserName())) {
-//
-//				stringBuffer.append("<BR>Join already started game with player 1 as you: " + user1.getUserName()
-//						+ "and player 2 as : (" + user2.getUserName()
-//						+ ") <input type=\"button\"  onclick=\"joinGameNow('" + user1.getUserName()
-//						+ "' )\"  id =\"joinGameNow" + x
-//						+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
-//
-//				}
+				// } else if (user.getUserName().equals(user2.getUserName())) {
+				//
+				// stringBuffer.append("<BR>Join already started game with
+				// player 1 as: " + user1.getUserName()
+				// + "and player 2 as: (" + user2.getUserName()
+				// + ") <input type=\"button\" onclick=\"joinGameNow('" +
+				// user1.getUserName()
+				// + "' )\" id =\"joinGameNow" + x
+				// + "1\" value = \"Join Existing Game Now\" name =
+				// \"joinGameNow" + x + "1\">");
+				//
+				//
+				// }
+				// else if (user.getUserName().equals(user1.getUserName())) {
+				//
+				// stringBuffer.append("<BR>Join already started game with
+				// player 1 as you: " + user1.getUserName()
+				// + "and player 2 as : (" + user2.getUserName()
+				// + ") <input type=\"button\" onclick=\"joinGameNow('" +
+				// user1.getUserName()
+				// + "' )\" id =\"joinGameNow" + x
+				// + "1\" value = \"Join Existing Game Now\" name =
+				// \"joinGameNow" + x + "1\">");
+				//
+				// }
 
 			}
 
 		}
-	}
+	
 
 	public void joinGame2() {
+
+		/*
+		 * Pre-conditions:
+		 * 
+		 * The user is loggon on and a user object is in sesison scope.
+		 * 
+		 * Post-conditions:
+		 * 
+		 * A list of games to join with actions buttonss is displayed.
+		 * 
+		 */
 
 		log.debug("\n\nDebug: In method joinGame2()\n\n");
 
 		HttpSession httpSession = ServletActionContext.getRequest().getSession();
 
-		User user = (User) httpSession.getAttribute("user");
+//		User user = (User) httpSession.getAttribute("user");
+		
+		User user = Game.getUserObjectFromSessionScope();
 
 		if (user == null) {
 
@@ -1034,9 +1113,11 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		}
 
-		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+//		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
 
-		List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
+//		List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
+		
+		List<Game> games = Game.getAlltGamesFromApplicationScopeGameHashMap();
 
 		if (games == null) {
 
@@ -1076,7 +1157,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			log.debug("\n\nDebug: in method joinGame() and Glabal [Games] exists.\n\n");
 
-			ArrayList<User> users = new ArrayList<User>();
+//			ArrayList<User> users = new ArrayList<User>();
 
 			Iterator iterGames = games.iterator();
 
@@ -1090,7 +1171,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				User user1 = game.getPlayer1();
 
-				users.add(user1);
+	//			users.add(user1);
 
 				User user2 = game.getPlayer2();
 
@@ -1100,37 +1181,38 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 					// Incorrect game state. User1 (player1) must exist.
 					
-				}
-				else if (user1 == null && user2 != null) {
-					
+					log.debug("\n\nDebug: in method joinGame() and game object from hash map in applicatio scope has no player1 or player2 objects.\n\n");
+
+
+				} else if (user1 == null ) {
+
 					// Incorrect game state. User1 (player1) must exist.
+					log.debug("\n\nDebug: in method joinGame() and game object from hash map in applicatio scope has player1 == null.\n\n");
 
 				}
 
 				else if (user1 != null && user2 == null) {
 
-					stringBuffer.append("Join New Game with player 1 as: " + user1.getUserName()
+					stringBuffer.append("Join New Game #" + game.getGameNumber() + " with player 1 as: " + user1.getUserName()
 							+ "and no player 2 yet. <input type=\"button\" onclick=\"joinGameNow('"
-							+ user1.getUserName() + "' )\" id =\"joinGameNow" + x
+							+ game.getGameNumber() + "' )\" id =\"joinGameNow" + x
 							+ "1\" value = \"Join New Game Now\" name = \"joinGameNow" + x + "1\">");
 
-				} else if (user.getUserName().equals(user2.getUserName())) {
+				} else if (user2 != null && user.getUserName().equals(user2.getUserName())) {
 
 					stringBuffer.append("<BR>Join already started game with player 1 as: " + user1.getUserName()
 							+ "and player 2 as: (" + user2.getUserName()
-							+ ") <input type=\"button\"  onclick=\"joinGameNow('" + user1.getUserName()
+							+ ") <input type=\"button\"  onclick=\"joinGameNow('" + game.getGameNumber()
 							+ "' )\"  id =\"joinGameNow" + x
 							+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
 
-				
-				} 
-				else if (user.getUserName().equals(user1.getUserName())) {
+				} else if (user1 != null && user.getUserName().equals(user1.getUserName())) {
 
-				stringBuffer.append("<BR>Join already started game with player 1 as you: " + user1.getUserName()
-						+ "and player 2 as : (" + user2.getUserName()
-						+ ") <input type=\"button\"  onclick=\"joinGameNow('" + user1.getUserName()
-						+ "' )\"  id =\"joinGameNow" + x
-						+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
+					stringBuffer.append("<BR>Join already started game with player 1 as you: " + user1.getUserName()
+							+ "and player 2 as : (" + user2.getUserName()
+							+ ") <input type=\"button\"  onclick=\"joinGameNow('" + game.getGameNumber()
+							+ "' )\"  id =\"joinGameNow" + x
+							+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
 
 				}
 
@@ -1146,7 +1228,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			// jsonData.put("lu", users);
 
-			log.debug("\n\nDebug: Exiting method joinGame2() and returning success.\n\n");
+			log.debug("\n\nDebug: Exiting method joinGame2().\n\n");
 
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/plain;charset=utf-8");
@@ -1228,13 +1310,33 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 	}
 
 	public void newGame() {
+
+		/*
+		 * Pre-conditions:
+		 * 
+		 * User is logged on and a "user" object is in session scope.
+		 * 
+		 * Post-conditions:
+		 * 
+		 * A gameId and user object is in session scope and a game object is in
+		 * a hash map in application scope. The game object in a hash map in
+		 * application scope has a player1 object equal to the current user
+		 * object from session scope.
+		 * 
+		 * 
+		 * 
+		 */
 		try {
 
 			log.debug("\n\nDebug: In method newGame().\n\n");
 
 			HttpSession httpSession = ServletActionContext.getRequest().getSession();
 
-			User user = (User) httpSession.getAttribute("user");
+//			User user = (User) httpSession.getAttribute("user");
+			
+			User user = Game.getUserObjectFromSessionScope();
+			
+			
 
 			if (user == null) {
 
@@ -1252,30 +1354,36 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			} else {
 
 				log.debug("\n\nDebug: In method newGame() and user exists in session scope.\n\n");
+				
+				//List<Game> games = Game.getAlltGamesFromApplicationScopeGameHashMap();
 
-				ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
-
-				List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
-
-				if (games == null) {
-
-					games = new ArrayList<Game>();
-
-				}
+//				ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+//
+//				List<Game> games = (ArrayList<Game>) servletContext.getAttribute("Games");
+//
+//				if (games == null) {
+//
+//					games = new ArrayList<Game>();
+//
+//				}
 
 				Game game = new Game();
 
 				game.setPlayer1(user);
+				
+				Game.setGameIdInSessionScope("" + game.getGameNumber());
+				
+				Game.addGameToApplicationScopeGameHashMap(game);
 
-				games.add(game);
+//				games.add(game);
 
-				servletContext.setAttribute("Games", games);
+//				servletContext.setAttribute("Games", games);
 
 				HttpServletResponse response = ServletActionContext.getResponse();
 				response.setContentType("text/plain;charset=utf-8");
 				PrintWriter out = response.getWriter();
-				out.println(
-						"Hello Player 1 (" + game.getPlayer1().getUserName() + ").  Waiting for another player to join your game.");
+				out.println("Hello Player 1 (" + game.getPlayer1().getUserName()
+						+ ").  Waiting for another player to join your game.");
 				out.flush();
 
 				return;
@@ -1315,18 +1423,15 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		}
 	}
 
-	public String find() {
-		jsonData.put("sp", new Product("p1", "Name 1", 1000));
-		return SUCCESS;
-	}
-
-	public String findAll() {
-		List<Product> listProduct = new ArrayList<Product>();
-		listProduct.add(new Product("p1", "Name 1", 1000));
-		listProduct.add(new Product("p2", "Name 2", 2000));
-		listProduct.add(new Product("p3", "Name 3", 3000));
-		jsonData.put("lp", listProduct);
-		return SUCCESS;
-	}
+	/*
+	 * public String find() { jsonData.put("sp", new Product("p1", "Name 1",
+	 * 1000)); return SUCCESS; }
+	 * 
+	 * public String findAll() { List<Product> listProduct = new
+	 * ArrayList<Product>(); listProduct.add(new Product("p1", "Name 1", 1000));
+	 * listProduct.add(new Product("p2", "Name 2", 2000)); listProduct.add(new
+	 * Product("p3", "Name 3", 3000)); jsonData.put("lp", listProduct); return
+	 * SUCCESS; }
+	 */
 
 }

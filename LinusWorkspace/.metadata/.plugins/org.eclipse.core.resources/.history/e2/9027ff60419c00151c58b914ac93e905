@@ -1,0 +1,157 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.action.extension" value="html" />
+
+
+	<package name="json" namespace="/" extends="json-default">
+	
+                         <interceptors>
+    <interceptor name="login" class="controller.handleSession"/>
+
+    <!-- sb: you need to configure all of your interceptors here. i'm only
+         listing the one we created for this example. -->
+    <interceptor-stack name="yourStack">
+        <interceptor-ref name="login"/>
+        <interceptor-ref name="defaultStack"/>  
+     
+ 
+    </interceptor-stack>
+</interceptors>
+
+<default-interceptor-ref name="yourStack"></default-interceptor-ref>
+<global-results>
+    <!--sb: make this the path to your login action.
+         this could also be a redirectAction type. -->
+    <result name="loginRedirect" type="redirect">/doLogin.html</result>
+    <result name="SessionExpiredRedirect" type="redirect">/showLogin.html</result>
+   <result name="gameRedirect" type="redirect">/showGames.html</result>
+    <!--  <result name="mainRedirect" type="redirect">/showMain</result> -->
+</global-results>
+            
+		<action name="find" class="controller.AjaxAction" method="find">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		<action name="findall" class="controller.AjaxAction" method="findAll">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		
+		
+		<action name="joinGame2" class="controller.AjaxAction" method="joinGame2">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+	 	
+		
+		<action name="joinGameNow" class="controller.AjaxAction" method="joinGameNow">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+
+
+		<action name="raise" class="controller.AjaxAction" method="raise">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		
+
+		<action name="waitForTurnOrGameToStart" class="controller.AjaxAction" method="waitForTurnOrGameToStart">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		<!--   action name="joinGame" class="controller.AjaxAction" method="joinGame">
+			<result type="json">
+				<param name="root">jsonData</param>
+			</result>
+		</action -->
+		
+		
+	</package>
+
+	<package name="default" extends="struts-default" namespace="/">
+	
+                             <interceptors>
+    <interceptor name="login" class="controller.handleSession"/>
+
+    <!-- sb: you need to configure all of your interceptors here. i'm only
+         listing the one we created for this example. -->
+    <interceptor-stack name="yourStack">
+        <interceptor-ref name="login"/>
+        <interceptor-ref name="defaultStack"/>  
+     
+ 
+    </interceptor-stack>
+</interceptors>
+
+<default-interceptor-ref name="yourStack"></default-interceptor-ref>
+<global-results>
+    <!--sb: make this the path to your login action.
+         this could also be a redirectAction type. -->
+    <result name="loginRedirect" type="redirect">/doLogin.html</result>
+    <result name="SessionExpiredRedirect" type="redirect">/showLogin.html</result>
+   <result name="gameRedirect" type="redirect">/showGames.html</result>
+    <!--  <result name="mainRedirect" type="redirect">/showMain</result> -->
+</global-results>
+     
+     <action name="showLogin">
+        <result>index.jsp</result>
+        </action>
+      
+       <action name="doLogin" class="controller.Login">
+        <result name="input">index.jsp</result>
+        <result name="error">index.jsp</result>
+        </action>
+
+      <action name="RegisterForFiveCardStudPoker" 
+            class="controller.FiveCardStudPokerAjaxAction" >
+            <result name="success">/index.jsp</result>
+            <result name="logonError">/UserRegistration.jsp</result>
+            <result name="registrationError">/UserRegistration.jsp</result>
+            
+      </action>
+         <action name="showGames" class="controller.ShowGame">
+        <result>/WEB-INF/game.jsp</result>
+        </action>
+        <action name="showLogin">
+        <result>index.jsp</result>
+        </action>
+        
+		<!--   action name="getPlayerTurn" class="controller.FiveCardStudPokerAjaxAction" method="getPlayerTurn">
+		</action ->
+		
+		<action name="hello" class="controller.AjaxAction" method="hello">
+		</action>
+
+		<action name="newGame" class="controller.AjaxAction" method="newGame">
+		</action>
+
+
+
+
+
+		
+		<action name="sum" class="controller.AjaxAction" method="sum">
+		</action>
+		
+	</package>
+
+</struts>

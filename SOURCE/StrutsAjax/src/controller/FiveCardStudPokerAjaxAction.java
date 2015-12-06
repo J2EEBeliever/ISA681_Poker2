@@ -263,7 +263,7 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport implements  Login
 		} catch (Exception e) {
 		}
 	}
-
+/*
 	public String find() {
 		jsonData.put("sp", new Product("p1", "Name 1", 1000));
 		return SUCCESS;
@@ -277,6 +277,8 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport implements  Login
 		jsonData.put("lp", listProduct);
 		return SUCCESS;
 	}
+	
+	*/
 }
         
         

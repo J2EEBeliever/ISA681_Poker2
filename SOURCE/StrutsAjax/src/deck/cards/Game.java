@@ -1,5 +1,17 @@
 package deck.cards;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
 import entities.User;
 
 public class Game {
@@ -737,6 +749,142 @@ public class Game {
 		this.player2 = player2;
 	}
 	
+
+	
+	public static User getUserObjectFromSessionScope() {
+		
+		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+		
+		User user = (User)httpSession.getAttribute("user");
+		
+		return user;
+		
+
+	}
+	
+	public static boolean setGameIdInSessionScope(String userGameId) {
+		
+		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+		
+		httpSession.setAttribute("userGameId", userGameId);
+		
+		return true;
+		
+
+	}
+
+	
+	public static String getGameIdFromSessionScope() {
+		
+		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+		
+		String userGameId = "" + httpSession.getAttribute("userGameId");
+		
+		return userGameId;
+		
+
+	}
+
+	public static boolean addGameToApplicationScopeGameHashMap(Game game) {
+		
+
+		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+
+		
+//		int gameNumber = game.getGameNumber();
+		Map<String,Game> currentGamesBeingPlayed1 = (Map<String,Game>)servletContext.getAttribute("currentGamesBeingPlayed");
+		
+		if(currentGamesBeingPlayed1 == null) {
+			currentGamesBeingPlayed1 = new HashMap<String,Game>();
+			
+			currentGamesBeingPlayed1.put("" + game.getGameNumber(), game);
+			
+			servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
+			
+			return true;
+			
+		}
+		
+		currentGamesBeingPlayed1.put("" + game.getGameNumber(), game);
+		
+		servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
+		
+		return true;
+
+	}
+	
+	public static List<Game> convertFromVCollectionToList(Collection<Game> collectionGames) {
+		
+		Iterator iter = collectionGames.iterator();
+		
+		List<Game> games = new ArrayList<Game>();
+		
+		while (iter.hasNext()) {
+			
+			Game gsme = (Game)iter.next();
+			
+			games.add(gsme);
+			
+		}
+		
+		return games;
+		
+	}
+	
+
+	public static List<Game> getAlltGamesFromApplicationScopeGameHashMap() {
+		
+		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+
+		
+//		int gameNumber = game.getGameNumber();
+		Map<String,Game> currentGamesBeingPlayed1 = (Map<String,Game>)servletContext.getAttribute("currentGamesBeingPlayed");
+		
+		if(currentGamesBeingPlayed1 == null) {
+			
+			currentGamesBeingPlayed1 = new HashMap<String,Game>();
+			
+			servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
+			
+//			Collection<Game> collGames =currentGamesBeingPlayed1.values(); 
+//			
+//			return (List<Game>) convertFromVCollectionToList(collGames);
+			
+			
+		}
+		
+		Collection<Game> collGames = currentGamesBeingPlayed1.values(); 
+		
+		return (List<Game>) convertFromVCollectionToList(collGames);
+
+	}
+	
+	
+	
+
+	public static Game getGameFromApplicationScopeGameHashMap(String userGameId) {
+		
+		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
+
+		
+//		int gameNumber = game.getGameNumber();
+		Map<String,Game> currentGamesBeingPlayed1 = (Map<String,Game>)servletContext.getAttribute("currentGamesBeingPlayed");
+		
+		if(currentGamesBeingPlayed1 == null) {
+			currentGamesBeingPlayed1 = new HashMap<String,Game>();
+			
+			servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
+			
+			return null;
+			
+		}
+		
+		Game game = (Game)currentGamesBeingPlayed1.get(userGameId);
+		
+		return game;
+		
+
+	}
 	
 	
 
