@@ -164,5 +164,6 @@ CREATE USER 'fcs_user'@'localhost' IDENTIFIED BY '7yXw8dDaNMBNBbW5';
 GRANT SELECT ON fcs.* TO 'fcs_user'@'localhost';
 GRANT INSERT ON fcs.* TO 'fcs_user'@'localhost';
 GRANT DELETE ON fcs.* TO 'fcs_user'@'localhost';
+GRANT UPDATE ON fcs.* TO 'fcs_user'@'localhost';
 
 FLUSH PRIVILEGES;
