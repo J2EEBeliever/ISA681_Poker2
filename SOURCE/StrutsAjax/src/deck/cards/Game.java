@@ -1,5 +1,7 @@
 package deck.cards;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -8,13 +10,19 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
+import controller.FiveCardStudPokerAjaxAction;
 import entities.User;
 
 public class Game {
+	
+	final static Logger log = Logger.getLogger(FiveCardStudPokerAjaxAction.class);
+
 	
 	private User player1 = null;
 	private User player2 = null;
@@ -37,27 +45,14 @@ public class Game {
 
 	  private PlayingCard player1card4 = null;
 	  private double player1betCard4 = 0.00;
+	  
+	  private PlayingCard player1card5 = null;
+	  private double player1betCard5 = 0.00;
+
 
 	  public double getPlayer1betCard4() {
 		return player1betCard4;
 	}
-
-
-	public void setPlayer1betCard4(double player1betCard4) {
-		this.player1betCard4 = player1betCard4;
-	}
-
-
-	public double getPlayerbetCard5() {
-		return playerbetCard5;
-	}
-
-
-	public void setPlayerbetCard5(double playerbetCard5) {
-		this.playerbetCard5 = playerbetCard5;
-	}
-	private PlayingCard player1card5 = null;
-	  private double player1betCard5 = 0.00;
 
 
 	  
@@ -75,12 +70,12 @@ public class Game {
 	  private double player2betCard4 = 0.00;
 
 	  private PlayingCard player2card5 = null;
-	  private double playerbetCard5 = 0.00;
-	  
-
 	  private double player2betCard5 = 0.00;
 		  
 
+		public void setPlayer1betCard4(double player1betCard4) {
+			this.player1betCard4 = player1betCard4;
+		}
 	  
 	  
 	  	  
@@ -232,7 +227,7 @@ public class Game {
 			
 			
 		}
-		else if (this.getPlayer1card1() != null && !user.getUserName().equals(player1.getUserName())) {
+		else if (this.getPlayer1card1() != null && !(user.getUserName().equals(player1.getUserName()))) {
 
 			stringBuffer.append("Card Face Down");
 			
@@ -267,14 +262,14 @@ public class Game {
 		
 		if (this.getPlayer1card5() != null && user.getUserName().equals(player1.getUserName())) {
 
-			stringBuffer.append(this.getPlayer1card5().toString());
+			stringBuffer.append(" | " + this.getPlayer1card5().toString());
 			
 			
 			
 		}
-		else if (this.getPlayer1card5() != null && !user.getUserName().equals(player1.getUserName())) {
+		else if (this.getPlayer1card5() != null && !(user.getUserName().equals(player1.getUserName()))) {
 
-			stringBuffer.append("Card Face Down");
+			stringBuffer.append(" | Card Face Down");
 			
 			
 			
@@ -303,9 +298,9 @@ public class Game {
 			
 			
 		}
-		else if (this.getPlayer2card1() != null && !user.getUserName().equals(player2.getUserName())) {
+		else if (this.getPlayer2card1() != null && !(user.getUserName().equals(player2.getUserName()))) {
 
-			stringBuffer.append("Player Card Face Down");
+			stringBuffer.append("Card Face Down");
 			
 			
 			
@@ -338,14 +333,14 @@ public class Game {
 		
 		if (this.getPlayer2card5() != null && user.getUserName().equals(player2.getUserName())) {
 
-			stringBuffer.append(this.getPlayer2card5().toString());
+			stringBuffer.append(" | " + this.getPlayer2card5().toString());
 			
 			
 			
 		}
-		else if (this.getPlayer2card5() != null && !user.getUserName().equals(player2.getUserName())) {
+		else if (this.getPlayer2card5() != null && !(user.getUserName().equals(player2.getUserName()))) {
 
-			stringBuffer.append("Card Face Down");
+			stringBuffer.append(" | Card Face Down");
 			
 			
 			
@@ -421,52 +416,52 @@ public class Game {
 	
 	public String whoseTurnIsIt() {
 		
-		if(this.getPlayer1betCard2() <= 0) {
+		if(this.getPlayer1betCard2() <= 0.00) {
 			
 			return CURRENT_TURN_PLAYER1;
 			
 		}
-		else if(this.getPlayer2betCard2() <= 0) {
+		else if(this.getPlayer2betCard2() <= 0.00) {
 			
 			return CURRENT_TURN_PLAYER2;
 			
 		}
-		else if(this.getPlayer1betCard3() <= 0) {
+		else if(this.getPlayer1betCard3() <= 0.00) {
 			
 			return CURRENT_TURN_PLAYER1;
 			
 		}
-		else if(this.getPlayer2betCard3() <= 0) {
+		else if(this.getPlayer2betCard3() <= 0.00) {
 			
 			return CURRENT_TURN_PLAYER2;
 			
 		}
-		else if(this.getPlayer1betCard4() <= 0) {
+		else if(this.getPlayer1betCard4() <= 0.00) {
 			
 			return CURRENT_TURN_PLAYER1;
 			
 		}
-		else if(this.getPlayer2betCard4() <= 0) {
+		else if(this.getPlayer2betCard4() <= 0.00) {
 			
 			return CURRENT_TURN_PLAYER2;
 			
 		}
-		else if(this.getPlayer1betCard5() <= 0) {
+		else if(this.getPlayer1betCard5() <= 0.00) {
 			
 			return CURRENT_TURN_PLAYER1;
 			
 		}
-		else if(this.getPlayer2betCard5() <= 0) {
+		else if(this.getPlayer2betCard5() <= 0.00) {
 			
 			return CURRENT_TURN_PLAYER2;
 			
 		}
-		else if(this.getTotalBetForWinner() <= 0) {
+		else if(this.getTotalBetForWinner() <= 0.00) {
 			
 			return FINAL_CARD_BET;
 			
 		}
-		else if(this.getTotalBetForWinner() > 0) {
+		else if(this.getTotalBetForWinner() > 0.00) {
 			
 			return GAME_COMPLETE;
 			
@@ -795,13 +790,14 @@ public class Game {
 		Map<String,Game> currentGamesBeingPlayed1 = (Map<String,Game>)servletContext.getAttribute("currentGamesBeingPlayed");
 		
 		if(currentGamesBeingPlayed1 == null) {
+
 			currentGamesBeingPlayed1 = new HashMap<String,Game>();
 			
-			currentGamesBeingPlayed1.put("" + game.getGameNumber(), game);
-			
-			servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
-			
-			return true;
+//			currentGamesBeingPlayed1.put("" + game.getGameNumber(), game);
+//			
+//			servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
+//			
+//			return true;
 			
 		}
 		
@@ -883,6 +879,59 @@ public class Game {
 		
 		return game;
 		
+
+	}
+	
+	public boolean outputToResponseOutputStream(User user) {
+		
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/plain;charset=utf-8");
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
+		out.println(
+				"<BR>Player 1 " + this.getPlayer1().getUserName() + " Hand: " + this.getPlayers1HandsForDisplay(user));
+		out.println("<BR>Player 1 " + this.getPlayer1().getUserName() + " Bets: "
+				+ this.getPlayer1BetAmountsForDisplay(user));
+
+		out.println("<BR>");
+
+		out.println(
+				"<BR>Player 2 " + (this.getPlayer2() == null ? "Player 2 has not joined game yet" : this.getPlayer2().getUserName())  + " Hand: " + this.getPlayers2HandsForDisplay(user));
+		out.println("<BR>Player 2 " + (this.getPlayer2() == null ? "Player 2 has not joined game yet" : this.getPlayer2().getUserName()) + " Bets: "
+				+ this.getPlayer2BetAmountsForDisplay(user));
+		out.println("<BR>");
+
+		String whoseTurnIsIt = this.whoseTurnIsIt();
+
+		if (whoseTurnIsIt.equals(this.CURRENT_TURN_PLAYER1)) {
+			out.println("<BR>It is now Player 1 " + this.getPlayer1().getUserName() + " Turn!");
+
+		} else if (whoseTurnIsIt.equals(this.CURRENT_TURN_PLAYER2)) {
+			out.println("<BR>It is now Player 2 " + this.getPlayer2().getUserName() + " Turn!");
+
+		} else if (whoseTurnIsIt.equals(this.FINAL_CARD_BET)) {
+			out.println("<BR>It is now Final Card Bet " + this.getPlayer1().getUserName() + " Turn!");
+
+		} else if (whoseTurnIsIt.equals(this.GAME_COMPLETE)) {
+			out.println("<BR>The game is now coplete. ");
+
+		} else if (whoseTurnIsIt.equals(this.UNKNOWN_STATE)) {
+			out.println("<BR>The game is in amn unknown state. ");
+
+		}
+
+		out.flush();
+
+		log.debug("\n\nDebug: Exiting method Game::outputToResponseOutputStream(user)\n\n");
+
+		return true;
 
 	}
 	

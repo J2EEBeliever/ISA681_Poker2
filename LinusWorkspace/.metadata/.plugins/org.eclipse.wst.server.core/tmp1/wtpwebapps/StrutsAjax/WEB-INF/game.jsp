@@ -15,7 +15,7 @@
 //Browser Support Code
 function ajaxFunctionbk(){
 	
-	alert('executing ajaxFunction()');
+//	alert('executing ajaxFunction()');
 	var ajaxRequest;  // The variable that makes Ajax possible!
 	
 	try{
@@ -42,7 +42,7 @@ function ajaxFunctionbk(){
 
 	}
 	
-	alert('executing ajaxFunction() #30');
+//	alert('executing ajaxFunction() #30');
 
 	
 	// Create a function that will receive data sent from the server
@@ -57,14 +57,14 @@ function ajaxFunctionbk(){
 //	var sex = document.getElementById('sex').value;
 //	var queryString = "?age=" + age + "&wpm=" + wpm + "&sex=" + sex;
 
-	alert('executing ajaxFunction() #40');
+//	alert('executing ajaxFunction() #40');
 
 
 var queryString = '?playerContent=yes';
 	ajaxRequest.open("GET", 'ajaxLogicAction' + queryString, true);
 	ajaxRequest.send(null);
 	
-	alert('executing ajaxFunction() #50');
+//	alert('executing ajaxFunction() #50');
 
 }
 
@@ -95,7 +95,7 @@ function joinGameNow(gameNumber) {
 
 function playerContent() {
 	
-	alert('#10');
+//	alert('#10');
 	
 	
 	$.ajax({
@@ -109,11 +109,11 @@ function playerContent() {
 
 function raise() {
 
-	alert('In method raise()');
+//	alert('In method raise()');
 	
 	var betAmount_ = document.getElementById('betAmount');
 	
-	alert('betAmount = ' + betAmount_.value);
+//	alert('betAmount = ' + betAmount_.value);
 	
 	var betAmountFloat_ = parseFloat(betAmount.value);
 	
@@ -214,6 +214,7 @@ $(document).ready(function() {
 				}
 			});
 			
+			setTimeout(waitForTurnOrGameToStart,5000);
 			
 			
 		});

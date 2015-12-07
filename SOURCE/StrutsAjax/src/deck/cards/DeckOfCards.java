@@ -81,6 +81,7 @@ public class DeckOfCards {
 		
 		
 		PlayingCard playingCard = deckOfCards.get(this.nextCardToDealIndex);
+		
 		++(this.nextCardToDealIndex);
 		
 		return playingCard;
