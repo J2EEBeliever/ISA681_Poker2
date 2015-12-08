@@ -1,13 +1,23 @@
 package deck.cards;
-
+import java.util.Calendar;
+import java.util.*;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.sql.*;
+
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
@@ -472,6 +482,80 @@ public class Game {
 				
 		
 	}
+	
+	public double  getPlayersLastBet() {
+		
+		User user = this.getUserObjectFromSessionScope();
+		
+		
+		
+		if (this.getPlayer1card5() != null) {
+			
+			if(this.getPlayer1().getUserName().equals(user.getUserName())) {
+				
+				return this.getPlayer2betCard5();
+				
+			}
+			else {
+
+				return this.getPlayer1betCard5();
+				
+			}
+			
+		}
+		else if (this.getPlayer1card4() != null) {
+			
+			if(this.getPlayer1().getUserName().equals(user.getUserName())) {
+				
+				return this.getPlayer2betCard4();
+				
+			}
+			else {
+
+				return this.getPlayer1betCard4();
+				
+			}
+			
+			
+		}
+		else if (this.getPlayer1card3() != null) {
+			
+			if(this.getPlayer1().getUserName().equals(user.getUserName())) {
+				
+				return this.getPlayer2betCard3();
+				
+			}
+			else {
+
+				return this.getPlayer1betCard3();
+				
+			}
+			
+			
+		}
+		else if (this.getPlayer1card2() != null) {
+			
+			if(this.getPlayer1().getUserName().equals(user.getUserName())) {
+				
+				return this.getPlayer2betCard2();
+				
+			}
+			else {
+
+				return this.getPlayer1betCard2();
+				
+			}
+			
+			
+		}
+		
+		return 0.00;
+		
+		
+		
+		
+	}
+
 
 	public void  player1makeBet (double bet1) {
 		
@@ -916,11 +1000,40 @@ public class Game {
 		} else if (whoseTurnIsIt.equals(this.CURRENT_TURN_PLAYER2)) {
 			out.println("<BR>It is now Player 2 " + this.getPlayer2().getUserName() + " Turn!");
 
-		} else if (whoseTurnIsIt.equals(this.FINAL_CARD_BET)) {
-			out.println("<BR>It is now Final Card Bet " + this.getPlayer1().getUserName() + " Turn!");
+//		} else if (whoseTurnIsIt.equals(this.FINAL_CARD_BET)) {
+//			out.println("<BR>It is now Final Card Bet " + this.getPlayer1().getUserName() + " Turn!");
+//
+		} else if (whoseTurnIsIt.equals(this.GAME_COMPLETE) || whoseTurnIsIt.equals(this.FINAL_CARD_BET)) {
+			
+			out.println("<BR>The game is now coplete.<script language=\"javascript\" type=\"text/javascript\">" +
+		
+					"	var isGameOver = document.getElementById('IsGameOver'); isGameOver.value = 'yes';"
+					
+					+ "</script>");
+			
+			try {
+				
+				
+				if(this.getTotalBetForWinner() > 0) {
+					
+					
+				}
+				else {
+					
 
-		} else if (whoseTurnIsIt.equals(this.GAME_COMPLETE)) {
-			out.println("<BR>The game is now coplete. ");
+					this.setTotalBetForWinner(this.getPlayer1betCard2() + this.getPlayer1betCard3() + this.getPlayer1betCard4() + this.getPlayer1betCard5());
+					
+					this.insertIntoGamesForGameComplete();
+					
+				}
+				
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 
 		} else if (whoseTurnIsIt.equals(this.UNKNOWN_STATE)) {
 			out.println("<BR>The game is in amn unknown state. ");
@@ -935,6 +1048,293 @@ public class Game {
 
 	}
 	
+	public boolean insertIntoGamesForGameComplete() throws Exception {
+		
+		log.debug("\n\nDebug: IN method insertIntoGamesForGameComplete()\n\n");
+		
+		this.setWinnerUserName("Winner not known");
+
+		
+		Connection conn = this.getDatabaseConnection();
+		
+		  String query = " insert into game (" +
+				  "" + 
+				  "Player1, " + 
+				  "Player1Card1,  " +
+				  "Player1Card2, Player1BetCard2, " +
+				  "Player1Card3, Player1BetCard3, " +
+				  "Player1Card4, Player1BetCard4, " +
+				  "Player1Card5, Player1BetCard5, " +
+				  "" +
+				  "Player2, " + 
+				  "Player2Card1, " +
+				  "Player2Card2, Player2BetCard2, " +
+				  "Player2Card3, Player2BetCard3, " +
+				  "Player2Card4, Player2BetCard4, " +
+				  "Player2Card5, Player2BetCard5, " +
+				  "" +
+				  "TotalBetForWinner, WinnerUserName, " +
+//		  			"GameStatus, SameState)" +
+					"GameStatus)" +
+				  
+		  		 "" +
+		  		 "VALUES(" +
+		  		 " " +
+				  "? , " + 
+				  "?, " +
+				  "?, ?, " +
+				  "?, ?, " +
+				  "?, ?, " +
+				  "?, ?, " +
+				  "" +
+				  "?, " + 
+				  "?, " +
+				  "?, ?, " +
+				  "?, ?, " +
+				  "?, ?, " +
+				  "?, ?, " +
+				  "" +
+				  "?, ?, " +
+//		  			"?, ?)";
+					"?)";
+				  
+		  		 
+		  
+		  
+		  
+		  
+				  
+				  
+//		  		+ ""
+//		  		+ "values (?, ?, ?)";
+		
+		
+/*
+ * 
+  `GameID` int(11) NOT NULL,
+
+  `Player1` int(11) NOT NULL,
+
+  `Player1Card1` char(30) NOT NULL,
+
+  `Player1Card2` char(30) NOT NULL,
+  `Player1BetCard2` DECIMAL(4,2) NOT NULL,
+
+  `Player1Card3` char(30) NOT NULL,
+  `Player1BetCard3` DECIMAL(4,2) NOT NULL,
+
+  `Player1Card4` char(30) NOT NULL,
+  `Player1BetCard4` DECIMAL(4,2) NOT NULL,
+
+  `Player1Card5` char(30) NOT NULL,
+  `Player1BetCard5` DECIMAL(4,2) NOT NULL,
+
+  `TotalBetForWinner` DECIMAL(6,2) NOT NULL,
+
+  `WinnerUserName` varchar(20) NOT NULL,
+
+
+	
+
+  `Player2` int(11) NOT NULL,
+
+
+  `Player2Card1` char(30) NOT NULL,
+
+  `Player2Card2` char(30) NOT NULL,
+  `Player1BetCard2` DECIMAL(4,2) NOT NULL,
+
+  `Player2Card3` char(30) NOT NULL,
+  `Player1BetCard3` DECIMAL(4,2) NOT NULL,
+
+  `Player2Card4` char(30) NOT NULL,
+  `Player1BetCard4` DECIMAL(4,2) NOT NULL,
+
+  `Player2Card5` char(30) NOT NULL,
+  `Player1BetCard5` DECIMAL(4,2) NOT NULL,
+
+
+
+  `GameStatus` int(11) NOT NULL,
+  `SameState` blob NOT NULL,
+  `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`GameID`),
+
+  KEY `WinnerUserName` (`WinnerUserName`),
+
+  KEY `Player1` (`Player1`),
+  KEY `Player2` (`Player2`)
+ 
+ * 		
+ */
+		
+		
+		
+		/*
+		 * -- -- Table structure for table `users` --
+		 * 
+		 * CREATE TABLE IF NOT EXISTS `users` ( `UserID` int(11) NOT NULL
+		 * AUTO_INCREMENT, `UserName` varchar(20) NOT NULL, `Password`
+		 * char(60) NOT NULL, `Timestamp` timestamp NOT NULL DEFAULT
+		 * CURRENT_TIMESTAMP, PRIMARY KEY (`UserID`), UNIQUE KEY `UserName`
+		 * (`UserName`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+		 * AUTO_INCREMENT=3 ;
+		 * 
+		 */
+		      
+			Calendar calendar = Calendar.getInstance();
+		      java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
+		 
+
+				//String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+
+		      
+		      // create the mysql insert preparedstatement
+		      PreparedStatement preparedStmt = conn.prepareStatement(query);
+
+/*
+ * 
+				  "" + 
+				  "Player1, " + 
+				  "Player1Card1,  " +
+				  "Player1Card2, Player1BetCard2, " +
+				  "Player1Card3, Player1BetCard3, " +
+				  "Player1Card4, Player1BetCard4, " +
+				  "Player1Card5, Player1BetCard5, " +
+				  "" +
+				  "Player2, " + 
+				  "Player2Card1,  " +
+				  "Player2Card2, Player2BetCard2, " +
+				  "Player2Card3, Player2BetCard3, " +
+				  "Player2Card4, Player2BetCard4, " +
+				  "Player2Card5, Player2BetCard5, " +
+				  "" +
+				  "TotalBetForWinner, WinnerUserName, " +
+		  			"GameStatus, SameState)" +
+				  
+
+		  		 "" +
+ * 
+ * 		      
+ */
+		      
+		      
+		      
+		      
+		      preparedStmt.setInt (1, this.getPlayer1().getUserID());
+		      
+		      preparedStmt.setString(2, "" + this.getPlayer1card1());
+
+		      preparedStmt.setString(3, "" + this.getPlayer1card2());
+		      preparedStmt.setDouble(4, this.getPlayer1betCard2());
+		      
+		      preparedStmt.setString(5, "" + this.getPlayer1card3());
+		      preparedStmt.setDouble(6, this.getPlayer1betCard3());
+		      
+		      preparedStmt.setString(7, "" + this.getPlayer1card4());
+		      preparedStmt.setDouble(8, this.getPlayer1betCard4());
+		      
+		      preparedStmt.setString(9, "" + this.getPlayer1card5());
+		      preparedStmt.setDouble(10, this.getPlayer1betCard5());
+		      
+		      
+		      
+		      preparedStmt.setInt (11, this.getPlayer2().getUserID());
+		      
+		      preparedStmt.setString(12, "" + this.getPlayer2card1());
+
+		      preparedStmt.setString(13, "" + this.getPlayer2card2());
+		      preparedStmt.setDouble(14, this.getPlayer2betCard2());
+		      
+		      preparedStmt.setString(15, "" + this.getPlayer2card3());
+		      preparedStmt.setDouble(16, this.getPlayer2betCard3());
+		      
+		      preparedStmt.setString(17, "" + this.getPlayer2card4());
+		      preparedStmt.setDouble(18, this.getPlayer2betCard4());
+		      
+		      preparedStmt.setString(19, "" + this.getPlayer2card5());
+		      preparedStmt.setDouble(20, this.getPlayer2betCard5());
+		      
+
+/*
+  		      				  "" +
+				  "TotalBetForWinner, WinnerUserName, " +
+		  			"GameStatus, SameState)" +
+				  
+		  		 "" +
+
+ */
+		      
+		      preparedStmt.setDouble(21, this.getTotalBetForWinner());
+		      preparedStmt.setString(22, "" + this.getWinnerUserName());
+		      preparedStmt.setString(23, "Game Finished");
+		      
+//		      byteArrayInputStream
+		      
+		      byte[] buf = new byte[500];
+		      
+		      ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buf);
+		      
+//		      preparedStmt.setBlob(24, (InputStream)byteArrayInputStream);
+		      
+		      
+		      
+//		      InputStream inputStream = new BufferInputStream();
+		      
+//		      preparedStmt.setBlob(24, inputStream);
+		      
+		      
+		      
+//		      preparedStmt.setDate   (3, startDate);
+		 
+		      // execute the preparedstatement
+		      preparedStmt.executeUpdate();
+		      
+		      try {
+		    	  preparedStmt.close();
+			      conn.close();
+		      }
+		      catch(Exception e) {
+		    	  
+		    	  e.printStackTrace();
+		    	  
+		  		String errors = "Could not insert into the Game table. Game is finished.";
+				 
+				 //request.setAttribute("errors", errors);
+
+				log.debug("\n\nDebug: IN method insertIntoGamesForGameComplete() but could not insert into the Game table. Game is finished.\n\n");
+
+				
+				return false;
+				
+		      }
+		      
+				 
+			  		String errors = "Successfully inserted a record into the Game tale.  Game is complete.  Please Logon.";
+					 
+					 //request.setAttribute("errors", errors);
+
+					 log.debug("\n\nDebug: Exiting Method insertIntoGamesForGameComplete() reutrning 'success'\n\n");
+
+		      
+				return true;
+				
+	}
+		
+		
+		
+	
+	
+public Connection getDatabaseConnection() throws ClassNotFoundException, SQLException {
+	// create our mysql database connection
+	String myDriver = "org.gjt.mm.mysql.Driver";
+	String myUrl = "jdbc:mysql://localhost/fcs";
+	Class.forName(myDriver);
+	Connection conn = DriverManager.getConnection(myUrl, "fcs_user", "7yXw8dDaNMBNBbW5");
+
+	return conn;
+
+}
 	
 
 }

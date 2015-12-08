@@ -148,65 +148,11 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		boolean success = game.outputToResponseOutputStream(user);
 
-		// HttpServletResponse response = ServletActionContext.getResponse();
-		// response.setContentType("text/plain;charset=utf-8");
-		// PrintWriter out;
-		// try {
-		// out = response.getWriter();
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// return;
-		// }
-		//
-		// out.println(
-		// "<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: " +
-		// game.getPlayers1HandsForDisplay(user));
-		// out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + "
-		// Bets: "
-		// + game.getPlayer1BetAmountsForDisplay(user));
-		//
-		// out.println("<BR>");
-		//
-		// out.println(
-		// "<BR>Player 2 " + (game.getPlayer2() == null ? "Player 2 has not
-		// joined game yet" : game.getPlayer2().getUserName()) + " Hand: " +
-		// game.getPlayers2HandsForDisplay(user));
-		// out.println("<BR>Player 2 " + (game.getPlayer2() == null ? "Player 2
-		// has not joined game yet" : game.getPlayer2().getUserName()) + " Bets:
-		// "
-		// + game.getPlayer2BetAmountsForDisplay(user));
-		// out.println("<BR>");
-		//
-		// String whoseTurnIsIt = game.whoseTurnIsIt();
-		//
-		// if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
-		// out.println("<BR>It is now Player 1 " +
-		// game.getPlayer1().getUserName() + " Turn!");
-		//
-		// } else if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
-		// out.println("<BR>It is now Player 2 " +
-		// game.getPlayer1().getUserName() + " Turn!");
-		//
-		// } else if (whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
-		// out.println("<BR>It is now Final Card Bet " +
-		// game.getPlayer1().getUserName() + " Turn!");
-		//
-		// } else if (whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
-		// out.println("<BR>The game is now coplete. ");
-		//
-		// } else if (whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
-		// out.println("<BR>The game is in amn unknown state. ");
-		//
-		// }
-		//
-		// out.flush();
 
 		log.debug("\n\nDebug: Exiting method waitForTurnOrGameToStart()\n\n");
 
 		return;
 
-		// }
 
 	}
 
@@ -215,17 +161,17 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		/*
 		 * Pre-conditions:
 		 * 
-		 * User object exists in session scope. userGameId exists in session
-		 * scope. Game object with userGameId exists in application scope hash
-		 * map.
+			 * User object exists in session scope. userGameId exists in session
+			 * scope. Game object with userGameId exists in application scope hash
+			 * map.
 		 * 
 		 * Post-conditions:
 		 * 
-		 * Either player 1 (game.getPlayer1) user has just raised the ante or
-		 * player 2 (game.getPlayer2) has just called for the same amount
-		 * raised. If player 1 raises then its player 2's turn. If player 2
-		 * calls then two new cards are delt and it player 1's turn again to
-		 * raise or fold.
+			 * Either player 1 (game.getPlayer1) user has just raised the ante or
+			 * player 2 (game.getPlayer2) has just called for the same amount
+			 * raised. If player 1 raises then its player 2's turn. If player 2
+			 * calls then two new cards are delt and it player 1's turn again to
+			 * raise or fold.
 		 * 
 		 */
 
@@ -312,8 +258,23 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			return;
 
 		}
+		
+		String betAmount = null;
+		
+		String actionType = request.getParameter("actionType");
+		
+		if(actionType != null && actionType.equals("call")) {
+			
+			betAmount = "" + game.getPlayersLastBet();
+			
+		}
+		else {
+		
+		
 
-		String betAmount = request.getParameter("betAmount");
+			betAmount = request.getParameter("betAmount");
+		
+		}
 
 		double betAmountDouble = 0;
 
@@ -362,59 +323,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			log.debug("\n\nDebug: In method raise() Player 1 has bet and now it is player 2's turn.\n\n");
 
-			// HttpServletResponse response =
-			// ServletActionContext.getResponse();
-			// response.setContentType("text/plain;charset=utf-8");
-			// PrintWriter out;
-			// try {
-			// out = response.getWriter();
-			// } catch (IOException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// return;
-			// }
-			//
-			// out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + "
-			// Hand: "
-			// + game.getPlayers1HandsForDisplay(user));
-			// out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + "
-			// Bets: "
-			// + game.getPlayer1BetAmountsForDisplay(user));
-			//
-			// out.println("<BR>");
-			//
-			// out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + "
-			// Hand: "
-			// + game.getPlayers2HandsForDisplay(user));
-			// out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + "
-			// Bets: "
-			// + game.getPlayer2BetAmountsForDisplay(user));
-			// out.println("<BR>");
-			//
-			// String whoseTurnIsIt = game.whoseTurnIsIt();
-			//
-			// if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
-			// out.println("<BR>It is now Player 1 " +
-			// game.getPlayer1().getUserName() + " Turn!");
-			//
-			// } else if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
-			// out.println("<BR>It is now Player 2 " +
-			// game.getPlayer1().getUserName() + " Turn!");
-			//
-			// } else if (whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
-			// out.println("<BR>It is now Final Card Bet " +
-			// game.getPlayer1().getUserName() + " Turn!");
-			//
-			// } else if (whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
-			// out.println("<BR>The game is now coplete. ");
-			//
-			// } else if (whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
-			// out.println("<BR>The game is in amn unknown state. ");
-			//
-			// }
-			//
-			// out.flush();
-			//
+
 			log.debug("\n\nDebug: Exiting method raise()\n\n");
 
 			return;
@@ -434,59 +343,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			boolean success = game.outputToResponseOutputStream(user);
 
-			// HttpServletResponse response =
-			// ServletActionContext.getResponse();
-			// response.setContentType("text/plain;charset=utf-8");
-			// PrintWriter out;
-			// try {
-			// out = response.getWriter();
-			// } catch (IOException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// return;
-			// }
-			//
-			// out.println(
-			// "<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: " +
-			// game.getPlayers1HandsForDisplay(user));
-			// out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + "
-			// Bets: "
-			// + game.getPlayer1BetAmountsForDisplay(user));
-			//
-			// out.println("<BR>");
-			//
-			// out.println(
-			// "<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: " +
-			// game.getPlayers2HandsForDisplay(user));
-			// out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + "
-			// Bets: "
-			// + game.getPlayer2BetAmountsForDisplay(user));
-			// out.println("<BR>");
-			//
-			// String whoseTurnIsIt = game.whoseTurnIsIt();
-			//
-			// if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
-			// out.println("<BR>It is now Player 1 " +
-			// game.getPlayer1().getUserName() + " Turn!");
-			//
-			// } else if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
-			// out.println("<BR>It is now Player 2 " +
-			// game.getPlayer1().getUserName() + " Turn!");
-			//
-			// } else if (whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
-			// out.println("<BR>It is now Final Card Bet " +
-			// game.getPlayer1().getUserName() + " Turn!");
-			//
-			// } else if (whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
-			// out.println("<BR>The game is now coplete. ");
-			//
-			// } else if (whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
-			// out.println("<BR>The game is in amn unknown state. ");
-			//
-			// }
-			//
-			// out.flush();
-			//
 			
 			log.debug("\n\nDebug: Exiting method raise()\n\n");
 
@@ -524,13 +380,13 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		/*
 		 * Pre-conditions:
 		 * 
-		 * The user is logged on and a user objecct is in session scope. The
-		 * user just clicked on a "joinGameNow" action button.
+			 * The user is logged on and a user objecct is in session scope. The
+			 * user just clicked on a "joinGameNow" action button.
 		 * 
 		 * Post-conditions:
 		 * 
-		 * The user has a gameId in session scope and the game object in a hash
-		 * map in application scope has player2 equal to the user object.
+			 * The user has a gameId in session scope and the game object in a hash
+			 * map in application scope has player2 equal to the user object.
 		 * 
 		 * 
 		 * 
@@ -680,50 +536,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 					log.debug(
 							"\n\nDebug: In method joinGameNow() and Game already exists in hash map global veriable. Therfore resumeing game.\n\n");
 
-//					HttpServletResponse response = ServletActionContext.getResponse();
-//					response.setContentType("text/plain;charset=utf-8");
-//					PrintWriter out;
-//					try {
-//						out = response.getWriter();
-//					} catch (IOException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//						return;
-//					}
-//
-//					out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: "
-//							+ game.getPlayers1HandsForDisplay(user));
-//					out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: "
-//							+ game.getPlayer1BetAmountsForDisplay(user));
-//
-//					out.println("<BR>");
-//
-//					out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: "
-//							+ game.getPlayers2HandsForDisplay(user));
-//					out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: "
-//							+ game.getPlayer2BetAmountsForDisplay(user));
-//					out.println("<BR>");
-//
-//					String whoseTurnIsIt = game.whoseTurnIsIt();
-//
-//					if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
-//						out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
-//
-//					} else if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
-//						out.println("<BR>It is now Player 2 " + game.getPlayer1().getUserName() + " Turn!");
-//
-//					} else if (whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
-//						out.println("<BR>It is now Final Card Bet " + game.getPlayer1().getUserName() + " Turn!");
-//
-//					} else if (whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
-//						out.println("<BR>The game is now coplete. ");
-//
-//					} else if (whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
-//						out.println("<BR>The game is in amn unknown state. ");
-//
-//					}
-//
-//					out.flush();
 
 					log.debug("\n\nDebug: Exiting method joinGameNow()\n\n");
 
@@ -764,49 +576,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				boolean success = game.outputToResponseOutputStream(user);
 
 
-//				HttpServletResponse response = ServletActionContext.getResponse();
-//				response.setContentType("text/plain;charset=utf-8");
-//				PrintWriter out;
-//				try {
-//					out = response.getWriter();
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//					return;
-//				}
-//
-//				out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Hand: "
-//						+ game.getPlayers1HandsForDisplay(user));
-//				out.println("<BR>Player 1 " + game.getPlayer1().getUserName() + " Bets: "
-//						+ game.getPlayer1BetAmountsForDisplay(user));
-//
-//				out.println("<BR>");
-//
-//				out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Hand: "
-//						+ game.getPlayers2HandsForDisplay(user));
-//				out.println("<BR>Player 2 " + game.getPlayer2().getUserName() + " Bets: "
-//						+ game.getPlayer2BetAmountsForDisplay(user));
-//				out.println("<BR>");
-//				String whoseTurnIsIt = game.whoseTurnIsIt();
-//
-//				if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER1)) {
-//					out.println("<BR>It is now Player 1 " + game.getPlayer1().getUserName() + " Turn!");
-//
-//				} else if (whoseTurnIsIt.equals(game.CURRENT_TURN_PLAYER2)) {
-//					out.println("<BR>It is now Player 2 " + game.getPlayer1().getUserName() + " Turn!");
-//
-//				} else if (whoseTurnIsIt.equals(game.FINAL_CARD_BET)) {
-//					out.println("<BR>It is now Final Card Bet " + game.getPlayer1().getUserName() + " Turn!");
-//
-//				} else if (whoseTurnIsIt.equals(game.GAME_COMPLETE)) {
-//					out.println("<BR>The game is now coplete. ");
-//
-//				} else if (whoseTurnIsIt.equals(game.UNKNOWN_STATE)) {
-//					out.println("<BR>The game is in an unknown state. ");
-//
-//				}
-//
-//				out.flush();
 
 				log.debug("\n\nDebug: Exiting method joinGameNow()\n\n");
 
@@ -823,11 +592,11 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		/*
 		 * Pre-conditions:
 		 * 
-		 * The user is loggon on and a user object is in sesison scope.
+			 * The user is loggon on and a user object is in sesison scope.
 		 * 
 		 * Post-conditions:
 		 * 
-		 * A list of games to join with actions buttonss is displayed.
+			 * A list of games to join with actions buttonss is displayed.
 		 * 
 		 */
 
@@ -918,7 +687,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				else if (user1 != null && user2 == null) {
 
-					stringBuffer.append(
+					stringBuffer.append("<BR>" + 
 							"Join New Game #" + game.getGameNumber() + " with player 1 as: " + user1.getUserName()
 									+ "and no player 2 yet. <input type=\"button\" onclick=\"joinGameNow('"
 									+ game.getGameNumber() + "' )\" id =\"joinGameNow" + x
@@ -971,14 +740,14 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		/*
 		 * Pre-conditions:
 		 * 
-		 * User is logged on and a "user" object is in session scope.
+			 * User is logged on and a "user" object is in session scope.
 		 * 
 		 * Post-conditions:
 		 * 
-		 * A gameId and user object is in session scope and a game object is in
-		 * a hash map in application scope. The game object in a hash map in
-		 * application scope has a player1 object equal to the current user
-		 * object from session scope.
+			 * A gameId and user object is in session scope and a game object is in
+			 * a hash map in application scope. The game object in a hash map in
+			 * application scope has a player1 object equal to the current user
+			 * object from session scope.
 		 * 
 		 * 
 		 * 

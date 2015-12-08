@@ -88,7 +88,16 @@ function joinGameNow(gameNumber) {
 		}
 	});
 	
-	setTimeout(waitForTurnOrGameToStart,5000);
+	var isGameOver = document.getElementById('IsGameOver');
+	
+	if(isGameOver.value == 'yes') {
+		
+	}
+	else {
+		
+		setTimeout(waitForTurnOrGameToStart,5000);
+	
+	}
 	
 	
 }
@@ -107,7 +116,7 @@ function playerContent() {
 	});
 }
 
-function raise() {
+function raise(actionType) {
 
 //	alert('In method raise()');
 	
@@ -117,7 +126,9 @@ function raise() {
 	
 	var betAmountFloat_ = parseFloat(betAmount.value);
 	
-	if(betAmountFloat_ <= 0 || betAmountFloat_ > 1.00  ) {
+	
+	
+	if(actionType == 'raise' && (betAmountFloat_ <= 0 || betAmountFloat_ > 1.00)  ) {
 		
 		alert('Bet Amount muset be greater than 0 and less than equal to 1.00 dollar.');
 		
@@ -129,13 +140,25 @@ function raise() {
 	
 	$.ajax({
 		type : "POST",
-		url : '${pageContext.request.contextPath}/raise.html?betAmount=' + betAmountFloat_,
+		url : '${pageContext.request.contextPath}/raise.html?betAmount=' + betAmountFloat_ + '&actionType=' + actionType,
 		success : function(response) {
 			$('.result').html(response);
 		}
 	});
+
 	
-	setTimeout(waitForTurnOrGameToStart,5000);
+	
+	var isGameOver = document.getElementById('IsGameOver');
+	
+	if(isGameOver.value == 'yes') {
+		
+	}
+	else {
+		
+		setTimeout(waitForTurnOrGameToStart,5000);
+	
+	}
+	
 
 	
 }
@@ -156,7 +179,18 @@ function waitForTurnOrGameToStart() {
 		}
 	});
 	
-	setTimeout(waitForTurnOrGameToStart,5000);
+	
+	var isGameOver = document.getElementById('IsGameOver');
+	
+	if(isGameOver.value == 'yes') {
+		
+	}
+	else {
+		
+		setTimeout(waitForTurnOrGameToStart,5000);
+	
+	}
+	
 
 	
 }
@@ -214,7 +248,20 @@ $(document).ready(function() {
 				}
 			});
 			
-			setTimeout(waitForTurnOrGameToStart,5000);
+			
+			var isGameOver = document.getElementById('IsGameOver');
+			
+			if(isGameOver.value == 'yes') {
+				
+			}
+			else {
+				
+//				aler('New Game setTimeout()');
+				
+				setTimeout(waitForTurnOrGameToStart,5000);
+			
+			}
+			
 			
 			
 		});
@@ -326,11 +373,17 @@ $(document).ready(function() {
 
 	<BR>
 	<BR>
+	<input type="hidden" id = "IsGameOver" name = "IsGameOver" value = "no" >
 	<input type="button" name="raise" value="Raise" id="raise"
-		onclick="raise()"> Please only bet between 0 dollars and up to
-	1 dollar with cents:
+		onclick="raise('raise')"> Please only bet between 0 dollars and up to
+	1 dollar with cents: 
 	<input type="text" name="betAmount" value="0" id="betAmount">
-	<BR>
+	<BR><BR>
+	Call player 1's raise: <input type="button" name="call" value="call" id="call"
+		onclick="raise('call')"> <BR><BR> 
+	Fold (forfeit the game): <input type="button" name="fold" value="fold" id="fold"
+		onclick="fold()" > 
+	
 
 
 	<!--   input type="button" value="Hello" id="buttonHello">

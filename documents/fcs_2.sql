@@ -65,16 +65,16 @@ CREATE TABLE IF NOT EXISTS `game` (
   `Player2Card1` char(30) NOT NULL,
 
   `Player2Card2` char(30) NOT NULL,
-  `Player1BetCard2` DECIMAL(4,2) NOT NULL,
+  `Player2BetCard2` DECIMAL(4,2) NOT NULL,
 
   `Player2Card3` char(30) NOT NULL,
-  `Player1BetCard3` DECIMAL(4,2) NOT NULL,
+  `Player2BetCard3` DECIMAL(4,2) NOT NULL,
 
   `Player2Card4` char(30) NOT NULL,
-  `Player1BetCard4` DECIMAL(4,2) NOT NULL,
+  `Player2BetCard4` DECIMAL(4,2) NOT NULL,
 
   `Player2Card5` char(30) NOT NULL,
-  `Player1BetCard5` DECIMAL(4,2) NOT NULL,
+  `Player2BetCard5` DECIMAL(4,2) NOT NULL,
 
 
 
