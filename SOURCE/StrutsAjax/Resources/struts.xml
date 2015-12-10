@@ -123,6 +123,7 @@
         <result name="error">index.jsp</result>
         </action>
 
+
   <action name="RegisterForFiveCardStudPoker" class="controller.register">
             <result name="success">/index.jsp</result>
             <result name="logonError">/UserRegistration.jsp</result>
