@@ -34,7 +34,7 @@ public class MySQLConnection implements dataconnection
         
        
            PreparedStatement stmt = conn.prepareStatement("SELECT UserID, UserName, Password, Timestamp From users WHERE UserName = ?");
-           stmt.setString(1, UserName);
+           stmt.setString(1, UserName.toLowerCase());
         
        
         ResultSet rs = stmt.executeQuery();

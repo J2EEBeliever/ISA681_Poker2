@@ -111,6 +111,8 @@
    <result name="gameRedirect" type="redirect">/showGames.html</result>
     <!--  <result name="mainRedirect" type="redirect">/showMain</result> -->
 </global-results>
+
+
      
      <action name="showLogin">
         <result>index.jsp</result>
@@ -121,13 +123,13 @@
         <result name="error">index.jsp</result>
         </action>
 
-      <action name="RegisterForFiveCardStudPoker" 
-            class="controller.FiveCardStudPokerAjaxAction" >
+  <action name="RegisterForFiveCardStudPoker" class="controller.register">
             <result name="success">/index.jsp</result>
             <result name="logonError">/UserRegistration.jsp</result>
             <result name="registrationError">/UserRegistration.jsp</result>
             
       </action>
+      
          <action name="showGames" class="controller.ShowGame">
         <result>/WEB-INF/game.jsp</result>
         </action>
@@ -144,11 +146,6 @@
 		<action name="newGame" class="controller.AjaxAction" method="newGame">
 		</action>
 
-
-
-
-
-		
 		<action name="sum" class="controller.AjaxAction" method="sum">
 		</action>
 		

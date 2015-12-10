@@ -100,6 +100,7 @@ public class FiveCardStudPokerAjaxAction extends ActionSupport implements  Login
 	}
 
 	
+        
 	public User getUserByUserName(String userName) throws Exception {
 
 		log.debug("\n\nDebug: inside getUserByUserName\n");
