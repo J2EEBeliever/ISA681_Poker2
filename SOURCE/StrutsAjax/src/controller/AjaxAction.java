@@ -148,11 +148,9 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		boolean success = game.outputToResponseOutputStream(user);
 
-
 		log.debug("\n\nDebug: Exiting method waitForTurnOrGameToStart()\n\n");
 
 		return;
-
 
 	}
 
@@ -161,17 +159,17 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		/*
 		 * Pre-conditions:
 		 * 
-			 * User object exists in session scope. userGameId exists in session
-			 * scope. Game object with userGameId exists in application scope hash
-			 * map.
+		 * User object exists in session scope. userGameId exists in session
+		 * scope. Game object with userGameId exists in application scope hash
+		 * map.
 		 * 
 		 * Post-conditions:
 		 * 
-			 * Either player 1 (game.getPlayer1) user has just raised the ante or
-			 * player 2 (game.getPlayer2) has just called for the same amount
-			 * raised. If player 1 raises then its player 2's turn. If player 2
-			 * calls then two new cards are delt and it player 1's turn again to
-			 * raise or fold.
+		 * Either player 1 (game.getPlayer1) user has just raised the ante or
+		 * player 2 (game.getPlayer2) has just called for the same amount
+		 * raised. If player 1 raises then its player 2's turn. If player 2
+		 * calls then two new cards are delt and it player 1's turn again to
+		 * raise or fold.
 		 * 
 		 */
 
@@ -258,60 +256,87 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			return;
 
 		}
-		
-		String betAmount = null;
-		
-		String actionType = request.getParameter("actionType");
-		
-		if(actionType != null && actionType.equals("call")) {
-			
-			betAmount = "" + game.getPlayersLastBet();
-			
-		}
-		else {
-		
-		
-
-			betAmount = request.getParameter("betAmount");
-		
-		}
 
 		double betAmountDouble = 0;
 
-		try {
+		String betAmount = null;
 
-			if (betAmount == null || betAmount.equals("") || Double.parseDouble(betAmount) <= 0.00
-					|| Double.parseDouble(betAmount) > 1) {
+		String actionType = request.getParameter("actionType");
 
-			} else {
-				betAmountDouble = Double.parseDouble(betAmount);
-			}
+		if (actionType != null && actionType.equals("fold")
+				&& game.getPlayer1().getUserName().equals(user.getUserName())) {
 
-		}
+			game.setDidPlayer1Fold("yes");
 
-		catch (Exception e2) {
-			e2.printStackTrace();
+			Game.addGameToApplicationScopeGameHashMap(game);
 
-			log.debug(
-					"\n\nDebug: In method raise() processing [request] scope parameter 'betAmount'.  Try raising again.\n\n");
+			boolean success = game.outputToResponseOutputStream(user);
 
-			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setContentType("text/plain;charset=utf-8");
-			PrintWriter out;
-			try {
-				out = response.getWriter();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return;
-			}
-			out.println(
-
-					"<BR><BR>Debug: In method raise() processing [request] scope parameter 'betAmount'.  Try raising again.<BR><BR>");
-
-			out.flush();
+			log.debug("\n\nDebug: Exiting method raise() after executing 'hold' logic.\n\n");
 
 			return;
+
+		} else if (actionType != null && actionType.equals("fold")
+				&& game.getPlayer2().getUserName().equals(user.getUserName())) {
+
+			game.setDidPlayer2Fold("yes");
+
+			Game.addGameToApplicationScopeGameHashMap(game);
+
+			boolean success = game.outputToResponseOutputStream(user);
+
+			log.debug("\n\nDebug: Exiting method raise() after executing 'hold' logic.\n\n");
+
+			return;
+
+		} else {
+
+			if (actionType != null && actionType.equals("call")) {
+
+				betAmount = "" + game.getPlayersLastBet();
+
+			} else {
+
+				betAmount = request.getParameter("betAmount");
+
+			}
+
+			try {
+
+				if (betAmount == null || betAmount.equals("") || Double.parseDouble(betAmount) <= 0.00
+						|| Double.parseDouble(betAmount) > 1) {
+
+				} else {
+					betAmountDouble = Double.parseDouble(betAmount);
+				}
+
+			}
+
+			catch (Exception e2) {
+				e2.printStackTrace();
+
+				log.debug(
+						"\n\nDebug: In method raise() processing [request] scope parameter 'betAmount'.  Try raising again.\n\n");
+
+				HttpServletResponse response = ServletActionContext.getResponse();
+				response.setContentType("text/plain;charset=utf-8");
+				PrintWriter out;
+				try {
+					out = response.getWriter();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return;
+				}
+				out.println(
+
+						"<BR><BR>Debug: In method raise() processing [request] scope parameter 'betAmount'.  Try raising again.<BR><BR>");
+
+				out.flush();
+
+				return;
+
+			}
 
 		}
 
@@ -322,7 +347,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			boolean success = game.outputToResponseOutputStream(user);
 
 			log.debug("\n\nDebug: In method raise() Player 1 has bet and now it is player 2's turn.\n\n");
-
 
 			log.debug("\n\nDebug: Exiting method raise()\n\n");
 
@@ -343,7 +367,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			boolean success = game.outputToResponseOutputStream(user);
 
-			
 			log.debug("\n\nDebug: Exiting method raise()\n\n");
 
 			return;
@@ -380,13 +403,13 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		/*
 		 * Pre-conditions:
 		 * 
-			 * The user is logged on and a user objecct is in session scope. The
-			 * user just clicked on a "joinGameNow" action button.
+		 * The user is logged on and a user objecct is in session scope. The
+		 * user just clicked on a "joinGameNow" action button.
 		 * 
 		 * Post-conditions:
 		 * 
-			 * The user has a gameId in session scope and the game object in a hash
-			 * map in application scope has player2 equal to the user object.
+		 * The user has a gameId in session scope and the game object in a hash
+		 * map in application scope has player2 equal to the user object.
 		 * 
 		 * 
 		 * 
@@ -524,18 +547,18 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 					game.setPlayer2(user);
 
+					game.setPlayer2UserName(user.getUserName());
+
 				}
 
 				if (game != null && game.getDeckOfCards() != null) {
 
 					Game.setGameIdInSessionScope("" + game.getGameNumber());
-					
+
 					boolean success = game.outputToResponseOutputStream(user);
-					
 
 					log.debug(
 							"\n\nDebug: In method joinGameNow() and Game already exists in hash map global veriable. Therfore resumeing game.\n\n");
-
 
 					log.debug("\n\nDebug: Exiting method joinGameNow()\n\n");
 
@@ -572,10 +595,8 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				Game.addGameToApplicationScopeGameHashMap(game);
 
 				log.debug("\n\nDebug: In method joinGameNow() and starting new Game.\n\n");
-				
+
 				boolean success = game.outputToResponseOutputStream(user);
-
-
 
 				log.debug("\n\nDebug: Exiting method joinGameNow()\n\n");
 
@@ -592,11 +613,11 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		/*
 		 * Pre-conditions:
 		 * 
-			 * The user is loggon on and a user object is in sesison scope.
+		 * The user is loggon on and a user object is in sesison scope.
 		 * 
 		 * Post-conditions:
 		 * 
-			 * A list of games to join with actions buttonss is displayed.
+		 * A list of games to join with actions buttonss is displayed.
 		 * 
 		 */
 
@@ -687,11 +708,11 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				else if (user1 != null && user2 == null) {
 
-					stringBuffer.append("<BR>" + 
-							"Join New Game #" + game.getGameNumber() + " with player 1 as: " + user1.getUserName()
-									+ "and no player 2 yet. <input type=\"button\" onclick=\"joinGameNow('"
-									+ game.getGameNumber() + "' )\" id =\"joinGameNow" + x
-									+ "1\" value = \"Join New Game Now\" name = \"joinGameNow" + x + "1\">");
+					stringBuffer.append("<BR>" + "Join New Game #" + game.getGameNumber() + " with player 1 as: "
+							+ user1.getUserName()
+							+ "and no player 2 yet. <input type=\"button\" onclick=\"joinGameNow('"
+							+ game.getGameNumber() + "' )\" id =\"joinGameNow" + x
+							+ "1\" value = \"Join New Game Now\" name = \"joinGameNow" + x + "1\">");
 
 				} else if (user2 != null && user.getUserName().equals(user2.getUserName())) {
 
@@ -734,20 +755,19 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 	}
 	// getPlayerTurn
 
-
 	public void newGame() {
 
 		/*
 		 * Pre-conditions:
 		 * 
-			 * User is logged on and a "user" object is in session scope.
+		 * User is logged on and a "user" object is in session scope.
 		 * 
 		 * Post-conditions:
 		 * 
-			 * A gameId and user object is in session scope and a game object is in
-			 * a hash map in application scope. The game object in a hash map in
-			 * application scope has a player1 object equal to the current user
-			 * object from session scope.
+		 * A gameId and user object is in session scope and a game object is in
+		 * a hash map in application scope. The game object in a hash map in
+		 * application scope has a player1 object equal to the current user
+		 * object from session scope.
 		 * 
 		 * 
 		 * 
@@ -780,6 +800,8 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				Game game = new Game();
 
 				game.setPlayer1(user);
+
+				game.setPlayer1UserName(user.getUserName());
 
 				Game.setGameIdInSessionScope("" + game.getGameNumber());
 
