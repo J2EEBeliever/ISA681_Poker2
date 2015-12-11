@@ -34,7 +34,7 @@ use fcs;
 
 CREATE TABLE IF NOT EXISTS `game` (
 
-  `GameID` int(11) NOT NULL,
+  `GameID` int(11) NOT NULL AUTO_INCREMENT,
 
   `Player1` int(11) NOT NULL,
 
