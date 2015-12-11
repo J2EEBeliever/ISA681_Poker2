@@ -38,6 +38,12 @@ CREATE TABLE IF NOT EXISTS `game` (
 
   `Player1` int(11) NOT NULL,
 
+  `Player1UserName` varchar(20),
+
+  `didPlayer1Fold` char(3),
+
+  `Player1FinalHandRanking` varchar(25),
+
   `Player1Card1` char(30) NOT NULL,
 
   `Player1Card2` char(30) NOT NULL,
@@ -61,6 +67,11 @@ CREATE TABLE IF NOT EXISTS `game` (
 
   `Player2` int(11) NOT NULL,
 
+  `Player2UserName` varchar(20),
+
+  `didPlayer2Fold` char(3),
+
+  `Player2FinalHandRanking` varchar(25),
 
   `Player2Card1` char(30) NOT NULL,
 

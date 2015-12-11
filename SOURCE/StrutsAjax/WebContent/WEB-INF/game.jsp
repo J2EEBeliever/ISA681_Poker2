@@ -12,6 +12,8 @@
  */
 
 
+ var isGameOver = 'no';
+ 
 //Browser Support Code
 function ajaxFunctionbk(){
 	
@@ -88,9 +90,12 @@ function joinGameNow(gameNumber) {
 		}
 	});
 	
-	var isGameOver = document.getElementById('IsGameOver');
+	//var isGameOver = document.getElementById('IsGameOver');
 	
-	if(isGameOver.value == 'yes') {
+	
+	//if(isGameOver.value == 'yes') {
+		
+	if(isGameOver == 'yes') {
 		
 	}
 	else {
@@ -148,9 +153,12 @@ function raise(actionType) {
 
 	
 	
-	var isGameOver = document.getElementById('IsGameOver');
+	//var isGameOver = document.getElementById('IsGameOver');
 	
-	if(isGameOver.value == 'yes') {
+	
+	//if(isGameOver.value == 'yes') {
+		
+	if(isGameOver == 'yes') {
 		
 	}
 	else {
@@ -180,9 +188,12 @@ function waitForTurnOrGameToStart() {
 	});
 	
 	
-	var isGameOver = document.getElementById('IsGameOver');
+	//var isGameOver = document.getElementById('IsGameOver');
 	
-	if(isGameOver.value == 'yes') {
+	
+	//if(isGameOver.value == 'yes') {
+		
+	if(isGameOver == 'yes') {
 		
 	}
 	else {
@@ -249,14 +260,15 @@ $(document).ready(function() {
 			});
 			
 			
-			var isGameOver = document.getElementById('IsGameOver');
+			//var isGameOver = document.getElementById('IsGameOver');
 			
-			if(isGameOver.value == 'yes') {
+			
+			//if(isGameOver.value == 'yes') {
+				
+			if(isGameOver == 'yes') {
 				
 			}
 			else {
-				
-//				aler('New Game setTimeout()');
 				
 				setTimeout(waitForTurnOrGameToStart,5000);
 			
@@ -382,7 +394,7 @@ $(document).ready(function() {
 	Call player 1's raise: <input type="button" name="call" value="call" id="call"
 		onclick="raise('call')"> <BR><BR> 
 	Fold (forfeit the game): <input type="button" name="fold" value="fold" id="fold"
-		onclick="fold()" > 
+		onclick="raise('fold')"" > <BR>
 	
 
 

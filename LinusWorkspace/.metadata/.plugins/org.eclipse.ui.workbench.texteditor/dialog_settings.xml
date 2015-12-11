@@ -8,14 +8,14 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="final game bet"/>
-			<item value="final game get"/>
-			<item value="s"/>
-			<item value="IsGameOver"/>
-			<item value="newGame("/>
-			<item value="joinGame2"/>
-			<item value="joinGameNow"/>
-			<item value="&quot;call&quot;"/>
+			<item value="coplete"/>
+			<item value="player 2 has folded"/>
+			<item value="didPlayer1Fold"/>
+			<item value="TotalBetForWinner"/>
+			<item value="WinnerUserName"/>
+			<item value="outputToResponseOutputStream"/>
+			<item value="player1FinalHandRanking("/>
+			<item value="player1FinalHandRanking"/>
 		</list>
 		<list key="replacehistory">
 			<item value="this."/>
