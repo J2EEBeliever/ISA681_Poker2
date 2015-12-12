@@ -77,6 +77,7 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
               servletResponse.addCookie(PokerToken);
               servletResponse.addCookie(TokenHMAC);
               this.session.put("UserID", inComingUser.getUserID());
+              this.session.put("user", inComingUser);
           } catch (NoSuchAlgorithmException | InvalidKeyException | UnsupportedEncodingException ex) {
               Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
               addActionError("There was an error processing your request");
