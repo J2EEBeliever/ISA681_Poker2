@@ -41,12 +41,10 @@ public class Game {
 	private static int uniqueSerialNumber = 0;
 
 	private int gameNumber = -1;
-	
 
 	private String player1FinalHandRanking = null;
-	
+
 	private String player2FinalHandRanking = null;
-	
 
 	private String player1UserName = null; // Added 2015/12/10 2:30 PM LWF
 	private String didPlayer1Fold = "no"; // Added 2015/12/10 2:30 PM LWF
@@ -69,7 +67,7 @@ public class Game {
 	public void setDidPlayer2Fold(String didPlayer2Fold) {
 		this.didPlayer2Fold = didPlayer2Fold;
 	}
-	
+
 	public String getPlayer1FinalHandRanking() {
 		return player1FinalHandRanking;
 	}
@@ -85,7 +83,6 @@ public class Game {
 	public void setPlayer2FinalHandRanking(String player2FinalHandRanking) {
 		this.player2FinalHandRanking = player2FinalHandRanking;
 	}
-
 
 	private PlayingCard player1card1 = null;
 
@@ -212,7 +209,6 @@ public class Game {
 			stringBuffer.append(" | " + this.getPlayer2betCard5());
 
 		} else if (this.getTotalBetForWinner() != 0.00) {
-
 
 			stringBuffer.append(" |  Total Amount Winner Won = " + this.getTotalBetForWinner());
 
@@ -888,7 +884,9 @@ public class Game {
 
 		if (this.getDidPlayer1Fold() != null && this.getDidPlayer1Fold().equalsIgnoreCase("yes")) {
 
-			out.println("<BR>Player 1 has folded and the game is now complete.<script language=\"javascript\" type=\"text/javascript\">" +
+			out.println("<BR>Player 1 has folded and the game is now complete and by foreit Player 2 "
+					+ this.getPlayer2().getUserName()
+					+ " wins.<script language=\"javascript\" type=\"text/javascript\">" +
 
 			// "alert('Pre setting isGameOver'); var isGameOver =
 			// document.getElementById('IsGameOver'); isGameOver.value = 'yes';"
@@ -902,6 +900,12 @@ public class Game {
 				if (this.getTotalBetForWinner() > 0) {
 
 				} else {
+
+					this.setWinnerUserName(this.getPlayer2().getUserName());
+
+					this.setPlayer1UserName(this.getPlayer1().getUserName());
+
+					this.setPlayer2UserName(this.getPlayer2().getUserName());
 
 					this.setTotalBetForWinner(this.getPlayer1betCard2() + this.getPlayer1betCard3()
 							+ this.getPlayer1betCard4() + this.getPlayer1betCard5());
@@ -918,7 +922,9 @@ public class Game {
 
 		else if (this.getDidPlayer2Fold() != null && this.getDidPlayer2Fold().equalsIgnoreCase("yes")) {
 
-			out.println("<BR>Player 2 has folded and the game is now complete.<script language=\"javascript\" type=\"text/javascript\">" +
+			out.println("<BR>Player 2 has folded and the game is now complete and by foreit Player 1 "
+					+ this.getPlayer1().getUserName()
+					+ " wins.<script language=\"javascript\" type=\"text/javascript\">" +
 
 			// "alert('Pre setting isGameOver'); var isGameOver =
 			// document.getElementById('IsGameOver'); isGameOver.value = 'yes';"
@@ -932,6 +938,12 @@ public class Game {
 				if (this.getTotalBetForWinner() > 0) {
 
 				} else {
+
+					this.setWinnerUserName(this.getPlayer1().getUserName());
+
+					this.setPlayer1UserName(this.getPlayer1().getUserName());
+
+					this.setPlayer2UserName(this.getPlayer2().getUserName());
 
 					this.setTotalBetForWinner(this.getPlayer2betCard2() + this.getPlayer2betCard3()
 							+ this.getPlayer2betCard4() + this.getPlayer2betCard5());
@@ -944,12 +956,10 @@ public class Game {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		else if (whoseTurnIsIt.equals(this.GAME_COMPLETE) || whoseTurnIsIt.equals(this.FINAL_CARD_BET)) {
+		} else if (whoseTurnIsIt.equals(this.GAME_COMPLETE) || whoseTurnIsIt.equals(this.FINAL_CARD_BET)) {
 
 			out.println("<BR>The game is now complete.<BR><BR>" +
-			
-					
+
 			"<script language=\"javascript\" type=\"text/javascript\">" +
 
 			// "alert('Pre setting isGameOver'); var isGameOver =
@@ -961,9 +971,60 @@ public class Game {
 
 			try {
 
+				int player1HandRanking = getPlayer1HandRanking(out);
+
+				int player2HandRanking = getPlayer2HandRanking(out);
+
+				if (player1HandRanking > player2HandRanking) {
+
+					this.setWinnerUserName(this.getPlayer1().getUserName());
+
+					out.println("<BR><BR>Player #1 " + this.getPlayer1().getUserName() + " is the Winner!!!");
+
+				} else if (player1HandRanking < player2HandRanking) {
+
+					this.setWinnerUserName(this.getPlayer2().getUserName());
+
+					out.println("<BR><BR>Player #2 " + this.getPlayer2().getUserName() + " is the Winner!!!");
+
+				} else {
+
+					int player1HighCard = this.getHighCard(this.getPlayer1card1(), this.getPlayer1card2(),
+							this.getPlayer1card3(), this.getPlayer1card4(), this.getPlayer1card5());
+
+					int player2HighCard = this.getHighCard(this.getPlayer2card1(), this.getPlayer2card2(),
+							this.getPlayer2card3(), this.getPlayer2card4(), this.getPlayer2card5());
+
+					if (player1HighCard > player2HighCard) {
+
+						out.println("<BR><BR>Player #1 " + this.getPlayer1().getUserName() + " is the Winner!!!");
+
+						this.setWinnerUserName(this.getPlayer1().getUserName());
+
+					} else if (player1HighCard < player2HighCard) {
+
+						out.println("<BR><BR>Player #2 " + this.getPlayer2().getUserName() + " is the Winner!!!");
+
+						this.setWinnerUserName(this.getPlayer2().getUserName());
+
+					} else {
+
+						this.setWinnerUserName("<BR><BR>Game is a Draw");
+
+					}
+
+				}
+
 				if (this.getTotalBetForWinner() > 0) {
 
 				} else {
+
+					// this.setWinnerUserName(this.getPlayer1().getUserName());
+					// //To Do 2015/12/11 1:00 PM LWF
+
+					this.setPlayer1UserName(this.getPlayer1().getUserName());
+
+					this.setPlayer2UserName(this.getPlayer2().getUserName());
 
 					this.setTotalBetForWinner(this.getPlayer1betCard2() + this.getPlayer1betCard3()
 							+ this.getPlayer1betCard4() + this.getPlayer1betCard5());
@@ -1008,118 +1069,79 @@ public class Game {
 		this.setWinnerUserName("Winner not known");
 
 		Connection conn = this.getDatabaseConnection();
-		
-/*		
 
-		String query = " insert into game (" + "" + "Player1, " + "Player1Card1,  " + "Player1Card2, Player1BetCard2, "
-				+ "Player1Card3, Player1BetCard3, " + "Player1Card4, Player1BetCard4, "
-				+ "Player1Card5, Player1BetCard5, " + "" + "Player2, " + "Player2Card1, "
-				+ "Player2Card2, Player2BetCard2, " + "Player2Card3, Player2BetCard3, "
-				+ "Player2Card4, Player2BetCard4, " + "Player2Card5, Player2BetCard5, " + ""
-				+ "TotalBetForWinner, WinnerUserName, " +
+		/*
+		 * 
+		 * String query = " insert into game (" + "" + "Player1, " +
+		 * "Player1Card1,  " + "Player1Card2, Player1BetCard2, " +
+		 * "Player1Card3, Player1BetCard3, " + "Player1Card4, Player1BetCard4, "
+		 * + "Player1Card5, Player1BetCard5, " + "" + "Player2, " +
+		 * "Player2Card1, " + "Player2Card2, Player2BetCard2, " +
+		 * "Player2Card3, Player2BetCard3, " + "Player2Card4, Player2BetCard4, "
+		 * + "Player2Card5, Player2BetCard5, " + "" +
+		 * "TotalBetForWinner, WinnerUserName, " +
+		 * 
+		 * "Player1UserName, didPlayer1Fold," + // Added 2015/12/10 2:30 PM LWF
+		 * "Player2UserName, didPlayer2Fold," + // Added 2015/12/10 2:30 PM //
+		 * LWF
+		 * 
+		 * "Player1FinalHandRanking, " + "Player2FinalHandRanking, " +
+		 * 
+		 * 
+		 * "GameStatus)" +
+		 * 
+		 * "" + "VALUES(" + " " + "? , " + "?, " + "?, ?, " + "?, ?, " +
+		 * "?, ?, " + "?, ?, " + "" + "?, " + "?, " + "?, ?, " + "?, ?, " +
+		 * "?, ?, " + "?, ?, " + "" + "?, ?, " + "?, ?, " + // Added //
+		 * 2015/12/10 // 2:30 // PM // LWF "?, ?, " + // Added 2015/12/10 2:30
+		 * PM LWF "?, ?, " + // Added 2015/12/10 2:30 PM LWF "?)";
+		 * 
+		 */
 
-		"Player1UserName, didPlayer1Fold," + // Added 2015/12/10 2:30 PM LWF
-				"Player2UserName, didPlayer2Fold," + // Added 2015/12/10 2:30 PM
-														// LWF
-				
-		"Player1FinalHandRanking, " +														
-		"Player2FinalHandRanking, " +														
+		String query2 = " insert into game (" + "" + "Player1, " + "" + "Player1Card1,  " + "Player1Card2, "
+				+ "Player1BetCard2, " + "Player1Card3, " + "Player1BetCard3, " + "Player1Card4, " + "Player1BetCard4, "
+				+ "Player1Card5, " + "Player1BetCard5, " + "" + "Player2, " + "Player2Card1, " + "Player2Card2, "
+				+ "Player2BetCard2, " + "Player2Card3, " + "Player2BetCard3, " + "Player2Card4, " + "Player2BetCard4, "
+				+ "Player2Card5, " + "Player2BetCard5, " + "" + "TotalBetForWinner, " + "WinnerUserName, " +
 
-		
+		"Player1UserName, " + "didPlayer1Fold," + "Player2UserName, " + "didPlayer2Fold," +
+
+		"Player1FinalHandRanking, " + "Player2FinalHandRanking, " +
+
 		"GameStatus)" +
 
-		"" + "VALUES(" + " " + "? , " + "?, " + "?, ?, " + "?, ?, " + "?, ?, " + "?, ?, " + "" + "?, " + "?, "
-				+ "?, ?, " + "?, ?, " + "?, ?, " + "?, ?, " + "" + "?, ?, " + "?, ?, " + // Added
-																							// 2015/12/10
-																							// 2:30
-																							// PM
-																							// LWF
-				"?, ?, " + // Added 2015/12/10 2:30 PM LWF
-				"?, ?, " + // Added 2015/12/10 2:30 PM LWF
-		"?)";
-		
-*/		
-		
-		String query2 = " insert into game (" + "" + 
-				"Player1, "
-				+ "" + "Player1Card1,  " + 
-				"Player1Card2, " + 
-				"Player1BetCard2, "
-				+ "Player1Card3, " + 
-				"Player1BetCard3, " + 
-				"Player1Card4, " + 
-				"Player1BetCard4, "
-				+ "Player1Card5, " + 
-				"Player1BetCard5, " + "" + 
-				"Player2, " + 
-				"Player2Card1, "
-				+ "Player2Card2, " + 
-				"Player2BetCard2, " + 
-				"Player2Card3, " + 
-				"Player2BetCard3, "
-				+ "Player2Card4, " + 
-				"Player2BetCard4, " + 
-				"Player2Card5, "
-				+ "Player2BetCard5, " + ""
-				+ "TotalBetForWinner, " + 
-				"WinnerUserName, " +
+		"" + "VALUES(" + "?," // "Player1, "
+				+ "?," + // "Player1Card1, " +
+				"?," + // "Player1Card2, " +
+				"?," + // "Player1BetCard2, "
+				"?," + // "Player1Card3, " +
+				"?," + // "Player1BetCard3, " +
+				"?," + // "Player1Card4, " +
+				"?," + // "Player1BetCard4, "
+				"?," + // "Player1Card5, " +
+				"?," + // "Player1BetCard5, " + "" +
+				"?, " + // "Player2, " +
+				"?," + // "Player2Card1, "
+				"?," + // "Player2Card2, " +
+				"?, " + // "Player2BetCard2, " +
+				"?, " + // "Player2Card3, " +
+				"?, " + // "Player2BetCard3, "
+				"?, " + // "Player2Card4, " +
+				"?," + // "Player2BetCard4, " +
+				"?, " + // "Player2Card5, "
+				"?, " + // "Player2BetCard5, " + ""
+				"?, " + // "TotalBetForWinner, " +
+				"?, " + // "WinnerUserName, " +
 
-		"Player1UserName, " + 
-				 "didPlayer1Fold," + 
-				"Player2UserName, " + 
-				 "didPlayer2Fold," + 
-														
-				
-		"Player1FinalHandRanking, " +														
-		"Player2FinalHandRanking, " +														
+		"?, " + // "Player1UserName, " +
+				"?, " + // "didPlayer1Fold," +
+				"?, " + // "Player2UserName, " +
+				"?, " + // "didPlayer2Fold," +
 
-		
-		"GameStatus)" +
-		
-		
+		"?, " + // "Player1FinalHandRanking, " +
+				"?, " + // "Player2FinalHandRanking, " +
 
-		"" + "VALUES(" +
-		"?," //"Player1, "
-		+ "?," + //"Player1Card1,  " + 
-		"?," + //"Player1Card2, " + 
-		"?," + //"Player1BetCard2, "
-		 "?," + //"Player1Card3, " + 
-		"?," + //"Player1BetCard3, " + 
-		"?," + //"Player1Card4, " + 
-		"?," + //"Player1BetCard4, "
-		 "?," + //"Player1Card5, " + 
-		"?," + //"Player1BetCard5, " + "" + 
-		"?, " + //"Player2, " + 
-		"?," + //"Player2Card1, "
-		 "?," + //"Player2Card2, " + 
-		"?, " + //"Player2BetCard2, " + 
-		"?, " + //"Player2Card3, " + 
-		"?, " + //"Player2BetCard3, "
-		 "?, " + //"Player2Card4, " + 
-		"?,"  + //"Player2BetCard4, " + 
-		"?, " + //"Player2Card5, "
-		"?, " + // "Player2BetCard5, " + ""
-		"?, " + // "TotalBetForWinner, " + 
-		"?, " + //"WinnerUserName, " +
-
-		"?, " + //"Player1UserName, " + 
-		"?, " + //"didPlayer1Fold," + 
-		"?, " + //"Player2UserName, " + 
-		 "?, " + //"didPlayer2Fold," + 
-												
-		
-		"?, " + //"Player1FinalHandRanking, " +														
-		"?, " + //"Player2FinalHandRanking, " +														
-
-
-		"?)"; //+ "GameStatus)" +
-
-		
-		
-		
-
-
-
+		"?)"; // + "GameStatus)" +
 
 		Calendar calendar = Calendar.getInstance();
 		java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
@@ -1146,42 +1168,29 @@ public class Game {
 		 * 
 		 * 
 		 */
-		
+
 		/*
-		"?," //"Player1, "
-		+ "?," + //"Player1Card1,  " + 
-		"?," + //"Player1Card2, " + 
-		"?," + //"Player1BetCard2, "
-		 "?," + //"Player1Card3, " + 
-		"?," + //"Player1BetCard3, " + 
-		"?," + //"Player1Card4, " + 
-		"?," + //"Player1BetCard4, "
-		 "?," + //"Player1Card5, " + 
-		"?," + //"Player1BetCard5, " + "" + 
-		"?, " + //"Player2, " + 
-		"?," + //"Player2Card1, "
-		 "?," + //"Player2Card2, " + 
-		"?, " + //"Player2BetCard2, " + 
-		"?, " + //"Player2Card3, " + 
-		"?, " + //"Player2BetCard3, "
-		 "?, " + //"Player2Card4, " + 
-		"?,"  + //"Player2BetCard4, " + 
-		"?, " + //"Player2Card5, "
-		"?, " + // "Player2BetCard5, " + ""
-		"?, " + // "TotalBetForWinner, " + 
-		"?, " + //"WinnerUserName, " +
-
-		"?, " + //"Player1UserName, " + 
-		"?, " + //"didPlayer1Fold," + 
-		"?, " + //"Player2UserName, " + 
-		 "?, " + //"didPlayer2Fold," + 
-												
-		
-		"?, " + //"Player1FinalHandRanking, " +														
-		"?, " + //"Player2FinalHandRanking, " +														
-
-
-		"?)"; //+ "GameStatus)" +
+		 * "?," //"Player1, " + "?," + //"Player1Card1,  " + "?," + //
+		 * "Player1Card2, " + "?," + //"Player1BetCard2, " "?," + //
+		 * "Player1Card3, " + "?," + //"Player1BetCard3, " + "?," + //
+		 * "Player1Card4, " + "?," + //"Player1BetCard4, " "?," + //
+		 * "Player1Card5, " + "?," + //"Player1BetCard5, " + "" + "?, " + //
+		 * "Player2, " + "?," + //"Player2Card1, " "?," + //"Player2Card2, " +
+		 * "?, " + //"Player2BetCard2, " + "?, " + //"Player2Card3, " + "?, " +
+		 * //"Player2BetCard3, " "?, " + //"Player2Card4, " + "?," + //
+		 * "Player2BetCard4, " + "?, " + //"Player2Card5, " "?, " + //
+		 * "Player2BetCard5, " + "" "?, " + // "TotalBetForWinner, " + "?, " +
+		 * //"WinnerUserName, " +
+		 * 
+		 * "?, " + //"Player1UserName, " + "?, " + //"didPlayer1Fold," + "?, " +
+		 * //"Player2UserName, " + "?, " + //"didPlayer2Fold," +
+		 * 
+		 * 
+		 * "?, " + //"Player1FinalHandRanking, " + "?, " + //
+		 * "Player2FinalHandRanking, " +
+		 * 
+		 * 
+		 * "?)"; //+ "GameStatus)" +
 		 */
 
 		preparedStmt.setInt(1, this.getPlayer1().getUserID()); //
@@ -1199,7 +1208,6 @@ public class Game {
 
 		preparedStmt.setString(9, "" + this.getPlayer1card5());
 		preparedStmt.setDouble(10, this.getPlayer1betCard5());
-		
 
 		preparedStmt.setInt(11, this.getPlayer2().getUserID());
 
@@ -1216,19 +1224,14 @@ public class Game {
 
 		preparedStmt.setString(19, "" + this.getPlayer2card5());
 		preparedStmt.setDouble(20, this.getPlayer2betCard5());
-		
-		
-		preparedStmt.setDouble(21, this.getTotalBetForWinner());
-		
-		preparedStmt.setString(22, this.getWinnerUserName()); 
-		
-		
-//		  `TotalBetForWinner` DECIMAL(6,2) NOT NULL,
-//
-//		  `WinnerUserName` varchar(20) NOT NULL,
 
-		
-		
+		preparedStmt.setDouble(21, this.getTotalBetForWinner());
+
+		preparedStmt.setString(22, this.getWinnerUserName());
+
+		// `TotalBetForWinner` DECIMAL(6,2) NOT NULL,
+		//
+		// `WinnerUserName` varchar(20) NOT NULL,
 
 		/*
 		 * "" + "TotalBetForWinner, WinnerUserName, " + "GameStatus, SameState)"
@@ -1263,11 +1266,18 @@ public class Game {
 																	// 2015/12/10
 																	// 2:30 PM
 																	// LWF
-		
-		preparedStmt.setString(27, this.getPlayer1FinalHandRanking()); // Added 2015/12/10 3:30 PM LWF
-		
-		preparedStmt.setString(28, this.getPlayer2FinalHandRanking());	// Added 2015/12/10 3:30 PM LWF													
-		
+
+		preparedStmt.setString(27, this.getPlayer1FinalHandRanking()); // Added
+																		// 2015/12/10
+																		// 3:30
+																		// PM
+																		// LWF
+
+		preparedStmt.setString(28, this.getPlayer2FinalHandRanking()); // Added
+																		// 2015/12/10
+																		// 3:30
+																		// PM
+																		// LWF
 
 		preparedStmt.setString(29, "Game Finished");
 
@@ -1286,8 +1296,9 @@ public class Game {
 		// preparedStmt.setDate (3, startDate);
 
 		// execute the preparedstatement
-		
-		log.debug("\n\n SQL insert into gamess table = XXX\n\n" + query2 + "\n\nXXX");;
+
+		log.debug("\n\n SQL insert into gamess table = XXX\n\n" + query2 + "\n\nXXX");
+		;
 		preparedStmt.executeUpdate();
 
 		try {
@@ -1326,6 +1337,855 @@ public class Game {
 		Connection conn = DriverManager.getConnection(myUrl, "fcs_user", "7yXw8dDaNMBNBbW5");
 
 		return conn;
+
+	}
+
+	public int getHighCard(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return -1;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int highCard = -1;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (highCard < playingCardTemp.getCardNumber()) {
+				highCard = playingCardTemp.getCardNumber();
+			}
+
+		}
+
+		return highCard;
+
+	}
+
+	public boolean isPair(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return false;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int previousCardNumber = -1;
+
+		int count = 0;
+
+		boolean isPair = false;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (suit == null) {
+
+				++count;
+
+				suit = playingCardTemp.getCardSuit();
+
+				previousCardNumber = playingCardTemp.getCardNumber();
+
+			} else if (previousCardNumber == playingCardTemp.getCardNumber()) {
+
+				++count;
+
+				// return false;
+			} else if (previousCardNumber != playingCardTemp.getCardNumber()) {
+
+				if (count == 2) {
+
+					isPair = true;
+
+				}
+
+				count = 1;
+
+			}
+
+		}
+
+		if (isPair) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+
+	}
+
+	public boolean isFourStraight(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return false;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int previousCardNumber = -1;
+
+		int count = 0;
+
+		boolean isFourStraight = false;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (suit == null) {
+
+				++count;
+
+				suit = playingCardTemp.getCardSuit();
+
+				previousCardNumber = playingCardTemp.getCardNumber();
+			} else if ((++previousCardNumber) != playingCardTemp.getCardNumber()) {
+
+				if (count == 4) {
+
+					isFourStraight = true;
+
+				}
+
+				count = 1;
+			} else {
+
+				++count;
+
+			}
+
+		}
+
+		if (isFourStraight) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+
+	}
+
+	public boolean isFourFlush(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return false;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int previousCardNumber = -1;
+
+		int count = 0;
+
+		boolean isFourFlush = false;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (suit == null) {
+
+				++count;
+
+				suit = playingCardTemp.getCardSuit();
+
+				previousCardNumber = playingCardTemp.getCardNumber();
+			} else if (suit != playingCardTemp.getCardSuit()) {
+
+				if (count == 4) {
+
+					isFourFlush = true;
+
+				}
+
+				count = 1;
+
+			} else {
+				++count;
+			}
+
+		}
+
+		if (isFourFlush) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+
+	}
+
+	public boolean isTwoPair(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return false;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int previousCardNumber = -1;
+
+		int count = 0;
+
+		boolean isFirstPair = false;
+
+		boolean isSecondPair = false;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (suit == null) {
+
+				++count;
+
+				suit = playingCardTemp.getCardSuit();
+
+				previousCardNumber = playingCardTemp.getCardNumber();
+
+			} else if (previousCardNumber == playingCardTemp.getCardNumber()) {
+
+				++count;
+
+				// return false;
+
+			} else if (previousCardNumber != playingCardTemp.getCardNumber()) {
+
+				if (count == 2) {
+
+					if (!isFirstPair) {
+
+						isFirstPair = true;
+
+					} else if (!isSecondPair) {
+
+						isSecondPair = true;
+
+					}
+
+				}
+
+				count = 1;
+
+			}
+
+		}
+
+		if (isFirstPair && isSecondPair) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+
+	}
+
+	public boolean isThreeOfaKind(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return false;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int previousCardNumber = -1;
+
+		int count = 0;
+
+		boolean isThreeOfKind = false;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (suit == null) {
+
+				++count;
+
+				suit = playingCardTemp.getCardSuit();
+
+				previousCardNumber = playingCardTemp.getCardNumber();
+
+			} else if (previousCardNumber == playingCardTemp.getCardNumber()) {
+
+				++count;
+
+				// return false;
+			} else if (previousCardNumber != playingCardTemp.getCardNumber()) {
+
+				if (count == 3) {
+
+					isThreeOfKind = true;
+
+				}
+
+				count = 1;
+
+			}
+
+		}
+
+		if (isThreeOfKind) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+
+	}
+
+	public boolean isStraight(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return false;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int previousCardNumber = -1;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (suit == null) {
+				suit = playingCardTemp.getCardSuit();
+
+				previousCardNumber = playingCardTemp.getCardNumber();
+			} else if ((++previousCardNumber) != playingCardTemp.getCardNumber()) {
+				return false;
+			}
+
+		}
+
+		return true;
+
+	}
+
+	public boolean isFlush(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return false;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int previousCardNumber = -1;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (suit == null) {
+				suit = playingCardTemp.getCardSuit();
+
+				previousCardNumber = playingCardTemp.getCardNumber();
+			} else if (suit != playingCardTemp.getCardSuit()) {
+				return false;
+			}
+
+		}
+
+		return true;
+
+	}
+
+	public boolean isStraightFlush(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return false;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int previousCardNumber = -1;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (suit == null) {
+				suit = playingCardTemp.getCardSuit();
+
+				previousCardNumber = playingCardTemp.getCardNumber();
+			} else if (suit != playingCardTemp.getCardSuit()
+					|| (++previousCardNumber) != playingCardTemp.getCardNumber()) {
+				return false;
+			}
+
+		}
+
+		return true;
+
+	}
+
+	public boolean isFullHouse(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return false;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int previousCardNumber = -1;
+
+		int count = 0;
+
+		boolean isTwoOfKind = false;
+
+		boolean isThreeOfKind = false;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (suit == null) {
+
+				++count;
+
+				suit = playingCardTemp.getCardSuit();
+
+				previousCardNumber = playingCardTemp.getCardNumber();
+
+			} else if (previousCardNumber == playingCardTemp.getCardNumber()) {
+
+				++count;
+
+				// return false;
+			} else if (previousCardNumber != playingCardTemp.getCardNumber()) {
+
+				if (count == 2) {
+					isTwoOfKind = true;
+
+				} else if (count == 3) {
+					isThreeOfKind = true;
+
+				}
+
+				count = 1;
+
+			}
+
+		}
+
+		if (isTwoOfKind && isThreeOfKind) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+
+	}
+
+	public boolean isFourOfaKind(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
+			PlayingCard card5) {
+
+		if (card1 == null || card2 == null || card3 == null || card4 == null || card5 == null) {
+			return false;
+		}
+
+		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+
+		playingCardMap.put("" + card1.getCardNumber(), card1);
+		playingCardMap.put("" + card2.getCardNumber(), card2);
+		playingCardMap.put("" + card3.getCardNumber(), card3);
+		playingCardMap.put("" + card4.getCardNumber(), card4);
+		playingCardMap.put("" + card5.getCardNumber(), card5);
+
+		Collection<PlayingCard> collPLayingCards = playingCardMap.values();
+
+		Iterator<PlayingCard> iterPlayingCard = collPLayingCards.iterator();
+
+		String suit = null;
+
+		int previousCardNumber = -1;
+
+		while (iterPlayingCard.hasNext()) {
+
+			PlayingCard playingCardTemp = iterPlayingCard.next();
+
+			if (suit == null) {
+				suit = playingCardTemp.getCardSuit();
+
+				previousCardNumber = playingCardTemp.getCardNumber();
+
+			} else if (previousCardNumber != playingCardTemp.getCardNumber()) {
+				return false;
+			}
+
+		}
+
+		return true;
+
+	}
+
+	public int getPlayer1HandRanking(PrintWriter out) {
+
+		if (this.isStraightFlush(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+				this.getPlayer1card4(), this.getPlayer1card5())) {
+
+			out.println("<BR><BR>Player 1 has: a StraightFlush");
+
+			return 11;
+
+		} else if (this.isFourOfaKind(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+				this.getPlayer1card4(), this.getPlayer1card5())) {
+
+			out.println("<BR><BR>Player 1 has: Four of a Kind");
+
+			return 10;
+
+		} else if (this.isFullHouse(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+				this.getPlayer1card4(), this.getPlayer1card5())) {
+
+			out.println("<BR><BR>Player 1 has: a full House");
+
+			return 9;
+
+		} else if (this.isFlush(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+				this.getPlayer1card4(), this.getPlayer1card5())) {
+
+			out.println("<BR><BR>Player 1 has: a Flush");
+
+			return 8;
+
+		} else if (this.isStraight(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+				this.getPlayer1card4(), this.getPlayer1card5())) {
+
+			out.println("<BR><BR>Player 1 has: a Straight");
+
+			return 7;
+
+		} else if (this.isThreeOfaKind(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+				this.getPlayer1card4(), this.getPlayer1card5())) {
+
+			out.println("<BR><BR>Player 1 has: Three of a Kind");
+
+			return 6;
+
+		} else if (this.isTwoPair(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+				this.getPlayer1card4(), this.getPlayer1card5())) {
+
+			out.println("<BR><BR>Player 1 has: Two Pairs");
+
+			return 5;
+
+		} else if (this.isFourFlush(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+				this.getPlayer1card4(), this.getPlayer1card5())) {
+
+			out.println("<BR><BR>Player 1 has: a Four Card Flush");
+
+			return 4;
+
+		} else if (this.isFourStraight(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+				this.getPlayer1card4(), this.getPlayer1card5())) {
+
+			out.println("<BR><BR>Player 1 has: a Four Card Straight");
+
+			return 3;
+
+		} else if (this.isPair(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+				this.getPlayer1card4(), this.getPlayer1card5())) {
+
+			out.println("<BR><BR>Player 1 has: a Pair");
+
+			return 2;
+
+		} else {
+
+			int highCard = this.getHighCard(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
+					this.getPlayer1card4(), this.getPlayer1card5());
+
+			if (highCard == 1) {
+
+				out.println("<BR><BR>Player 1 has: a High Card of Ace");
+
+			} else if (highCard <= 10) {
+
+				out.println("<BR><BR>Player 1 has: a High Card of " + highCard);
+
+			} else if (highCard == 11) {
+
+				out.println("<BR><BR>Player 1 has: a High Card of Jack");
+
+			} else if (highCard == 12) {
+
+				out.println("<BR><BR>Player 1 has: a High Card of Queen");
+
+			} else if (highCard == 13) {
+
+				out.println("<BR><BR>Player 1 has: a High Card of King");
+
+			} else {
+
+				out.println("<BR><BR>Player 1 has: No Cards");
+
+			}
+
+			return 1;
+
+		}
+
+	}
+
+	public int getPlayer2HandRanking(PrintWriter out) {
+
+		if (this.isStraightFlush(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+				this.getPlayer2card4(), this.getPlayer2card5())) {
+
+			out.println("<BR><BR>Player 2 has: a StraightFlush");
+
+			return 11;
+
+		} else if (this.isFourOfaKind(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+				this.getPlayer2card4(), this.getPlayer2card5())) {
+
+			out.println("<BR><BR>Player 2 has: Four of a Kind");
+
+			return 10;
+
+		} else if (this.isFullHouse(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+				this.getPlayer2card4(), this.getPlayer2card5())) {
+
+			out.println("<BR><BR>Player 2 has: a full House");
+
+			return 9;
+
+		} else if (this.isFlush(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+				this.getPlayer2card4(), this.getPlayer2card5())) {
+
+			out.println("<BR><BR>Player 2 has: a Flush");
+
+			return 8;
+
+		} else if (this.isStraight(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+				this.getPlayer2card4(), this.getPlayer2card5())) {
+
+			out.println("<BR><BR>Player 2 has: a Straight");
+
+			return 7;
+
+		} else if (this.isThreeOfaKind(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+				this.getPlayer2card4(), this.getPlayer2card5())) {
+
+			out.println("<BR><BR>Player 2 has: Three of a Kind");
+
+			return 6;
+
+		} else if (this.isTwoPair(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+				this.getPlayer2card4(), this.getPlayer2card5())) {
+
+			out.println("<BR><BR>Player 2 has: Two Pairs");
+
+			return 5;
+
+		} else if (this.isFourFlush(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+				this.getPlayer2card4(), this.getPlayer2card5())) {
+
+			out.println("<BR><BR>Player 2 has: a Four Card Flush");
+
+			return 4;
+
+		} else if (this.isFourStraight(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+				this.getPlayer2card4(), this.getPlayer2card5())) {
+
+			out.println("<BR><BR>Player 2 has: a Four Card Straight");
+
+			return 3;
+
+		} else if (this.isPair(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+				this.getPlayer2card4(), this.getPlayer2card5())) {
+
+			out.println("<BR><BR>Player 2 has: a Pair");
+
+			return 2;
+
+		} else {
+
+			int highCard = this.getHighCard(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
+					this.getPlayer2card4(), this.getPlayer2card5());
+
+			if (highCard == 1) {
+
+				out.println("<BR><BR>Player 2 has: a High Card of Ace");
+
+			} else if (highCard <= 10) {
+
+				out.println("<BR><BR>Player 2 has: a High Card of " + highCard);
+
+			} else if (highCard == 11) {
+
+				out.println("<BR><BR>Player 2 has: a High Card of Jack");
+
+			} else if (highCard == 12) {
+
+				out.println("<BR><BR>Player 2 has: a High Card of Queen");
+
+			} else if (highCard == 13) {
+
+				out.println("<BR><BR>Player 2 has: a High Card of King");
+
+			} else {
+
+				out.println("<BR><BR>Player 2 has: No Cards");
+
+			}
+
+			return 1;
+
+		}
 
 	}
 

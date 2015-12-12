@@ -19,12 +19,12 @@ public class DeckOfCards {
 	final static Logger log = Logger.getLogger(DeckOfCards.class);
 
 
-	private int NUMBER_OF_CARDS = 52;
+	public static int NUMBER_OF_CARDS = 52;
 	
-	private int NUMBER_OF_CARDS_PER_SUIT = 13;
+	public static int NUMBER_OF_CARDS_PER_SUIT = 13;
 
 	
-	private int NUMBER_OF_SUITS = 52;
+//	public static int NUMBER_OF_SUITS = 52;
 	
 	private ArrayList<PlayingCard>  deckOfCards = new ArrayList<PlayingCard>();
 	

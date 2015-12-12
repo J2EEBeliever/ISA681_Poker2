@@ -12,7 +12,6 @@
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="entities.User"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
-<fullyQualifiedTypeName name="deck.cards.DeckOfCards"/>
 <fullyQualifiedTypeName name="deck.cards.PlayingCard"/>
 <fullyQualifiedTypeName name="javax.websocket.Session"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
@@ -28,4 +27,5 @@
 <fullyQualifiedTypeName name="java.sql.Timestamp"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
+<fullyQualifiedTypeName name="deck.cards.DeckOfCards"/>
 </qualifiedTypeNameHistroy>
