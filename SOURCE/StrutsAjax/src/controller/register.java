@@ -21,7 +21,13 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class register extends ActionSupport {
     
+    private String Username;
+    private String Password;
+    private String Password2;
     
+            
+    
+    @Override
     public String execute() throws Exception {
 		
 		log.debug("\n\nDebug: In Method register()\n\n");
@@ -30,11 +36,11 @@ public class register extends ActionSupport {
 
 		HttpServletRequest request = ServletActionContext.getRequest();
 
-		String userName = request.getParameter("userName"); // "password1";
+		String userName = Username;
 		
-		String password1 = request.getParameter("password1"); // "password1";
+		String password1 = Password;
 
-		String password2 = request.getParameter("password2"); // "password1";
+		String password2 = Password2;
                 
                  FiveCardStudPokerAjaxAction action = new FiveCardStudPokerAjaxAction();
 		
@@ -46,7 +52,8 @@ public class register extends ActionSupport {
 			
 			 log.debug("\n\nDebug: Exiting Method register() reutrning 'registrationError'\n\n");
 			
-			return "registrationError";
+			addActionError(errors);
+                        return ERROR;
 
 			
 		}
@@ -66,8 +73,8 @@ public class register extends ActionSupport {
 				
 				 log.debug("\n\nDebug: Exiting Method register() reutrning 'logonError'\n\n");
 				
-				return "registrationError";
-
+				addActionError(errors);
+                                return ERROR;
 				
 			}
 			
@@ -131,7 +138,8 @@ public class register extends ActionSupport {
 						 log.debug("\n\nDebug: Exiting Method register() reutrning 'success'\n\n");
 
 			      
-					return "success";
+					addActionError(errors);
+                                        return SUCCESS;
 					
 		}
 
@@ -144,8 +152,32 @@ public class register extends ActionSupport {
 		 log.debug("\n\nDebug: Exiting Method register() reutrning 'logonError'\n\n");
 		 
 		
-		return "registrationError";
+		addActionError(errors);
+                return ERROR;
 		
 	}
+      public String getPassword()
+     {
+         return Password;
+     }
+     
+     public void setUsername(String Username)
+     {
+         this.Username = Username;
+     }
+     
+     public String getUsername()
+     {
+         return Username;
+     }
+     
+     public void setPassword(String Password)
+     {
+         this.Password = Password;
+     }
     
+     public void setPassword2(String Password2)
+     {
+         this.Password2 = Password2;
+     }
 }

@@ -103,9 +103,14 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
          return null;
      }
      
-     public void setUserName(String UserName)
+     public void setUsername(String UserName)
      {
          this.UserName = UserName;
+     }
+     
+     public String getUsername()
+     {
+         return UserName;
      }
      
      public void setPassword(String Password)

@@ -26,7 +26,7 @@
    </td>
   </tr>
 
-   <s:textfield name="userName" label="Login name"/>
+   <s:textfield name="username" label="Login name"/>
    <s:password name="Password" label="Password"/>
   
 <s:submit value="Login" align="center"/>

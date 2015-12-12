@@ -126,9 +126,8 @@
 
   <action name="RegisterForFiveCardStudPoker" class="controller.register">
             <result name="success">/index.jsp</result>
-            <result name="logonError">/UserRegistration.jsp</result>
-            <result name="registrationError">/UserRegistration.jsp</result>
-            
+            <result name="error">/UserRegistration.jsp</result>
+            <result name="input">/UserRegistration.jsp</result>
       </action>
       
          <action name="showGames" class="controller.ShowGame">

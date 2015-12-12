@@ -43,7 +43,7 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
       if (UserName == null)
       {
           
-          return "mainRedirect";
+          return "gameRedirect";
           
           
           
@@ -77,7 +77,6 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
               servletResponse.addCookie(PokerToken);
               servletResponse.addCookie(TokenHMAC);
               this.session.put("UserID", inComingUser.getUserID());
-              this.session.put("user", inComingUser);
           } catch (NoSuchAlgorithmException | InvalidKeyException | UnsupportedEncodingException ex) {
               Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
               addActionError("There was an error processing your request");
@@ -104,9 +103,14 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
          return null;
      }
      
-     public void setUserName(String UserName)
+     public void setUsername(String UserName)
      {
          this.UserName = UserName;
+     }
+     
+     public String getUsername()
+     {
+         return UserName;
      }
      
      public void setPassword(String Password)

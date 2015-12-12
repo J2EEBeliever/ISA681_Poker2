@@ -8,17 +8,12 @@
 
         <validators>
 
-        <field name="userName">
+        <field name="username">
         <field-validator type="regex">
-            <param name="regex"><![CDATA[([a-zA-Z0-9]{11})]]></param>
+            <param name="regexExpression">[a-zA-Z0-9]{1,11}</param>
             <message>Username must be AlphaNumeric.</message>
         </field-validator>
     </field>
-            <field name="password">
-        <field-validator type="regex">
-            <param name="regex"><![CDATA[((?=^.{6,255}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*)]]></param>
-            <message>Password must Match 3 of 4 Character catagories: 1.) at least 1 upper case character 2.) at least 1 lower case character 3.) at least 1 numerical character 4.) at least 1 special character</message>
-        </field-validator>
-    </field>
+            
 
     </validators>
