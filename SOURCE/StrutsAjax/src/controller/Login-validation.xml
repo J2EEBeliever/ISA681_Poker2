@@ -11,7 +11,7 @@
         <field name="username">
         <field-validator type="regex">
             <param name="regexExpression">[a-zA-Z0-9]{1,11}</param>
-            <message>Username must be AlphaNumeric.</message>
+            <message>Username must be AlphaNumeric and no more then 11 charactors.</message>
         </field-validator>
     </field>
             
