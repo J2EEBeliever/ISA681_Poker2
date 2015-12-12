@@ -84,8 +84,11 @@ public class handleSession extends AbstractInterceptor{
             servletResponse.addCookie(HMACCookie); 
             tokenCookie.setMaxAge(RandomContainerEnum.sessionTimeout);
             tokenCookie.setHttpOnly(true);
+            tokenCookie.setSecure(true);
             HMACCookie.setMaxAge(RandomContainerEnum.sessionTimeout);
             HMACCookie.setHttpOnly(true);
+            HMACCookie.setSecure(true);
+            
             servletResponse.addCookie(tokenCookie);
             servletResponse.addCookie(HMACCookie);
             return ai.invoke();

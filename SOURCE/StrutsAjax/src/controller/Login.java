@@ -66,12 +66,12 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
               Cookie TokenHMAC = new Cookie("TokenHMAC", CipherUtils.createHMACSHA256(Token.toString(),TokenRand.toString()));
               PokerToken.setMaxAge(RandomContainerEnum.sessionTimeout);
               PokerToken.setHttpOnly(true);
-              //PokerToken.setSecure(true);
+              PokerToken.setSecure(true);
               //PokerToken.setDomain("b1wolt.com");
               //PokerToken.setPath("/ISA681Poker");
               TokenHMAC.setMaxAge(RandomContainerEnum.sessionTimeout);
               TokenHMAC.setHttpOnly(true);
-              //TokenHMAC.setSecure(true);
+              TokenHMAC.setSecure(true);
               //TokenHMAC.setDomain("b1wolt.com");
               //TokenHMAC.setPath("/ISA681Poker");   
               servletResponse.addCookie(PokerToken);
