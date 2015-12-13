@@ -28,4 +28,6 @@
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
 <fullyQualifiedTypeName name="deck.cards.DeckOfCards"/>
+<fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.ThisReference"/>
+<fullyQualifiedTypeName name="entities.CardRanking"/>
 </qualifiedTypeNameHistroy>
