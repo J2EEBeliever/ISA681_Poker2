@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -145,6 +146,11 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		}
 
 		boolean success = game.outputToResponseOutputStream(user);
+		
+//		if(game.getTotalBetForWinner() > 0) {
+//			
+//			game.removeGameIdInSessionScope(userGameId);
+//		}
 
 		log.debug("\n\nDebug: Exiting method waitForTurnOrGameToStart()\n\n");
 
@@ -264,6 +270,8 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		if (actionType != null && actionType.equals("fold")
 				&& game.getPlayer1().getUserName().equals(user.getUserName())) {
 
+//			game.setTotalBetForWinner(0.01);
+			
 			game.setDidPlayer1Fold("yes");
 
 			Game.addGameToApplicationScopeGameHashMap(game);
@@ -277,6 +285,8 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		} else if (actionType != null && actionType.equals("fold")
 				&& game.getPlayer2().getUserName().equals(user.getUserName())) {
 
+//			game.setTotalBetForWinner(0.01);
+			
 			game.setDidPlayer2Fold("yes");
 
 			Game.addGameToApplicationScopeGameHashMap(game);
@@ -593,6 +603,20 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				Game.addGameToApplicationScopeGameHashMap(game);
 
 				log.debug("\n\nDebug: In method joinGameNow() and starting new Game.\n\n");
+				
+				HttpServletResponse response = ServletActionContext.getResponse();
+				response.setContentType("text/plain;charset=utf-8");
+				PrintWriter out;
+				try {
+					out = response.getWriter();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return;
+				}
+
+				out.print("<script language=\"javascript\" type=\"text/javascript\">" +
+						"isGameOver = 'no';</script>");
 
 				boolean success = game.outputToResponseOutputStream(user);
 
@@ -605,6 +629,83 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		}
 
 	}
+	
+	public void listCompletedGames() {
+		
+		/*
+		 * Pre-conditions:
+		 * 
+		 * The user is loggon on and a user object is in sesison scope.
+		 * 
+		 * Post-conditions:
+		 * 
+		 * A list of games to join with actions buttonss is displayed.
+		 * 
+		 */
+
+		log.debug("\n\nDebug: In method listCompletedGames()\n\n");
+
+		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+
+		User user = Game.getUserObjectFromSessionScope();
+
+		if (user == null) {
+
+			log.debug(
+					"\n\nDebug: In method listCompletedGames() and user does not exist in [session] scope and exiting method.\n\n");
+
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out;
+			try {
+				out = response.getWriter();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
+			out.println("There is a problem with your logon.");
+			out.flush();
+
+			return;
+
+		}
+		
+		
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/plain;charset=utf-8");
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+		
+		try {
+			Game.displayAllGamesOrderByGameId(out);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		out.flush();
+
+		return;
+
+
+		
+		
+		
+
+		
+	}
+		
+		
+	
 
 	public void joinGame2() {
 
@@ -676,7 +777,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			Iterator iterGames = games.iterator();
 
 			StringBuffer stringBuffer = new StringBuffer();
-
 			int x = 0;
 
 			while (iterGames.hasNext()) {
@@ -689,18 +789,27 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				++x;
 
-				if (user1 == null && user2 == null) {
+				if (game != null && game.getTotalBetForWinner() > 0) {
 
 					// Incorrect game state. User1 (player1) must exist.
 
 					log.debug(
-							"\n\nDebug: in method joinGame() and game object from hash map in applicatio scope has no player1 or player2 objects.\n\n");
+							"\n\nDebug: in method joinGame2() and game is completed and therefore not included in the games to join listing.\n\n");
 
-				} else if (user1 == null) {
+				} 
+				else if (user1 == null && user2 == null) {
+
+					// Incorrect game state. User1 (player1) must exist.
+
+					log.debug(
+							"\n\nDebug: in method joinGame2() and game object from hash map in applicatio scope has no player1 or player2 objects.\n\n");
+
+				} 
+				else if (user1 == null) {
 
 					// Incorrect game state. User1 (player1) must exist.
 					log.debug(
-							"\n\nDebug: in method joinGame() and game object from hash map in applicatio scope has player1 == null.\n\n");
+							"\n\nDebug: in method joinGame2() and game object from hash map in applicatio scope has player1 == null.\n\n");
 
 				}
 
@@ -751,7 +860,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		}
 	}
-	// getPlayerTurn
 
 	public void newGame() {
 
@@ -808,8 +916,13 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				HttpServletResponse response = ServletActionContext.getResponse();
 				response.setContentType("text/plain;charset=utf-8");
 				PrintWriter out = response.getWriter();
+				
+				out.print("<script language=\"javascript\" type=\"text/javascript\">" +
+						"isGameOver = 'no';</script>");
+
 				out.println("Hello Player 1 (" + game.getPlayer1().getUserName()
 						+ ").  Waiting for another player to join your game.");
+				
 				out.flush();
 
 				return;

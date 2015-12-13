@@ -89,8 +89,10 @@ CREATE TABLE IF NOT EXISTS `game` (
 
 
 
-  `GameStatus` int(11) NOT NULL,
-  `SameState` blob NOT NULL,
+  `GameStatus` char(30) ,
+
+--   `SameState` blob,
+
   `Timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`GameID`),
 

@@ -28,7 +28,7 @@ function ajaxFunctionbk(){
 	} catch (e){
 		// Internet Explorer Browsers
 		
-		alert('executing ajaxFunction() #20');
+//		alert('executing ajaxFunction() #20');
 		
 		try{
 			ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
@@ -95,14 +95,16 @@ function joinGameNow(gameNumber) {
 	
 	//if(isGameOver.value == 'yes') {
 		
-	if(isGameOver == 'yes') {
-		
-	}
-	else {
-		
-		setTimeout(waitForTurnOrGameToStart,5000);
-	
-	}
+			if(isGameOver == 'yes') {
+				
+				isGameOver = 'no';
+				
+			}
+			else {
+				
+				setTimeout(waitForTurnOrGameToStart,5000);
+			
+			}
 	
 	
 }
@@ -158,14 +160,16 @@ function raise(actionType) {
 	
 	//if(isGameOver.value == 'yes') {
 		
-	if(isGameOver == 'yes') {
-		
-	}
-	else {
-		
-		setTimeout(waitForTurnOrGameToStart,5000);
-	
-	}
+			if(isGameOver == 'yes') {
+				
+				isGameOver = 'no';
+				
+			}
+			else {
+				
+				setTimeout(waitForTurnOrGameToStart,5000);
+			
+			}
 	
 
 	
@@ -193,14 +197,16 @@ function waitForTurnOrGameToStart() {
 	
 	//if(isGameOver.value == 'yes') {
 		
-	if(isGameOver == 'yes') {
-		
-	}
-	else {
-		
-		setTimeout(waitForTurnOrGameToStart,5000);
-	
-	}
+			if(isGameOver == 'yes') {
+				
+				isGameOver = 'no';
+				
+			}
+			else {
+				
+				setTimeout(waitForTurnOrGameToStart,5000);
+			
+			}
 	
 
 	
@@ -236,6 +242,21 @@ $(document).ready(function() {
 		});
 		
 		*/
+		
+		//buttonListCompletedGames
+		
+		$('#buttonListCompletedGames').click(function() {
+			$.ajax({
+				type : "POST",
+				url : '${pageContext.request.contextPath}/listCompletedGames.html',
+				success : function(response) {
+					$('.result').html(response);
+				}
+			});
+			
+			
+		});
+		
 	
 		$('#buttonJoinGame2').click(function() {
 			$.ajax({
@@ -266,6 +287,8 @@ $(document).ready(function() {
 			//if(isGameOver.value == 'yes') {
 				
 			if(isGameOver == 'yes') {
+				
+				isGameOver = 'no';
 				
 			}
 			else {
@@ -382,6 +405,7 @@ $(document).ready(function() {
 	<input type="button" value="Start a new Game" id="buttonNewGame">
 	<!-- input type="button" value="Join an existing Game" id="buttonJoinGame" -->
 	<input type="button" value="Join an existing Game" id="buttonJoinGame2">
+	<input type="button" value="List Completed Games" id="buttonListCompletedGames">
 
 	<BR>
 	<BR>

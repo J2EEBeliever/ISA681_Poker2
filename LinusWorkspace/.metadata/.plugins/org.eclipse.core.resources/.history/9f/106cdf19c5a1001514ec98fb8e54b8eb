@@ -1,0 +1,11 @@
+package entities;
+
+public class CardRanking {
+	
+	int intCardRanking = -1;
+	
+	String StringCardRanking = null;
+	
+	
+
+}
