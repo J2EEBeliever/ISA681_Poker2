@@ -5,6 +5,7 @@
  */
 package entities;
 
+import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import org.apache.log4j.Logger;
@@ -13,10 +14,14 @@ import org.apache.log4j.Logger;
  *
  * @author bwoltemate
  */
-public final class RandomContainer {
+public final class RandomContainer implements Serializable{
     final static Logger log = Logger.getLogger(RandomContainer.class);
+   
     private SecureRandom random = new SecureRandom();
     private int randomCount;
+    
+    
+ 
     public RandomContainer()
     {
         randomCount = 0;

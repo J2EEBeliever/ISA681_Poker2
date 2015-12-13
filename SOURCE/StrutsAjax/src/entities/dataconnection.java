@@ -5,8 +5,6 @@
  */
 package entities;
 
-import java.util.List;
-
 /**
  *
  * @author bwoltemate
@@ -14,9 +12,10 @@ import java.util.List;
 public interface dataconnection {
     
     public User getUserData(String UserName);
-    public void CreateSession(int UserID,String SessionID, long rand);
+    public boolean CreateSession(int UserID,String SessionID, long rand);
     public Session getSession(String Token);
-    public void revokeSession(int SessionID);
-    public void revokeUserSession(int UserID);
+    public boolean revokeSession(int SessionID);
+    public boolean revokeUserSession(int UserID);
+    public boolean registerUser(String userName, String generatedSecuredPasswordHash);
 
 }

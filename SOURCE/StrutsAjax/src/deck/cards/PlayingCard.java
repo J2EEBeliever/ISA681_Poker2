@@ -1,11 +1,13 @@
 package deck.cards;
 
+import java.io.Serializable;
+
 /*
  * Author: Linus Freeman
  * 
  */
 
-public class PlayingCard {
+public class PlayingCard implements Serializable{
 	
 	private int cardNumber = -1;
 	private String cardString = "";

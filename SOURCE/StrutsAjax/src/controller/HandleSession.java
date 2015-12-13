@@ -24,7 +24,7 @@ import org.apache.struts2.ServletActionContext;
  *
  * @author bwoltemate
  */
-public class handleSession extends AbstractInterceptor{
+public class HandleSession extends AbstractInterceptor{
     
 
 

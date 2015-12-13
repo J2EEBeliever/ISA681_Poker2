@@ -11,7 +11,7 @@
 	<package name="json" namespace="/" extends="json-default">
 	
                          <interceptors>
-    <interceptor name="login" class="controller.handleSession"/>
+    <interceptor name="login" class="controller.HandleSession"/>
 
     <!-- sb: you need to configure all of your interceptors here. i'm only
          listing the one we created for this example. -->
@@ -19,7 +19,7 @@
         <interceptor-ref name="login"/>
         <interceptor-ref name="defaultStack"/>  
      
- 
+  
     </interceptor-stack>
 </interceptors>
 
@@ -90,7 +90,7 @@
 	<package name="default" extends="struts-default" namespace="/">
 	
                              <interceptors>
-    <interceptor name="login" class="controller.handleSession"/>
+    <interceptor name="login" class="controller.HandleSession"/>
 
     <!-- sb: you need to configure all of your interceptors here. i'm only
          listing the one we created for this example. -->
@@ -124,7 +124,7 @@
         </action>
 
 
-  <action name="RegisterForFiveCardStudPoker" class="controller.register">
+  <action name="RegisterForFiveCardStudPoker" class="controller.Register">
             <result name="success">/index.jsp</result>
             <result name="error">/UserRegistration.jsp</result>
             <result name="input">/UserRegistration.jsp</result>

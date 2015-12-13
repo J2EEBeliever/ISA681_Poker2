@@ -1,6 +1,7 @@
 package deck.cards;
 
 import entities.RandomContainerEnum;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,14 +15,14 @@ import org.apache.log4j.Logger;
  */
 
 
-public class DeckOfCards {
+public class DeckOfCards implements Serializable{
 	
 	final static Logger log = Logger.getLogger(DeckOfCards.class);
 
 
-	public static int NUMBER_OF_CARDS = 52;
+	final static int NUMBER_OF_CARDS = 52;
 	
-	public static int NUMBER_OF_CARDS_PER_SUIT = 13;
+	final static int NUMBER_OF_CARDS_PER_SUIT = 13;
 
 	
 //	public static int NUMBER_OF_SUITS = 52;
@@ -115,7 +116,7 @@ public class DeckOfCards {
 		
 		//Collections.shuffle(Arrays.asList(deckOfCards));
 		
-		Collections.shuffle(deckOfCards,RandomContainerEnum.INSTANCE.RandomContainer.getRandom());
+		Collections.shuffle(deckOfCards,RandomContainerEnum.INSTANCE.randomContainer.getRandom());
 		
 	}
 	
@@ -162,8 +163,10 @@ public class DeckOfCards {
 		
 	}
         
+        @SuppressWarnings("unchecked")
         public DeckOfCards Copy()
     {
+      
         return new DeckOfCards((ArrayList<PlayingCard>)deckOfCards.clone());
     }
 				

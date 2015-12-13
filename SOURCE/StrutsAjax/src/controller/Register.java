@@ -7,7 +7,9 @@ package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import static controller.FiveCardStudPokerAjaxAction.log;
+import entities.MySQLConnection;
 import entities.User;
+import entities.dataconnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Calendar;
@@ -19,11 +21,11 @@ import org.mindrot.jbcrypt.BCrypt;
  *
  * @author bwoltemate
  */
-public class register extends ActionSupport {
+public class Register extends ActionSupport {
     
     private String Username;
-    private String Password;
-    private String Password2;
+    private String password;
+    private String password2;
     
             
     
@@ -38,9 +40,9 @@ public class register extends ActionSupport {
 
 		String userName = Username;
 		
-		String password1 = Password;
+		String password1 = password;
 
-		String password2 = Password2;
+		String password2 = this.password2;
                 
                  FiveCardStudPokerAjaxAction action = new FiveCardStudPokerAjaxAction();
 		
@@ -67,7 +69,7 @@ public class register extends ActionSupport {
 			
 			if(user != null) {
 				
-				String errors = "Incorrect Username and/or Password";
+				String errors = "User already exists";
 				 
 				 request.setAttribute("errors", errors);
 				
@@ -79,53 +81,12 @@ public class register extends ActionSupport {
 			}
 			
 			//this.getUserByUserName(userName);
-			
-			Connection conn = action.getDatabaseConnection();
-			
-			
-			  String query = " insert into users (UserName, Password, Timestamp) values (?, ?, ?)";
-			
-			/*
-			 * -- -- Table structure for table `users` --
-			 * 
-			 * CREATE TABLE IF NOT EXISTS `users` ( `UserID` int(11) NOT NULL
-			 * AUTO_INCREMENT, `UserName` varchar(20) NOT NULL, `Password`
-			 * char(60) NOT NULL, `Timestamp` timestamp NOT NULL DEFAULT
-			 * CURRENT_TIMESTAMP, PRIMARY KEY (`UserID`), UNIQUE KEY `UserName`
-			 * (`UserName`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1
-			 * AUTO_INCREMENT=3 ;
-			 * 
-			 */
-			      
-			      Calendar calendar = Calendar.getInstance();
-			      java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
-			 
-
-					//String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
-
-			      
-			      // create the mysql insert preparedstatement
-			      PreparedStatement preparedStmt = conn.prepareStatement(query);
-			      preparedStmt.setString (1, userName);
-			      preparedStmt.setString (2, generatedSecuredPasswordHash);
-			      preparedStmt.setDate   (3, startDate);
-			 
-			      // execute the preparedstatement
-			      preparedStmt.execute();
-			      
-			      try {
-			    	  preparedStmt.close();
-				      conn.close();
-			      }
-			      catch(Exception e) {
-			    	  
+		 dataconnection connection = new MySQLConnection();
+			if(!connection.registerUser(userName, generatedSecuredPasswordHash))
+                        {
 			  		String errors = "Incorrect Username and/or Password";
-					 
 					 request.setAttribute("errors", errors);
-
-					 log.debug("\n\nDebug: Exiting Method register() reutrning 'logonError'\n\n");
-
-					
+				 log.debug("\n\nDebug: Exiting Method register() reutrning 'logonError'\n\n");
 					return "registrationError";
 					
 			      }
@@ -158,7 +119,7 @@ public class register extends ActionSupport {
 	}
       public String getPassword()
      {
-         return Password;
+         return password;
      }
      
      public void setUsername(String Username)
@@ -173,11 +134,11 @@ public class register extends ActionSupport {
      
      public void setPassword(String Password)
      {
-         this.Password = Password;
+         this.password = Password;
      }
     
      public void setPassword2(String Password2)
      {
-         this.Password2 = Password2;
+         this.password2 = Password2;
      }
 }

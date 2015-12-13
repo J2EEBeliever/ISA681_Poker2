@@ -12,6 +12,7 @@ import entities.dataconnection;
 import entities.MySQLConnection;
 import entities.User;
 import cipher.CipherUtils;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -28,10 +29,12 @@ import org.mindrot.jbcrypt.BCrypt;
  *
  * @author bwoltemate
  */
+
 public class Login extends ActionSupport implements ServletResponseAware, SessionAware {
     
-    private String UserName;
-    private String Password;
+    private String userName;
+    private String password;
+    @SuppressFBWarnings(justification="No bug", value="SE_BAD_FIELD")
     private HttpServletResponse servletResponse;
     private Map<String, Object> session;
 
@@ -40,7 +43,7 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
   {
       
       dataconnection connection = new MySQLConnection();
-      if (UserName == null)
+      if (userName == null)
       {
           
           return "gameRedirect";
@@ -48,20 +51,20 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
           
           
       }
-      User inComingUser = connection.getUserData(UserName.toLowerCase());
+      User inComingUser = connection.getUserData(userName.toLowerCase());
       if (inComingUser.getUserID() == -1)
       {
           addActionError("Invalid user name or password! Please try again!");
           return ERROR;
       }
       String hashPassword = inComingUser.getPassword();
-      if(BCrypt.checkpw(Password, hashPassword))
+      if(BCrypt.checkpw(password, hashPassword))
       {
           try {
               connection.revokeUserSession(inComingUser.getUserID());
               UUID Token = UUID.randomUUID();
               Cookie PokerToken = new Cookie("PokerToken", Token.toString());
-              Long TokenRand = RandomContainerEnum.INSTANCE.RandomContainer.getRandom().nextLong();
+              Long TokenRand = RandomContainerEnum.INSTANCE.randomContainer.getRandom().nextLong();
               connection.CreateSession(inComingUser.getUserID(), Token.toString(), TokenRand);
               Cookie TokenHMAC = new Cookie("TokenHMAC", CipherUtils.createHMACSHA256(Token.toString(),TokenRand.toString()));
               PokerToken.setMaxAge(RandomContainerEnum.sessionTimeout);
@@ -106,17 +109,17 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
      
      public void setUsername(String UserName)
      {
-         this.UserName = UserName;
+         this.userName = UserName;
      }
      
      public String getUsername()
      {
-         return UserName;
+         return userName;
      }
      
      public void setPassword(String Password)
      {
-         this.Password = Password;
+         this.password = Password;
      }
 
     @Override

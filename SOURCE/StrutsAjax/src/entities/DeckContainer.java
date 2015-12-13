@@ -6,14 +6,15 @@
 package entities;
 
 import deck.cards.DeckOfCards;
+import java.io.Serializable;
 
 /**
  *
  * @author b1wolt
  */
-public class DeckContainer {
+public class DeckContainer implements Serializable{
     private DeckOfCards deck = new DeckOfCards();
-    
+   
     public synchronized DeckOfCards getDeck()
     {
         return deck.Copy();

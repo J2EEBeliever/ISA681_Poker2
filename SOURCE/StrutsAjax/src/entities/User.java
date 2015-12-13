@@ -20,7 +20,7 @@ public class User {
         this.userID = userID;
         this.userName = userName;
         this.password = password;
-        this.timestamp = timestamp;
+        this.timestamp = (Timestamp)timestamp.clone();
         }
 	  
 	public int getUserID() {
@@ -42,10 +42,10 @@ public class User {
 		this.password = password;
 	}
 	public Timestamp getTimestamp() {
-		return timestamp;
+		return (Timestamp)timestamp.clone();
 	}
 	public void setTimestamp(Timestamp timestamp) {
-		this.timestamp = timestamp;
+		this.timestamp = (Timestamp)timestamp.clone();
 	}
 	  
 

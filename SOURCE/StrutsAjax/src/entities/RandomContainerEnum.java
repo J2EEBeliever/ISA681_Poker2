@@ -11,10 +11,10 @@ package entities;
  */
 public enum RandomContainerEnum  {
     INSTANCE;
-    public RandomContainer RandomContainer = new RandomContainer();
-    public DeckContainer continuousDeck = new DeckContainer();
-    public static int reseedAfter = 100;
-    public static int sessionTimeout = 3600;
+    public final RandomContainer randomContainer = new RandomContainer();
+    public final DeckContainer continuousDeck = new DeckContainer();
+    public final static int reseedAfter = 100;
+    public final static int sessionTimeout = 3600;
     
     
 }
