@@ -6,12 +6,16 @@
 package entities;
 
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -44,7 +48,7 @@ public class MySQLConnection implements dataconnection
                  log.error(ex);
              }
              }
-      catch (ClassNotFoundException|SQLException ex) {
+      catch (ClassNotFoundException|SQLException|IOException ex) {
              log.error(ex);
         }
       
@@ -66,8 +70,8 @@ public class MySQLConnection implements dataconnection
             
           stmt.executeUpdate();
             // TODO code application logic here
-        } catch (ClassNotFoundException| SQLException e) {
-             log.error(e);
+        } catch (ClassNotFoundException|SQLException|IOException ex) {
+             log.error(ex);
              return false;
         }
             return true;
@@ -106,7 +110,7 @@ public class MySQLConnection implements dataconnection
            
         }
     }
-      catch (ClassNotFoundException|SQLException ex) {
+      catch (ClassNotFoundException|SQLException|IOException ex) {
             log.error(ex);
            
         }
@@ -133,7 +137,7 @@ public class MySQLConnection implements dataconnection
         
        
     }
-      catch (ClassNotFoundException|SQLException ex) {
+      catch (ClassNotFoundException|SQLException|IOException ex) {
             log.error(ex);
             return false;
         }
@@ -158,7 +162,7 @@ public class MySQLConnection implements dataconnection
         
        
     }
-      catch (ClassNotFoundException|SQLException ex) {
+      catch (ClassNotFoundException|SQLException|IOException ex) {
             log.error(ex);
             return false;
     }
@@ -202,19 +206,25 @@ public class MySQLConnection implements dataconnection
 			      stmt.execute();
 			      
         }
-       catch (ClassNotFoundException|SQLException ex) {
+       catch (ClassNotFoundException|SQLException|IOException ex) {
             log.error(ex);
             return false;
-    }
+    }  
         return true;
 }
     
-public Connection getDatabaseConnection() throws ClassNotFoundException, SQLException {
-		// create our mysql database connection
-		String myDriver = "org.gjt.mm.mysql.Driver";
-		String myUrl = "jdbc:mysql://localhost/fcs";
+public Connection getDatabaseConnection() throws ClassNotFoundException, SQLException, IOException {
+
+     Properties props = new Properties();    
+       
+        
+       props = FileTools.readProperties("DatabaseSettings.properties", props);
+        
+// create our mysql database connection
+		String myDriver = props.getProperty("Driver");
+		String myUrl = props.getProperty("Url");
 		Class.forName(myDriver);
-		Connection conn = DriverManager.getConnection(myUrl, "fcs_user", "7yXw8dDaNMBNBbW5");
+		Connection conn = DriverManager.getConnection(myUrl, props.getProperty("UserName"), props.getProperty("Password"));
 
 		return conn;
 
