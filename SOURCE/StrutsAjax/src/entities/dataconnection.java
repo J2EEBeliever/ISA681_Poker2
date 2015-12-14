@@ -12,10 +12,10 @@ package entities;
 public interface dataconnection {
     
     public User getUserData(String UserName);
-    public boolean CreateSession(int UserID,String SessionID, long rand);
+    public boolean createSession(int UserID,String SessionID, long rand);
     public Session getSession(String Token);
     public boolean revokeSession(int SessionID);
     public boolean revokeUserSession(int UserID);
     public boolean registerUser(String userName, String generatedSecuredPasswordHash);
-
+    public User getUserByUserName(String userName) throws Exception;
 }

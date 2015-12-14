@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
-import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -27,11 +26,11 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 	 * 
 	 */
 
-	final static Logger log = Logger.getLogger(FiveCardStudPokerAjaxAction.class);
+	final static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(AjaxAction.class);
 
 	private int a;
 	private int b;
-	private Map<String, Object> jsonData = new HashMap<String, Object>();
+	private Map<String, Object> jsonData = new HashMap<>();
 
 	public Map<String, Object> getJsonData() {
 		return jsonData;
@@ -268,7 +267,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		String actionType = request.getParameter("actionType");
 
 		if (actionType != null && actionType.equals("fold")
-				&& game.getPlayer1().getUserName().equals(user.getUserName())) {
+				&& game.getPlayer1().getUsername().equals(user.getUsername())) {
 
 //			game.setTotalBetForWinner(0.01);
 			
@@ -283,7 +282,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			return;
 
 		} else if (actionType != null && actionType.equals("fold")
-				&& game.getPlayer2().getUserName().equals(user.getUserName())) {
+				&& game.getPlayer2().getUsername().equals(user.getUsername())) {
 
 //			game.setTotalBetForWinner(0.01);
 			
@@ -348,7 +347,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		}
 
-		if (game.getPlayer1().getUserName().equals(user.getUserName())) {
+		if (game.getPlayer1().getUsername().equals(user.getUsername())) {
 
 			game.player1makeBet(betAmountDouble);
 
@@ -360,7 +359,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			return;
 
-		} else if (game.getPlayer2().getUserName().equals(user.getUserName())) {
+		} else if (game.getPlayer2().getUsername().equals(user.getUsername())) {
 
 			game.player2makeBet(betAmountDouble);
 
@@ -555,7 +554,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 					game.setPlayer2(user);
 
-					game.setPlayer2UserName(user.getUserName());
+					game.setPlayer2UserName(user.getUsername());
 
 				}
 
@@ -645,7 +644,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		log.debug("\n\nDebug: In method listCompletedGames()\n\n");
 
-		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+
 
 		User user = Game.getUserObjectFromSessionScope();
 
@@ -722,7 +721,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		log.debug("\n\nDebug: In method joinGame2()\n\n");
 
-		HttpSession httpSession = ServletActionContext.getRequest().getSession();
+	
 
 		User user = Game.getUserObjectFromSessionScope();
 
@@ -816,23 +815,23 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				else if (user1 != null && user2 == null) {
 
 					stringBuffer.append("<BR>" + "Join New Game #" + game.getGameNumber() + " with player 1 as: "
-							+ user1.getUserName()
+							+ user1.getUsername()
 							+ "and no player 2 yet. <input type=\"button\" onclick=\"joinGameNow('"
 							+ game.getGameNumber() + "' )\" id =\"joinGameNow" + x
 							+ "1\" value = \"Join New Game Now\" name = \"joinGameNow" + x + "1\">");
 
-				} else if (user2 != null && user.getUserName().equals(user2.getUserName())) {
+				} else if (user2 != null && user.getUsername().equals(user2.getUsername())) {
 
-					stringBuffer.append("<BR>Join already started game with player 1 as: " + user1.getUserName()
-							+ "and player 2 as: (" + user2.getUserName()
+					stringBuffer.append("<BR>Join already started game with player 1 as: " + user1.getUsername()
+							+ "and player 2 as: (" + user2.getUsername()
 							+ ") <input type=\"button\"  onclick=\"joinGameNow('" + game.getGameNumber()
 							+ "' )\"  id =\"joinGameNow" + x
 							+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
 
-				} else if (user1 != null && user.getUserName().equals(user1.getUserName())) {
+				} else if (user1 != null && user.getUsername().equals(user1.getUsername())) {
 
-					stringBuffer.append("<BR>Join already started game with player 1 as you: " + user1.getUserName()
-							+ "and player 2 as : (" + user2.getUserName()
+					stringBuffer.append("<BR>Join already started game with player 1 as you: " + user1.getUsername()
+							+ "and player 2 as : (" + user2.getUsername()
 							+ ") <input type=\"button\"  onclick=\"joinGameNow('" + game.getGameNumber()
 							+ "' )\"  id =\"joinGameNow" + x
 							+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
@@ -882,7 +881,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			log.debug("\n\nDebug: In method newGame().\n\n");
 
-			HttpSession httpSession = ServletActionContext.getRequest().getSession();
+			
 
 			User user = Game.getUserObjectFromSessionScope();
 
@@ -907,7 +906,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				game.setPlayer1(user);
 
-				game.setPlayer1UserName(user.getUserName());
+				game.setPlayer1UserName(user.getUsername());
 
 				Game.setGameIdInSessionScope("" + game.getGameNumber());
 
@@ -920,7 +919,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out.print("<script language=\"javascript\" type=\"text/javascript\">" +
 						"isGameOver = 'no';</script>");
 
-				out.println("Hello Player 1 (" + game.getPlayer1().getUserName()
+				out.println("Hello Player 1 (" + game.getPlayer1().getUsername()
 						+ ").  Waiting for another player to join your game.");
 				
 				out.flush();
@@ -941,6 +940,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			out.println("Hello Ajax");
 			out.flush();
 		} catch (Exception e) {
+                    log.error(e);
 		}
 	}
 
@@ -952,6 +952,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			out.println(this.a + this.b);
 			out.flush();
 		} catch (Exception e) {
+                    log.error(e);
 		}
 	}
 

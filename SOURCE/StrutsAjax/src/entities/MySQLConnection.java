@@ -6,7 +6,11 @@
 package entities;
 
 
+import cipher.CipherUtils;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,6 +20,9 @@ import java.sql.Timestamp;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 /**
  *
@@ -57,7 +64,7 @@ public class MySQLConnection implements dataconnection
 
 
    @Override
-    public boolean CreateSession(int UserID, String SessionToken, long rand) {
+    public boolean createSession(int UserID, String SessionToken, long rand) {
 
             
             try (Connection conn = this.getDatabaseConnection(); 
@@ -212,6 +219,82 @@ public class MySQLConnection implements dataconnection
     }  
         return true;
 }
+   
+   @Override
+    public User getUserByUserName(String userName) throws Exception {
+
+		log.debug("\n\nDebug: inside getUserByUserName\n");
+		
+		Connection conn = this.getDatabaseConnection(); 
+
+		
+		User user = null;
+
+
+		try {
+
+			// our SQL SELECT query.
+			// if you only need a few columns, specify them by name instead of
+			// using "*"
+			String query = "SELECT * FROM users where UserName = ? ";
+
+                    try ( // create the java statement
+                            PreparedStatement pstmnt = conn.prepareStatement(query)) {
+                        pstmnt.setString(1, userName);
+                        
+                        
+                        
+                            // iterate through the java resultset
+                            try ( // execute the query, and get a java resultset
+                                    ResultSet rs = pstmnt.executeQuery()
+                            /*
+                             * -- -- Table structure for table `users` --
+                             *
+                             * CREATE TABLE IF NOT EXISTS `users` ( `UserID` int(11) NOT NULL
+                             * AUTO_INCREMENT, `UserName` varchar(20) NOT NULL, `Password`
+                             * char(60) NOT NULL, `Timestamp` timestamp NOT NULL DEFAULT
+                             * CURRENT_TIMESTAMP, PRIMARY KEY (`UserID`), UNIQUE KEY `UserName`
+                             * (`UserName`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+                             * AUTO_INCREMENT=3 ;
+                             *
+                             */ ) {
+                                // iterate through the java resultset
+                                if (rs != null && rs.next()) {
+                                    int userId1 = rs.getInt("UserId");
+                                    String userName1 = rs.getString("UserName");
+                                    String password1 = rs.getString("Password");
+                                    
+                                    user = new User(-1,"","",new Timestamp(1));
+                                    
+                                    user.setUserID(userId1);
+                                    user.setUsername(userName1);
+                                    user.setPassword(password1);
+                                    
+                                    // Date dateCreated = rs.getDate("date_created");
+                                    // boolean isAdmin = rs.getBoolean("is_admin");
+                                    // int numPoints = rs.getInt("num_points");
+                                    
+                                    // print the results
+                                    // System.out.format("%s, %s, %s, %s, %s, %s\n", id, firstName,
+                                    // lastName, dateCreated, isAdmin, numPoints);
+                                }
+                                if (rs.next()) { // more than one record
+                                    
+                                    throw new Exception("FiveCardStudPokerAjaxAction::getUser(...) incorrectly returned more than one user from table users");
+                                    
+                                }   }
+                    }
+			conn.close();
+		} catch (Throwable t) {
+			t.printStackTrace();
+			throw t;
+		}
+                
+
+		log.debug("\n\nDebug: exiting getUserByUserName\n");
+
+		return user;
+	}
     
 public Connection getDatabaseConnection() throws ClassNotFoundException, SQLException, IOException {
 
@@ -224,7 +307,13 @@ public Connection getDatabaseConnection() throws ClassNotFoundException, SQLExce
 		String myDriver = props.getProperty("Driver");
 		String myUrl = props.getProperty("Url");
 		Class.forName(myDriver);
-		Connection conn = DriverManager.getConnection(myUrl, props.getProperty("UserName"), props.getProperty("Password"));
+		Connection conn;
+       try {
+           conn = DriverManager.getConnection(myUrl, props.getProperty("UserName"), CipherUtils.decrypt(props.getProperty("EncyptedPassword"), "FR]k62tC_U?Au)pf"));
+       } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException | BadPaddingException | UnsupportedEncodingException ex) {
+           log.fatal(ex);
+           conn = null;
+       }
 
 		return conn;
 

@@ -1,11 +1,9 @@
 package deck.cards;
 
-import java.util.*;
-import java.io.ByteArrayInputStream;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,13 +17,17 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
-import controller.FiveCardStudPokerAjaxAction;
 import entities.CardRanking;
+import entities.MySQLConnection;
 import entities.User;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.TreeMap;
 
 public class Game {
 
-	final static Logger log = Logger.getLogger(FiveCardStudPokerAjaxAction.class);
+	final static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Game.class);
 
 	private User player1 = null;
 	private User player2 = null;
@@ -124,7 +126,7 @@ public class Game {
 
 	public String getPlayer1BetAmountsForDisplay(User user) {
 
-		StringBuffer stringBuffer = new StringBuffer();
+		StringBuilder stringBuffer = new StringBuilder();
 
 		if (this.getPlayer1card1() == null) {
 
@@ -139,27 +141,27 @@ public class Game {
 
 		if (this.getPlayer1card2() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer1betCard2());
+			stringBuffer.append(" | ").append(this.getPlayer1betCard2());
 
 		}
 		if (this.getPlayer1card3() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer1betCard3());
+			stringBuffer.append(" | ").append(this.getPlayer1betCard3());
 
 		}
 		if (this.getPlayer1card4() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer1betCard4());
+			stringBuffer.append(" | ").append(this.getPlayer1betCard4());
 
 		}
 
 		if (this.getPlayer1card5() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer1betCard5());
+			stringBuffer.append(" | ").append(this.getPlayer1betCard5());
 
 		} else if (this.getTotalBetForWinner() != 0.00) {
 
-			stringBuffer.append(" |  Total Amount Winner Won = " + this.getTotalBetForWinner());
+			stringBuffer.append(" |  Total Amount Winner Won = ").append(this.getTotalBetForWinner());
 
 		}
 
@@ -169,7 +171,7 @@ public class Game {
 
 	public String getPlayer2BetAmountsForDisplay(User user) {
 
-		StringBuffer stringBuffer = new StringBuffer();
+		StringBuilder stringBuffer = new StringBuilder();
 
 		if (this.getPlayer2card1() == null) {
 
@@ -184,27 +186,27 @@ public class Game {
 
 		if (this.getPlayer2card2() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer2betCard2());
+			stringBuffer.append(" | ").append(this.getPlayer2betCard2());
 
 		}
 		if (this.getPlayer2card3() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer2betCard3());
+			stringBuffer.append(" | ").append(this.getPlayer2betCard3());
 
 		}
 		if (this.getPlayer2card4() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer2betCard4());
+			stringBuffer.append(" | ").append(this.getPlayer2betCard4());
 
 		}
 
 		if (this.getPlayer2card5() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer2betCard5());
+			stringBuffer.append(" | ").append(this.getPlayer2betCard5());
 
 		} else if (this.getTotalBetForWinner() != 0.00) {
 
-			stringBuffer.append(" |  Total Amount Winner Won = " + this.getTotalBetForWinner());
+			stringBuffer.append(" |  Total Amount Winner Won = ").append(this.getTotalBetForWinner());
 
 		}
 
@@ -230,18 +232,18 @@ public class Game {
 
 	public String getPlayers1HandsForDisplay(User user) {
 
-		StringBuffer stringBuffer = new StringBuffer();
+		StringBuilder stringBuffer = new StringBuilder();
 
 		if (this.getPlayer1card1() == null) {
 
 			return "";
 
 		}
-		if (this.getPlayer1card1() != null && user.getUserName().equals(player1.getUserName())) {
+		if (this.getPlayer1card1() != null && user.getUsername().equals(player1.getUsername())) {
 
 			stringBuffer.append(this.getPlayer1card1().toString());
 
-		} else if (this.getPlayer1card1() != null && !(user.getUserName().equals(player1.getUserName()))) {
+		} else if (this.getPlayer1card1() != null && !(user.getUsername().equals(player1.getUsername()))) {
 
 			stringBuffer.append("Card Face Down");
 
@@ -249,25 +251,25 @@ public class Game {
 
 		if (this.getPlayer1card2() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer1card2().toString());
+			stringBuffer.append(" | ").append(this.getPlayer1card2().toString());
 
 		}
 		if (this.getPlayer1card3() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer1card3().toString());
+			stringBuffer.append(" | ").append(this.getPlayer1card3().toString());
 
 		}
 		if (this.getPlayer1card4() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer1card4().toString());
+			stringBuffer.append(" | ").append(this.getPlayer1card4().toString());
 
 		}
 
-		if (this.getPlayer1card5() != null && user.getUserName().equals(player1.getUserName())) {
+		if (this.getPlayer1card5() != null && user.getUsername().equals(player1.getUsername())) {
 
-			stringBuffer.append(" | " + this.getPlayer1card5().toString());
+			stringBuffer.append(" | ").append(this.getPlayer1card5().toString());
 
-		} else if (this.getPlayer1card5() != null && !(user.getUserName().equals(player1.getUserName()))) {
+		} else if (this.getPlayer1card5() != null && !(user.getUsername().equals(player1.getUsername()))) {
 
 			stringBuffer.append(" | Card Face Down");
 
@@ -279,18 +281,18 @@ public class Game {
 
 	public String getPlayers2HandsForDisplay(User user) {
 
-		StringBuffer stringBuffer = new StringBuffer();
+		StringBuilder stringBuffer = new StringBuilder();
 
 		if (this.getPlayer2card1() == null) {
 
 			return "";
 
 		}
-		if (this.getPlayer2card1() != null && user.getUserName().equals(player2.getUserName())) {
+		if (this.getPlayer2card1() != null && user.getUsername().equals(player2.getUsername())) {
 
 			stringBuffer.append(this.getPlayer2card1().toString());
 
-		} else if (this.getPlayer2card1() != null && !(user.getUserName().equals(player2.getUserName()))) {
+		} else if (this.getPlayer2card1() != null && !(user.getUsername().equals(player2.getUsername()))) {
 
 			stringBuffer.append("Card Face Down");
 
@@ -298,25 +300,25 @@ public class Game {
 
 		if (this.getPlayer2card2() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer2card2().toString());
+			stringBuffer.append(" | ").append(this.getPlayer2card2().toString());
 
 		}
 		if (this.getPlayer2card3() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer2card3().toString());
+			stringBuffer.append(" | ").append(this.getPlayer2card3().toString());
 
 		}
 		if (this.getPlayer2card4() != null) {
 
-			stringBuffer.append(" | " + this.getPlayer2card4().toString());
+			stringBuffer.append(" | ").append(this.getPlayer2card4().toString());
 
 		}
 
-		if (this.getPlayer2card5() != null && user.getUserName().equals(player2.getUserName())) {
+		if (this.getPlayer2card5() != null && user.getUsername().equals(player2.getUsername())) {
 
-			stringBuffer.append(" | " + this.getPlayer2card5().toString());
+			stringBuffer.append(" | ").append(this.getPlayer2card5().toString());
 
-		} else if (this.getPlayer2card5() != null && !(user.getUserName().equals(player2.getUserName()))) {
+		} else if (this.getPlayer2card5() != null && !(user.getUsername().equals(player2.getUsername()))) {
 
 			stringBuffer.append(" | Card Face Down");
 
@@ -422,11 +424,11 @@ public class Game {
 
 	public double getPlayersLastBet() {
 
-		User user = this.getUserObjectFromSessionScope();
+		User user = Game.getUserObjectFromSessionScope();
 
 		if (this.getPlayer1card5() != null) {
 
-			if (this.getPlayer1().getUserName().equals(user.getUserName())) {
+			if (this.getPlayer1().getUsername().equals(user.getUsername())) {
 
 				return this.getPlayer2betCard5();
 
@@ -438,7 +440,7 @@ public class Game {
 
 		} else if (this.getPlayer1card4() != null) {
 
-			if (this.getPlayer1().getUserName().equals(user.getUserName())) {
+			if (this.getPlayer1().getUsername().equals(user.getUsername())) {
 
 				return this.getPlayer2betCard4();
 
@@ -450,7 +452,7 @@ public class Game {
 
 		} else if (this.getPlayer1card3() != null) {
 
-			if (this.getPlayer1().getUserName().equals(user.getUserName())) {
+			if (this.getPlayer1().getUsername().equals(user.getUsername())) {
 
 				return this.getPlayer2betCard3();
 
@@ -462,7 +464,7 @@ public class Game {
 
 		} else if (this.getPlayer1card2() != null) {
 
-			if (this.getPlayer1().getUserName().equals(user.getUserName())) {
+			if (this.getPlayer1().getUsername().equals(user.getUsername())) {
 
 				return this.getPlayer2betCard2();
 
@@ -770,7 +772,7 @@ public class Game {
 
 		if (currentGamesBeingPlayed1 == null) {
 
-			currentGamesBeingPlayed1 = new HashMap<String, Game>();
+			currentGamesBeingPlayed1 = new HashMap<>();
 
 			// currentGamesBeingPlayed1.put("" + game.getGameNumber(), game);
 			//
@@ -793,7 +795,7 @@ public class Game {
 
 		Iterator iter = collectionGames.iterator();
 
-		List<Game> games = new ArrayList<Game>();
+		List<Game> games = new ArrayList<>();
 
 		while (iter.hasNext()) {
 
@@ -817,7 +819,7 @@ public class Game {
 
 		if (currentGamesBeingPlayed1 == null) {
 
-			currentGamesBeingPlayed1 = new HashMap<String, Game>();
+			currentGamesBeingPlayed1 = new HashMap<>();
 
 			servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
 
@@ -842,7 +844,7 @@ public class Game {
 				.getAttribute("currentGamesBeingPlayed");
 
 		if (currentGamesBeingPlayed1 == null) {
-			currentGamesBeingPlayed1 = new HashMap<String, Game>();
+			currentGamesBeingPlayed1 = new HashMap<>();
 
 			servletContext.setAttribute("currentGamesBeingPlayed", currentGamesBeingPlayed1);
 
@@ -865,22 +867,22 @@ public class Game {
 			out = response.getWriter();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 			return false;
 		}
 
 		out.println(
-				"<BR>Player 1 " + this.getPlayer1().getUserName() + " Hand: " + this.getPlayers1HandsForDisplay(user));
-		out.println("<BR>Player 1 " + this.getPlayer1().getUserName() + " Bets: "
+				"<BR>Player 1 " + this.getPlayer1().getUsername() + " Hand: " + this.getPlayers1HandsForDisplay(user));
+		out.println("<BR>Player 1 " + this.getPlayer1().getUsername() + " Bets: "
 				+ this.getPlayer1BetAmountsForDisplay(user));
 
 		out.println("<BR>");
 
 		out.println("<BR>Player 2 "
-				+ (this.getPlayer2() == null ? "Player 2 has not joined game yet" : this.getPlayer2().getUserName())
+				+ (this.getPlayer2() == null ? "Player 2 has not joined game yet" : this.getPlayer2().getUsername())
 				+ " Hand: " + this.getPlayers2HandsForDisplay(user));
 		out.println("<BR>Player 2 "
-				+ (this.getPlayer2() == null ? "Player 2 has not joined game yet" : this.getPlayer2().getUserName())
+				+ (this.getPlayer2() == null ? "Player 2 has not joined game yet" : this.getPlayer2().getUsername())
 				+ " Bets: " + this.getPlayer2BetAmountsForDisplay(user));
 		out.println("<BR>");
 
@@ -889,7 +891,7 @@ public class Game {
 		if (this.getDidPlayer1Fold() != null && this.getDidPlayer1Fold().equalsIgnoreCase("yes")) {
 
 			out.println("<BR>Player 1 has folded and the game is now complete and by foreit Player 2 "
-					+ this.getPlayer2().getUserName()
+					+ this.getPlayer2().getUsername()
 					+ " wins.<script language=\"javascript\" type=\"text/javascript\">" +
 
 			"isGameOver = 'yes';</script>");
@@ -900,11 +902,11 @@ public class Game {
 
 				} else {
 
-					this.setWinnerUserName(this.getPlayer2().getUserName());
+					this.setWinnerUserName(this.getPlayer2().getUsername());
 
-					this.setPlayer1UserName(this.getPlayer1().getUserName());
+					this.setPlayer1UserName(this.getPlayer1().getUsername());
 
-					this.setPlayer2UserName(this.getPlayer2().getUserName());
+					this.setPlayer2UserName(this.getPlayer2().getUsername());
 
 					this.setTotalBetForWinner(this.getPlayer1betCard2() + this.getPlayer1betCard3()
 							+ this.getPlayer1betCard4() + this.getPlayer1betCard5());
@@ -915,14 +917,14 @@ public class Game {
 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 			}
 		}
 
 		else if (this.getDidPlayer2Fold() != null && this.getDidPlayer2Fold().equalsIgnoreCase("yes")) {
 
 			out.println("<BR>Player 2 has folded and the game is now complete and by foreit Player 1 "
-					+ this.getPlayer1().getUserName()
+					+ this.getPlayer1().getUsername()
 					+ " wins.<script language=\"javascript\" type=\"text/javascript\">" +
 
 			"isGameOver = 'yes';</script>");
@@ -933,11 +935,11 @@ public class Game {
 
 				} else {
 
-					this.setWinnerUserName(this.getPlayer1().getUserName());
+					this.setWinnerUserName(this.getPlayer1().getUsername());
 
-					this.setPlayer1UserName(this.getPlayer1().getUserName());
+					this.setPlayer1UserName(this.getPlayer1().getUsername());
 
-					this.setPlayer2UserName(this.getPlayer2().getUserName());
+					this.setPlayer2UserName(this.getPlayer2().getUsername());
 
 					this.setTotalBetForWinner(this.getPlayer2betCard2() + this.getPlayer2betCard3()
 							+ this.getPlayer2betCard4() + this.getPlayer2betCard5());
@@ -948,9 +950,9 @@ public class Game {
 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 			}
-		} else if (whoseTurnIsIt.equals(this.GAME_COMPLETE) || whoseTurnIsIt.equals(this.FINAL_CARD_BET)) {
+		} else if (whoseTurnIsIt.equals(Game.GAME_COMPLETE) || whoseTurnIsIt.equals(Game.FINAL_CARD_BET)) {
 
 			out.println("<BR>The game is now complete.<BR><BR>" +
 
@@ -975,15 +977,15 @@ public class Game {
 
 				if (player1HandRanking.getIntCardRanking() > player2HandRanking.getIntCardRanking()) {
 
-					this.setWinnerUserName(this.getPlayer1().getUserName());
+					this.setWinnerUserName(this.getPlayer1().getUsername());
 
-					out.println("<BR><BR>Player #1 " + this.getPlayer1().getUserName() + " is the Winner!!!");
+					out.println("<BR><BR>Player #1 " + this.getPlayer1().getUsername() + " is the Winner!!!");
 
 				} else if (player1HandRanking.getIntCardRanking() < player2HandRanking.getIntCardRanking()) {
 
-					this.setWinnerUserName(this.getPlayer2().getUserName());
+					this.setWinnerUserName(this.getPlayer2().getUsername());
 
-					out.println("<BR><BR>Player #2 " + this.getPlayer2().getUserName() + " is the Winner!!!");
+					out.println("<BR><BR>Player #2 " + this.getPlayer2().getUsername() + " is the Winner!!!");
 
 				} else {
 
@@ -995,19 +997,19 @@ public class Game {
 
 					if (player1HighCard > player2HighCard) {
 
-						out.println("<BR><BR>Player #1 " + this.getPlayer1().getUserName() + " is the Winner!!!");
+						out.println("<BR><BR>Player #1 " + this.getPlayer1().getUsername() + " is the Winner!!!");
 						
 						this.setPlayer1FinalHandRanking("player 1 high card " + player1HighCard);
 
-						this.setWinnerUserName(this.getPlayer1().getUserName());
+						this.setWinnerUserName(this.getPlayer1().getUsername());
 
 					} else if (player1HighCard < player2HighCard) {
 
-						out.println("<BR><BR>Player #2 " + this.getPlayer2().getUserName() + " is the Winner!!!");
+						out.println("<BR><BR>Player #2 " + this.getPlayer2().getUsername() + " is the Winner!!!");
 
 						this.setPlayer2FinalHandRanking("player 2 high card " + player1HighCard);
 
-						this.setWinnerUserName(this.getPlayer2().getUserName());
+						this.setWinnerUserName(this.getPlayer2().getUsername());
 
 					} else {
 
@@ -1024,9 +1026,9 @@ public class Game {
 					// this.setWinnerUserName(this.getPlayer1().getUserName());
 					// //To Do 2015/12/11 1:00 PM LWF
 
-					this.setPlayer1UserName(this.getPlayer1().getUserName());
+					this.setPlayer1UserName(this.getPlayer1().getUsername());
 
-					this.setPlayer2UserName(this.getPlayer2().getUserName());
+					this.setPlayer2UserName(this.getPlayer2().getUsername());
 
 					this.setTotalBetForWinner(this.getPlayer1betCard2() + this.getPlayer1betCard3()
 							+ this.getPlayer1betCard4() + this.getPlayer1betCard5());
@@ -1037,21 +1039,21 @@ public class Game {
 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 			}
 		}
 
-		else if (whoseTurnIsIt.equals(this.CURRENT_TURN_PLAYER1)) {
-			out.println("<BR>It is now Player 1 " + this.getPlayer1().getUserName() + " Turn!");
+		else if (whoseTurnIsIt.equals(Game.CURRENT_TURN_PLAYER1)) {
+			out.println("<BR>It is now Player 1 " + this.getPlayer1().getUsername() + " Turn!");
 
-		} else if (whoseTurnIsIt.equals(this.CURRENT_TURN_PLAYER2)) {
-			out.println("<BR>It is now Player 2 " + this.getPlayer2().getUserName() + " Turn!");
+		} else if (whoseTurnIsIt.equals(Game.CURRENT_TURN_PLAYER2)) {
+			out.println("<BR>It is now Player 2 " + this.getPlayer2().getUsername() + " Turn!");
 
 			// } else if (whoseTurnIsIt.equals(this.FINAL_CARD_BET)) {
 			// out.println("<BR>It is now Final Card Bet " +
 			// this.getPlayer1().getUserName() + " Turn!");
 			//
-		} else if (whoseTurnIsIt.equals(this.UNKNOWN_STATE)) {
+		} else if (whoseTurnIsIt.equals(Game.UNKNOWN_STATE)) {
 			out.println("<BR>The game is in amn unknown state. ");
 
 		}
@@ -1069,38 +1071,8 @@ public class Game {
 		log.debug("\n\nDebug: IN method insertIntoGamesForGameComplete()\n\n");
 
 		this.setWinnerUserName("Winner not known");
-
-		Connection conn = this.getDatabaseConnection();
-
-		/*
-		 * 
-		 * String query = " insert into game (" + "" + "Player1, " +
-		 * "Player1Card1,  " + "Player1Card2, Player1BetCard2, " +
-		 * "Player1Card3, Player1BetCard3, " + "Player1Card4, Player1BetCard4, "
-		 * + "Player1Card5, Player1BetCard5, " + "" + "Player2, " +
-		 * "Player2Card1, " + "Player2Card2, Player2BetCard2, " +
-		 * "Player2Card3, Player2BetCard3, " + "Player2Card4, Player2BetCard4, "
-		 * + "Player2Card5, Player2BetCard5, " + "" +
-		 * "TotalBetForWinner, WinnerUserName, " +
-		 * 
-		 * "Player1UserName, didPlayer1Fold," + // Added 2015/12/10 2:30 PM LWF
-		 * "Player2UserName, didPlayer2Fold," + // Added 2015/12/10 2:30 PM //
-		 * LWF
-		 * 
-		 * "Player1FinalHandRanking, " + "Player2FinalHandRanking, " +
-		 * 
-		 * 
-		 * "GameStatus)" +
-		 * 
-		 * "" + "VALUES(" + " " + "? , " + "?, " + "?, ?, " + "?, ?, " +
-		 * "?, ?, " + "?, ?, " + "" + "?, " + "?, " + "?, ?, " + "?, ?, " +
-		 * "?, ?, " + "?, ?, " + "" + "?, ?, " + "?, ?, " + // Added //
-		 * 2015/12/10 // 2:30 // PM // LWF "?, ?, " + // Added 2015/12/10 2:30
-		 * PM LWF "?, ?, " + // Added 2015/12/10 2:30 PM LWF "?)";
-		 * 
-		 */
-
-		String query2 = " insert into game (" + "" + "Player1, " + "" + "Player1Card1,  " + "Player1Card2, "
+                MySQLConnection connection = new MySQLConnection();
+                		String query2 = " insert into game (" + "" + "Player1, " + "" + "Player1Card1,  " + "Player1Card2, "
 				+ "Player1BetCard2, " + "Player1Card3, " + "Player1BetCard3, " + "Player1Card4, " + "Player1BetCard4, "
 				+ "Player1Card5, " + "Player1BetCard5, " + "" + "Player2, " + "Player2Card1, " + "Player2Card2, "
 				+ "Player2BetCard2, " + "Player2Card3, " + "Player2BetCard3, " + "Player2Card4, " + "Player2BetCard4, "
@@ -1144,15 +1116,47 @@ public class Game {
 				"?, " + // "Player2FinalHandRanking, " +
 
 		"?)"; // + "GameStatus)" +
+		try(Connection conn = connection.getDatabaseConnection();PreparedStatement preparedStmt = conn.prepareStatement(query2))
+                {
 
-		Calendar calendar = Calendar.getInstance();
-		java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
+		/*
+		 * 
+		 * String query = " insert into game (" + "" + "Player1, " +
+		 * "Player1Card1,  " + "Player1Card2, Player1BetCard2, " +
+		 * "Player1Card3, Player1BetCard3, " + "Player1Card4, Player1BetCard4, "
+		 * + "Player1Card5, Player1BetCard5, " + "" + "Player2, " +
+		 * "Player2Card1, " + "Player2Card2, Player2BetCard2, " +
+		 * "Player2Card3, Player2BetCard3, " + "Player2Card4, Player2BetCard4, "
+		 * + "Player2Card5, Player2BetCard5, " + "" +
+		 * "TotalBetForWinner, WinnerUserName, " +
+		 * 
+		 * "Player1UserName, didPlayer1Fold," + // Added 2015/12/10 2:30 PM LWF
+		 * "Player2UserName, didPlayer2Fold," + // Added 2015/12/10 2:30 PM //
+		 * LWF
+		 * 
+		 * "Player1FinalHandRanking, " + "Player2FinalHandRanking, " +
+		 * 
+		 * 
+		 * "GameStatus)" +
+		 * 
+		 * "" + "VALUES(" + " " + "? , " + "?, " + "?, ?, " + "?, ?, " +
+		 * "?, ?, " + "?, ?, " + "" + "?, " + "?, " + "?, ?, " + "?, ?, " +
+		 * "?, ?, " + "?, ?, " + "" + "?, ?, " + "?, ?, " + // Added //
+		 * 2015/12/10 // 2:30 // PM // LWF "?, ?, " + // Added 2015/12/10 2:30
+		 * PM LWF "?, ?, " + // Added 2015/12/10 2:30 PM LWF "?)";
+		 * 
+		 */
+
+
+
+	//	Calendar calendar = Calendar.getInstance();
+	//	java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
 
 		// String generatedSecuredPasswordHash = BCrypt.hashpw(password,
 		// BCrypt.gensalt(12));
 
 		// create the mysql insert preparedstatement
-		PreparedStatement preparedStmt = conn.prepareStatement(query2);
+		
 
 		/*
 		 * 
@@ -1263,9 +1267,9 @@ public class Game {
 
 		// byteArrayInputStream
 
-		byte[] buf = new byte[500];
+//		byte[] buf = new byte[500];
 
-		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buf);
+//		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buf);
 
 		// preparedStmt.setBlob(24, (InputStream)byteArrayInputStream);
 
@@ -1278,17 +1282,13 @@ public class Game {
 		// execute the preparedstatement
 
 		log.debug("\n\n SQL insert into gamess table = XXX\n\n" + query2 + "\n\nXXX");
-		;
+		
 		preparedStmt.executeUpdate();
 
-		try {
-			preparedStmt.close();
-			conn.close();
+		
 		} catch (Exception e) {
 
-			e.printStackTrace();
-
-			String errors = "Could not insert into the Game table. Game is finished.";
+			log.error(e);
 
 			// request.setAttribute("errors", errors);
 
@@ -1299,8 +1299,6 @@ public class Game {
 
 		}
 
-		String errors = "Successfully inserted a record into the Game tale.  Game is complete.  Please Logon.";
-
 		// request.setAttribute("errors", errors);
 
 		log.debug("\n\nDebug: Exiting Method insertIntoGamesForGameComplete() reutrning 'success'\n\n");
@@ -1309,16 +1307,7 @@ public class Game {
 
 	}
 
-	public static Connection getDatabaseConnection() throws ClassNotFoundException, SQLException {
-		// create our mysql database connection
-		String myDriver = "org.gjt.mm.mysql.Driver";
-		String myUrl = "jdbc:mysql://localhost/fcs";
-		Class.forName(myDriver);
-		Connection conn = DriverManager.getConnection(myUrl, "fcs_user", "7yXw8dDaNMBNBbW5");
-
-		return conn;
-
-	}
+	
 
 	public int getHighCard(PlayingCard card1, PlayingCard card2, PlayingCard card3, PlayingCard card4,
 			PlayingCard card5) {
@@ -1327,7 +1316,7 @@ public class Game {
 			return -1;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -1364,7 +1353,7 @@ public class Game {
 			return false;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -1415,15 +1404,7 @@ public class Game {
 
 		}
 
-		if (isPair) {
-
-			return true;
-
-		} else {
-
-			return false;
-
-		}
+            return isPair;
 
 	}
 
@@ -1434,7 +1415,7 @@ public class Game {
 			return false;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -1482,15 +1463,7 @@ public class Game {
 
 		}
 
-		if (isFourStraight) {
-
-			return true;
-
-		} else {
-
-			return false;
-
-		}
+            return isFourStraight;
 
 	}
 
@@ -1501,7 +1474,7 @@ public class Game {
 			return false;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -1532,7 +1505,7 @@ public class Game {
 				suit = playingCardTemp.getCardSuit();
 
 				previousCardNumber = playingCardTemp.getCardNumber();
-			} else if (suit != playingCardTemp.getCardSuit()) {
+			} else if (!suit.equals(playingCardTemp.getCardSuit())) {
 
 				if (count == 4) {
 
@@ -1548,15 +1521,7 @@ public class Game {
 
 		}
 
-		if (isFourFlush) {
-
-			return true;
-
-		} else {
-
-			return false;
-
-		}
+            return isFourFlush;
 
 	}
 
@@ -1567,7 +1532,7 @@ public class Game {
 			return false;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -1629,15 +1594,7 @@ public class Game {
 
 		}
 
-		if (isFirstPair && isSecondPair) {
-
-			return true;
-
-		} else {
-
-			return false;
-
-		}
+            return isFirstPair && isSecondPair;
 
 	}
 
@@ -1648,7 +1605,7 @@ public class Game {
 			return false;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -1699,15 +1656,7 @@ public class Game {
 
 		}
 
-		if (isThreeOfKind) {
-
-			return true;
-
-		} else {
-
-			return false;
-
-		}
+            return isThreeOfKind;
 
 	}
 
@@ -1718,7 +1667,7 @@ public class Game {
 			return false;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -1759,7 +1708,7 @@ public class Game {
 			return false;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -1783,7 +1732,7 @@ public class Game {
 				suit = playingCardTemp.getCardSuit();
 
 				previousCardNumber = playingCardTemp.getCardNumber();
-			} else if (suit != playingCardTemp.getCardSuit()) {
+			} else if (!suit.equals(playingCardTemp.getCardSuit())) {
 				return false;
 			}
 
@@ -1800,7 +1749,7 @@ public class Game {
 			return false;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -1824,7 +1773,7 @@ public class Game {
 				suit = playingCardTemp.getCardSuit();
 
 				previousCardNumber = playingCardTemp.getCardNumber();
-			} else if (suit != playingCardTemp.getCardSuit()
+			} else if (!suit.equals(playingCardTemp.getCardSuit())
 					|| (++previousCardNumber) != playingCardTemp.getCardNumber()) {
 				return false;
 			}
@@ -1842,7 +1791,7 @@ public class Game {
 			return false;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -1897,15 +1846,7 @@ public class Game {
 
 		}
 
-		if (isTwoOfKind && isThreeOfKind) {
-
-			return true;
-
-		} else {
-
-			return false;
-
-		}
+            return isTwoOfKind && isThreeOfKind;
 
 	}
 
@@ -1916,7 +1857,7 @@ public class Game {
 			return false;
 		}
 
-		Map<String, PlayingCard> playingCardMap = new TreeMap<String, PlayingCard>();
+		Map<String, PlayingCard> playingCardMap = new TreeMap<>();
 
 		playingCardMap.put("" + card1.getCardNumber(), card1);
 		playingCardMap.put("" + card2.getCardNumber(), card2);
@@ -2465,224 +2406,104 @@ public class Game {
 	public static boolean displayAllGamesOrderByGameId(PrintWriter out) throws Exception {
 
 		log.debug("\n\nDebug: inside displayAllGamesOrderByGameId()\n");
-
-		Connection conn = getDatabaseConnection();
-
-		User user = null;
-
-		try {
-
-			// our SQL SELECT query.
-			// if you only need a few columns, specify them by name instead of
-			// using "*"
-			String query = "SELECT * FROM game order by GameID ";
-
-			// create the java statement
-			PreparedStatement pstmnt = conn.prepareStatement(query);
-
-			// pstmnt.setString(1, userName);
-
-			// execute the query, and get a java resultset
-			ResultSet rs = pstmnt.executeQuery();
-
-			/*
-			 * -- -- Table structure for table `users` --
-			 * 
-			 * CREATE TABLE IF NOT EXISTS `users` ( `UserID` int(11) NOT NULL
-			 * AUTO_INCREMENT, `UserName` varchar(20) NOT NULL, `Password`
-			 * char(60) NOT NULL, `Timestamp` timestamp NOT NULL DEFAULT
-			 * CURRENT_TIMESTAMP, PRIMARY KEY (`UserID`), UNIQUE KEY `UserName`
-			 * (`UserName`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1
-			 * AUTO_INCREMENT=3 ;
-			 * 
-			 */
-
-			// iterate through the java resultset
-
-			out.print("<BR><BR>Listing of Completed Games:");
+                    MySQLConnection connection = new MySQLConnection();
+                    try ( // create the java statement
+                            
+                            Connection conn = connection.getDatabaseConnection()) {
+                        
+                    
+                        // our SQL SELECT query.
+                        // if you only need a few columns, specify them by name instead of
+                        // using "*"
+                        String query = "SELECT * FROM game order by GameID ";
+                        // pstmnt.setString(1, userName);
+                        // execute the query, and get a java resultset
+                        try ( // create the java statement
+                                PreparedStatement pstmnt = conn.prepareStatement(query); // pstmnt.setString(1, userName);
+                                // execute the query, and get a java resultset
+                                ResultSet rs = pstmnt.executeQuery()) {
+                            
+                            /*
+                            * -- -- Table structure for table `users` --
+                            *
+                            * CREATE TABLE IF NOT EXISTS `users` ( `UserID` int(11) NOT NULL
+                            * AUTO_INCREMENT, `UserName` varchar(20) NOT NULL, `Password`
+                            * char(60) NOT NULL, `Timestamp` timestamp NOT NULL DEFAULT
+                            * CURRENT_TIMESTAMP, PRIMARY KEY (`UserID`), UNIQUE KEY `UserName`
+                            * (`UserName`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+                            * AUTO_INCREMENT=3 ;
+                            *
+                            */
+                            
+                            // iterate through the java resultset
+                            
+                            out.print("<BR><BR>Listing of Completed Games:");
 //			out.print("Game Id"Listing of Completed Games:<BR><BR>");
-
-			while (rs != null && rs.next()) {
-				
-				out.println("<BR><BR>");
-
-				int gameId_ = rs.getInt("GameID");
-
-				// int userId1 = rs.getInt("UserId");
-				// String userName1 = rs.getString("UserName");
-				// String password1 = rs.getString("Password");
-
-				// Started Paste here 2015/12/13 12:00 PM LWF
-
-				// preparedStmt.setInt(1, this.getPlayer1().getUserID()); //
-
-				String Player1Card1_ = rs.getString("Player1Card1");
-
-				String Player1Card2_ = rs.getString("Player1card1");
-				double Player1betCard2_ = rs.getDouble("Player1betCard2");
-
-				String Player1Card3_ = rs.getString("Player1card3");
-				double Player1betCard3_ = rs.getDouble("Player1betCard3");
-
-				String Player1Card4_ = rs.getString("Player1card4");
-				double Player1betCard4_ = rs.getDouble("Player1betCard4");
-
-				String Player1Card5_ = rs.getString("Player1card5");
-				double Player1betCard5_ = rs.getDouble("Player1betCard5");
-
-				// preparedStmt.setString(2, "" + this.getPlayer1card1()); //
-				//
-				// preparedStmt.setString(3, "" + this.getPlayer1card2());
-				// preparedStmt.setDouble(4, this.getPlayer1betCard2());
-				//
-				// preparedStmt.setString(5, "" + this.getPlayer1card3());
-				// preparedStmt.setDouble(6, this.getPlayer1betCard3());
-
-				// preparedStmt.setString(7, "" + this.getPlayer1card4());
-				// preparedStmt.setDouble(8, this.getPlayer1betCard4());
-
-				// preparedStmt.setString(9, "" + this.getPlayer1card5());
-				// preparedStmt.setDouble(10, this.getPlayer1betCard5());
-				//
-				// preparedStmt.setInt(11, this.getPlayer2().getUserID());
-
-				String Player2Card1_ = rs.getString("Player2Card1");
-
-				String Player2Card2_ = rs.getString("Player2card1");
-				double Player2betCard2_ = rs.getDouble("Player2betCard2");
-
-				String Player2Card3_ = rs.getString("Player2card3");
-				double Player2betCard3_ = rs.getDouble("Player2betCard3");
-
-				String Player2Card4_ = rs.getString("Player2card4");
-				double Player2betCard4_ = rs.getDouble("Player2betCard4");
-
-				String Player2Card5_ = rs.getString("Player2card5");
-				double Player2betCard5_ = rs.getDouble("Player2betCard5");
-
-				// preparedStmt.setString(12, "" + this.getPlayer2card1());
-				//
-				// preparedStmt.setString(13, "" + this.getPlayer2card2());
-				// preparedStmt.setDouble(14, this.getPlayer2betCard2());
-				//
-				// preparedStmt.setString(15, "" + this.getPlayer2card3());
-				// preparedStmt.setDouble(16, this.getPlayer2betCard3());
-				//
-				// preparedStmt.setString(17, "" + this.getPlayer2card4());
-				// preparedStmt.setDouble(18, this.getPlayer2betCard4());
-				//
-				// preparedStmt.setString(19, "" + this.getPlayer2card5());
-				// preparedStmt.setDouble(20, this.getPlayer2betCard5());
-
-				double TotalBetForWinner_ = rs.getDouble("TotalBetForWinner");
-
-				String WinnerUserName_ = rs.getString("WinnerUserName");
-
-				String Player1UserName_ = rs.getString("Player1UserName");
-				String DidPlayer1Fold_ = rs.getString("DidPlayer1Fold");
-
-				String Player2UserName_ = rs.getString("Player2UserName");
-				String DidPlayer2Fold_ = rs.getString("DidPlayer2Fold");
-
-				String Player1FinalHandRanking_ = rs.getString("Player1FinalHandRanking");
-
-				String Player2FinalHandRanking_ = rs.getString("Player2FinalHandRanking");
-
-				String GameStatus_ = rs.getString("GameStatus");
-
-				out.println("Game Id: " + gameId_ + " ");
-				
-				out.println("Player #1: " + Player1UserName_ + ". ");
-				out.println("Player #2: " + Player2UserName_ + ". ");
-				
-
-
-				if (DidPlayer1Fold_ != null && DidPlayer1Fold_.equalsIgnoreCase("yes")) {
-
-					out.println("Player 1 folded and so Player 2 won. ");
-
-				} else if (DidPlayer2Fold_ != null && DidPlayer2Fold_.equalsIgnoreCase("yes")) {
-
-					out.println("Player 2 folded and so Player 1 won. ");
-
-				} else if (TotalBetForWinner_ > 0) {
-
-					out.println("Player 1 won with: " + Player1FinalHandRanking_ + ". ");
-
-					out.println("Player 2 lost with: " + Player2FinalHandRanking_ + ". ");
-
-				} else {
-
-					out.println("Game was never completed.  Now Winner determined. ");
-
-				}
-
-				// preparedStmt.setDouble(21, this.getTotalBetForWinner());
-
-				// preparedStmt.setString(22, this.getWinnerUserName());
-				//
-				//
-				// preparedStmt.setString(23, this.getPlayer1UserName()); //
-				// Added
-				// // 2015/12/10
-				// // 2:30 PM LWF
-				// preparedStmt.setString(24, "" + this.getDidPlayer1Fold()); //
-				// Added
-				// // 2015/12/10
-				// // 2:30 PM
-				// // LWF
-				//
-				// preparedStmt.setString(25, this.getPlayer2UserName()); //
-				// Added
-				// // 2015/12/10
-				// // 2:30 PM LWF
-				// preparedStmt.setString(26, "" + this.getDidPlayer2Fold()); //
-				// Added
-				// // 2015/12/10
-				// // 2:30 PM
-				// // LWF
-				//
-				// preparedStmt.setString(27,
-				// this.getPlayer1FinalHandRanking()); // Added
-				// // 2015/12/10
-				// // 3:30
-				// // PM
-				// // LWF
-				//
-				// preparedStmt.setString(28,
-				// this.getPlayer2FinalHandRanking()); // Added
-				// // 2015/12/10
-				// 3:30
-				// PM
-				// LWF
-
-				// preparedStmt.setString(29, "Game Finished");
-
-				// Ended Paste 2015/12/13 12:00 PM LWF
-
-				// user = new User(-1,"","",new Timestamp(1));
-				//
-				// user.setUserID(userId1);
-				// user.setUserName(userName1);
-				// user.setPassword(password1);
-
-				// Date dateCreated = rs.getDate("date_created");
-				// boolean isAdmin = rs.getBoolean("is_admin");
-				// int numPoints = rs.getInt("num_points");
-
-				// print the results
-				// System.out.format("%s, %s, %s, %s, %s, %s\n", id, firstName,
-				// lastName, dateCreated, isAdmin, numPoints);
-			}
-
-			rs.close();
-			pstmnt.close();
-			conn.close();
-		} catch (Throwable t) {
-			t.printStackTrace();
+                            
+                            while (rs != null && rs.next()) {
+                                
+                                out.println("<BR><BR>");
+                                
+                                int gameId_ = rs.getInt("GameID");
+                                
+                                
+                                double TotalBetForWinner_ = rs.getDouble("TotalBetForWinner");
+                                
+                                
+                                
+                                String Player1UserName_ = rs.getString("Player1UserName");
+                                String DidPlayer1Fold_ = rs.getString("DidPlayer1Fold");
+                                
+                                String Player2UserName_ = rs.getString("Player2UserName");
+                                String DidPlayer2Fold_ = rs.getString("DidPlayer2Fold");
+                                
+                                String Player1FinalHandRanking_ = rs.getString("Player1FinalHandRanking");
+                                
+                                String Player2FinalHandRanking_ = rs.getString("Player2FinalHandRanking");
+                                
+                                
+                                out.println("Game Id: " + gameId_ + " ");
+                                
+                                out.println("Player #1: " + Player1UserName_ + ". ");
+                                out.println("Player #2: " + Player2UserName_ + ". ");
+                                
+                                
+                                
+                                if (DidPlayer1Fold_ != null && DidPlayer1Fold_.equalsIgnoreCase("yes")) {
+                                    
+                                    out.println("Player 1 folded and so Player 2 won. ");
+                                    
+                                } else if (DidPlayer2Fold_ != null && DidPlayer2Fold_.equalsIgnoreCase("yes")) {
+                                    
+                                    out.println("Player 2 folded and so Player 1 won. ");
+                                    
+                                } else if (TotalBetForWinner_ > 0) {
+                                    
+                                    out.println("Player 1 won with: " + Player1FinalHandRanking_ + ". ");
+                                    
+                                    out.println("Player 2 lost with: " + Player2FinalHandRanking_ + ". ");
+                                    
+                                } else {
+                                    
+                                    out.println("Game was never completed.  Now Winner determined. ");
+                                    
+                                }
+                                
+                                
+                            }
+                            
+                        }
+                        catch (Throwable t) {
+			log.error(t);
 			throw t;
 		}
-
+                        
+                        
+                    }
+                    catch (Throwable t) {
+			log.error(t);
+			throw t;
+                    }
 		log.debug("\n\nDebug: exiting displayAllGamesOrderByGameId()\n");
 
 		return true;

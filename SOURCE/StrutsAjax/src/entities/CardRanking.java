@@ -4,7 +4,7 @@ public class CardRanking {
 	
 	private int intCardRanking = -1;
 	
-	private String StringCardRanking = null;
+	private String stringCardRanking = null;
 
 	public int getIntCardRanking() {
 		return intCardRanking;
@@ -15,11 +15,11 @@ public class CardRanking {
 	}
 
 	public String getStringCardRanking() {
-		return StringCardRanking;
+		return stringCardRanking;
 	}
 
 	public void setStringCardRanking(String stringCardRanking) {
-		StringCardRanking = stringCardRanking;
+		this.stringCardRanking = stringCardRanking;
 	}
 	
 	

@@ -164,7 +164,7 @@ public class DeckOfCards implements Serializable{
 	}
         
         @SuppressWarnings("unchecked")
-        public DeckOfCards Copy()
+        public DeckOfCards copy()
     {
       
         return new DeckOfCards((ArrayList<PlayingCard>)deckOfCards.clone());

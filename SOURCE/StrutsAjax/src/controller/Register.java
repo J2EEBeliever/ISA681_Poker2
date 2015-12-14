@@ -6,13 +6,9 @@
 package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
-import static controller.FiveCardStudPokerAjaxAction.log;
 import entities.MySQLConnection;
 import entities.User;
 import entities.dataconnection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.mindrot.jbcrypt.BCrypt;
@@ -23,10 +19,10 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class Register extends ActionSupport {
     
-    private String Username;
+    private String username;
     private String password;
     private String password2;
-    
+    final static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Register.class);
             
     
     @Override
@@ -38,15 +34,15 @@ public class Register extends ActionSupport {
 
 		HttpServletRequest request = ServletActionContext.getRequest();
 
-		String userName = Username;
+		String userName_ = username;
 		
-		String password1 = password;
+		String password1_ = password;
 
-		String password2 = this.password2;
+		String password2_ = password2;
                 
-                 FiveCardStudPokerAjaxAction action = new FiveCardStudPokerAjaxAction();
-		
-		if(password1 != null && password2 != null && password1.length() >= 8 && userName != null && userName.length() >= 3 && !password1.equals(password2)) {
+                 
+		dataconnection connection = new MySQLConnection();
+		if(password1_ != null && password2_ != null && password1_.length() >= 8 && userName_ != null && userName_.length() >= 3 && !password1_.equals(password2_)) {
 
  			String errors = "Passwords do not match.";
 			 
@@ -59,13 +55,13 @@ public class Register extends ActionSupport {
 
 			
 		}
-		else if(password1 != null && password2 != null && password1.length() >= 8 && userName != null && userName.length() >= 3 && password1.equals(password2)) {
+		else if(password1_ != null && password2_ != null && password1_.length() >= 8 && userName_ != null && userName_.length() >= 3 && password1_.equals(password2_)) {
 			
-			String generatedSecuredPasswordHash = BCrypt.hashpw(password1, BCrypt.gensalt());
+			String generatedSecuredPasswordHash = BCrypt.hashpw(password1_, BCrypt.gensalt());
 
 		
                                 
-			User user = action.getUserByUserName(userName);
+			User user = connection.getUserByUserName(userName_);
 			
 			if(user != null) {
 				
@@ -81,8 +77,8 @@ public class Register extends ActionSupport {
 			}
 			
 			//this.getUserByUserName(userName);
-		 dataconnection connection = new MySQLConnection();
-			if(!connection.registerUser(userName, generatedSecuredPasswordHash))
+		 
+			if(!connection.registerUser(userName_, generatedSecuredPasswordHash))
                         {
 			  		String errors = "Incorrect Username and/or Password";
 					 request.setAttribute("errors", errors);
@@ -124,12 +120,12 @@ public class Register extends ActionSupport {
      
      public void setUsername(String Username)
      {
-         this.Username = Username;
+         this.username = Username;
      }
      
      public String getUsername()
      {
-         return Username;
+         return username;
      }
      
      public void setPassword(String Password)

@@ -24,15 +24,13 @@ import org.apache.commons.codec.binary.Hex;
 public class CipherUtils
 {
 
-    private static final byte[] key = {
-            0x74, 0x68, 0x69, 0x73, 0x49, 0x73, 0x41, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x4b, 0x65, 0x79
-    };//"thisIsASecretKey";
+  
 
-    public static String encrypt(String strToEncrypt) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException
+    public static String encrypt(String strToEncrypt, String key) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException
     {
-       
+       byte[] keybytes = key.getBytes("UTF-8");
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+            final SecretKeySpec secretKey = new SecretKeySpec(keybytes, "AES");
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             final String encryptedString = Base64.encodeBase64String(cipher.doFinal(strToEncrypt.getBytes("UTF-8")));
             return encryptedString;
@@ -40,11 +38,12 @@ public class CipherUtils
 
     }
 
-    public static String decrypt(String strToDecrypt) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException
+    public static String decrypt(String strToDecrypt, String key) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException
     {
-      
+      byte[] keybytes = key.getBytes("UTF-8");
+        
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
-            final SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+            final SecretKeySpec secretKey = new SecretKeySpec(keybytes, "AES");
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
             final String decryptedString = new String(cipher.doFinal(Base64.decodeBase64(strToDecrypt)),"UTF-8");
             return decryptedString;
@@ -78,14 +77,14 @@ public class CipherUtils
             if (cmd.hasOption("encrypt"))
             {
                 final String strToEncrypt = cmd.getOptionValue("encrypt");
-                final String encryptedStr = CipherUtils.encrypt(strToEncrypt.trim());
+                final String encryptedStr = CipherUtils.encrypt(strToEncrypt.trim(),"thisIsASecretKey");
                 System.out.println("String to Encrypt : " + strToEncrypt);
                 System.out.println("Encrypted : " + encryptedStr);
             }
             else if (cmd.hasOption("decrypt"))
             {
                 final String strToDecrypt = cmd.getOptionValue("decrypt");
-                final String decryptedStr = CipherUtils.decrypt(strToDecrypt.trim());
+                final String decryptedStr = CipherUtils.decrypt(strToDecrypt.trim(),"thisIsASecretKey");
                 System.out.println("String To Decrypt : " + strToDecrypt);
                 System.out.println("Decrypted : " + decryptedStr);
             }

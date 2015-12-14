@@ -17,12 +17,12 @@ public class DeckContainer implements Serializable{
    
     public synchronized DeckOfCards getDeck()
     {
-        return deck.Copy();
+        return deck.copy();
     }
     
         public synchronized void setDeck(DeckOfCards deck)
     {
-        this.deck = deck.Copy();
+        this.deck = deck.copy();
     }
     
 }

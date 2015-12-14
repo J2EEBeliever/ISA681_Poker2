@@ -65,7 +65,7 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
               UUID Token = UUID.randomUUID();
               Cookie PokerToken = new Cookie("PokerToken", Token.toString());
               Long TokenRand = RandomContainerEnum.INSTANCE.randomContainer.getRandom().nextLong();
-              connection.CreateSession(inComingUser.getUserID(), Token.toString(), TokenRand);
+              connection.createSession(inComingUser.getUserID(), Token.toString(), TokenRand);
               Cookie TokenHMAC = new Cookie("TokenHMAC", CipherUtils.createHMACSHA256(Token.toString(),TokenRand.toString()));
               PokerToken.setMaxAge(RandomContainerEnum.sessionTimeout);
               PokerToken.setHttpOnly(true);
