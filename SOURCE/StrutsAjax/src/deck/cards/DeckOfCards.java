@@ -155,7 +155,7 @@ public class DeckOfCards implements Serializable{
 			else if(i == 11) {
 				playingCard.setCardString("Queen");
 			}
-			else if(i == 12) {
+			else {
 				playingCard.setCardString("King");
 			}
 		}

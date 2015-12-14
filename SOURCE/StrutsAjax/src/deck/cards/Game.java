@@ -767,6 +767,7 @@ public class Game {
 		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
 
 		// int gameNumber = game.getGameNumber();
+                @SuppressWarnings("unchecked")
 		Map<String, Game> currentGamesBeingPlayed1 = (Map<String, Game>) servletContext
 				.getAttribute("currentGamesBeingPlayed");
 
@@ -814,6 +815,7 @@ public class Game {
 		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
 
 		// int gameNumber = game.getGameNumber();
+                @SuppressWarnings("unchecked")
 		Map<String, Game> currentGamesBeingPlayed1 = (Map<String, Game>) servletContext
 				.getAttribute("currentGamesBeingPlayed");
 
@@ -840,6 +842,7 @@ public class Game {
 		ServletContext servletContext = ServletActionContext.getRequest().getServletContext();
 
 		// int gameNumber = game.getGameNumber();
+                @SuppressWarnings("unchecked")
 		Map<String, Game> currentGamesBeingPlayed1 = (Map<String, Game>) servletContext
 				.getAttribute("currentGamesBeingPlayed");
 

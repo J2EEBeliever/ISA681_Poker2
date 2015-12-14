@@ -56,6 +56,9 @@ public class HandleSession extends AbstractInterceptor{
                         HMAC = c.getValue();
                         HMACCookie = c;
                         break;
+                    default:
+                        //not an authentication token
+                        break;
                 }
         }
          //If the get cookies is null or if there is no Token cookie/HMAC cookie or if the

@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,7 +42,7 @@ public class MySQLConnection implements dataconnection
              try (Connection conn = this.getDatabaseConnection(); 
               PreparedStatement stmt = conn.prepareStatement("SELECT UserID, UserName, Password, Timestamp From users WHERE UserName = ?")) 
              {
-                 stmt.setString(1, UserName.toLowerCase());
+                 stmt.setString(1, UserName.toLowerCase(Locale.ENGLISH));
                  
                  
              try (ResultSet rs = stmt.executeQuery()) {

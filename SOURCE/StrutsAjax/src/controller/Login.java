@@ -16,6 +16,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +52,7 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
           
           
       }
-      User inComingUser = connection.getUserData(userName.toLowerCase());
+      User inComingUser = connection.getUserData(userName.toLowerCase(Locale.ENGLISH));
       if (inComingUser.getUserID() == -1)
       {
           addActionError("Invalid user name or password! Please try again!");

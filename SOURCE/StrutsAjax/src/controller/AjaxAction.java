@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -109,7 +108,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println(
@@ -134,7 +133,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println(
@@ -144,16 +143,8 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			return;
 		}
 
-		boolean success = game.outputToResponseOutputStream(user);
 		
-//		if(game.getTotalBetForWinner() > 0) {
-//			
-//			game.removeGameIdInSessionScope(userGameId);
-//		}
 
-		log.debug("\n\nDebug: Exiting method waitForTurnOrGameToStart()\n\n");
-
-		return;
 
 	}
 
@@ -195,7 +186,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println(
@@ -221,7 +212,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println(
@@ -247,7 +238,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println(
@@ -262,7 +253,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		double betAmountDouble = 0;
 
-		String betAmount = null;
+		String betAmount;
 
 		String actionType = request.getParameter("actionType");
 
@@ -320,7 +311,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			}
 
 			catch (Exception e2) {
-				e2.printStackTrace();
+				log.error(e2);
 
 				log.debug(
 						"\n\nDebug: In method raise() processing [request] scope parameter 'betAmount'.  Try raising again.\n\n");
@@ -332,7 +323,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 					out = response.getWriter();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.error(e);
 					return;
 				}
 				out.println(
@@ -357,7 +348,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			log.debug("\n\nDebug: Exiting method raise()\n\n");
 
-			return;
 
 		} else if (game.getPlayer2().getUsername().equals(user.getUsername())) {
 
@@ -376,7 +366,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			log.debug("\n\nDebug: Exiting method raise()\n\n");
 
-			return;
 
 		} else {
 
@@ -390,7 +379,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println(
@@ -399,7 +388,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			out.flush();
 
-			return;
 
 		}
 
@@ -440,7 +428,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println(
@@ -467,7 +455,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println("There is a problem with your logon.");
@@ -491,14 +479,13 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println(
 					"Debug: From method joinGameNow(). [Game] object does not exist in hash map in application scope.");
 			out.flush();
 
-			return;
 
 		} else {
 
@@ -520,7 +507,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 					out = response.getWriter();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.error(e);
 					return;
 				}
 
@@ -540,7 +527,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 					out = response.getWriter();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.error(e);
 					return;
 				}
 
@@ -558,7 +545,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				}
 
-				if (game != null && game.getDeckOfCards() != null) {
+				if (game.getDeckOfCards() != null) {
 
 					Game.setGameIdInSessionScope("" + game.getGameNumber());
 
@@ -610,7 +597,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 					out = response.getWriter();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.error(e);
 					return;
 				}
 
@@ -621,7 +608,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				log.debug("\n\nDebug: Exiting method joinGameNow()\n\n");
 
-				return;
 
 			}
 
@@ -660,7 +646,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println("There is a problem with your logon.");
@@ -680,7 +666,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 			return;
 		}
 		
@@ -688,12 +674,11 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			Game.displayAllGamesOrderByGameId(out);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		}
 
 		out.flush();
 
-		return;
 
 
 		
@@ -737,7 +722,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println("There is a problem with your logon.");
@@ -761,14 +746,13 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println("No curent existing Games available to Join.");
 			out.flush();
 
-			return;
-
+			
 		} else {
 
 			log.debug("\n\nDebug: in method joinGame() and Glabal [Games] exists.\n\n");
@@ -788,7 +772,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				++x;
 
-				if (game != null && game.getTotalBetForWinner() > 0) {
+				if (game.getTotalBetForWinner() > 0) {
 
 					// Incorrect game state. User1 (player1) must exist.
 
@@ -812,29 +796,17 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				}
 
-				else if (user1 != null && user2 == null) {
+				else if (user2 == null) {
 
-					stringBuffer.append("<BR>" + "Join New Game #" + game.getGameNumber() + " with player 1 as: "
-							+ user1.getUsername()
-							+ "and no player 2 yet. <input type=\"button\" onclick=\"joinGameNow('"
-							+ game.getGameNumber() + "' )\" id =\"joinGameNow" + x
-							+ "1\" value = \"Join New Game Now\" name = \"joinGameNow" + x + "1\">");
+					stringBuffer.append("<BR>" + "Join New Game #").append(game.getGameNumber()).append(" with player 1 as: ").append(user1.getUsername()).append("and no player 2 yet. <input type=\"button\" onclick=\"joinGameNow('").append(game.getGameNumber()).append("' )\" id =\"joinGameNow").append(x).append("1\" value = \"Join New Game Now\" name = \"joinGameNow").append(x).append("1\">");
 
-				} else if (user2 != null && user.getUsername().equals(user2.getUsername())) {
+				} else if (user.getUsername().equals(user2.getUsername())) {
 
-					stringBuffer.append("<BR>Join already started game with player 1 as: " + user1.getUsername()
-							+ "and player 2 as: (" + user2.getUsername()
-							+ ") <input type=\"button\"  onclick=\"joinGameNow('" + game.getGameNumber()
-							+ "' )\"  id =\"joinGameNow" + x
-							+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
+					stringBuffer.append("<BR>Join already started game with player 1 as: ").append(user1.getUsername()).append("and player 2 as: (").append(user2.getUsername()).append(") <input type=\"button\"  onclick=\"joinGameNow('").append(game.getGameNumber()).append("' )\"  id =\"joinGameNow").append(x).append("1\" value = \"Join Existing Game Now\" name = \"joinGameNow").append(x).append("1\">");
 
-				} else if (user1 != null && user.getUsername().equals(user1.getUsername())) {
+				} else if (user.getUsername().equals(user1.getUsername())) {
 
-					stringBuffer.append("<BR>Join already started game with player 1 as you: " + user1.getUsername()
-							+ "and player 2 as : (" + user2.getUsername()
-							+ ") <input type=\"button\"  onclick=\"joinGameNow('" + game.getGameNumber()
-							+ "' )\"  id =\"joinGameNow" + x
-							+ "1\" value = \"Join Existing Game Now\" name = \"joinGameNow" + x + "1\">");
+					stringBuffer.append("<BR>Join already started game with player 1 as you: ").append(user1.getUsername()).append("and player 2 as : (").append(user2.getUsername()).append(") <input type=\"button\"  onclick=\"joinGameNow('").append(game.getGameNumber()).append("' )\"  id =\"joinGameNow").append(x).append("1\" value = \"Join Existing Game Now\" name = \"joinGameNow").append(x).append("1\">");
 
 				}
 
@@ -844,18 +816,17 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/plain;charset=utf-8");
-			PrintWriter out = null;
+			PrintWriter out;
 			try {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println(stringBuffer);
 			out.flush();
 
-			return;
 
 		}
 	}
@@ -896,7 +867,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out.println("There is a problem with your logon.");
 				out.flush();
 
-				return;
 
 			} else {
 
@@ -924,7 +894,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				
 				out.flush();
 
-				return;
 
 			}
 

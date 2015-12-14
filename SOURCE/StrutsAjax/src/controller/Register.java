@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import entities.MySQLConnection;
 import entities.User;
 import entities.dataconnection;
+import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.mindrot.jbcrypt.BCrypt;
@@ -78,7 +79,7 @@ public class Register extends ActionSupport {
 			
 			//this.getUserByUserName(userName);
 		 
-			if(!connection.registerUser(userName_, generatedSecuredPasswordHash))
+			if(!connection.registerUser(userName_.toLowerCase(Locale.ENGLISH), generatedSecuredPasswordHash))
                         {
 			  		String errors = "Incorrect Username and/or Password";
 					 request.setAttribute("errors", errors);
