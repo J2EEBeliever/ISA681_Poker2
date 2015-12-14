@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="gameNumber" key="selection"/>
+		<item value="TreeMap" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="gameNumber"/>
-			<item value="&apos;gameNumber"/>
-			<item value="newGame"/>
-			<item value="joinGameNow"/>
-			<item value="wait"/>
-			<item value="waitfor"/>
-			<item value="&lt;script"/>
-			<item value="newgame"/>
+			<item value="TreeMap"/>
+			<item value="main("/>
+			<item value="Now Winner determined"/>
+			<item value="TotalBetForWinner"/>
+			<item value="TotalBetForWinner_"/>
+			<item value="Player1FinalHandRanking"/>
+			<item value="Player 2 lost with"/>
+			<item value="Player 1 won with: player 1"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Player2"/>

@@ -3,8 +3,6 @@
 <fullyQualifiedTypeName name="encryption.AES"/>
 <fullyQualifiedTypeName name="org.mindrot.jbcrypt.BCrypt"/>
 <fullyQualifiedTypeName name="cipher.CipherUtils"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
-<fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="org.json.HTTP"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="com.opensymphony.xwork2.ActionSupport"/>
@@ -21,7 +19,6 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Collection"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="deck.cards.Game"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="java.sql.Timestamp"/>
@@ -30,4 +27,9 @@
 <fullyQualifiedTypeName name="deck.cards.DeckOfCards"/>
 <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.ThisReference"/>
 <fullyQualifiedTypeName name="entities.CardRanking"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="antlr.collections.impl.Vector"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
 </qualifiedTypeNameHistroy>

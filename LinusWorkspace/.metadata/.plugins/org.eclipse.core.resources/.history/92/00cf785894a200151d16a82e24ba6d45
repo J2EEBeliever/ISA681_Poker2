@@ -1,0 +1,18 @@
+package deck.cards;
+
+public class PlayingCardsCustomComparator {
+	/*
+	public class customComparator {
+	    public boolean compare(Object object1, Object object2) {
+	        return object1.getStartDate().before(object2.getStartDate());
+	    }
+	}
+
+	public class randomName {
+	    ...
+	    Collections.sort(Database.arrayList, new customComparator);
+	    ...
+	}
+	*/
+
+}
