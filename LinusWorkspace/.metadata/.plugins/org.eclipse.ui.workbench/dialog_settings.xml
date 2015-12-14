@@ -32,4 +32,6 @@
 			<item value="org.eclipse.wst.web.ui"/>
 		</list>
 	</section>
+	<section name="FileSystemImportWizard">
+	</section>
 </section>
