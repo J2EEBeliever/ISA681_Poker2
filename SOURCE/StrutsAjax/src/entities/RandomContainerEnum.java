@@ -13,6 +13,7 @@ public enum RandomContainerEnum  {
     INSTANCE;
     public final RandomContainer randomContainer = new RandomContainer();
     public final DeckContainer continuousDeck = new DeckContainer();
+    public final GameCountContainer GameCount = new GameCountContainer();
     public final static int reseedAfter = 100;
     public final static int sessionTimeout = 3600;
     

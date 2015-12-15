@@ -3,7 +3,6 @@ package deck.cards;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -17,9 +16,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
-import antlr.collections.impl.Vector;
 import entities.CardRanking;
 import entities.MySQLConnection;
+import entities.RandomContainerEnum;
 import entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,7 +34,7 @@ public class Game {
 
 	private DeckOfCards deckOfCards = null;
 
-	private int uniqueSerialNumber = 0;
+
 
 	private int gameNumber = -1;
 
@@ -651,7 +650,7 @@ public class Game {
 
 	public Game() {
 
-		gameNumber = ++uniqueSerialNumber;
+		gameNumber = RandomContainerEnum.INSTANCE.GameCount.getAndIncramentCount();
 
 	}
 
@@ -783,13 +782,6 @@ public class Game {
 		this.player2betCard5 = player2betCard5;
 	}
 
-	public int getUniqueSerialNumber() {
-		return uniqueSerialNumber;
-	}
-
-	public void setUniqueSerialNumber(int uniqueSerialNumber) {
-		this.uniqueSerialNumber = uniqueSerialNumber;
-	}
 
 	public int getGameNumber() {
 		return gameNumber;

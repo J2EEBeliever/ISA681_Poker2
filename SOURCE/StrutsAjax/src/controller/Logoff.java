@@ -35,7 +35,7 @@ public class Logoff extends ActionSupport implements LoginRequired {
            Cookie tokenCookie = new Cookie("temp","temp");
         Cookie HMACCookie = new Cookie("temp2","temp");
         dataconnection connection = new MySQLConnection();
-        UUID token = null;
+        String token = "";
         Session userSession;
         if (servletRequest.getCookies() != null)
             for(Cookie c : servletRequest.getCookies()) 
@@ -43,7 +43,7 @@ public class Logoff extends ActionSupport implements LoginRequired {
                 switch (c.getName()) 
                 {
                     case "PokerToken":
-                        token = UUID.fromString(c.getValue());
+                        token = c.getValue();
                         tokenCookie = c;
                         break;
                     case "TokenHMAC":
@@ -58,7 +58,7 @@ public class Logoff extends ActionSupport implements LoginRequired {
          //User ID is not in  the session
        
          
-          userSession = connection.getSession(token.toString());
+          userSession = connection.getSession(token);
            tokenCookie.setMaxAge(0);
             HMACCookie.setMaxAge(0);
             servletResponse.addCookie(tokenCookie);
