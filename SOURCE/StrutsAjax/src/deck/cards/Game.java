@@ -388,7 +388,7 @@ public class Game {
 			return "";
 
 		}
-		if (this.getTotalBetForWinner() > 0 || this.getTotalBetForWinner() > 0 || this.getPlayer2card1() != null && user.getUsername().equals(player2.getUsername())) {
+		if (this.getTotalBetForWinner() > 0 || this.getPlayer2card1() != null && user.getUsername().equals(player2.getUsername())) {
 
 			stringBuffer.append(this.getPlayer2card1().toString());
 
@@ -414,7 +414,7 @@ public class Game {
 
 		}
 
-		if (this.getTotalBetForWinner() > 0 || this.getTotalBetForWinner() > 0 || this.getPlayer2card5() != null && user.getUsername().equals(player2.getUsername())) {
+		if ( this.getTotalBetForWinner() > 0 || this.getPlayer2card5() != null && user.getUsername().equals(player2.getUsername())) {
 
 			stringBuffer.append(" | ").append(this.getPlayer2card5().toString());
 
@@ -2806,7 +2806,7 @@ public class Game {
 				pstmnt.close();
 				conn.close();
 			} catch (Throwable t) {
-				t.printStackTrace();
+				log.error(t);
 				throw t;
 			}
 
