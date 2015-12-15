@@ -14,6 +14,7 @@ import java.io.Serializable;
  */
 public class DeckContainer implements Serializable{
     private DeckOfCards deck = new DeckOfCards();
+          private static final long serialVersionUID = 2015_12_14_009L;
    
     public synchronized DeckOfCards getDeck()
     {

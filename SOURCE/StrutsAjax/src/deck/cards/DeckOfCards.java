@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 public class DeckOfCards implements Serializable{
 	
 	final static Logger log = Logger.getLogger(DeckOfCards.class);
-
+        private static final long serialVersionUID = 2015_12_14_006L;
 
 	final static int NUMBER_OF_CARDS = 52;
 	

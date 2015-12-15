@@ -14,7 +14,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import entities.CardRanking;
@@ -23,18 +22,19 @@ import entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.TreeMap;
 
 public class Game {
 
 	final static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Game.class);
-
+  
 	private User player1 = null;
 	private User player2 = null;
 
 	private DeckOfCards deckOfCards = null;
 
-	private static int uniqueSerialNumber = 0;
+	private int uniqueSerialNumber = 0;
 
 	private int gameNumber = -1;
 
@@ -682,12 +682,12 @@ public class Game {
 		this.player2betCard5 = player2betCard5;
 	}
 
-	public static int getUniqueSerialNumber() {
+	public int getUniqueSerialNumber() {
 		return uniqueSerialNumber;
 	}
 
-	public static void setUniqueSerialNumber(int uniqueSerialNumber) {
-		Game.uniqueSerialNumber = uniqueSerialNumber;
+	public void setUniqueSerialNumber(int uniqueSerialNumber) {
+		this.uniqueSerialNumber = uniqueSerialNumber;
 	}
 
 	public int getGameNumber() {
@@ -1289,7 +1289,7 @@ public class Game {
 		preparedStmt.executeUpdate();
 
 		
-		} catch (Exception e) {
+		} catch (ClassNotFoundException|SQLException|IOException e) {
 
 			log.error(e);
 

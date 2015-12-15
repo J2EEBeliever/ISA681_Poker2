@@ -24,7 +24,7 @@ public class Register extends ActionSupport {
     private String password;
     private String password2;
     final static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Register.class);
-            
+    private static final long serialVersionUID = 2015_12_14_004L;       
     
     @Override
     public String execute() throws Exception {

@@ -129,6 +129,10 @@
         <result name="input">index.jsp</result>
         <result name="error">index.jsp</result>
         </action>
+        
+        <action name="doLogoff" class="controller.Logoff">
+        <result name="success">index.jsp</result>
+        </action>
 
 
   <action name="RegisterForFiveCardStudPoker" class="controller.Register">

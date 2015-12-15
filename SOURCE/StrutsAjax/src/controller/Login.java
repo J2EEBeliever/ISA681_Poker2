@@ -38,7 +38,7 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
     @SuppressFBWarnings(justification="No bug", value="SE_BAD_FIELD")
     private HttpServletResponse servletResponse;
     private Map<String, Object> session;
-
+private static final long serialVersionUID = 2015_12_14_003L;
      @Override
      public String execute()
   {

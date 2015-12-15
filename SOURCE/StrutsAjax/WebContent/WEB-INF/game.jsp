@@ -401,6 +401,7 @@ $(document).ready(function() {
 
 
 <body onloadbk="setTimeout(playActiveGame,5000)">
+    <s:a href="doLogoff.html" label="Logoff">Logoff</s:a>
 
 	<input type="button" value="Start a new Game" id="buttonNewGame">
 	<!-- input type="button" value="Join an existing Game" id="buttonJoinGame" -->

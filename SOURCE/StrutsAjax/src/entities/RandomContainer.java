@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
  */
 public final class RandomContainer implements Serializable{
     final static Logger log = Logger.getLogger(RandomContainer.class);
-   
+         private static final long serialVersionUID = 2015_12_14_010L;
     private SecureRandom random = new SecureRandom();
     private int randomCount;
     

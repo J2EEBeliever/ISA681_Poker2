@@ -26,7 +26,7 @@ import org.apache.struts2.ServletActionContext;
  */
 public class HandleSession extends AbstractInterceptor{
     
-
+private static final long serialVersionUID = 2015_12_14_002L;
 
     @Override
     public String intercept(ActionInvocation ai) throws Exception {

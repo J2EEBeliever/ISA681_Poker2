@@ -12,7 +12,7 @@ public class PlayingCard implements Serializable{
 	private int cardNumber = -1;
 	private String cardString = "";
 	private String cardSuit = "";
-
+        private static final long serialVersionUID = 2015_12_14_007L;
 	
 	public PlayingCard() {
 		

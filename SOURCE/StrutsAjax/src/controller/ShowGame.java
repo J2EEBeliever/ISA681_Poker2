@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @author bwoltemate
  */
 public class ShowGame extends ActionSupport implements LoginRequired {
-    
+    private static final long serialVersionUID = 2015_12_14_005L;
      @Override
      public String execute()
   {

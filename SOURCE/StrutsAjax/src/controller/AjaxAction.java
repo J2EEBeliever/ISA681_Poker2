@@ -30,6 +30,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 	private int a;
 	private int b;
 	private Map<String, Object> jsonData = new HashMap<>();
+        private static final long serialVersionUID = 2015_12_14_001L;
 
 	public Map<String, Object> getJsonData() {
 		return jsonData;
@@ -84,7 +85,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 				out = response.getWriter();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				return;
 			}
 			out.println("There is a problem with your logon.");
@@ -148,7 +149,6 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		log.debug("\n\nDebug: Exiting method waitForTurnOrGameToStart()\n\n");
 
-		return;
 
 	}
 
@@ -175,7 +175,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		HttpServletRequest request = ServletActionContext.getRequest();
 
-		HttpSession httpSession = request.getSession();
+		
 
 		User user = Game.getUserObjectFromSessionScope();
 
@@ -270,7 +270,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			Game.addGameToApplicationScopeGameHashMap(game);
 
-			boolean success = game.outputToResponseOutputStream(user);
+			game.outputToResponseOutputStream(user);
 
 			log.debug("\n\nDebug: Exiting method raise() after executing 'hold' logic.\n\n");
 
@@ -285,7 +285,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			Game.addGameToApplicationScopeGameHashMap(game);
 
-			boolean success = game.outputToResponseOutputStream(user);
+			 game.outputToResponseOutputStream(user);
 
 			log.debug("\n\nDebug: Exiting method raise() after executing 'hold' logic.\n\n");
 
@@ -346,7 +346,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			game.player1makeBet(betAmountDouble);
 
-			boolean success = game.outputToResponseOutputStream(user);
+			game.outputToResponseOutputStream(user);
 
 			log.debug("\n\nDebug: In method raise() Player 1 has bet and now it is player 2's turn.\n\n");
 
@@ -365,7 +365,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 			Game.addGameToApplicationScopeGameHashMap(game);
 
-			boolean success = game.outputToResponseOutputStream(user);
+			game.outputToResponseOutputStream(user);
 
 			log.debug("\n\nDebug: Exiting method raise()\n\n");
 
@@ -603,7 +603,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				out.print("<script language=\"javascript\" type=\"text/javascript\">" + "isGameOver = 'no';</script>");
 
-				boolean success = game.outputToResponseOutputStream(user);
+			       game.outputToResponseOutputStream(user);
 
 				log.debug("\n\nDebug: Exiting method joinGameNow()\n\n");
 
@@ -777,17 +777,19 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				else if (user2 == null) {
 
-					stringBuffer.append("<BR>" + "Join New Game #").append(""+ game.getGameNumber())
-							.append(" with player 1 as: ").append(user1.getUsername())
-							.append("and no player 2 yet. <input type=\"button\" onclick=\"joinGameNow('")
-							.append(""+ game.getGameNumber()).append("' )\" id =\"joinGameNow").append(x)
+					stringBuffer.append("<BR>" + "Join New Game #").append("").append(game.getGameNumber())
+                                            .append(" with player 1 as: ").append(user1.getUsername())
+                                            .append("and no player 2 yet. <input type=\"button\" onclick=\"joinGameNow('")
+							.append("")
+							.append(game.getGameNumber()).append("' )\" id =\"joinGameNow").append(x)
 							.append("1\" value = \"Join New Game Now\" name = \"joinGameNow").append(x).append("1\">");
 
 				} else if (user.getUsername().equals(user2.getUsername())) {
 
 					stringBuffer.append("<BR>Join already started game with player 1 as: ").append(user1.getUsername())
-							.append("and player 2 as: (").append(user2.getUsername())
-							.append(") <input type=\"button\"  onclick=\"joinGameNow('").append(""+ game.getGameNumber())
+                                            .append("and player 2 as: (").append(user2.getUsername())
+                                            .append(") <input type=\"button\"  onclick=\"joinGameNow('")
+							.append("").append(game.getGameNumber())
 							.append("' )\"  id =\"joinGameNow").append(x)
 							.append("1\" value = \"Join Existing Game Now\" name = \"joinGameNow").append(x)
 							.append("1\">");
@@ -885,6 +887,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			}
 
 		} catch (Exception e) {
+                    log.error(e);
 		}
 	}
 
