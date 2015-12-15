@@ -1,6 +1,0 @@
-CREATE USER 'isa681PokerUser'@'localhost' IDENTIFIED BY 'Password1';
-use ISA681Poker
-GRANT SELECT ON fcs.* TO 'fcs_user'@'localhost';
-GRANT INSERT ON fcs.* TO 'fcs_user'@'localhost';
-GRANT DELETE ON fcs.* TO 'fcs_user'@'localhost';
-FLUSH PRIVILEGES;

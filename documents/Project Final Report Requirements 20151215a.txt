@@ -1,0 +1,15 @@
+Grading
+
+Final Report: You will be required to provide a report on your implementation. This report should include the following sections:
+
+Introduction (brief description of project; be sure to include the project name, collaborators, class, date
+
+Design/Architecture of the code, including major components and a description of major functions/classes
+
+Installation Instructions, including documenting any external dependencies
+
+Operating Instructions
+
+Game rules
+
+Why you believe it’s secure

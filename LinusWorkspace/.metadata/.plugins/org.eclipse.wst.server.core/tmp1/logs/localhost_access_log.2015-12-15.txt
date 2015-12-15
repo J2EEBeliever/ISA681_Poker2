@@ -1243,3 +1243,7 @@
 0:0:0:0:0:0:0:1 - - [15/Dec/2015:13:37:11 -0500] "POST /StrutsAjax/waitForTurnOrGameToStart.html HTTP/1.1" 200 582
 0:0:0:0:0:0:0:1 - - [15/Dec/2015:13:37:12 -0500] "POST /StrutsAjax/waitForTurnOrGameToStart.html HTTP/1.1" 200 582
 0:0:0:0:0:0:0:1 - - [15/Dec/2015:13:37:16 -0500] "POST /StrutsAjax/listCompletedGames.html HTTP/1.1" 200 753
+127.0.0.1 - - [15/Dec/2015:16:22:29 -0500] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [15/Dec/2015:16:22:41 -0500] "GET /StrutsAjax/index.jsp HTTP/1.1" 200 1571
+0:0:0:0:0:0:0:1 - - [15/Dec/2015:16:22:42 -0500] "GET /StrutsAjax/CSS/oneColFixCtrHdr.css HTTP/1.1" 200 3399
+0:0:0:0:0:0:0:1 - - [15/Dec/2015:16:22:42 -0500] "GET /favicon.ico HTTP/1.1" 404 1016
