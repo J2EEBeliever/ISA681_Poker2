@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;deck.cards.PlayingCardsCustomComparable&apos; to &apos;PlayingCardsCustomComparator&apos;&#x0D;&#x0A;- Original project: &apos;StrutsAjax&apos;&#x0D;&#x0A;- Original element: &apos;deck.cards.PlayingCardsCustomComparable&apos;&#x0D;&#x0A;- Renamed element: &apos;deck.cards.PlayingCardsCustomComparator&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;PlayingCardsCustomComparable&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;deck.cards{PlayingCardsCustomComparable.java[PlayingCardsCustomComparable" matchStrategy="1" name="PlayingCardsCustomComparator" qualified="false" references="true" similarDeclarations="false" stamp="1450119194477" textual="false" version="1.0"/>
+</session>
