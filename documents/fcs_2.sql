@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `game` (
 
   `didPlayer1Fold` char(3),
 
-  `Player1FinalHandRanking` varchar(25),
+  `Player1FinalHandRanking` varchar(40),
 
   `Player1Card1` char(30) NOT NULL,
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `game` (
 
   `didPlayer2Fold` char(3),
 
-  `Player2FinalHandRanking` varchar(25),
+  `Player2FinalHandRanking` varchar(40),
 
   `Player2Card1` char(30) NOT NULL,
 

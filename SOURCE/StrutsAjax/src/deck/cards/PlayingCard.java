@@ -9,21 +9,18 @@ import java.util.Comparator;
  */
 
 public class PlayingCard implements Serializable, Comparable<PlayingCard> {
-	
-	
 
 	private int cardNumber = -1;
 	private String cardString = "";
 	private String cardSuit = "";
 
-        private static final long serialVersionUID = 2015_12_14_007L;
-
+	private static final long serialVersionUID = 2015_12_14_007L;
 
 	public final static Comparator<PlayingCard> playingCardBySuitNameComparator =
 
 	new Comparator<PlayingCard>() {
 
-                @Override
+		@Override
 		public int compare(PlayingCard playingCard1_, PlayingCard playingCard2_) {
 
 			String suit1_ = playingCard1_.getCardSuit();
@@ -37,19 +34,49 @@ public class PlayingCard implements Serializable, Comparable<PlayingCard> {
 		}
 
 	};
+
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if ((obj == null) || (obj.getClass() != this.getClass()))
+			return false;
+		// object must be Test at this point
+
+		PlayingCard playingCard = (PlayingCard) obj;
+
+		return this.cardNumber == playingCard.getCardNumber() && this.cardString.equals(playingCard.getCardString())
+				&& this.cardSuit.equals(playingCard.getCardSuit());
+	}
+
+	/*
+	 * public int hashCode() {
+	 * 
+	 * int hash = 7; hash = 31 * hash + this.cardNumber; hash = 31 * hash +
+	 * ((null == this.cardString) || (null == this.cardSuit) ? 0 :
+	 * (this.cardString + this.cardSuit).hashCode()); return hash;
+	 * 
+	 * }
+	 * 
+	 */
 	
+	  public int hashCode(){
+		    return (int) this.cardNumber *
+		    		cardString.hashCode() *
+		    		cardSuit.hashCode();
+		  }
+
 	public final static Comparator<PlayingCard> playingCardByCardNumberNameComparator =
 
 	new Comparator<PlayingCard>() {
 
-                @Override
+		@Override
 		public int compare(PlayingCard playingCard1_, PlayingCard playingCard2_) {
 
 			int cardNumber1_ = playingCard1_.getCardNumber();
-			int cardNumber2_= playingCard2_.getCardNumber();
+			int cardNumber2_ = playingCard2_.getCardNumber();
 
 			// ascending order
-			return cardNumber1_ - cardNumber2_; 
+			return cardNumber1_ - cardNumber2_;
 
 			// descending order
 			// return fruitName2.compareTo(fruitName1);
@@ -57,8 +84,7 @@ public class PlayingCard implements Serializable, Comparable<PlayingCard> {
 
 	};
 
-
-        @Override
+	@Override
 	public int compareTo(PlayingCard playingCard_) {
 
 		int cardNumber_ = playingCard_.getCardNumber();
@@ -71,9 +97,6 @@ public class PlayingCard implements Serializable, Comparable<PlayingCard> {
 
 	}
 
-	
-	
-
 	public PlayingCard() {
 
 		super();
@@ -84,7 +107,7 @@ public class PlayingCard implements Serializable, Comparable<PlayingCard> {
 
 	}
 
-        @Override
+	@Override
 	public String toString() {
 
 		StringBuilder stringBuffer = new StringBuilder("");
@@ -117,6 +140,5 @@ public class PlayingCard implements Serializable, Comparable<PlayingCard> {
 	public void setCardSuit(String cardsuit) {
 		this.cardSuit = cardsuit;
 	}
-
 
 }

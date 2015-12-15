@@ -257,7 +257,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 		double betAmountDouble = 0;
 
-		String betAmount;
+		String betAmount = null;
 
 		String actionType = request.getParameter("actionType");
 
@@ -545,7 +545,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				}
 
-				if (game.getDeckOfCards() != null) {
+				if (game != null && game.getDeckOfCards() != null) {
 
 					Game.setGameIdInSessionScope("" + game.getGameNumber());
 
@@ -775,7 +775,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 
 				}
 
-				else if (user2 == null) {
+				else if (user1 != null && user2 == null) {
 
 					stringBuffer.append("<BR>" + "Join New Game #").append("").append(game.getGameNumber())
                                             .append(" with player 1 as: ").append(user1.getUsername())
@@ -794,7 +794,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 							.append("1\" value = \"Join Existing Game Now\" name = \"joinGameNow").append(x)
 							.append("1\">");
 
-				} else if (user.getUsername().equals(user1.getUsername())) {
+				} else if (user1 != null && user.getUsername().equals(user1.getUsername() )) {
 
 					stringBuffer.append("<BR>Join already started game with player 1 as you: ")
 							.append(user1.getUsername()).append("and player 2 as : (").append(user2.getUsername())

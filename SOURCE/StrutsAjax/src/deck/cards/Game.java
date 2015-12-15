@@ -339,7 +339,7 @@ public class Game {
 			return "";
 
 		}
-		if (this.getPlayer1card1() != null && user.getUsername().equals(player1.getUsername())) {
+		if (this.getTotalBetForWinner() > 0 || this.getPlayer1card1() != null && user.getUsername().equals(player1.getUsername())) {
 
 			stringBuffer.append(this.getPlayer1card1().toString());
 
@@ -365,7 +365,7 @@ public class Game {
 
 		}
 
-		if (this.getPlayer1card5() != null && user.getUsername().equals(player1.getUsername())) {
+		if (this.getTotalBetForWinner() > 0 || this.getPlayer1card5() != null && user.getUsername().equals(player1.getUsername())) {
 
 			stringBuffer.append(" | ").append(this.getPlayer1card5().toString());
 
@@ -388,7 +388,7 @@ public class Game {
 			return "";
 
 		}
-		if (this.getPlayer2card1() != null && user.getUsername().equals(player2.getUsername())) {
+		if (this.getTotalBetForWinner() > 0 || this.getTotalBetForWinner() > 0 || this.getPlayer2card1() != null && user.getUsername().equals(player2.getUsername())) {
 
 			stringBuffer.append(this.getPlayer2card1().toString());
 
@@ -414,7 +414,7 @@ public class Game {
 
 		}
 
-		if (this.getPlayer2card5() != null && user.getUsername().equals(player2.getUsername())) {
+		if (this.getTotalBetForWinner() > 0 || this.getTotalBetForWinner() > 0 || this.getPlayer2card5() != null && user.getUsername().equals(player2.getUsername())) {
 
 			stringBuffer.append(" | ").append(this.getPlayer2card5().toString());
 
@@ -1096,27 +1096,27 @@ public class Game {
 						
 						if(player1HighCard == 1) { //Ace
 
-							this.setPlayer1FinalHandRanking("player 1 with high card of Ace"); // Here
+							this.setPlayer1FinalHandRanking("high card of Ace"); // Here
 							
 						}
 						else if(player1HighCard <= 10) { // 10 or less but not Ace
 							
-							this.setPlayer1FinalHandRanking("player 1 with high card of " + player1HighCard); // Here
+							this.setPlayer1FinalHandRanking("high card of " + player1HighCard); // Here
 							
 						}
 						else if(player1HighCard == 11) { // Jack
 
-							this.setPlayer1FinalHandRanking("player 1 with high card of Jack"); // Here
+							this.setPlayer1FinalHandRanking("high card of Jack"); // Here
 							
 						}
 						else if(player1HighCard == 12) { // Quean
 							
-							this.setPlayer1FinalHandRanking("player 1 with high card of Queen"); // Here
+							this.setPlayer1FinalHandRanking("high card of Queen"); // Here
 							
 						}
 						else if(player1HighCard == 13) { // King
 							
-							this.setPlayer1FinalHandRanking("player 1 with high card of King"); // Here
+							this.setPlayer1FinalHandRanking("high card of King"); // Here
 							
 						}
 
@@ -1130,27 +1130,27 @@ public class Game {
 						
 						if(player2HighCard == 1) { //Ace
 
-							this.setPlayer2FinalHandRanking("player 2 with high card of Ace"); // Here
+							this.setPlayer2FinalHandRanking("high card of Ace"); // Here
 							
 						}
 						else if(player2HighCard <= 10) { // 10 or less but not Ace
 							
-							this.setPlayer2FinalHandRanking("player 2 with high card of " + player1HighCard); // Here
+							this.setPlayer2FinalHandRanking("high card of " + player1HighCard); // Here
 							
 						}
 						else if(player2HighCard == 11) { // Jack
 
-							this.setPlayer2FinalHandRanking("player 2 with high card of Jack"); // Here
+							this.setPlayer2FinalHandRanking("high card of Jack"); // Here
 							
 						}
 						else if(player2HighCard == 12) { // Quean
 							
-							this.setPlayer2FinalHandRanking("player 2 with high card of Queen"); // Here
+							this.setPlayer2FinalHandRanking("high card of Queen"); // Here
 							
 						}
 						else if(player2HighCard == 13) { // King
 							
-							this.setPlayer2FinalHandRanking("player 2 with high card of King"); // Here
+							this.setPlayer2FinalHandRanking("high card of King"); // Here
 							
 						}
 
@@ -1217,7 +1217,9 @@ public class Game {
 
 		log.debug("\n\nDebug: IN method insertIntoGamesForGameComplete()\n\n");
 
-		this.setWinnerUserName("Winner not known");
+//		this.setWinnerUserName("`");
+		
+		
 		MySQLConnection connection = new MySQLConnection();
 		String query2 = " insert into game (" + "" + "Player1, " + "" + "Player1Card1,  " + "Player1Card2, "
 				+ "Player1BetCard2, " + "Player1Card3, " + "Player1BetCard3, " + "Player1Card4, " + "Player1BetCard4, "
@@ -2729,9 +2731,9 @@ public class Game {
 					} else if (TotalBetForWinner_ > 0 && WinnerUserName_ != null && Player2UserName_ != null
 							&& WinnerUserName_.equals(Player2UserName_)) {
 
-						out.println("Player 2 won with: " + Player1FinalHandRanking_ + " $" + TotalBetForWinner_ +". ");
+						out.println("Player 2 won with: " + Player2FinalHandRanking_ + " $" + TotalBetForWinner_ +". ");
 
-						out.println("Player 1 lost with: " + Player2FinalHandRanking_ + ". ");
+						out.println("Player 1 lost with: " + Player1FinalHandRanking_ + ". ");
 
 					} else {
 
