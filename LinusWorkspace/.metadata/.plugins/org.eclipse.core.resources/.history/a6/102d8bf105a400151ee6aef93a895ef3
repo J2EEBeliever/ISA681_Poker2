@@ -2794,6 +2794,65 @@ public class Game {
 
 					}
 
+					// preparedStmt.setDouble(21, this.getTotalBetForWinner());
+
+					// preparedStmt.setString(22, this.getWinnerUserName());
+					//
+					//
+					// preparedStmt.setString(23, this.getPlayer1UserName()); //
+					// Added
+					// // 2015/12/10
+					// // 2:30 PM LWF
+					// preparedStmt.setString(24, "" +
+					// this.getDidPlayer1Fold()); //
+					// Added
+					// // 2015/12/10
+					// // 2:30 PM
+					// // LWF
+					//
+					// preparedStmt.setString(25, this.getPlayer2UserName()); //
+					// Added
+					// // 2015/12/10
+					// // 2:30 PM LWF
+					// preparedStmt.setString(26, "" +
+					// this.getDidPlayer2Fold()); //
+					// Added
+					// // 2015/12/10
+					// // 2:30 PM
+					// // LWF
+					//
+					// preparedStmt.setString(27,
+					// this.getPlayer1FinalHandRanking()); // Added
+					// // 2015/12/10
+					// // 3:30
+					// // PM
+					// // LWF
+					//
+					// preparedStmt.setString(28,
+					// this.getPlayer2FinalHandRanking()); // Added
+					// // 2015/12/10
+					// 3:30
+					// PM
+					// LWF
+
+					// preparedStmt.setString(29, "Game Finished");
+
+					// Ended Paste 2015/12/13 12:00 PM LWF
+
+					// user = new User(-1,"","",new Timestamp(1));
+					//
+					// user.setUserID(userId1);
+					// user.setUserName(userName1);
+					// user.setPassword(password1);
+
+					// Date dateCreated = rs.getDate("date_created");
+					// boolean isAdmin = rs.getBoolean("is_admin");
+					// int numPoints = rs.getInt("num_points");
+
+					// print the results
+					// System.out.format("%s, %s, %s, %s, %s, %s\n", id,
+					// firstName,
+					// lastName, dateCreated, isAdmin, numPoints);
 				}
 
 				rs.close();

@@ -63,7 +63,7 @@ public class Game {
 		
 		PlayingCard playingCard1_ = new PlayingCard();
 		
-		playingCard1_.setCardNumber(14);
+		playingCard1_.setCardNumber(1);
 		playingCard1_.setCardString("Ace");
 		playingCard1_.setCardSuit("Spades");
 		
@@ -1094,7 +1094,7 @@ public class Game {
 
 						out.println("<BR><BR>Player #1 " + this.getPlayer1().getUsername() + " is the Winner of $" + this.getTotalBetForWinner() + "!!!");
 						
-						if(player1HighCard == 14) { //Ace
+						if(player1HighCard == 1) { //Ace
 
 							this.setPlayer1FinalHandRanking("high card of Ace"); // Here
 							
@@ -1128,7 +1128,7 @@ public class Game {
 
 						out.println("<BR><BR>Player #2 " + this.getPlayer2().getUsername() + " is the Winner of $" + this.getTotalBetForWinner() + "!!!");
 						
-						if(player2HighCard == 14) { //Ace
+						if(player2HighCard == 1) { //Ace
 
 							this.setPlayer2FinalHandRanking("high card of Ace"); // Here
 							
@@ -2276,7 +2276,7 @@ public class Game {
 			int highCard = this.getHighCard(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
 					this.getPlayer1card4(), this.getPlayer1card5());
 
-			if (highCard == 14) {
+			if (highCard == 1) {
 
 				out.println("<BR><BR>Player 1 has: a High Card of Ace");
 
@@ -2587,7 +2587,7 @@ public class Game {
 			int highCard = this.getHighCard(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
 					this.getPlayer2card4(), this.getPlayer2card5());
 
-			if (highCard == 14) {
+			if (highCard == 1) {
 
 				out.println("<BR><BR>Player 2 has: a High Card of Ace");
 
@@ -2794,6 +2794,65 @@ public class Game {
 
 					}
 
+					// preparedStmt.setDouble(21, this.getTotalBetForWinner());
+
+					// preparedStmt.setString(22, this.getWinnerUserName());
+					//
+					//
+					// preparedStmt.setString(23, this.getPlayer1UserName()); //
+					// Added
+					// // 2015/12/10
+					// // 2:30 PM LWF
+					// preparedStmt.setString(24, "" +
+					// this.getDidPlayer1Fold()); //
+					// Added
+					// // 2015/12/10
+					// // 2:30 PM
+					// // LWF
+					//
+					// preparedStmt.setString(25, this.getPlayer2UserName()); //
+					// Added
+					// // 2015/12/10
+					// // 2:30 PM LWF
+					// preparedStmt.setString(26, "" +
+					// this.getDidPlayer2Fold()); //
+					// Added
+					// // 2015/12/10
+					// // 2:30 PM
+					// // LWF
+					//
+					// preparedStmt.setString(27,
+					// this.getPlayer1FinalHandRanking()); // Added
+					// // 2015/12/10
+					// // 3:30
+					// // PM
+					// // LWF
+					//
+					// preparedStmt.setString(28,
+					// this.getPlayer2FinalHandRanking()); // Added
+					// // 2015/12/10
+					// 3:30
+					// PM
+					// LWF
+
+					// preparedStmt.setString(29, "Game Finished");
+
+					// Ended Paste 2015/12/13 12:00 PM LWF
+
+					// user = new User(-1,"","",new Timestamp(1));
+					//
+					// user.setUserID(userId1);
+					// user.setUserName(userName1);
+					// user.setPassword(password1);
+
+					// Date dateCreated = rs.getDate("date_created");
+					// boolean isAdmin = rs.getBoolean("is_admin");
+					// int numPoints = rs.getInt("num_points");
+
+					// print the results
+					// System.out.format("%s, %s, %s, %s, %s, %s\n", id,
+					// firstName,
+					// lastName, dateCreated, isAdmin, numPoints);
 				}
 
 				rs.close();
