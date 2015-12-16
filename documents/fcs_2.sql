@@ -145,11 +145,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserID`, `UserName`, `Password`, `Timestamp`) VALUES
-(1, 'b1wolt', '$2a$12$BW5zGtaLGIbp.a13JusvZ.zQGqbBy8cW..02nCQT6wggregArnOhe', '2015-11-28 11:15:38');
+INSERT INTO `users` (`UserID`, `UserName`, `Password`) VALUES
+(1, 'b1wolt', '$2a$12$BW5zGtaLGIbp.a13JusvZ.zQGqbBy8cW..02nCQT6wggregArnOhe');
 
-INSERT INTO `users` (`UserID`, `UserName`, `Password`, `Timestamp`) VALUES
-(2, 'LFreeman', '$2a$12$BW5zGtaLGIbp.a13JusvZ.zQGqbBy8cW..02nCQT6wggregArnOhe', '2015-11-28 11:15:38');
+INSERT INTO `users` (`UserID`, `UserName`, `Password`) VALUES
+(2, 'LFreeman', '$2a$12$BW5zGtaLGIbp.a13JusvZ.zQGqbBy8cW..02nCQT6wggregArnOhe');
 
 --
 -- Constraints for dumped tables
