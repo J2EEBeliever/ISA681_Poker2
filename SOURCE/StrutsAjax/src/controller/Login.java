@@ -35,6 +35,7 @@ public class Login extends ActionSupport implements ServletResponseAware, Sessio
     
     private String userName;
     private String password;
+    //Using recommened struts2 contruct.
     @SuppressFBWarnings(justification="No bug", value="SE_BAD_FIELD")
     private HttpServletResponse servletResponse;
     private Map<String, Object> session;

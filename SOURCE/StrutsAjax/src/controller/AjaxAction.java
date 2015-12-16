@@ -629,7 +629,7 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 		log.debug("\n\nDebug: In method listCompletedGames()\n\n");
 
 		User user = Game.getUserObjectFromSessionScope();
-
+                
 		if (user == null) {
 
 			log.debug(
@@ -651,10 +651,11 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			return;
 
 		}
-
+            
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("text/plain;charset=utf-8");
 		PrintWriter out;
+               
 		try {
 			out = response.getWriter();
 
@@ -663,15 +664,21 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			log.error(e);
 			return;
 		}
-
+                if (user.getAdmin())
+                {
 		try {
 			Game.displayAllGamesOrderByGameId(out);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error(e);
 		}
-
+                }
+                else
+                {
+                    out.println("Access Denied");
+                }
 		out.flush();
+                
 
 	}
 
