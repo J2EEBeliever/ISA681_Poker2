@@ -181,7 +181,7 @@ public class MySQLConnection implements dataconnection
     
     
         try (Connection conn = this.getDatabaseConnection(); 
-              PreparedStatement stmt = conn.prepareStatement(" insert into users (UserName, Password) values (?, ?)"))
+              PreparedStatement stmt = conn.prepareStatement(" insert into users (UserName, Password, Admin) values (?, ?, 0)"))
         {
 			
 			/*

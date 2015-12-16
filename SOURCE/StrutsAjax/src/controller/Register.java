@@ -47,7 +47,7 @@ public class Register extends ActionSupport {
 
  			String errors = "Passwords do not match.";
 			 
-			 request.setAttribute("errors", errors);
+			 
 			
 			 log.debug("\n\nDebug: Exiting Method register() reutrning 'registrationError'\n\n");
 			
@@ -68,7 +68,7 @@ public class Register extends ActionSupport {
 				
 				String errors = "User already exists";
 				 
-				 request.setAttribute("errors", errors);
+			
 				
 				 log.debug("\n\nDebug: Exiting Method register() reutrning 'logonError'\n\n");
 				
@@ -82,16 +82,16 @@ public class Register extends ActionSupport {
 			if(!connection.registerUser(userName_.toLowerCase(Locale.ENGLISH), generatedSecuredPasswordHash))
                         {
 			  		String errors = "Incorrect Username and/or Password";
-					 request.setAttribute("errors", errors);
+				addActionError(errors);
 				 log.debug("\n\nDebug: Exiting Method register() reutrning 'logonError'\n\n");
-					return "registrationError";
+					return ERROR;
 					
 			      }
 			      
 					 
 				  		String errors = "New User Registration Successful.  Please Logon.";
 						 
-						 request.setAttribute("errors", errors);
+					
 
 						 log.debug("\n\nDebug: Exiting Method register() reutrning 'success'\n\n");
 
@@ -105,7 +105,7 @@ public class Register extends ActionSupport {
 		
 		String errors = "Incorrect Username and/or Password";
 		 
-		 request.setAttribute("errors", errors);
+		
 
 		 log.debug("\n\nDebug: Exiting Method register() reutrning 'logonError'\n\n");
 		 
