@@ -339,7 +339,7 @@ public class Game {
 			return "";
 
 		}
-		if ((this.getTotalBetForWinner() > 0 && this.getPlayer1card1() != null )  || this.getPlayer1card1() != null && user.getUsername().equals(player1.getUsername())) {
+		if (this.getTotalBetForWinner() > 0 || this.getPlayer1card1() != null && user.getUsername().equals(player1.getUsername())) {
 
 			stringBuffer.append(this.getPlayer1card1().toString());
 
@@ -365,7 +365,7 @@ public class Game {
 
 		}
 
-		if ((this.getTotalBetForWinner() > 0 && this.getPlayer1card5() != null ) || this.getPlayer1card5() != null && user.getUsername().equals(player1.getUsername())) {
+		if (this.getTotalBetForWinner() > 0 || this.getPlayer1card5() != null && user.getUsername().equals(player1.getUsername())) {
 
 			stringBuffer.append(" | ").append(this.getPlayer1card5().toString());
 
@@ -388,7 +388,7 @@ public class Game {
 			return "";
 
 		}
-		if ((this.getTotalBetForWinner() > 0 && this.getPlayer2card1() != null ) || this.getPlayer2card1() != null && user.getUsername().equals(player2.getUsername())) {
+		if (this.getTotalBetForWinner() > 0 || this.getPlayer2card1() != null && user.getUsername().equals(player2.getUsername())) {
 
 			stringBuffer.append(this.getPlayer2card1().toString());
 
@@ -414,7 +414,7 @@ public class Game {
 
 		}
 
-		if ( (this.getTotalBetForWinner() > 0 && this.getPlayer2card5() != null) || this.getPlayer2card5() != null && user.getUsername().equals(player2.getUsername())) {
+		if ( this.getTotalBetForWinner() > 0 || this.getPlayer2card5() != null && user.getUsername().equals(player2.getUsername())) {
 
 			stringBuffer.append(" | ").append(this.getPlayer2card5().toString());
 
@@ -1566,13 +1566,6 @@ public class Game {
 			}
 
 		}
-		
-		if (count == 2) {
-
-			isPair = true;
-
-		}
-
 
 		return isPair;
 
@@ -1635,13 +1628,6 @@ public class Game {
 			}
 
 		}
-		
-		if (count == 4) {
-
-			isFourStraight = true;
-
-		}
-
 
 		return isFourStraight;
 
@@ -1703,13 +1689,6 @@ public class Game {
 			}
 
 		}
-		
-		if (count == 4) {
-
-			isFourFlush = true;
-
-		}
-
 
 		return isFourFlush;
 
@@ -1786,21 +1765,6 @@ public class Game {
 			}
 
 		}
-		
-		if (count == 2) {
-
-			if (!isFirstPair) {
-
-				isFirstPair = true;
-
-			} else if (!isSecondPair) {
-
-				isSecondPair = true;
-
-			}
-
-		}
-
 
 		return isFirstPair && isSecondPair;
 
@@ -1866,13 +1830,6 @@ public class Game {
 			}
 
 		}
-		
-		if (count == 3) {
-
-			isThreeOfKind = true;
-
-		}
-
 
 		return isThreeOfKind;
 
@@ -1912,7 +1869,6 @@ public class Game {
 				suit = playingCardTemp.getCardSuit();
 
 				previousCardNumber = playingCardTemp.getCardNumber();
-				
 			} else if ((++previousCardNumber) != playingCardTemp.getCardNumber()) {
 				return false;
 			}
@@ -2076,15 +2032,6 @@ public class Game {
 			}
 
 		}
-		
-		if (count == 2) {
-			isTwoOfKind = true;
-
-		} else if (count == 3) {
-			isThreeOfKind = true;
-
-		}
-
 
 		return isTwoOfKind && isThreeOfKind;
 
