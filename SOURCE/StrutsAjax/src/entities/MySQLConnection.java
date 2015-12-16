@@ -32,13 +32,13 @@ public class MySQLConnection implements dataconnection
    final static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(MySQLConnection.class);
    @Override
      public User getUserData(String UserName) {
-         User inComingUser = new User(-1,"","", false,new Timestamp(0));
+         User inComingUser = new User(-1,"","", new Timestamp(0));
          
          
           
        
              try (Connection conn = this.getDatabaseConnection(); 
-              PreparedStatement stmt = conn.prepareStatement("SELECT UserID, UserName, Password, Admin, Timestamp From users WHERE UserName = ?")) 
+              PreparedStatement stmt = conn.prepareStatement("SELECT UserID, UserName, Password, Timestamp From users WHERE UserName = ?")) 
              {
                  stmt.setString(1, UserName.toLowerCase(Locale.ENGLISH));
                  
@@ -46,7 +46,7 @@ public class MySQLConnection implements dataconnection
              try (ResultSet rs = stmt.executeQuery()) {
                  while (rs.next())
                  {
-                     inComingUser = new User(rs.getInt("UserID"), rs.getString("UserName"), rs.getString("Password"), (rs.getInt("Admin") == 1),rs.getTimestamp("Timestamp"));
+                     inComingUser = new User(rs.getInt("UserID"), rs.getString("UserName"), rs.getString("Password"), rs.getTimestamp("Timestamp"));
                  }
              }
              catch (SQLException ex)
@@ -181,7 +181,7 @@ public class MySQLConnection implements dataconnection
     
     
         try (Connection conn = this.getDatabaseConnection(); 
-              PreparedStatement stmt = conn.prepareStatement(" insert into users (UserName, Password, Admin) values (?, ?, 0)"))
+              PreparedStatement stmt = conn.prepareStatement(" insert into users (UserName, Password) values (?, ?)"))
         {
 			
 			/*
@@ -263,7 +263,7 @@ public class MySQLConnection implements dataconnection
                                     String userName1 = rs.getString("UserName");
                                     String password1 = rs.getString("Password");
                                     
-                                    user = new User(-1,"","",false,new Timestamp(1));
+                                    user = new User(-1,"","",new Timestamp(1));
                                     
                                     user.setUserID(userId1);
                                     user.setUsername(userName1);

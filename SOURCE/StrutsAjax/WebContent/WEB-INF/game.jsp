@@ -407,9 +407,9 @@ $(document).ready(function() {
 	<!-- input type="button" value="Join an existing Game" id="buttonJoinGame" -->
 	<input type="button" value="Join an existing Game" id="buttonJoinGame2">
         <s:set name="webAdmin" value="admin"/>
-        <s:if test="%{#webAdmin==true}">
+      
 	<input type="button" value="List Completed Games" id="buttonListCompletedGames">
-        </s:if>
+    
 	
 
 	<BR>

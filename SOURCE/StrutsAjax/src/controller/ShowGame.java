@@ -15,12 +15,10 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author bwoltemate
  */
-public class ShowGame extends ActionSupport implements LoginRequired, SessionAware  {
+public class ShowGame extends ActionSupport implements LoginRequired {
     private static final long serialVersionUID = 2015_12_14_005L;
     
-    //Map is initaized by struts when show game is loaded. Thus below is not an error
-    @SuppressFBWarnings(justification="No bug", value="UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
-    private Map<String, Object> session;
+   
 
    
      @Override
@@ -31,14 +29,5 @@ public class ShowGame extends ActionSupport implements LoginRequired, SessionAwa
      
    
      
-     public boolean getAdmin()
-     {
-        User theUser = (User)session.get("user");
-        return theUser.getAdmin();
-     }
     
-       @Override
-    public void setSession(Map<String, Object> session) {
-        this.session = session;
-    }
 }

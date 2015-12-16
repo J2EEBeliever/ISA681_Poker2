@@ -664,19 +664,15 @@ public class AjaxAction extends ActionSupport implements LoginRequired {
 			log.error(e);
 			return;
 		}
-                if (user.getAdmin())
-                {
+               
 		try {
 			Game.displayAllGamesOrderByGameId(out);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error(e);
 		}
-                }
-                else
-                {
-                    out.println("Access Denied");
-                }
+                
+           
 		out.flush();
                 
 

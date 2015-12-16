@@ -14,15 +14,15 @@ public class User {
 	  private String username;
 	  private String password;
 	  private Timestamp timestamp;
-          private boolean admin;
+   
           
-        public User (int userID, String userName, String password, boolean admin,Timestamp timestamp)
+        public User (int userID, String userName, String password,Timestamp timestamp)
         {
         this.userID = userID;
         this.username = userName;
         this.password = password;
         this.timestamp = (Timestamp)timestamp.clone();
-        this.admin = admin;
+      
         }
 	  
 	public int getUserID() {
@@ -43,13 +43,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-        public boolean getAdmin() {
-            return admin;
-        }
-        public void setAdmin(boolean admin)
-        {
-            this.admin = admin;
-        }
+       
         
 	public Timestamp getTimestamp() {
 		return (Timestamp)timestamp.clone();

@@ -33,7 +33,7 @@ public class Register extends ActionSupport {
 		
 		//String originalPassword;
 
-		HttpServletRequest request = ServletActionContext.getRequest();
+		
 
 		String userName_ = username;
 		
