@@ -22,7 +22,7 @@ public class DeckOfCards implements Serializable{
 
 	final static int NUMBER_OF_CARDS = 52;
 	
-	final static int NUMBER_OF_CARDS_PER_SUIT = 13;
+	final static int NUMBER_OF_CARDS_PER_SUIT = 14;
 
 	
 //	public static int NUMBER_OF_SUITS = 52;
@@ -143,7 +143,7 @@ public class DeckOfCards implements Serializable{
 //				playingCard.setCardSuit("Zero Card Not Used");
 //				playingCard.setCardNumber(-1);
 //			}
-			if(i == 0) {
+			if(i == 13) {
 				playingCard.setCardString("Ace");
 			}
 			else if(i < 10) {

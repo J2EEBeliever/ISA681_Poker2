@@ -63,7 +63,7 @@ public class Game {
 		
 		PlayingCard playingCard1_ = new PlayingCard();
 		
-		playingCard1_.setCardNumber(1);
+		playingCard1_.setCardNumber(14);
 		playingCard1_.setCardString("Ace");
 		playingCard1_.setCardSuit("Spades");
 		
@@ -1094,7 +1094,7 @@ public class Game {
 
 						out.println("<BR><BR>Player #1 " + this.getPlayer1().getUsername() + " is the Winner of $" + this.getTotalBetForWinner() + "!!!");
 						
-						if(player1HighCard == 1) { //Ace
+						if(player1HighCard == 14) { //Ace
 
 							this.setPlayer1FinalHandRanking("high card of Ace"); // Here
 							
@@ -1128,7 +1128,7 @@ public class Game {
 
 						out.println("<BR><BR>Player #2 " + this.getPlayer2().getUsername() + " is the Winner of $" + this.getTotalBetForWinner() + "!!!");
 						
-						if(player2HighCard == 1) { //Ace
+						if(player2HighCard == 14) { //Ace
 
 							this.setPlayer2FinalHandRanking("high card of Ace"); // Here
 							
@@ -2276,7 +2276,7 @@ public class Game {
 			int highCard = this.getHighCard(this.getPlayer1card1(), this.getPlayer1card2(), this.getPlayer1card3(),
 					this.getPlayer1card4(), this.getPlayer1card5());
 
-			if (highCard == 1) {
+			if (highCard == 14) {
 
 				out.println("<BR><BR>Player 1 has: a High Card of Ace");
 
@@ -2587,7 +2587,7 @@ public class Game {
 			int highCard = this.getHighCard(this.getPlayer2card1(), this.getPlayer2card2(), this.getPlayer2card3(),
 					this.getPlayer2card4(), this.getPlayer2card5());
 
-			if (highCard == 1) {
+			if (highCard == 14) {
 
 				out.println("<BR><BR>Player 2 has: a High Card of Ace");
 
